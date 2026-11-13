@@ -1,4 +1,4 @@
-// Code generated from openapi.yaml@b2bca608ea6203a0110078b19a8f566f9b572e9457b1847e390ccb9667bf85ff by oapi-codegen@v2.8.0@h1:s4hxMxuqtR8jPzXkBTtFwY/SBuj3gEAYikmbBSdtLMM=. DO NOT EDIT.
+// Code generated from openapi.yaml@5b10dd61da6005025820a3e39c406756e2a7c280db6e16f1325c289fa6217353 by oapi-codegen@v2.8.0@h1:s4hxMxuqtR8jPzXkBTtFwY/SBuj3gEAYikmbBSdtLMM=. DO NOT EDIT.
 // Package api provides primitives to interact with the openapi HTTP API.
 package api
 
@@ -2602,7 +2602,7 @@ type CtxSchemeExplainRequestBody struct {
 	// InputFormat The format `input` is written in. For a scheme that declares `render.surfaces`, the view it is read as, or one of its forms, as the scheme document's `render.surfaces` defines them. Omitted or empty, recognition works it out.
 	InputFormat *string `json:"inputFormat,omitempty"`
 
-	// OutputFormat The output the trace's `rendered` is written in. For a scheme that declares `render.surfaces`, an output as the scheme document's `render.surfaces` defines it. Omitted or empty, the scheme's default format, or with `render.surfaces`, each written surface's default for the marking's role, by the rule `render.surfaces` states for a request that names no output.
+	// OutputFormat The output the trace's `rendered` is written in. For a scheme that declares `render.surfaces`, an output as the scheme document's `render.surfaces` defines it. Omitted or empty, the scheme's default format, or with `render.surfaces`, the written surfaces' defaults for the marking's role, one alone when it writes the others' scopes, by the rule `render.surfaces` states for a request that names no output.
 	OutputFormat *string `json:"outputFormat,omitempty"`
 
 	// Parts Part markings the whole must cover. The whole is judged as covering them, as on the process request.
@@ -2638,7 +2638,7 @@ type CtxSchemeProcessRequestBody struct {
 
 	// OutputFormat The output the result is rendered in. It selects output only: it never narrows what may be read. For a scheme that declares `render.surfaces`, an output as the scheme document's `render.surfaces` defines it.
 	//
-	// Omitted or empty, the scheme's default format, or with `render.surfaces`, each written surface's default for the marking's role, by the rule `render.surfaces` states for a request that names no output.
+	// Omitted or empty, the scheme's default format, or with `render.surfaces`, the written surfaces' defaults for the marking's role, one alone when it writes the others' scopes, by the rule `render.surfaces` states for a request that names no output.
 	OutputFormat *string `json:"outputFormat,omitempty"`
 
 	// Outputs The outputs to write into `renders`, each an output address spelled exactly as a key of `renders` is: `surface/view` for a scheme that declares `render.surfaces`, a format id otherwise. Omitted or empty, `renders` is empty. An address the scheme does not declare is refused.
@@ -2745,7 +2745,7 @@ type CtxSchemeValidateRequestBody struct {
 
 	// OutputFormat The output the result is rendered in. It selects output only: it never narrows what may be read. For a scheme that declares `render.surfaces`, an output as the scheme document's `render.surfaces` defines it.
 	//
-	// Omitted or empty, the scheme's default format, or with `render.surfaces`, each written surface's default for the marking's role, by the rule `render.surfaces` states for a request that names no output.
+	// Omitted or empty, the scheme's default format, or with `render.surfaces`, the written surfaces' defaults for the marking's role, one alone when it writes the others' scopes, by the rule `render.surfaces` states for a request that names no output.
 	OutputFormat *string `json:"outputFormat,omitempty"`
 
 	// Parts Part markings the whole must cover. The whole is judged as covering them: a part it does not cover is an error, and so is a part that does not read as a marking. Each entry is a marking in one of the scheme's part formats, or any format the scheme reads. Empty or absent, the whole stands alone.
@@ -3759,7 +3759,7 @@ type MarkingValidation struct {
 	// This is what a reader needs and what validate returns. Process returns `RecognitionWithCorrections`, which adds how to correct the text.
 	Recognition RecognitionResult `json:"recognition"`
 
-	// Rendered The settled marking, written as validate writes it when the request names no output: in the scheme's default format, or for a scheme that declares `render.surfaces`, each written surface in its default for the role the marking has in this document, by the rule `RenderConfigDoc.surfaces` states.
+	// Rendered The settled marking, written as validate writes it when the request names no output: in the scheme's default format, or for a scheme that declares `render.surfaces`, in the defaults for the role the marking has in this document that the rule `RenderConfigDoc.surfaces` states for an unnamed output selects.
 	Rendered string `json:"rendered"`
 
 	// Valid Whether the marking stands once settled, as `ValidateResult.valid`.
@@ -3981,9 +3981,9 @@ type ProcessResult struct {
 
 	// Rendered The settled marking, in one string.
 	//
-	// It is written in the output the request names. With none named, a scheme without `render.surfaces` writes its default format, and a scheme with them writes each surface in its default for the marking's role, by the rule `RenderConfigDoc.surfaces` states. Every operation that returns this shape follows that one rule.
+	// It is written in the output the request names, and in that output alone. With none named, a scheme without `render.surfaces` writes its default format, and a scheme with them writes each surface the result writes in its default for the marking's role, by the rule `RenderConfigDoc.surfaces` states. Every operation that returns this shape follows that one rule.
 	//
-	// For a scheme that declares `render.surfaces`, the string is the output resolved on each surface the result writes, as `RenderConfigDoc.surfaces` describes, in declared surface order and joined by `render.surface_separator`. An output that writes nothing adds nothing, and outputs written as XML attributes in one namespace merge into one attribute list. One refused output refuses the whole string, and `assessment` says which one and why.
+	// For a scheme that declares `render.surfaces`, the string holds the outputs `RenderConfigDoc.surfaces` selects, in declared surface order and joined by `render.surface_separator`: the one output a request names, or with none named the one default that writes every other surface's scope beside its own, else each surface's default. An output that writes nothing adds nothing, and outputs written as XML attributes in one namespace merge into one attribute list. One refused output refuses the whole string, and `assessment` says which one and why.
 	Rendered string `json:"rendered"`
 
 	// Renders Renders of one state, one per output, keyed by output address.
@@ -4862,9 +4862,9 @@ type ValidateResult struct {
 
 	// Rendered The settled marking, in one string.
 	//
-	// It is written in the output the request names. With none named, a scheme without `render.surfaces` writes its default format, and a scheme with them writes each surface in its default for the marking's role, by the rule `RenderConfigDoc.surfaces` states. Every operation that returns this shape follows that one rule.
+	// It is written in the output the request names, and in that output alone. With none named, a scheme without `render.surfaces` writes its default format, and a scheme with them writes each surface the result writes in its default for the marking's role, by the rule `RenderConfigDoc.surfaces` states. Every operation that returns this shape follows that one rule.
 	//
-	// For a scheme that declares `render.surfaces`, the string is the output resolved on each surface the result writes, as `RenderConfigDoc.surfaces` describes, in declared surface order and joined by `render.surface_separator`. An output that writes nothing adds nothing, and outputs written as XML attributes in one namespace merge into one attribute list. One refused output refuses the whole string, and `assessment` says which one and why.
+	// For a scheme that declares `render.surfaces`, the string holds the outputs `RenderConfigDoc.surfaces` selects, in declared surface order and joined by `render.surface_separator`: the one output a request names, or with none named the one default that writes every other surface's scope beside its own, else each surface's default. An output that writes nothing adds nothing, and outputs written as XML attributes in one namespace merge into one attribute list. One refused output refuses the whole string, and `assessment` says which one and why.
 	Rendered string `json:"rendered"`
 
 	// Valid True when the marking stands once the engine has settled it: read, repaired, completed by what the scheme's rules imply, and judged with no error left.
