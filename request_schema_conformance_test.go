@@ -896,22 +896,19 @@ func TestDeclaredPropertiesFollowRefsAndBranches(t *testing.T) {
 	}
 }
 
-func TestValidatorRejectsRemovedFields(t *testing.T) {
+func TestValidatorRejectsAnUndeclaredField(t *testing.T) {
 	spec := requestSpec(t)
 	cases := []struct {
 		route string
 		body  map[string]any
 		field string
 	}{
-		{"scheme/process", map[string]any{"input": "H", "format": "banner"}, "format"},
-		{"scheme/process", map[string]any{"input": "H", "scope": "portion"}, "scope"},
-		{"scheme/validate", map[string]any{"input": "H", "scope": "portion"}, "scope"},
-		{"scheme/suggest", map[string]any{"input": "H", "format": "banner"}, "format"},
-		{"scheme/aggregate", map[string]any{"inputs": []any{"H"}, "format": "banner", "scope": "portion"}, "format"},
-		{"scheme/aggregate", map[string]any{"assertionSets": []any{}, "format": "banner"}, "format"},
-		{"scheme/diff", map[string]any{"a": "H", "b": "L", "format": "banner"}, "format"},
-		{"scheme/process", map[string]any{"input": "H", "tolerant": true}, "tolerant"},
-		{"scheme/process", map[string]any{"input": "H", "normalization": "loose"}, "normalization"},
+		{"scheme/process", map[string]any{"input": "H", "note": "kept"}, "note"},
+		{"scheme/validate", map[string]any{"input": "H", "note": "kept"}, "note"},
+		{"scheme/suggest", map[string]any{"input": "H", "note": "kept"}, "note"},
+		{"scheme/aggregate", map[string]any{"inputs": []any{"H"}, "note": "kept"}, "note"},
+		{"scheme/aggregate", map[string]any{"assertionSets": []any{}, "note": "kept"}, "note"},
+		{"scheme/diff", map[string]any{"a": "H", "b": "L", "note": "kept"}, "note"},
 		{"scheme/explain", map[string]any{"input": "H", "outputs": []any{"marking/banner"}}, "outputs"},
 		{"scheme/explain", map[string]any{"input": "H", "suggestFor": []any{"level"}}, "suggestFor"},
 		{"scheme/suggest-for-categories", map[string]any{"assertions": []any{}, "categoryIds": []any{}, "input": "H"}, "input"},
@@ -953,7 +950,7 @@ func TestValidatorRejectsAMissingRequiredFieldAndAWrongType(t *testing.T) {
 	}
 }
 
-func TestValidatorAcceptsTheRenamedFields(t *testing.T) {
+func TestValidatorAcceptsACurrentBody(t *testing.T) {
 	spec := requestSpec(t)
 	violations, err := spec.validate("post", requestRoutePrefix+"scheme/process", map[string]any{
 		"input":        "H",
