@@ -2,5 +2,5 @@
 * @ezclassify/maintainers
 
 # spec/ is vendored from the contracts OpenAPI document and
-# internal/api/api.gen.go is generated from it. Write access to spec/ is
-# enforced by .github/workflows/vendor-readonly.yml, not by review routing.
+# internal/api/api.gen.go is generated from it. CI verifies the spec digest and
+# that the generated code matches, so review routing is not the control.

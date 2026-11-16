@@ -93,11 +93,9 @@ package exposes aliases and small Go-native transport conveniences.
   manifest to name one generated output, checks its ownership header, proves
   every declaration in [`types.go`](types.go) is an alias to [`internal/api/`](internal/api/), and rejects
   unreviewed root-package structs that could shadow wire DTOs.
-- Vendored spec: run `go test ./...`. `TestVendorGateShape` and
-  `TestVendorGateBehavior` extract the literal shell body of
-  [`.github/workflows/vendor-readonly.yml`](.github/workflows/vendor-readonly.yml) and drive it against throwaway git
-  history, so the gate that keeps hand edits out of [`spec/`](spec/) is itself
-  exercised rather than only reviewed.
+- Vendored spec: CI checks `spec/openapi.yaml` against the digest in
+  [`spec/MANIFEST.json`](spec/MANIFEST.json) and regenerates the client to prove the
+  committed generated code matches it.
 - Public API and behavior: run `make check-api-surface` and `go test ./...`.
   The test suite includes generated-client coverage, public adapter tests,
   engine-slice conformance replay, replayer-contract tests, document
