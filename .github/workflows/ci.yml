@@ -54,6 +54,14 @@ jobs:
       - name: Format
         run: test -z "$(gofmt -l . | grep -v '^vendor/')"
 
+      # License gate and notices freshness. It reads only the vendored tree and
+      # takes under a second, so it runs on every pull request rather than only
+      # on dependency changes; a hand edit to THIRD-PARTY-NOTICES.md or to a
+      # vendored license still fails here. Regenerate deliberately with
+      # 'make notices' after a dependency change.
+      - name: Dependency licenses and third-party notices
+        run: go run ./tools/notices
+
       - name: Verify generator module hash
         run: |
           python3 - <<'PY'
@@ -67,9 +75,9 @@ jobs:
               sys.exit(f"generator module hash mismatch\n  MANIFEST: {gen['sha256']}\n  actual:   {actual}")
           PY
 
-      # Module ages only grow, so the quarantine and license gates can change
-      # their answer only when a go.mod or go.sum changes. Manual runs have no
-      # base to compare; the full job sweeps them unconditionally.
+      # Module ages only grow, so the quarantine gate can change its answer only
+      # when a go.mod or go.sum changes, or the gate itself does. Manual runs
+      # have no base to compare; the full job sweeps it unconditionally.
       - name: Detect dependency changes
         id: deps
         env:
@@ -78,7 +86,7 @@ jobs:
           changed=false
           if [ -n "$BASE_SHA" ]; then
             git fetch --no-tags --depth=1 origin "$BASE_SHA"
-            if git diff --name-only "$BASE_SHA" HEAD | grep -v '^vendor/' | grep -Eq '(^|/)go\.(sum|mod)$'; then
+            if git diff --name-only "$BASE_SHA" HEAD | grep -v '^vendor/' | grep -Eq '(^|/)go\.(sum|mod)$|^tools/dependencyage/'; then
               changed=true
             fi
           fi
@@ -90,12 +98,6 @@ jobs:
       - name: Dependency age (third-party, 7 days)
         if: steps.deps.outputs.changed == 'true'
         run: go run ./tools/dependencyage
-
-      # License gate and notices freshness. Regenerate deliberately with
-      # 'make notices' after a dependency change.
-      - name: Dependency licenses and third-party notices
-        if: steps.deps.outputs.changed == 'true'
-        run: go run ./tools/notices
 
       # Verifies that generated code matches what the generator produces from
       # spec/openapi.yaml; fails on hand-edits or template tampering.
@@ -138,7 +140,9 @@ jobs:
 
       # govulncheck reports findings in the standard library of whatever
       # toolchain it runs under, so it runs last with the current Go release
-      # rather than the consumer floor above. The scanner stays pinned.
+      # rather than the consumer floor above. This is the one unpinned
+      # toolchain on purpose: the advisory database expects stdlib findings to
+      # be fixed in the newest patch release. The scanner itself stays pinned.
       - name: Set up current Go for the vulnerability scan
         uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6.5.0
         with:
@@ -169,8 +173,7 @@ jobs:
           go-version: "1.26.10"
           cache: true
 
+      # The ci job runs this only when a dependency changed, so the release
+      # commit gets an unconditional sweep here.
       - name: Dependency age (third-party, 7 days)
         run: go run ./tools/dependencyage
-
-      - name: Dependency licenses and third-party notices
-        run: go run ./tools/notices

@@ -3,4 +3,5 @@
 
 # spec/ is vendored from the contracts OpenAPI document and
 # internal/api/api.gen.go is generated from it. CI verifies the spec digest and
-# that the generated code matches, so review routing is not the control.
+# that the generated code matches it; maintainers review spec updates like any
+# other change.

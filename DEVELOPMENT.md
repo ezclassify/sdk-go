@@ -38,8 +38,9 @@ change committed alongside it.
   [oapi-codegen](https://github.com/oapi-codegen/oapi-codegen) over the spec
   vendored at [`spec/openapi.yaml`](spec/openapi.yaml). That mirror is written exclusively by the
   EzClassify spec bot from [ezclassify/contracts](https://github.com/ezclassify/contracts), landing as
-  `ezclassify-spec-bot`; hand edits to [`spec/`](spec/) fail the manifest digest and
-  regeneration checks in CI. There is no local target that refreshes it.
+  `ezclassify-spec-bot`. CI checks [`spec/openapi.yaml`](spec/openapi.yaml) against the digest in
+  [`spec/MANIFEST.json`](spec/MANIFEST.json) and regenerates the client to confirm the committed code
+  matches it. There is no local target that refreshes it.
   Don't hand-edit generated code; regenerate it with the pinned generator (no
   separate install needed):
 

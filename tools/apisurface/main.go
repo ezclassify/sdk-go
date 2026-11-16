@@ -4,7 +4,7 @@
 //
 // The surface is locked at 1.0: adding, removing, or changing any exported
 // name or signature is a breaking-contract event and must be a reviewed,
-// deliberate act. CI runs this command in check mode on every push; after an
+// deliberate act. CI runs this command in check mode on every pull request; after an
 // approved API review, regenerate the golden with `make api-surface` and
 // commit it together with the code change.
 //

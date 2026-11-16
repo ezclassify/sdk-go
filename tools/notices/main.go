@@ -5,7 +5,7 @@
 // (the same set a consuming build links), classifies each module's vendored
 // license text, fails on any license outside the allowlist, and regenerates
 // the notices file from that set. CI runs this command in check mode on every
-// push, so the committed file cannot drift from the real dependency set.
+// pull request, so the committed file cannot drift from the real dependency set.
 // After a dependency change, regenerate deliberately with `make notices` and
 // commit the result.
 //
