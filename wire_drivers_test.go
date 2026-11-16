@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	ez "github.com/ezclassify/client-go"
+	ez "github.com/ezclassify/sdk-go"
 	"maps"
 	"net/url"
 	"strings"
@@ -37,125 +37,115 @@ var rawWireReasons = map[string]bool{
 // wireDrivers registers every corpus case literally, so a recording added
 // upstream fails the coverage test until it has a reviewed driver.
 var wireDrivers = map[string]string{
-	"health.ok":                                                      publicDriver,
-	"ready.ok":                                                       readinessProbe,
-	"ctx-list.ok":                                                    publicDriver,
-	"ctx-versions.ok":                                                publicDriver,
-	"ctx-describe.ok":                                                publicDriver,
-	"ctx-describe.crosswalks":                                        publicDriver,
-	"ctx-document-audit.ok":                                          publicDriver,
-	"ctx-document-audit.empty-text":                                  publicDriver,
-	"ctx-document-assess-access.ok":                                  publicDriver,
-	"ctx-describe.presets":                                           publicDriver,
-	"ctx-scheme-summary.ok":                                          publicDriver,
-	"ctx-scheme-concepts.ok":                                         publicDriver,
-	"ctx-scheme-categories.ok":                                       publicDriver,
-	"ctx-scheme-summary.layered":                                     publicDriver,
-	"ctx-scheme-concepts.layered":                                    publicDriver,
-	"ctx-scheme-categories.layered":                                  publicDriver,
-	"ctx-scheme-formats.ok":                                          publicDriver,
-	"ctx-scheme-grammar.ok":                                          publicDriver,
-	"ctx-scheme-scopes.ok":                                           publicDriver,
-	"ctx-scheme-scopes.none":                                         publicDriver,
-	"ctx-scheme-label-presets.ok":                                    publicDriver,
-	"ctx-scheme-apply-preset.ok":                                     publicDriver,
-	"ctx-scheme-apply-preset.unknown":                                publicDriver,
-	"ctx-scheme-summary.full":                                        publicDriver,
-	"ctx-scheme-concepts.full":                                       publicDriver,
-	"ctx-scheme-categories.full":                                     publicDriver,
-	"ctx-scheme-formats.full":                                        publicDriver,
-	"ctx-scheme-grammar.full":                                        publicDriver,
-	"ctx-scheme-scopes.full":                                         publicDriver,
-	"ctx-scheme-label-presets.full":                                  publicDriver,
-	"ctx-scheme-process.ok":                                          publicDriver,
-	"ctx-scheme-process.empty":                                       publicDriver,
-	"ctx-scheme-process.outputs-and-options":                         publicDriver,
-	"ctx-scheme-validate.ok":                                         publicDriver,
-	"ctx-scheme-validate.assertions":                                 publicDriver,
-	"ctx-scheme-validate.both-sources":                               refusedBeforeTransport,
-	"ctx-scheme-validate.no-source":                                  refusedBeforeTransport,
-	"ctx-scheme-process.undeclared-format":                           publicDriver,
-	"ctx-scheme-aggregate.input-format-with-sets":                    refusedBeforeTransport,
-	"ctx-scheme-explain.ok":                                          publicDriver,
-	"ctx-scheme-normalize.ok":                                        publicDriver,
-	"ctx-scheme-render.ok":                                           publicDriver,
-	"ctx-scheme-render.empty":                                        publicDriver,
-	"ctx-scheme-diff.ok":                                             publicDriver,
-	"ctx-scheme-view.ok":                                             publicDriver,
-	"ctx-scheme-notices.ok":                                          publicDriver,
-	"ctx-scheme-filter-concepts.ok":                                  publicDriver,
-	"ctx-scheme-filter-concepts.no-match":                            publicDriver,
-	"ctx-scheme-scan.ok":                                             publicDriver,
-	"ctx-scheme-aggregate.ok":                                        publicDriver,
-	"ctx-scheme-aggregate.assertion-sets":                            publicDriver,
-	"ctx-scheme-suggest.ok":                                          publicDriver,
-	"ctx-scheme-suggest.gated-hidden":                                publicDriver,
-	"ctx-scheme-suggest.gated-included":                              publicDriver,
-	"ctx-scheme-suggest.facts":                                       publicDriver,
-	"ctx-scheme-suggest.both-sources":                                refusedBeforeTransport,
-	"ctx-scheme-suggest.no-source":                                   refusedBeforeTransport,
-	"ctx-scheme-suggest.input-format-with-facts":                     refusedBeforeTransport,
-	"ctx-scheme-suggest-for-categories.ok":                           publicDriver,
-	"ctx-scheme-suggest-for-categories.empty-baseline":               publicDriver,
-	"ctx-scheme-check-coverage.ok":                                   publicDriver,
-	"ctx-scheme-check-coverage.excess":                               publicDriver,
-	"ctx-scheme-check-coverage.pipeline":                             publicDriver,
-	"ctx-scheme-check-coverage.pipeline-narrowed":                    publicDriver,
-	"ctx-scheme-describe-concept.unknown-concept":                    publicDriver,
-	"ctx-scheme-describe-concept.ok":                                 publicDriver,
-	"ctx-access-check.marking":                                       publicDriver,
-	"ctx-access-check.assertions":                                    publicDriver,
-	"ctx-access-check.two-attributes":                                publicDriver,
-	"ctx-access-describe-rule.ok":                                    publicDriver,
-	"ctx-access-describe-requirements.ok":                            publicDriver,
-	"ctx-access-rules.ok":                                            publicDriver,
-	"ctx-access-rules.no-policy":                                     publicDriver,
-	"ctx-guide-scan.ok":                                              publicDriver,
-	"ctx-guide-evaluate.ok":                                          publicDriver,
-	"ctx-guide-evaluate.all-guides":                                  publicDriver,
-	"ctx-guide-describe-rule.ok":                                     publicDriver,
-	"ctx-guide-describe-rule.unknown-guide":                          publicDriver,
-	"ctx-guide-view.by-id":                                           publicDriver,
-	"ctx-guide-filter-rules.ok":                                      publicDriver,
-	"ctx-guide-view.ok":                                              publicDriver,
-	"ctx-crosswalk-translate.marking":                                publicDriver,
-	"ctx-crosswalk-translate.assertions":                             publicDriver,
-	"ctx-crosswalk-translate.translated":                             publicDriver,
-	"ctx-crosswalk-translate.forbidden":                              publicDriver,
-	"ctx-crosswalk-translate.both-sources":                           refusedBeforeTransport,
-	"ctx-crosswalk-translate.no-source":                              refusedBeforeTransport,
-	"ctx-scheme-process.undeclared-request-field-fix":                undeclaredMember,
-	"ctx-scheme-process.undeclared-request-field-preserveDeprecated": undeclaredMember,
-	"ctx-scheme-process.undeclared-request-field-normalization":      undeclaredMember,
-	"ctx-scheme-process.undeclared-request-field-skipRepair":         undeclaredMember,
-	"ctx-scheme-process.undeclared-request-field-skipInference":      undeclaredMember,
-	"ctx-scheme-process.undeclared-request-field-tolerant":           undeclaredMember,
-	"ctx-scheme-process.undeclared-request-field-validateOnly":       undeclaredMember,
-	"ctx-scheme-process.undeclared-request-field-scope":              undeclaredMember,
-	"ctx-scheme-process.undeclared-request-field-format":             undeclaredMember,
-	"ctx-scheme-process.undeclared-request-field-repairStrategy":     undeclaredMember,
-	"ctx-scheme-process.undeclared-request-field-unknownField":       undeclaredMember,
-	"ctx-scheme-validate.undeclared-field":                           undeclaredMember,
-	"ctx-scheme-explain.undeclared-field":                            undeclaredMember,
-	"ctx-scheme-normalize.undeclared-field":                          undeclaredMember,
-	"ctx-scheme-aggregate.undeclared-field":                          undeclaredMember,
-	"ctx-scheme-suggest.undeclared-field":                            undeclaredMember,
-	"ctx-scheme-suggest-for-categories.undeclared-field":             undeclaredMember,
-	"ctx-scheme-render.undeclared-field":                             undeclaredMember,
-	"ctx-scheme-scan.undeclared-field":                               undeclaredMember,
-	"ctx-document-audit.undeclared-guide-field":                      undeclaredMember,
-	"ctx-scheme-process.missing-input":                               requiredMemberAlwaysSent,
-	"health.undeclared-query-parameter":                              undeclaredParameter,
-	"ctx-scheme-label-presets.undeclared-query-parameter":            undeclaredParameter,
-	"ctx-scheme-process.undeclared-query-parameter":                  undeclaredParameter,
-	"denial.authenticated-no-credential":                             publicDriver,
-	"denial.authenticated-bad-credential":                            publicDriver,
-	"denial.authenticated-health-still-open":                         publicDriver,
-	"denial.context-without-carrier":                                 publicDriver,
-	"denial.ctx-scheme-without-carrier":                              publicDriver,
-	"route-miss.route-not-found":                                     undeclaredRoute,
-	"route-miss.ctx-operation-not-found":                             undeclaredRoute,
-	"method-guard.allow-header":                                      undeclaredRoute,
+	"health.ok":                                                publicDriver,
+	"ready.ok":                                                 readinessProbe,
+	"ctx-list.ok":                                              publicDriver,
+	"ctx-versions.ok":                                          publicDriver,
+	"ctx-describe.ok":                                          publicDriver,
+	"ctx-describe.crosswalks":                                  publicDriver,
+	"ctx-describe.marked":                                      publicDriver,
+	"ctx-document-audit.ok":                                    publicDriver,
+	"ctx-document-audit.empty-text":                            publicDriver,
+	"ctx-describe.presets":                                     publicDriver,
+	"ctx-scheme-summary.ok":                                    publicDriver,
+	"ctx-scheme-concepts.ok":                                   publicDriver,
+	"ctx-scheme-categories.ok":                                 publicDriver,
+	"ctx-scheme-summary.layered":                               publicDriver,
+	"ctx-scheme-concepts.layered":                              publicDriver,
+	"ctx-scheme-categories.layered":                            publicDriver,
+	"ctx-scheme-formats.ok":                                    publicDriver,
+	"ctx-scheme-scopes.ok":                                     publicDriver,
+	"ctx-scheme-scopes.none":                                   publicDriver,
+	"ctx-scheme-label-presets.ok":                              publicDriver,
+	"ctx-scheme-apply-preset.ok":                               publicDriver,
+	"ctx-scheme-apply-preset.unknown":                          publicDriver,
+	"ctx-scheme-summary.full":                                  publicDriver,
+	"ctx-scheme-concepts.full":                                 publicDriver,
+	"ctx-scheme-categories.full":                               publicDriver,
+	"ctx-scheme-formats.full":                                  publicDriver,
+	"ctx-scheme-scopes.full":                                   publicDriver,
+	"ctx-scheme-label-presets.full":                            publicDriver,
+	"ctx-scheme-process.ok":                                    publicDriver,
+	"ctx-scheme-process.empty":                                 publicDriver,
+	"ctx-scheme-process.outputs-and-options":                   publicDriver,
+	"ctx-scheme-validate.ok":                                   publicDriver,
+	"ctx-scheme-validate.assertions":                           publicDriver,
+	"ctx-scheme-validate.both-sources":                         refusedBeforeTransport,
+	"ctx-scheme-validate.no-source":                            refusedBeforeTransport,
+	"ctx-scheme-process.undeclared-format":                     publicDriver,
+	"ctx-scheme-aggregate.input-format-with-sets":              refusedBeforeTransport,
+	"ctx-scheme-explain.ok":                                    publicDriver,
+	"ctx-scheme-render.ok":                                     publicDriver,
+	"ctx-scheme-render.empty":                                  publicDriver,
+	"ctx-scheme-diff.ok":                                       publicDriver,
+	"ctx-scheme-view.ok":                                       publicDriver,
+	"ctx-scheme-view.marked":                                   publicDriver,
+	"ctx-scheme-notices.ok":                                    publicDriver,
+	"ctx-scheme-scan.ok":                                       publicDriver,
+	"ctx-scheme-aggregate.ok":                                  publicDriver,
+	"ctx-scheme-aggregate.assertion-sets":                      publicDriver,
+	"ctx-scheme-process.selected-scheme":                       publicDriver,
+	"ctx-scheme-process.unknown-scheme":                        publicDriver,
+	"ctx-scheme-validate.selected-scheme":                      publicDriver,
+	"ctx-scheme-aggregate.selected-scheme":                     publicDriver,
+	"ctx-scheme-suggest.ok":                                    publicDriver,
+	"ctx-scheme-suggest.gated-hidden":                          publicDriver,
+	"ctx-scheme-suggest.gated-included":                        publicDriver,
+	"ctx-scheme-suggest.facts":                                 publicDriver,
+	"ctx-scheme-suggest.both-sources":                          refusedBeforeTransport,
+	"ctx-scheme-suggest.no-source":                             refusedBeforeTransport,
+	"ctx-scheme-suggest.input-format-with-facts":               refusedBeforeTransport,
+	"ctx-scheme-suggest-for-categories.ok":                     publicDriver,
+	"ctx-scheme-suggest-for-categories.empty-baseline":         publicDriver,
+	"ctx-scheme-check-coverage.ok":                             publicDriver,
+	"ctx-scheme-check-coverage.excess":                         publicDriver,
+	"ctx-scheme-check-coverage.pipeline":                       publicDriver,
+	"ctx-scheme-check-coverage.pipeline-narrowed":              publicDriver,
+	"ctx-scheme-describe-concept.unknown-concept":              publicDriver,
+	"ctx-scheme-describe-concept.ok":                           publicDriver,
+	"ctx-access-check.marking":                                 publicDriver,
+	"ctx-access-check.assertions":                              publicDriver,
+	"ctx-access-check.two-attributes":                          publicDriver,
+	"ctx-access-describe-requirements.ok":                      publicDriver,
+	"ctx-access-rules.ok":                                      publicDriver,
+	"ctx-access-rules.marked":                                  publicDriver,
+	"ctx-access-rules.no-policy":                               publicDriver,
+	"ctx-guide-scan.ok":                                        publicDriver,
+	"ctx-guide-evaluate.ok":                                    publicDriver,
+	"ctx-guide-evaluate.selections":                            publicDriver,
+	"ctx-guide-view.by-id":                                     publicDriver,
+	"ctx-guide-view.ok":                                        publicDriver,
+	"ctx-guide-view.marked":                                    publicDriver,
+	"ctx-crosswalk-translate.marking":                          publicDriver,
+	"ctx-crosswalk-translate.assertions":                       publicDriver,
+	"ctx-crosswalk-describe.ok":                                publicDriver,
+	"ctx-crosswalk-describe.marked":                            publicDriver,
+	"ctx-crosswalk-translate.translated":                       publicDriver,
+	"ctx-crosswalk-translate.forbidden":                        publicDriver,
+	"ctx-crosswalk-translate.not-selected":                     publicDriver,
+	"ctx-crosswalk-translate.both-sources":                     refusedBeforeTransport,
+	"ctx-crosswalk-translate.no-source":                        refusedBeforeTransport,
+	"ctx-scheme-process.undeclared-request-field-unknownField": undeclaredMember,
+	"ctx-scheme-validate.undeclared-field":                     undeclaredMember,
+	"ctx-scheme-explain.undeclared-field":                      undeclaredMember,
+	"ctx-scheme-aggregate.undeclared-field":                    undeclaredMember,
+	"ctx-scheme-suggest.undeclared-field":                      undeclaredMember,
+	"ctx-scheme-suggest-for-categories.undeclared-field":       undeclaredMember,
+	"ctx-scheme-render.undeclared-field":                       undeclaredMember,
+	"ctx-scheme-scan.undeclared-field":                         undeclaredMember,
+	"ctx-document-audit.undeclared-guide-field":                undeclaredMember,
+	"ctx-scheme-process.missing-input":                         requiredMemberAlwaysSent,
+	"health.undeclared-query-parameter":                        undeclaredParameter,
+	"ctx-scheme-label-presets.undeclared-query-parameter":      undeclaredParameter,
+	"ctx-scheme-process.undeclared-query-parameter":            undeclaredParameter,
+	"denial.authenticated-no-credential":                       publicDriver,
+	"denial.authenticated-bad-credential":                      publicDriver,
+	"denial.authenticated-health-still-open":                   publicDriver,
+	"denial.context-without-carrier":                           publicDriver,
+	"denial.ctx-scheme-without-carrier":                        publicDriver,
+	"route-miss.route-not-found":                               undeclaredRoute,
+	"route-miss.ctx-operation-not-found":                       undeclaredRoute,
+	"method-guard.allow-header":                                undeclaredRoute,
 }
 
 func wireCredentials(r wireCase) ez.RestClientCredentials {
@@ -234,11 +224,15 @@ func runWireDriver(ctx context.Context, c *ez.Client, r wireCase) (interface{}, 
 
 // driveWire sends the case's recorded request through the public method of the
 // Context handle that the case's operation names. u is the parsed recorded
-// path, whose query carries the arguments of the GET operations. Passing the
+// path, whose query carries the arguments of the GET operations and the
+// scheme selector of every scheme operation. Passing the
 // handle in lets the cache plans reuse one handle, and so one cache, across
 // calls.
 func driveWire(ctx context.Context, h *ez.EzClassifyContext, r wireCase, u *url.URL) (interface{}, error) {
-	scheme := wireOptionalQuery(u, "scheme")
+	scheme := h.Scheme
+	if selector := wireOptionalQuery(u, "scheme"); selector != nil {
+		scheme = h.Schemes.Get(*selector)
+	}
 	switch r.Operation {
 	case "ctxDescribe":
 		description, e := h.Describe(ctx)
@@ -250,59 +244,53 @@ func driveWire(ctx context.Context, h *ez.EzClassifyContext, r wireCase, u *url.
 		}
 		return description, nil
 	case "ctxSchemeSummary":
-		return h.Scheme.Summary(ctx, scheme)
+		return scheme.Summary(ctx)
 	case "ctxSchemeConcepts":
-		return h.Scheme.Concepts(ctx, scheme)
+		return scheme.Concepts(ctx)
 	case "ctxSchemeCategories":
-		return h.Scheme.Categories(ctx, scheme)
+		return scheme.Categories(ctx)
 	case "ctxSchemeFormats":
-		return h.Scheme.Formats(ctx, scheme)
-	case "ctxSchemeGrammar":
-		return h.Scheme.Grammar(ctx, scheme)
+		return scheme.Formats(ctx)
 	case "ctxSchemeScopes":
-		return h.Scheme.Scopes(ctx, scheme)
+		return scheme.Scopes(ctx)
 	case "ctxSchemeLabelPresets":
-		return h.Scheme.LabelPresets(ctx)
+		return scheme.LabelPresets(ctx)
 	case "ctxSchemeDescribeConcept":
-		return h.Scheme.DescribeConcept(ctx, u.Query().Get("conceptId"), u.Query().Get("categoryId"), wireOptionalQuery(u, "view"))
+		return scheme.DescribeConcept(ctx, u.Query().Get("conceptId"), u.Query().Get("categoryId"), wireOptionalQuery(u, "view"))
 	case "ctxAccessRules":
 		return h.Access.Rules(ctx)
+	case "ctxCrosswalkDescribe":
+		return h.Crosswalk.Describe(ctx)
 	case "ctxSchemeView":
-		return h.Scheme.View(ctx)
+		return scheme.View(ctx)
 	case "ctxSchemeProcess":
-		return wireCall[ez.CtxSchemeProcessRequest](r.Request.Body, func(v ez.CtxSchemeProcessRequest) (interface{}, error) { return h.Scheme.Process(ctx, v) })
+		return wireCall[ez.CtxSchemeProcessRequest](r.Request.Body, func(v ez.CtxSchemeProcessRequest) (interface{}, error) { return scheme.Process(ctx, v) })
 	case "ctxSchemeValidate":
-		return wireCall[ez.CtxSchemeValidateRequest](r.Request.Body, func(v ez.CtxSchemeValidateRequest) (interface{}, error) { return h.Scheme.Validate(ctx, v) })
+		return wireCall[ez.CtxSchemeValidateRequest](r.Request.Body, func(v ez.CtxSchemeValidateRequest) (interface{}, error) { return scheme.Validate(ctx, v) })
 	case "ctxSchemeApplyPreset":
-		return wireCall[ez.ApplyPresetRequest](r.Request.Body, func(v ez.ApplyPresetRequest) (interface{}, error) { return h.Scheme.ApplyPreset(ctx, v) })
+		return wireCall[ez.ApplyPresetRequest](r.Request.Body, func(v ez.ApplyPresetRequest) (interface{}, error) { return scheme.ApplyPreset(ctx, v) })
 	case "ctxSchemeExplain":
-		return wireCall[ez.CtxSchemeExplainRequest](r.Request.Body, func(v ez.CtxSchemeExplainRequest) (interface{}, error) { return h.Scheme.Explain(ctx, v) })
-	case "ctxSchemeNormalize":
-		return wireCall[ez.CtxSchemeNormalizeRequest](r.Request.Body, func(v ez.CtxSchemeNormalizeRequest) (interface{}, error) { return h.Scheme.Normalize(ctx, v) })
+		return wireCall[ez.CtxSchemeExplainRequest](r.Request.Body, func(v ez.CtxSchemeExplainRequest) (interface{}, error) { return scheme.Explain(ctx, v) })
 	case "ctxSchemeRender":
-		return wireCall[ez.CtxSchemeRenderRequest](r.Request.Body, func(v ez.CtxSchemeRenderRequest) (interface{}, error) { return h.Scheme.Render(ctx, v) })
+		return wireCall[ez.CtxSchemeRenderRequest](r.Request.Body, func(v ez.CtxSchemeRenderRequest) (interface{}, error) { return scheme.Render(ctx, v) })
 	case "ctxSchemeDiff":
-		return wireCall[ez.CtxSchemeDiffRequest](r.Request.Body, func(v ez.CtxSchemeDiffRequest) (interface{}, error) { return h.Scheme.Diff(ctx, v) })
+		return wireCall[ez.CtxSchemeDiffRequest](r.Request.Body, func(v ez.CtxSchemeDiffRequest) (interface{}, error) { return scheme.Diff(ctx, v) })
 	case "ctxSchemeNotices":
-		return wireCall[ez.CtxSchemeNoticesRequest](r.Request.Body, func(v ez.CtxSchemeNoticesRequest) (interface{}, error) { return h.Scheme.Notices(ctx, v) })
-	case "ctxSchemeFilterConcepts":
-		return wireCall[ez.CtxSchemeFilterConceptsRequest](r.Request.Body, func(v ez.CtxSchemeFilterConceptsRequest) (interface{}, error) { return h.Scheme.FilterConcepts(ctx, v) })
+		return wireCall[ez.CtxSchemeNoticesRequest](r.Request.Body, func(v ez.CtxSchemeNoticesRequest) (interface{}, error) { return scheme.Notices(ctx, v) })
 	case "ctxSchemeScan":
-		return wireCall[ez.CtxSchemeScanRequest](r.Request.Body, func(v ez.CtxSchemeScanRequest) (interface{}, error) { return h.Scheme.Scan(ctx, v) })
+		return wireCall[ez.CtxSchemeScanRequest](r.Request.Body, func(v ez.CtxSchemeScanRequest) (interface{}, error) { return scheme.Scan(ctx, v) })
 	case "ctxSchemeAggregate":
-		return wireCall[ez.CtxSchemeAggregateRequest](r.Request.Body, func(v ez.CtxSchemeAggregateRequest) (interface{}, error) { return h.Scheme.Aggregate(ctx, v) })
+		return wireCall[ez.CtxSchemeAggregateRequest](r.Request.Body, func(v ez.CtxSchemeAggregateRequest) (interface{}, error) { return scheme.Aggregate(ctx, v) })
 	case "ctxSchemeSuggest":
-		return wireCall[ez.CtxSchemeSuggestRequest](r.Request.Body, func(v ez.CtxSchemeSuggestRequest) (interface{}, error) { return h.Scheme.Suggest(ctx, v) })
+		return wireCall[ez.CtxSchemeSuggestRequest](r.Request.Body, func(v ez.CtxSchemeSuggestRequest) (interface{}, error) { return scheme.Suggest(ctx, v) })
 	case "ctxSchemeSuggestForCategories":
 		return wireCall[ez.CtxSchemeSuggestForCategoriesRequest](r.Request.Body, func(v ez.CtxSchemeSuggestForCategoriesRequest) (interface{}, error) {
-			return h.Scheme.SuggestForCategories(ctx, v)
+			return scheme.SuggestForCategories(ctx, v)
 		})
 	case "ctxSchemeCheckCoverage":
-		return wireCall[ez.CtxSchemeCheckCoverageRequest](r.Request.Body, func(v ez.CtxSchemeCheckCoverageRequest) (interface{}, error) { return h.Scheme.CheckCoverage(ctx, v) })
+		return wireCall[ez.CtxSchemeCheckCoverageRequest](r.Request.Body, func(v ez.CtxSchemeCheckCoverageRequest) (interface{}, error) { return scheme.CheckCoverage(ctx, v) })
 	case "ctxAccessCheck":
 		return wireCall[ez.CtxAccessCheckRequest](r.Request.Body, func(v ez.CtxAccessCheckRequest) (interface{}, error) { return h.Access.Check(ctx, v) })
-	case "ctxAccessDescribeRule":
-		return wireCall[ez.CtxAccessDescribeRuleRequest](r.Request.Body, func(v ez.CtxAccessDescribeRuleRequest) (interface{}, error) { return h.Access.DescribeRule(ctx, v) })
 	case "ctxAccessDescribeRequirements":
 		return wireCall[ez.CtxAccessDescribeRequirementsRequest](r.Request.Body, func(v ez.CtxAccessDescribeRequirementsRequest) (interface{}, error) {
 			return h.Access.DescribeRequirements(ctx, v)
@@ -311,14 +299,8 @@ func driveWire(ctx context.Context, h *ez.EzClassifyContext, r wireCase, u *url.
 		return wireCall[ez.CtxGuideScanRequest](r.Request.Body, func(v ez.CtxGuideScanRequest) (interface{}, error) { return h.Guide.Scan(ctx, v) })
 	case "ctxGuideEvaluate":
 		return wireCall[ez.CtxGuideEvaluateRequest](r.Request.Body, func(v ez.CtxGuideEvaluateRequest) (interface{}, error) { return h.Guide.Evaluate(ctx, v) })
-	case "ctxGuideDescribeRule":
-		return wireCall[ez.CtxGuideDescribeRuleRequest](r.Request.Body, func(v ez.CtxGuideDescribeRuleRequest) (interface{}, error) { return h.Guide.DescribeRule(ctx, v) })
-	case "ctxGuideFilterRules":
-		return wireCall[ez.CtxGuideFilterRulesRequest](r.Request.Body, func(v ez.CtxGuideFilterRulesRequest) (interface{}, error) { return h.Guide.FilterRules(ctx, v) })
 	case "ctxDocumentAudit":
 		return wireCall[ez.CtxDocumentAuditRequest](r.Request.Body, func(v ez.CtxDocumentAuditRequest) (interface{}, error) { return h.Document.Audit(ctx, v) })
-	case "ctxDocumentAssessAccess":
-		return wireCall[ez.CtxDocumentAssessAccessRequest](r.Request.Body, func(v ez.CtxDocumentAssessAccessRequest) (interface{}, error) { return h.Document.AssessAccess(ctx, v) })
 	case "ctxCrosswalkTranslate":
 		return wireCall[ez.CtxCrosswalkTranslateRequest](r.Request.Body, func(v ez.CtxCrosswalkTranslateRequest) (interface{}, error) { return h.Crosswalk.Translate(ctx, v) })
 	case "ctxGuideView":

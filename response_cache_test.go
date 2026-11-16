@@ -13,10 +13,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ezclassify/client-go"
+	"github.com/ezclassify/sdk-go"
 )
 
-var cachedProcessBody = fixtureAs[ezclassify.ContextSchemeProcessResult](`{"resolution":{"contextId":"c","resolvedVersion":"1.0.0","artifacts":[],"sources":[]},"operationLimitations":[],"result":{"valid":true,"rendered":"H","inputWasValid":true,"notices":[]}}`)
+var cachedProcessBody = fixtureAs[ezclassify.ContextSchemeProcessResult](`{"resolution":{"contextId":"c","resolvedVersion":"1.0.0","artifacts":[]},"result":{"valid":true,"rendered":"H","inputWasValid":true,"notices":[]}}`)
 
 func TestContextProcessReusesValidatedResponse(t *testing.T) {
 	var calls atomic.Int32
@@ -56,7 +56,7 @@ func TestContextCacheRetriesFailuresAndMalformedSuccess(t *testing.T) {
 		case 2:
 			_, _ = io.WriteString(w, `{"unexpected":"shape"}`)
 		case 3:
-			_, _ = io.WriteString(w, `{"resolution":{"contextId":"c","resolvedVersion":"1.0.0","artifacts":[],"sources":[]},"operationLimitations":[],"result":{}}`)
+			_, _ = io.WriteString(w, `{"resolution":{"contextId":"c","resolvedVersion":"1.0.0","artifacts":[]},"result":{}}`)
 		default:
 			_, _ = io.WriteString(w, cachedProcessBody)
 		}
@@ -67,7 +67,7 @@ func TestContextCacheRetriesFailuresAndMalformedSuccess(t *testing.T) {
 	if _, err := cx.Scheme.Process(context.Background(), req); err == nil {
 		t.Fatal("server error was not returned")
 	}
-	for _, member := range []string{"/operationLimitations", "/result/"} {
+	for _, member := range []string{"/resolution", "/result/"} {
 		_, err := cx.Scheme.Process(context.Background(), req)
 		var malformed *ezclassify.MalformedResponseError
 		if !errors.As(err, &malformed) || !strings.HasPrefix(malformed.Member, member) {
@@ -150,12 +150,12 @@ func TestContextCachePendingCallSurvivesOneCallerCancellation(t *testing.T) {
 	}
 }
 
-func TestContextAccessDecisionAuditDefault(t *testing.T) {
+func TestContextAccessDecisionIsNeverServedFromClientMemory(t *testing.T) {
 	var calls atomic.Int32
 	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		calls.Add(1)
 		w.Header().Set("Content-Type", "application/json")
-		_, _ = io.WriteString(w, `{"resolution":{"contextId":"c","resolvedVersion":"1.0.0","artifacts":[],"sources":[]},"operationLimitations":[],"result":{"granted":false,"rules":[]}}`)
+		_, _ = io.WriteString(w, `{"resolution":{"contextId":"c","resolvedVersion":"1.0.0","artifacts":[]},"result":{"granted":false,"rules":[],"warnings":[]}}`)
 	}))
 	t.Cleanup(srv.Close)
 	req := ezclassify.CtxAccessCheckRequest{}
@@ -166,16 +166,7 @@ func TestContextAccessDecisionAuditDefault(t *testing.T) {
 		}
 	}
 	if got := calls.Load(); got != 2 {
-		t.Fatalf("default access audit used %d wire calls, want 2", got)
-	}
-	cached := ezclassify.ConnectWith(ezclassify.New(srv.URL, ezclassify.WithCacheAccessDecisions()), "c", "1.0.0")
-	for i := 0; i < 2; i++ {
-		if _, err := cached.Access.Check(context.Background(), req); err != nil {
-			t.Fatal(err)
-		}
-	}
-	if got := calls.Load(); got != 3 {
-		t.Fatalf("opted-in access used %d wire calls, want 3", got)
+		t.Fatalf("access check used %d wire calls, want 2", got)
 	}
 }
 
@@ -228,15 +219,6 @@ func TestContextCacheClearsOnUnauthorizedAndVersionChange(t *testing.T) {
 	}
 }
 
-func TestContextAccessCacheRequiresConcreteVersion(t *testing.T) {
-	defer func() {
-		if recover() == nil {
-			t.Fatal("access cache opt-in should reject latest")
-		}
-	}()
-	_ = ezclassify.ConnectWith(ezclassify.New("http://localhost", ezclassify.WithCacheAccessDecisions()), "c", "latest")
-}
-
 // countingContextServer answers every Context route with body inside a
 // resolution envelope and counts the requests it receives per path.
 func countingContextServer(t *testing.T, body func(path string, attempt int32) string) (*httptest.Server, func(path string) int32) {
@@ -254,7 +236,7 @@ func countingContextServer(t *testing.T, body func(path string, attempt int32) s
 		attempt := counter.Add(1)
 		w.Header().Set("Content-Type", "application/json")
 		w.Header().Set("X-EzClassify-Resolved-Version", "1.0.0")
-		_, _ = io.WriteString(w, contextFixture(r.URL.Path, `{"resolution":{"contextId":"c","resolvedVersion":"1.0.0","artifacts":[],"sources":[]},"operationLimitations":[],"result":`+body(r.URL.Path, attempt)+`}`))
+		_, _ = io.WriteString(w, contextFixture(r.URL.Path, `{"resolution":{"contextId":"c","resolvedVersion":"1.0.0","artifacts":[]},"result":`+body(r.URL.Path, attempt)+`}`))
 	}))
 	t.Cleanup(srv.Close)
 	return srv, func(path string) int32 {
@@ -527,7 +509,7 @@ func TestContextCacheClearsOnDenialShapedNotFoundOnly(t *testing.T) {
 			before := processCalls.Load()
 			status.Store(http.StatusNotFound)
 			body.Store(refusal.body)
-			if _, err := cx.Scheme.Concepts(ctx, nil); err == nil {
+			if _, err := cx.Scheme.Concepts(ctx); err == nil {
 				t.Fatal("a 404 returned no error")
 			}
 			process()
@@ -551,7 +533,7 @@ func TestContextCachedResultsAreIndependentCopies(t *testing.T) {
 	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		calls.Add(1)
 		w.Header().Set("Content-Type", "application/json")
-		_, _ = io.WriteString(w, fixtureAs[ezclassify.ContextSchemeProcessResult](`{"resolution":{"contextId":"c","resolvedVersion":"1.0.0","artifacts":[{"kind":"scheme","id":"s","version":"1.0.0"}],"sources":[]},"operationLimitations":[],"result":{"valid":true,"rendered":"H","inputWasValid":true,"assertions":[{"conceptId":"L_H","categoryId":"level","confidence":"certain","source":"parse"}]}}`))
+		_, _ = io.WriteString(w, fixtureAs[ezclassify.ContextSchemeProcessResult](`{"resolution":{"contextId":"c","resolvedVersion":"1.0.0","artifacts":[{"kind":"scheme","id":"s","version":"1.0.0"}]},"result":{"valid":true,"rendered":"H","inputWasValid":true,"assertions":[{"conceptId":"L_H","categoryId":"level","confidence":"certain","source":"parse"}]}}`))
 	}))
 	t.Cleanup(srv.Close)
 	cx := ezclassify.Connect(srv.URL, "c", "1.0.0")

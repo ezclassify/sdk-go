@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/ezclassify/client-go/internal/subsetmatch"
+	"github.com/ezclassify/sdk-go/internal/subsetmatch"
 )
 
 // mustJSON decodes a JSON literal into the interface{} shapes json.Unmarshal
@@ -90,5 +90,24 @@ func TestMatchNonJSONExpectedFallsBackToDeepEqual(t *testing.T) {
 	}
 	if subsetmatch.Match(3, 4) {
 		t.Error("Match(int 3, int 4) = true, want false")
+	}
+}
+
+// TestMatchObjectAgainstArrayReadsIndicesAndLength pins how an expected object
+// addresses an actual array: decimal keys name elements and "length" pins the
+// exact count, as the Node reference matcher reads them.
+func TestMatchObjectAgainstArrayReadsIndicesAndLength(t *testing.T) {
+	actual := mustJSON(t, `[{"inner":"A","start":0},{"inner":"B","start":9}]`)
+	if !subsetmatch.Match(actual, mustJSON(t, `{"1":{"inner":"B"},"length":2}`)) {
+		t.Error("indexed element and exact length should match")
+	}
+	if subsetmatch.Match(actual, mustJSON(t, `{"length":1}`)) {
+		t.Error("a wrong length should not match")
+	}
+	if subsetmatch.Match(mustJSON(t, `[]`), mustJSON(t, `{"0":{"inner":"A"}}`)) {
+		t.Error("an index past the end should not match a non-null expectation")
+	}
+	if subsetmatch.Match(actual, mustJSON(t, `{"01":{"inner":"B"}}`)) {
+		t.Error("a non-canonical index names no element")
 	}
 }

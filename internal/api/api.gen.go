@@ -1,4 +1,4 @@
-// Code generated from openapi.yaml@cf1679c6bae46071cec779c7864802568a3f517aea6b3cc7a2a634de512c6e61 by oapi-codegen@v2.8.0@h1:s4hxMxuqtR8jPzXkBTtFwY/SBuj3gEAYikmbBSdtLMM=. DO NOT EDIT.
+// Code generated from openapi.yaml@5b10dd61da6005025820a3e39c406756e2a7c280db6e16f1325c289fa6217353 by oapi-codegen@v2.8.0@h1:s4hxMxuqtR8jPzXkBTtFwY/SBuj3gEAYikmbBSdtLMM=. DO NOT EDIT.
 // Package api provides primitives to interact with the openapi HTTP API.
 package api
 
@@ -39,48 +39,6 @@ func (e AccessOperandSource) Valid() bool {
 	}
 }
 
-// Defines values for AccessScenarioBasis.
-const (
-	Authored      AccessScenarioBasis = "authored"
-	Authoritative AccessScenarioBasis = "authoritative"
-	Projected     AccessScenarioBasis = "projected"
-)
-
-// Valid indicates whether the value is a known member of the AccessScenarioBasis enum.
-func (e AccessScenarioBasis) Valid() bool {
-	switch e {
-	case Authored:
-		return true
-	case Authoritative:
-		return true
-	case Projected:
-		return true
-	default:
-		return false
-	}
-}
-
-// Defines values for AccessScenarioStatus.
-const (
-	AccessScenarioStatusDenied       AccessScenarioStatus = "denied"
-	AccessScenarioStatusGranted      AccessScenarioStatus = "granted"
-	AccessScenarioStatusNotEvaluated AccessScenarioStatus = "not-evaluated"
-)
-
-// Valid indicates whether the value is a known member of the AccessScenarioStatus enum.
-func (e AccessScenarioStatus) Valid() bool {
-	switch e {
-	case AccessScenarioStatusDenied:
-		return true
-	case AccessScenarioStatusGranted:
-		return true
-	case AccessScenarioStatusNotEvaluated:
-		return true
-	default:
-		return false
-	}
-}
-
 // Defines values for ArtifactKind.
 const (
 	ArtifactKindAccess    ArtifactKind = "access"
@@ -113,22 +71,19 @@ func (e ArtifactKind) Valid() bool {
 
 // Defines values for AssertionConfidence.
 const (
-	AssertionConfidenceCertain   AssertionConfidence = "certain"
-	AssertionConfidenceInferred  AssertionConfidence = "inferred"
-	AssertionConfidenceRepaired  AssertionConfidence = "repaired"
-	AssertionConfidenceUncertain AssertionConfidence = "uncertain"
+	Certain  AssertionConfidence = "certain"
+	Inferred AssertionConfidence = "inferred"
+	Repaired AssertionConfidence = "repaired"
 )
 
 // Valid indicates whether the value is a known member of the AssertionConfidence enum.
 func (e AssertionConfidence) Valid() bool {
 	switch e {
-	case AssertionConfidenceCertain:
+	case Certain:
 		return true
-	case AssertionConfidenceInferred:
+	case Inferred:
 		return true
-	case AssertionConfidenceRepaired:
-		return true
-	case AssertionConfidenceUncertain:
+	case Repaired:
 		return true
 	default:
 		return false
@@ -173,23 +128,14 @@ func (e CompositeEncodingFieldType) Valid() bool {
 
 // Defines values for ConceptNoticeType.
 const (
-	ConceptNoticeTypeAdmonition   ConceptNoticeType = "admonition"
-	ConceptNoticeTypeDistribution ConceptNoticeType = "distribution"
-	ConceptNoticeTypeHandling     ConceptNoticeType = "handling"
-	ConceptNoticeTypeInfo         ConceptNoticeType = "info"
-	ConceptNoticeTypeWarning      ConceptNoticeType = "warning"
+	ConceptNoticeTypeAdmonition ConceptNoticeType = "admonition"
+	ConceptNoticeTypeWarning    ConceptNoticeType = "warning"
 )
 
 // Valid indicates whether the value is a known member of the ConceptNoticeType enum.
 func (e ConceptNoticeType) Valid() bool {
 	switch e {
 	case ConceptNoticeTypeAdmonition:
-		return true
-	case ConceptNoticeTypeDistribution:
-		return true
-	case ConceptNoticeTypeHandling:
-		return true
-	case ConceptNoticeTypeInfo:
 		return true
 	case ConceptNoticeTypeWarning:
 		return true
@@ -261,6 +207,24 @@ func (e CrosswalkDisposition) Valid() bool {
 	case Omit:
 		return true
 	case Review:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for CrosswalkSelectionStrategy.
+const (
+	FirstMatch  CrosswalkSelectionStrategy = "first-match"
+	MostMatches CrosswalkSelectionStrategy = "most-matches"
+)
+
+// Valid indicates whether the value is a known member of the CrosswalkSelectionStrategy enum.
+func (e CrosswalkSelectionStrategy) Valid() bool {
+	switch e {
+	case FirstMatch:
+		return true
+	case MostMatches:
 		return true
 	default:
 		return false
@@ -366,27 +330,6 @@ func (e DocumentResponseProfile) Valid() bool {
 	}
 }
 
-// Defines values for EmbeddedMarkingStyleAutoInsert.
-const (
-	EveryParagraph EmbeddedMarkingStyleAutoInsert = "every-paragraph"
-	FirstLine      EmbeddedMarkingStyleAutoInsert = "first-line"
-	Manual         EmbeddedMarkingStyleAutoInsert = "manual"
-)
-
-// Valid indicates whether the value is a known member of the EmbeddedMarkingStyleAutoInsert enum.
-func (e EmbeddedMarkingStyleAutoInsert) Valid() bool {
-	switch e {
-	case EveryParagraph:
-		return true
-	case FirstLine:
-		return true
-	case Manual:
-		return true
-	default:
-		return false
-	}
-}
-
 // Defines values for FixAction.
 const (
 	Add     FixAction = "add"
@@ -431,25 +374,25 @@ func (e FormatHeaderPosition) Valid() bool {
 
 // Defines values for GuideCompilationStatus.
 const (
-	GuideCompilationStatusDeterminedInsufficient GuideCompilationStatus = "determined-insufficient"
-	GuideCompilationStatusDeterminedSufficient   GuideCompilationStatus = "determined-sufficient"
-	GuideCompilationStatusNoFindings             GuideCompilationStatus = "no-findings"
-	GuideCompilationStatusNotEvaluated           GuideCompilationStatus = "not-evaluated"
-	GuideCompilationStatusPendingDetermination   GuideCompilationStatus = "pending-determination"
+	DeterminedInsufficient GuideCompilationStatus = "determined-insufficient"
+	DeterminedSufficient   GuideCompilationStatus = "determined-sufficient"
+	NoFindings             GuideCompilationStatus = "no-findings"
+	NotEvaluated           GuideCompilationStatus = "not-evaluated"
+	PendingDetermination   GuideCompilationStatus = "pending-determination"
 )
 
 // Valid indicates whether the value is a known member of the GuideCompilationStatus enum.
 func (e GuideCompilationStatus) Valid() bool {
 	switch e {
-	case GuideCompilationStatusDeterminedInsufficient:
+	case DeterminedInsufficient:
 		return true
-	case GuideCompilationStatusDeterminedSufficient:
+	case DeterminedSufficient:
 		return true
-	case GuideCompilationStatusNoFindings:
+	case NoFindings:
 		return true
-	case GuideCompilationStatusNotEvaluated:
+	case NotEvaluated:
 		return true
-	case GuideCompilationStatusPendingDetermination:
+	case PendingDetermination:
 		return true
 	default:
 		return false
@@ -489,6 +432,42 @@ func (e GuideFindingDecision) Valid() bool {
 	case Accepted:
 		return true
 	case Rejected:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GuideWhenOperator.
+const (
+	GuideWhenOperatorCountEq       GuideWhenOperator = "count_eq"
+	GuideWhenOperatorCountGt       GuideWhenOperator = "count_gt"
+	GuideWhenOperatorCountGte      GuideWhenOperator = "count_gte"
+	GuideWhenOperatorCountLt       GuideWhenOperator = "count_lt"
+	GuideWhenOperatorCountLte      GuideWhenOperator = "count_lte"
+	GuideWhenOperatorHasConcept    GuideWhenOperator = "has_concept"
+	GuideWhenOperatorHasContent    GuideWhenOperator = "has_content"
+	GuideWhenOperatorNotHasConcept GuideWhenOperator = "not_has_concept"
+)
+
+// Valid indicates whether the value is a known member of the GuideWhenOperator enum.
+func (e GuideWhenOperator) Valid() bool {
+	switch e {
+	case GuideWhenOperatorCountEq:
+		return true
+	case GuideWhenOperatorCountGt:
+		return true
+	case GuideWhenOperatorCountGte:
+		return true
+	case GuideWhenOperatorCountLt:
+		return true
+	case GuideWhenOperatorCountLte:
+		return true
+	case GuideWhenOperatorHasConcept:
+		return true
+	case GuideWhenOperatorHasContent:
+		return true
+	case GuideWhenOperatorNotHasConcept:
 		return true
 	default:
 		return false
@@ -575,18 +554,18 @@ func (e ProcessingRole) Valid() bool {
 
 // Defines values for ReadinessWarning.
 const (
-	AuditDegraded     ReadinessWarning = "audit-degraded"
-	ClockRollback     ReadinessWarning = "clock-rollback"
-	DesiredStateStale ReadinessWarning = "desired-state-stale"
-	GenerationRefused ReadinessWarning = "generation-refused"
+	ApplicationAllowanceExceeded ReadinessWarning = "application-allowance-exceeded"
+	AuditDegraded                ReadinessWarning = "audit-degraded"
+	DesiredStateStale            ReadinessWarning = "desired-state-stale"
+	GenerationRefused            ReadinessWarning = "generation-refused"
 )
 
 // Valid indicates whether the value is a known member of the ReadinessWarning enum.
 func (e ReadinessWarning) Valid() bool {
 	switch e {
-	case AuditDegraded:
+	case ApplicationAllowanceExceeded:
 		return true
-	case ClockRollback:
+	case AuditDegraded:
 		return true
 	case DesiredStateStale:
 		return true
@@ -641,25 +620,15 @@ func (e RecognitionCorrectionReason) Valid() bool {
 
 // Defines values for RecognitionLimit.
 const (
-	Aborted     RecognitionLimit = "aborted"
-	Depth       RecognitionLimit = "depth"
-	GrammarSize RecognitionLimit = "grammar-size"
 	InputLength RecognitionLimit = "input-length"
 	LiveStates  RecognitionLimit = "live-states"
 	Lookups     RecognitionLimit = "lookups"
 	Transitions RecognitionLimit = "transitions"
-	WallClock   RecognitionLimit = "wall-clock"
 )
 
 // Valid indicates whether the value is a known member of the RecognitionLimit enum.
 func (e RecognitionLimit) Valid() bool {
 	switch e {
-	case Aborted:
-		return true
-	case Depth:
-		return true
-	case GrammarSize:
-		return true
 	case InputLength:
 		return true
 	case LiveStates:
@@ -667,8 +636,6 @@ func (e RecognitionLimit) Valid() bool {
 	case Lookups:
 		return true
 	case Transitions:
-		return true
-	case WallClock:
 		return true
 	default:
 		return false
@@ -738,71 +705,22 @@ func (e RenderPreservation) Valid() bool {
 	}
 }
 
-// Defines values for RepairConfidence.
-const (
-	RepairConfidenceSafe      RepairConfidence = "safe"
-	RepairConfidenceUncertain RepairConfidence = "uncertain"
-)
-
-// Valid indicates whether the value is a known member of the RepairConfidence enum.
-func (e RepairConfidence) Valid() bool {
-	switch e {
-	case RepairConfidenceSafe:
-		return true
-	case RepairConfidenceUncertain:
-		return true
-	default:
-		return false
-	}
-}
-
-// Defines values for Reproducibility.
-const (
-	BestEffort   Reproducibility = "best-effort"
-	Reproducible Reproducibility = "reproducible"
-)
-
-// Valid indicates whether the value is a known member of the Reproducibility enum.
-func (e Reproducibility) Valid() bool {
-	switch e {
-	case BestEffort:
-		return true
-	case Reproducible:
-		return true
-	default:
-		return false
-	}
-}
-
 // Defines values for Rollup.
 const (
-	Complement          Rollup = "complement"
-	ExclusiveOr         Rollup = "exclusive_or"
-	First               Rollup = "first"
-	Intersection        Rollup = "intersection"
-	Last                Rollup = "last"
-	LeastUpperBound     Rollup = "least_upper_bound"
-	Max                 Rollup = "max"
-	Min                 Rollup = "min"
-	Pipeline            Rollup = "pipeline"
-	SymmetricDifference Rollup = "symmetric_difference"
-	Union               Rollup = "union"
+	First        Rollup = "first"
+	Intersection Rollup = "intersection"
+	Max          Rollup = "max"
+	Min          Rollup = "min"
+	Pipeline     Rollup = "pipeline"
+	Union        Rollup = "union"
 )
 
 // Valid indicates whether the value is a known member of the Rollup enum.
 func (e Rollup) Valid() bool {
 	switch e {
-	case Complement:
-		return true
-	case ExclusiveOr:
-		return true
 	case First:
 		return true
 	case Intersection:
-		return true
-	case Last:
-		return true
-	case LeastUpperBound:
 		return true
 	case Max:
 		return true
@@ -810,9 +728,58 @@ func (e Rollup) Valid() bool {
 		return true
 	case Pipeline:
 		return true
-	case SymmetricDifference:
-		return true
 	case Union:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for RuleConditionOperator.
+const (
+	RuleConditionOperatorAnyLacksConcept   RuleConditionOperator = "any_lacks_concept"
+	RuleConditionOperatorCountEq           RuleConditionOperator = "count_eq"
+	RuleConditionOperatorCountGt           RuleConditionOperator = "count_gt"
+	RuleConditionOperatorCountGte          RuleConditionOperator = "count_gte"
+	RuleConditionOperatorCountLt           RuleConditionOperator = "count_lt"
+	RuleConditionOperatorCountLte          RuleConditionOperator = "count_lte"
+	RuleConditionOperatorEveryHasConcept   RuleConditionOperator = "every_has_concept"
+	RuleConditionOperatorHasConcept        RuleConditionOperator = "has_concept"
+	RuleConditionOperatorHasContent        RuleConditionOperator = "has_content"
+	RuleConditionOperatorMinRank           RuleConditionOperator = "min_rank"
+	RuleConditionOperatorNotHasConcept     RuleConditionOperator = "not_has_concept"
+	RuleConditionOperatorSharesConceptWith RuleConditionOperator = "shares_concept_with"
+	RuleConditionOperatorSubsetOf          RuleConditionOperator = "subset_of"
+)
+
+// Valid indicates whether the value is a known member of the RuleConditionOperator enum.
+func (e RuleConditionOperator) Valid() bool {
+	switch e {
+	case RuleConditionOperatorAnyLacksConcept:
+		return true
+	case RuleConditionOperatorCountEq:
+		return true
+	case RuleConditionOperatorCountGt:
+		return true
+	case RuleConditionOperatorCountGte:
+		return true
+	case RuleConditionOperatorCountLt:
+		return true
+	case RuleConditionOperatorCountLte:
+		return true
+	case RuleConditionOperatorEveryHasConcept:
+		return true
+	case RuleConditionOperatorHasConcept:
+		return true
+	case RuleConditionOperatorHasContent:
+		return true
+	case RuleConditionOperatorMinRank:
+		return true
+	case RuleConditionOperatorNotHasConcept:
+		return true
+	case RuleConditionOperatorSharesConceptWith:
+		return true
+	case RuleConditionOperatorSubsetOf:
 		return true
 	default:
 		return false
@@ -885,7 +852,6 @@ func (e ScanStatus) Valid() bool {
 // Defines values for SortType.
 const (
 	Alphabetical SortType = "alphabetical"
-	Numeric      SortType = "numeric"
 	Position     SortType = "position"
 )
 
@@ -893,8 +859,6 @@ const (
 func (e SortType) Valid() bool {
 	switch e {
 	case Alphabetical:
-		return true
-	case Numeric:
 		return true
 	case Position:
 		return true
@@ -972,24 +936,6 @@ func (e UnrepresentableOutputReason) Valid() bool {
 	}
 }
 
-// Defines values for ValidationSeverity.
-const (
-	ValidationSeverityError   ValidationSeverity = "error"
-	ValidationSeverityWarning ValidationSeverity = "warning"
-)
-
-// Valid indicates whether the value is a known member of the ValidationSeverity enum.
-func (e ValidationSeverity) Valid() bool {
-	switch e {
-	case ValidationSeverityError:
-		return true
-	case ValidationSeverityWarning:
-		return true
-	default:
-		return false
-	}
-}
-
 // Defines values for WarningKind.
 const (
 	WarningKindDeprecation WarningKind = "deprecation"
@@ -1036,11 +982,11 @@ type AccessDecision struct {
 	// Granted True when every rule that was not skipped granted access.
 	Granted bool `json:"granted"`
 
-	// Provenance Records source identity and mandatory attribution for an operation.
-	Provenance *SourceReference `json:"provenance,omitempty"`
-
 	// Rules One result per rule in the policy, in policy order.
 	Rules []AccessRuleResult `json:"rules"`
+
+	// Warnings Warnings from preparing and evaluating the target, including automatic changes. Present on granted and denied decisions; empty when none apply.
+	Warnings []Warning `json:"warnings"`
 }
 
 // AccessOperand Typed operand captured while an access rule is evaluated.
@@ -1084,9 +1030,6 @@ type AccessRequirementsDescription struct {
 	// CombinedRequirementText Combined human-readable requirement expression.
 	CombinedRequirementText string `json:"combinedRequirementText"`
 
-	// Lines Line-oriented rendering of the combined description.
-	Lines []string `json:"lines"`
-
 	// Marking Normalized marking when the caller supplied or derived one.
 	Marking *string `json:"marking,omitempty"`
 
@@ -1111,7 +1054,7 @@ type AccessRuleActivation struct {
 
 // AccessRuleDescription Human-readable description of a single access rule.
 //
-// Returned by `AccessEngineAdapter.describeAccessRule`. Tooling (LLM agents, UI tooltips) can render `requirementText` directly or walk `attributesNeeded` to know which `userAttributes` values a caller has to provide.
+// Returned by `AccessEngineAdapter.describeAllAccessRules`. Tooling (LLM agents, UI tooltips) can render `requirementText` directly or walk `attributesNeeded` to know which `userAttributes` values a caller has to provide.
 type AccessRuleDescription struct {
 	// Access Identifies an immutable artifact participating in a composed operation.
 	Access ArtifactReference `json:"access"`
@@ -1124,9 +1067,6 @@ type AccessRuleDescription struct {
 
 	// Description Optional policy-authored description.
 	Description *string `json:"description,omitempty"`
-
-	// Lines Line-oriented rendering of the description.
-	Lines []string `json:"lines"`
 
 	// Name Human-readable rule name.
 	Name string `json:"name"`
@@ -1179,44 +1119,9 @@ type AccessRuleResult struct {
 	Skipped bool `json:"skipped"`
 }
 
-// AccessScenarioAssessment Access result for one authored, authoritative, or projected target.
-type AccessScenarioAssessment struct {
-	// Advisory Whether the scenario is advisory rather than authoritative.
-	Advisory bool `json:"advisory"`
-
-	// Basis Authority basis used to construct an access scenario.
-	Basis AccessScenarioBasis `json:"basis"`
-
-	// ContentRequirements Traceable document-side requirements, omitted by summary.
-	ContentRequirements *[]ContentChangeRequirement `json:"contentRequirements,omitempty"`
-
-	// ContextRequirements Conditional relationship requirements, omitted by summary.
-	ContextRequirements *[]SubjectContextRequirement `json:"contextRequirements,omitempty"`
-
-	// Decision Overall access decision with per-rule breakdown.
-	//
-	// Returned by `AccessEngineAdapter.check()`. `granted` is `true` only when every non-skipped rule granted access. Inspect `rules` to surface per-category denial reasons in an authorization UI: each `AccessRuleResult` carries a human-readable `reason` field.
-	Decision *AccessDecision `json:"decision,omitempty"`
-
-	// Limitations Scenario-specific limitations.
-	Limitations []AssessmentLimitation `json:"limitations"`
-
-	// Status Closed evaluation status of an access scenario.
-	Status AccessScenarioStatus `json:"status"`
-
-	// Target Effective target, or null when none can be derived.
-	Target *EffectiveDocumentTarget `json:"target"`
-}
-
-// AccessScenarioBasis Authority basis used to construct an access scenario.
-type AccessScenarioBasis string
-
-// AccessScenarioStatus Closed evaluation status of an access scenario.
-type AccessScenarioStatus string
-
-// AggregateResult Output of SchemeEngine.aggregate(): the combined marking produced from multiple portion inputs. By design aggregate always produces the proper aggregate: fixes are applied, never proposed. Every field it shares with `ValidateResult` means what it means there, `valid` included. It differs in that:
+// AggregateResult Output of SchemeEngine.aggregate(): the combined marking produced from several input markings, always a whole. By design aggregate always produces the proper rollup: fixes are applied, never proposed. Every field it shares with `ValidateResult` means what it means there, `valid` included. It differs in that:
 //
-// - There is no `inputWasValid` (input is N portions, not a single string)
+// - There is no `inputWasValid` (input is N markings, not a single string)
 // - `proposedFixes` is always empty (aggregate applies what it can)
 type AggregateResult struct {
 	// AppliedFixes The changes the rollup made to reach the combined marking.
@@ -1279,9 +1184,9 @@ type ArtifactReference struct {
 	Version string `json:"version"`
 }
 
-// Assertion A concept asserted in a category during processing, with confidence level and provenance metadata.
+// Assertion A concept asserted in a category during processing, with how it was produced and where it came from.
 //
-// Assertions are the core data unit flowing through the engine pipeline. `confidence` records how the assertion was produced: `'certain'` when read or handed in as stated, `'inferred'` when an inference rule added it, and `'repaired'` when the engine added or rewrote it while repairing the marking. The engine does not assign `'uncertain'` itself. `source` says where the assertion came from. `expiresAt` records caller-supplied expiry metadata. The engine does not evaluate that date or automatically change confidence or the marking; the host applies its expiry policy.
+// Assertions are the core data unit flowing through the engine pipeline. `confidence` records how the assertion was produced: `'certain'` when read or handed in as stated, `'inferred'` when an inference rule added it, and `'repaired'` when the engine added or rewrote it while repairing the marking. `source` says where the assertion came from.
 type Assertion struct {
 	// CategoryID The id of the category the concept is asserted in.
 	CategoryID string `json:"categoryId"`
@@ -1291,15 +1196,6 @@ type Assertion struct {
 
 	// Confidence Confidence assigned to an assertion by the processing pipeline.
 	Confidence AssertionConfidence `json:"confidence"`
-
-	// ExpiresAt Caller-supplied ISO 8601 expiry date; the engine does not evaluate it.
-	ExpiresAt *string `json:"expiresAt,omitempty"`
-
-	// Metadata Caller-defined data attached to the assertion. The engine assigns it no meaning.
-	Metadata *map[string]interface{} `json:"metadata,omitempty"`
-
-	// Provenance Records source identity and mandatory attribution for an operation.
-	Provenance *SourceReference `json:"provenance,omitempty"`
 
 	// ReplacedConceptID The deprecated concept this assertion was modernized from.
 	//
@@ -1381,49 +1277,6 @@ type AssessmentLimitation struct {
 	Scope *string `json:"scope,omitempty"`
 }
 
-// Attribution Provenance attached to every source so downstream consumers can render proper attribution and license notices.
-//
-// Mandatory because most source data we'll integrate (NIST, ICS, IANA, external taxonomies) requires citation. Sources that don't have a formal license should set `license: 'unspecified'` rather than omit it.
-type Attribution struct {
-	// Citation Suggested citation string for academic / regulatory use.
-	Citation *string `json:"citation,omitempty"`
-
-	// License SPDX identifier or short license token (e.g. "CC-BY-4.0", "public-domain").
-	License string `json:"license"`
-
-	// LicenseURL Canonical URL where the license terms can be inspected.
-	LicenseURL *string `json:"licenseUrl,omitempty"`
-
-	// Name Display name of the upstream source (e.g. "NIST CSWP-29").
-	Name string `json:"name"`
-}
-
-// BestEffortRuleSourceReference Best-effort external source join carried by a qualified rule reference.
-type BestEffortRuleSourceReference struct {
-	// ProviderID Stable identifier for the source provider.
-	ProviderID string `json:"providerId"`
-
-	// Reproducibility Whether the source observation can be reproduced byte-for-byte.
-	Reproducibility string `json:"reproducibility"`
-}
-
-// BestEffortSourceReference Best-effort source identity and mandatory attribution for an operation.
-type BestEffortSourceReference struct {
-	// Attribution Provenance attached to every source so downstream consumers can render proper attribution and license notices.
-	//
-	// Mandatory because most source data we'll integrate (NIST, ICS, IANA, external taxonomies) requires citation. Sources that don't have a formal license should set `license: 'unspecified'` rather than omit it.
-	Attribution Attribution `json:"attribution"`
-
-	// Locator Location from which the mutable content was observed.
-	Locator *string `json:"locator,omitempty"`
-
-	// ProviderID Stable identifier for the source provider.
-	ProviderID string `json:"providerId"`
-
-	// Reproducibility Whether the source observation can be reproduced byte-for-byte.
-	Reproducibility string `json:"reproducibility"`
-}
-
 // CalendarDateSpelling One spelling of a calendar date. The canonical spelling is the one a value is stored in; the others are read on input and written per view.
 type CalendarDateSpelling string
 
@@ -1485,7 +1338,7 @@ type CategoryView struct {
 	// Required Whether at least one concept is required for a valid marking.
 	Required *bool `json:"required,omitempty"`
 
-	// Rollup Canonical rollup operator. `pipeline` requires a matching entry in the scheme's `rollup_pipelines`. Most merge operators are set-algebraic over each input's assertions; rank-based operators (max/min/least_upper_bound) require categories whose concepts declare `rank`.
+	// Rollup Canonical rollup operator. `pipeline` requires a matching entry in the scheme's `rollup_pipelines`. Most merge operators are set-algebraic over each input's assertions; rank-based operators (max/min) require categories whose concepts declare `rank`.
 	Rollup Rollup `json:"rollup"`
 
 	// Scopes Scope IDs this category is visible in.
@@ -1556,17 +1409,15 @@ type CharacterWindow struct {
 //
 // In an `intersection` category the parent may carry only values every child allows, and anything else it carries is excess. A shorter list, or none, is allowed and is not missing.
 //
-// In a `max`, `min` or `least_upper_bound` category the children roll up to one value, ordered by rank (`max`, `min`) or by the concept hierarchy (`least_upper_bound`). The parent must sit at or above that value for `max` and `least_upper_bound`, and at or below it for `min`. A parent anywhere else, including one the hierarchy does not order against that value, is reported once, under `missing`, and never under `excess`. The value reported is what the parent and children roll up to together. For `max` and `min` that is the children's own value. For `least_upper_bound` it is the bound the parent and children share, which can sit beyond the children's value, and it is the children's own value when the hierarchy gives them no common bound.
+// In a `max` or `min` category the children roll up to one value, ordered by rank. The parent must sit at or above that value for `max`, and at or below it for `min`. A parent anywhere else is reported once, under `missing`, and never under `excess`. The value reported is the children's own value.
 //
 // In a `pipeline` category the parent covers when rolling it up with the children leaves it unchanged. This relies on the pipeline leaving a parent rolled up on its own unchanged, which the scheme author has to make true.
 //
 // The findings in `pipeline` categories are worked out for all the categories one pipeline names together. First they are narrowed to what the children roll up to on their own: a value the rollup of parent and children adds is missing only when the children's own rollup carries it, and a parent value that rollup drops is excess only when the children's own rollup does not carry it. The narrowed findings are then tested by acting on every finding of the report: the excess is taken out of the parent and the missing is put in, replacing what a single-value category held. They are reported only when that gives a parent that is valid under the scheme's rules and covers the children in every category, judged against the children's rollup. Otherwise, and whenever narrowing would leave nothing, the findings are not narrowed: every value the rollup of parent and children adds is missing, and every parent value it drops is excess, including one the children carry. Pipelines are decided one at a time, in the order the scheme lists them. Each is judged with the findings already decided for the pipelines before it and the full findings for those after it.
 //
-// In a `first` or `last` category the children roll up to one value and the rollup has no restrictive direction, so the parent must state that value. A parent that states a different one is reported once, under `missing`, as the value it should state, and never under `excess`. In such a category that holds several values, values the parent states beyond the picked one are not reported.
+// In a `first` category the children roll up to one value and the rollup has no restrictive direction, so the parent must state that value. A parent that states a different one is reported once, under `missing`, as the value it should state, and never under `excess`. In such a category that holds several values, values the parent states beyond the picked one are not reported.
 //
-// In a `symmetric_difference`, `exclusive_or` or `complement` category the children roll up to a set and the rollup has no restrictive direction, so the parent must state exactly that set. Rolled-up values the parent does not state are missing. Values the parent states beyond that set are excess: stated, but not what the children roll up to. Neither side is more restrictive than the other here.
-//
-// In a category where the scheme has an `expand_group` rule, a parent that carries every member a group declares in that category states the group, and the group is not missing from it. This does not apply to a category whose rollup has no restrictive direction (`first`, `last`, `symmetric_difference`, `exclusive_or`, `complement`), where the parent must state what the children roll up to as it is.
+// In a category where the scheme has an `expand_group` rule, a parent that carries every member a group declares in that category states the group, and the group is not missing from it. This does not apply to a category whose rollup has no restrictive direction (`first`), where the parent must state what the children roll up to as it is.
 //
 // In a `union` or `pipeline` category the scheme marks as a hierarchy root, a parent value ranked at or above a needed value also covers it.
 //
@@ -1577,7 +1428,7 @@ type CheckCoverageResult struct {
 	// Covered Whether the parent covers the children. True when `missing` and `excess` are both empty and no rollup was refused. False otherwise; `missing`, `excess` and `refusals` together say why.
 	Covered bool `json:"covered"`
 
-	// Excess Concepts the parent carries that the children do not account for, judged per category as described on this type. In a `symmetric_difference`, `exclusive_or` or `complement` category that means values the parent states beyond the set the children roll up to. In a `pipeline` category whose findings are not narrowed it means every parent value the rollup of parent and children drops, which can include values the children carry. Everywhere else it means values the children do not allow.
+	// Excess Concepts the parent carries that the children do not account for, judged per category as described on this type. In a `pipeline` category whose findings are not narrowed it means every parent value the rollup of parent and children drops, which can include values the children carry. Everywhere else it means values the children do not allow.
 	//
 	// Concepts appear as the author wrote them. When a written value brought others with it, such as a group that stands for its members, only the written value is listed, not the members. In a category where nothing in excess was written by the author, every excess value is listed. `excess` is empty only when the parent carries nothing the children do not account for.
 	Excess []Assertion `json:"excess"`
@@ -1831,24 +1682,6 @@ type ConditionalDefaultConcept struct {
 	When RuleWhen `json:"when"`
 }
 
-// ContentChangeRequirement Traceable document-side route for causing an assertion to cease applying.
-type ContentChangeRequirement struct {
-	// Assertion Compact reference to an assertion without engine-production metadata.
-	Assertion AssertionReference `json:"assertion"`
-
-	// Instruction Conditional instruction that does not synthesize replacement text.
-	Instruction string `json:"instruction"`
-
-	// Rule Identifies the exact resolved semantics of one policy rule.
-	Rule RuleReference `json:"rule"`
-
-	// SupportIds Assertion support records proving the content lineage.
-	SupportIds []string `json:"supportIds"`
-
-	// VerificationRequired Revised content must always be reassessed.
-	VerificationRequired bool `json:"verificationRequired"`
-}
-
 // ContentEvidenceSpan Evidence range in the exact accepted UTF-8 document bytes.
 type ContentEvidenceSpan struct {
 	// End Zero-based exclusive byte offset.
@@ -1869,9 +1702,6 @@ type ContentEvidenceSpan struct {
 
 // ContextAccessDecisionResult Context envelope returned by trusted-target access checks.
 type ContextAccessDecisionResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -1886,9 +1716,6 @@ type ContextAccessDecisionResult struct {
 
 // ContextAccessRequirementsResult Context envelope returned by immutable-policy requirement description.
 type ContextAccessRequirementsResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -1899,28 +1726,97 @@ type ContextAccessRequirementsResult struct {
 	Result AccessRequirementsDescription `json:"result"`
 }
 
-// ContextAccessRuleDescriptionResult Context envelope returned by access-rule description.
-type ContextAccessRuleDescriptionResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
+// ContextCrosswalkCandidate One candidate of a cross-field decision a Context's crosswalk applies.
+//
+// A candidate document may leave its disposition out to mean `carry`. The description always states it, so a reader never applies that default itself.
+type ContextCrosswalkCandidate struct {
+	// Authority Authority behind the candidate decision, when one exists.
+	Authority *string `json:"authority,omitempty"`
 
-	// Resolution Resolution identity shared by every branch of one Context operation.
-	Resolution ContextResolution `json:"resolution"`
+	// Citation Citation supporting the candidate decision.
+	Citation *string `json:"citation,omitempty"`
 
-	// ResponseProjection Describes the explicit projection applied after full evaluation.
-	ResponseProjection *DocumentResponseProjection `json:"responseProjection,omitempty"`
+	// Disposition Decision a reviewed crosswalk makes for one source assertion.
+	Disposition CrosswalkDisposition `json:"disposition"`
 
-	// Result Human-readable description of a single access rule.
-	//
-	// Returned by `AccessEngineAdapter.describeAccessRule`. Tooling (LLM agents, UI tooltips) can render `requirementText` directly or walk `attributesNeeded` to know which `userAttributes` values a caller has to provide.
-	Result AccessRuleDescription `json:"result"`
+	// Guidance Operator guidance for the candidate decision.
+	Guidance *string `json:"guidance,omitempty"`
+
+	// ID Stable candidate identifier within its selection.
+	ID string `json:"id"`
+
+	// Mappings Per-assertion mappings activated when this candidate is selected.
+	Mappings *[]CrosswalkMapping `json:"mappings,omitempty"`
+
+	// Reason Human-readable basis for selecting and applying this candidate.
+	Reason string `json:"reason"`
+
+	// Score Assertions counted by a `most-matches` selection.
+	Score *[]AssertionReference `json:"score,omitempty"`
+
+	// Sources Source assertions covered when this candidate is selected.
+	Sources *[]AssertionReference `json:"sources,omitempty"`
+
+	// Targets Targets emitted once when this candidate is selected.
+	Targets *[]CrosswalkTarget `json:"targets,omitempty"`
+
+	// When Boolean test over source assertions used to choose a crosswalk candidate.
+	When *CrosswalkSelectionCondition `json:"when,omitempty"`
+}
+
+// ContextCrosswalkDescriptor One crosswalk a Context holds, with the reviewed decisions it applies.
+//
+// Read it as a sentence: this Context translates markings from the scheme `source` selects to the scheme `target` selects with crosswalk `id` at `version`, and these are its mappings and selections.
+//
+// `source` and `target` are scheme selectors, the `selector` values `describeSchemes` reports, not scheme ids. A view bound to one of the Context's schemes finds the crosswalk that reads from it by comparing selectors. The mappings and selections are the effective set after any crosswalk layer the Context stacks, which is the set a translation applies.
+type ContextCrosswalkDescriptor struct {
+	// Citation Primary citation for the crosswalk, when it declares one.
+	Citation *string `json:"citation,omitempty"`
+
+	// Guidance General usage and review guidance, when the crosswalk declares it.
+	Guidance *string `json:"guidance,omitempty"`
+
+	// ID Crosswalk id, from the crosswalk document; what `translate` takes.
+	ID string `json:"id"`
+
+	// Mappings How each source assertion translates, in declared order.
+	Mappings []CrosswalkMapping `json:"mappings"`
+
+	// Marking The crosswalk document's own overall marking, exactly as its `crosswalk.marking` writes it. Display only: never interpreted. Absent when the document declares none.
+	Marking *string `json:"marking,omitempty"`
+
+	// Name Human-readable crosswalk name.
+	Name string `json:"name"`
+
+	// Selections Cross-field decisions, in declared order. Empty when there are none.
+	Selections []ContextCrosswalkSelection `json:"selections"`
+
+	// Source Selector of the scheme this crosswalk translates from.
+	Source string `json:"source"`
+
+	// Target Selector of the scheme this crosswalk translates to.
+	Target string `json:"target"`
+
+	// Version Concrete crosswalk version that answers in this Context.
+	Version string `json:"version"`
+}
+
+// ContextCrosswalkSelection One cross-field decision a Context's crosswalk applies.
+//
+// The document form of a selection, with every candidate's treatment written out.
+type ContextCrosswalkSelection struct {
+	// Candidates Candidates in declared order; order breaks ties, a fallback is last.
+	Candidates []ContextCrosswalkCandidate `json:"candidates"`
+
+	// ID Selection id, as reviewed.
+	ID string `json:"id"`
+
+	// Strategy Strategy for choosing one candidate from a reviewed cross-field decision.
+	Strategy CrosswalkSelectionStrategy `json:"strategy"`
 }
 
 // ContextCrosswalkTranslationResult Context envelope returned by a directional crosswalk translation.
 type ContextCrosswalkTranslationResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -1931,26 +1827,8 @@ type ContextCrosswalkTranslationResult struct {
 	Result CrosswalkTranslationResult `json:"result"`
 }
 
-// ContextDocumentAccessAssessmentResult Resolved Context envelope returned by document access assessment.
-type ContextDocumentAccessAssessmentResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
-	// Resolution Resolution identity shared by every branch of one Context operation.
-	Resolution ContextResolution `json:"resolution"`
-
-	// ResponseProjection Describes the explicit projection applied after full evaluation.
-	ResponseProjection *DocumentResponseProjection `json:"responseProjection,omitempty"`
-
-	// Result Three-scenario document access result with no fused grant or denial.
-	Result DocumentAccessAssessment `json:"result"`
-}
-
 // ContextDocumentAuditResult Resolved Context envelope returned by document audit operations.
 type ContextDocumentAuditResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -1963,9 +1841,6 @@ type ContextDocumentAuditResult struct {
 
 // ContextGuideEvaluationResult Context envelope returned by guide evaluation.
 type ContextGuideEvaluationResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -1976,43 +1851,8 @@ type ContextGuideEvaluationResult struct {
 	Result EvaluationResult `json:"result"`
 }
 
-// ContextGuideFilterRulesResult Context envelope returned by guide rule filtering.
-type ContextGuideFilterRulesResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
-	// Resolution Resolution identity shared by every branch of one Context operation.
-	Resolution ContextResolution `json:"resolution"`
-
-	// ResponseProjection Describes the explicit projection applied after full evaluation.
-	ResponseProjection *DocumentResponseProjection `json:"responseProjection,omitempty"`
-
-	// Result JSON-safe serialization of the engine's Set/Map-based FilterResult.
-	//
-	// The engine returns FilterResult with Set<string> and Map<string, ...> fields; this interface is what the server writes to the wire.
-	Result FilterResult `json:"result"`
-}
-
-// ContextGuideRuleDescriptionResult Context envelope returned by guide-rule description.
-type ContextGuideRuleDescriptionResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
-	// Resolution Resolution identity shared by every branch of one Context operation.
-	Resolution ContextResolution `json:"resolution"`
-
-	// ResponseProjection Describes the explicit projection applied after full evaluation.
-	ResponseProjection *DocumentResponseProjection `json:"responseProjection,omitempty"`
-
-	// Result Human-readable description of a guide rule. Parallels `ConceptDescription` on the scheme side.
-	Result RuleDescription `json:"result"`
-}
-
 // ContextGuideScanResult Context envelope returned by guide text scanning.
 type ContextGuideScanResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -2025,9 +1865,6 @@ type ContextGuideScanResult struct {
 
 // ContextGuideViewResult Context envelope returned by guide structural view.
 type ContextGuideViewResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -2051,34 +1888,25 @@ type ContextResolution struct {
 
 	// ResolvedVersion Concrete Context version used by the operation.
 	ResolvedVersion string `json:"resolvedVersion"`
-
-	// Sources De-duplicated source observations used by the operation.
-	Sources []SourceReference `json:"sources"`
 }
 
 // ContextSchemeAggregateResult Context envelope returned by scheme aggregation.
 type ContextSchemeAggregateResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
 	// ResponseProjection Describes the explicit projection applied after full evaluation.
 	ResponseProjection *DocumentResponseProjection `json:"responseProjection,omitempty"`
 
-	// Result Output of SchemeEngine.aggregate(): the combined marking produced from multiple portion inputs. By design aggregate always produces the proper aggregate: fixes are applied, never proposed. Every field it shares with `ValidateResult` means what it means there, `valid` included. It differs in that:
+	// Result Output of SchemeEngine.aggregate(): the combined marking produced from several input markings, always a whole. By design aggregate always produces the proper rollup: fixes are applied, never proposed. Every field it shares with `ValidateResult` means what it means there, `valid` included. It differs in that:
 	//
-	// - There is no `inputWasValid` (input is N portions, not a single string)
+	// - There is no `inputWasValid` (input is N markings, not a single string)
 	// - `proposedFixes` is always empty (aggregate applies what it can)
 	Result AggregateResult `json:"result"`
 }
 
 // ContextSchemeConceptDescriptionResult Context envelope returned by concept description.
 type ContextSchemeConceptDescriptionResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -2091,9 +1919,6 @@ type ContextSchemeConceptDescriptionResult struct {
 
 // ContextSchemeCoverageResult Context envelope returned by scheme coverage checks.
 type ContextSchemeCoverageResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -2110,17 +1935,15 @@ type ContextSchemeCoverageResult struct {
 	//
 	// In an `intersection` category the parent may carry only values every child allows, and anything else it carries is excess. A shorter list, or none, is allowed and is not missing.
 	//
-	// In a `max`, `min` or `least_upper_bound` category the children roll up to one value, ordered by rank (`max`, `min`) or by the concept hierarchy (`least_upper_bound`). The parent must sit at or above that value for `max` and `least_upper_bound`, and at or below it for `min`. A parent anywhere else, including one the hierarchy does not order against that value, is reported once, under `missing`, and never under `excess`. The value reported is what the parent and children roll up to together. For `max` and `min` that is the children's own value. For `least_upper_bound` it is the bound the parent and children share, which can sit beyond the children's value, and it is the children's own value when the hierarchy gives them no common bound.
+	// In a `max` or `min` category the children roll up to one value, ordered by rank. The parent must sit at or above that value for `max`, and at or below it for `min`. A parent anywhere else is reported once, under `missing`, and never under `excess`. The value reported is the children's own value.
 	//
 	// In a `pipeline` category the parent covers when rolling it up with the children leaves it unchanged. This relies on the pipeline leaving a parent rolled up on its own unchanged, which the scheme author has to make true.
 	//
 	// The findings in `pipeline` categories are worked out for all the categories one pipeline names together. First they are narrowed to what the children roll up to on their own: a value the rollup of parent and children adds is missing only when the children's own rollup carries it, and a parent value that rollup drops is excess only when the children's own rollup does not carry it. The narrowed findings are then tested by acting on every finding of the report: the excess is taken out of the parent and the missing is put in, replacing what a single-value category held. They are reported only when that gives a parent that is valid under the scheme's rules and covers the children in every category, judged against the children's rollup. Otherwise, and whenever narrowing would leave nothing, the findings are not narrowed: every value the rollup of parent and children adds is missing, and every parent value it drops is excess, including one the children carry. Pipelines are decided one at a time, in the order the scheme lists them. Each is judged with the findings already decided for the pipelines before it and the full findings for those after it.
 	//
-	// In a `first` or `last` category the children roll up to one value and the rollup has no restrictive direction, so the parent must state that value. A parent that states a different one is reported once, under `missing`, as the value it should state, and never under `excess`. In such a category that holds several values, values the parent states beyond the picked one are not reported.
+	// In a `first` category the children roll up to one value and the rollup has no restrictive direction, so the parent must state that value. A parent that states a different one is reported once, under `missing`, as the value it should state, and never under `excess`. In such a category that holds several values, values the parent states beyond the picked one are not reported.
 	//
-	// In a `symmetric_difference`, `exclusive_or` or `complement` category the children roll up to a set and the rollup has no restrictive direction, so the parent must state exactly that set. Rolled-up values the parent does not state are missing. Values the parent states beyond that set are excess: stated, but not what the children roll up to. Neither side is more restrictive than the other here.
-	//
-	// In a category where the scheme has an `expand_group` rule, a parent that carries every member a group declares in that category states the group, and the group is not missing from it. This does not apply to a category whose rollup has no restrictive direction (`first`, `last`, `symmetric_difference`, `exclusive_or`, `complement`), where the parent must state what the children roll up to as it is.
+	// In a category where the scheme has an `expand_group` rule, a parent that carries every member a group declares in that category states the group, and the group is not missing from it. This does not apply to a category whose rollup has no restrictive direction (`first`), where the parent must state what the children roll up to as it is.
 	//
 	// In a `union` or `pipeline` category the scheme marks as a hierarchy root, a parent value ranked at or above a needed value also covers it.
 	//
@@ -2134,7 +1957,7 @@ type ContextSchemeCoverageResult struct {
 //
 // Read it as a sentence: this Context holds a scheme you select with `selector`, it is `id` at `version`, and it plays these `roles`.
 //
-// `selector` is the whole point. A Context keys its schemes locally, and an operation that addresses one takes that key, so a caller that cannot enumerate the keys cannot reach anything but the primary. On the REST surface the same value is what `?scheme=` takes.
+// `selector` is the whole point. A Context keys its schemes locally, and a caller reaches a scheme by its key: an adapter's `schemes.get` takes it, and so does `?scheme=` on the REST surface. A caller that cannot enumerate the keys cannot reach anything but the primary.
 type ContextSchemeDescriptor struct {
 	// ID Scheme id, from the scheme document itself.
 	ID string `json:"id"`
@@ -2151,9 +1974,6 @@ type ContextSchemeDescriptor struct {
 
 // ContextSchemeDiffResult Context envelope returned by scheme diff.
 type ContextSchemeDiffResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -2166,9 +1986,6 @@ type ContextSchemeDiffResult struct {
 
 // ContextSchemeExplainResult Context envelope returned by a scheme explanation.
 type ContextSchemeExplainResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -2181,43 +1998,8 @@ type ContextSchemeExplainResult struct {
 	Result ExplanationTrace `json:"result"`
 }
 
-// ContextSchemeFilterConceptsResult Context envelope returned by scheme concept filtering.
-type ContextSchemeFilterConceptsResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
-	// Resolution Resolution identity shared by every branch of one Context operation.
-	Resolution ContextResolution `json:"resolution"`
-
-	// ResponseProjection Describes the explicit projection applied after full evaluation.
-	ResponseProjection *DocumentResponseProjection `json:"responseProjection,omitempty"`
-
-	// Result JSON-safe serialization of the engine's Set/Map-based FilterResult.
-	//
-	// The engine returns FilterResult with Set<string> and Map<string, ...> fields; this interface is what the server writes to the wire.
-	Result FilterResult `json:"result"`
-}
-
-// ContextSchemeNormalizeResult Context envelope returned by scheme normalization.
-type ContextSchemeNormalizeResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
-	// Resolution Resolution identity shared by every branch of one Context operation.
-	Resolution ContextResolution `json:"resolution"`
-
-	// ResponseProjection Describes the explicit projection applied after full evaluation.
-	ResponseProjection *DocumentResponseProjection `json:"responseProjection,omitempty"`
-
-	// Result Response body for Context normalization.
-	Result NormalizeResponse `json:"result"`
-}
-
 // ContextSchemeNoticesResult Context envelope returned by scheme notice collection.
 type ContextSchemeNoticesResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -2230,9 +2012,6 @@ type ContextSchemeNoticesResult struct {
 
 // ContextSchemeProcessResult Context envelope returned by scheme processing.
 type ContextSchemeProcessResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -2255,9 +2034,6 @@ type ContextSchemeProcessResult struct {
 
 // ContextSchemeRenderResult Context envelope returned by scheme rendering.
 type ContextSchemeRenderResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -2275,9 +2051,6 @@ type ContextSchemeRole string
 
 // ContextSchemeScanResult Context envelope returned by scheme text scanning.
 type ContextSchemeScanResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -2292,9 +2065,6 @@ type ContextSchemeScanResult struct {
 
 // ContextSchemeSuggestForCategoriesResult Context envelope returned by per-category scheme suggestions: the options keyed by category id, the same map a process call returns in `suggestionsFor`.
 type ContextSchemeSuggestForCategoriesResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -2309,9 +2079,6 @@ type ContextSchemeSuggestForCategoriesResult struct {
 
 // ContextSchemeSuggestResult Context envelope returned by scheme suggestions.
 type ContextSchemeSuggestResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -2326,9 +2093,6 @@ type ContextSchemeSuggestResult struct {
 
 // ContextSchemeValidateResult Context envelope returned by scheme validation.
 type ContextSchemeValidateResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -2347,9 +2111,6 @@ type ContextSchemeValidateResult struct {
 
 // ContextSchemeViewResult Context envelope returned by scheme structural view.
 type ContextSchemeViewResult struct {
-	// OperationLimitations Limitations applying to the operation as a whole.
-	OperationLimitations []AssessmentLimitation `json:"operationLimitations"`
-
 	// Resolution Resolution identity shared by every branch of one Context operation.
 	Resolution ContextResolution `json:"resolution"`
 
@@ -2445,6 +2206,33 @@ type CrosswalkForbiddenTranslationResult struct {
 	TargetScheme ArtifactReference `json:"targetScheme"`
 }
 
+// CrosswalkMapping Reviewed treatment of one source assertion in a directional crosswalk.
+type CrosswalkMapping struct {
+	// Authority Authority or reviewed source behind the mapping, when one exists.
+	Authority *string `json:"authority,omitempty"`
+
+	// Citation Citation supporting this mapping decision.
+	Citation *string `json:"citation,omitempty"`
+
+	// Disposition Decision a reviewed crosswalk makes for one source assertion.
+	Disposition CrosswalkDisposition `json:"disposition"`
+
+	// Guidance Operator guidance for applying or reviewing this mapping.
+	Guidance *string `json:"guidance,omitempty"`
+
+	// ID Stable identifier for audit and review.
+	ID string `json:"id"`
+
+	// Reason Human-readable basis for the decision.
+	Reason string `json:"reason"`
+
+	// Source Compact reference to an assertion without engine-production metadata.
+	Source AssertionReference `json:"source"`
+
+	// Targets Target assertions. `carry` mappings emit these automatically; `review` mappings expose them only as proposals. `omit` and `forbid` mappings have no targets.
+	Targets *[]CrosswalkTarget `json:"targets,omitempty"`
+}
+
 // CrosswalkMappingForbidMatch A per-assertion mapping that prohibited a crosswalk translation.
 type CrosswalkMappingForbidMatch struct {
 	// Authority Authority copied from the mapping, when declared.
@@ -2477,13 +2265,15 @@ type CrosswalkOutcome struct {
 	// Citation Supporting citation copied from the mapping, when declared.
 	Citation *string `json:"citation,omitempty"`
 
-	// Disposition Mapping decision, or `unmapped` when the artifact has no rule.
+	// Disposition Mapping decision, `unmapped` when the artifact has no rule, or `not-selected` when the assertion is covered only by a selection candidate that lost.
+	//
+	// `not-selected` is not an `omit`. An `omit` is a reviewed decision to drop the assertion. `not-selected` says a selection chose a different candidate, so nothing decided this assertion on its own. Like an `omit` it emits no targets and leaves the translation settled.
 	Disposition CrosswalkOutcome_Disposition `json:"disposition"`
 
 	// Guidance Operator guidance copied from the mapping, when declared.
 	Guidance *string `json:"guidance,omitempty"`
 
-	// MappingID Matched mapping id, absent when no mapping covers the assertion.
+	// MappingID Matched mapping id, absent when no mapping covers the assertion. On a `not-selected` outcome, `<selection>:<candidate>` names the candidate that lost.
 	MappingID *string `json:"mappingId,omitempty"`
 
 	// Reason Reviewable explanation of the decision.
@@ -2499,9 +2289,26 @@ type CrosswalkOutcome struct {
 // CrosswalkOutcomeDisposition1 defines model for CrosswalkOutcome.Disposition.1.
 type CrosswalkOutcomeDisposition1 = string
 
-// CrosswalkOutcome_Disposition Mapping decision, or `unmapped` when the artifact has no rule.
+// CrosswalkOutcomeDisposition2 defines model for CrosswalkOutcome.Disposition.2.
+type CrosswalkOutcomeDisposition2 = string
+
+// CrosswalkOutcome_Disposition Mapping decision, `unmapped` when the artifact has no rule, or `not-selected` when the assertion is covered only by a selection candidate that lost.
+//
+// `not-selected` is not an `omit`. An `omit` is a reviewed decision to drop the assertion. `not-selected` says a selection chose a different candidate, so nothing decided this assertion on its own. Like an `omit` it emits no targets and leaves the translation settled.
 type CrosswalkOutcome_Disposition struct {
 	union json.RawMessage
+}
+
+// CrosswalkSelectionCondition Boolean test over source assertions used to choose a crosswalk candidate.
+type CrosswalkSelectionCondition struct {
+	// All Every referenced assertion must be present.
+	All *[]AssertionReference `json:"all,omitempty"`
+
+	// Any At least one referenced assertion must be present.
+	Any *[]AssertionReference `json:"any,omitempty"`
+
+	// None None of the referenced assertions may be present.
+	None *[]AssertionReference `json:"none,omitempty"`
 }
 
 // CrosswalkSelectionForbidMatch A selected cross-field candidate that prohibited a crosswalk translation.
@@ -2558,6 +2365,9 @@ type CrosswalkSelectionOutcome struct {
 	Targets []CrosswalkTarget `json:"targets"`
 }
 
+// CrosswalkSelectionStrategy Strategy for choosing one candidate from a reviewed cross-field decision.
+type CrosswalkSelectionStrategy string
+
 // CrosswalkTarget One target assertion a crosswalk can emit or propose.
 type CrosswalkTarget struct {
 	// CategoryID Category containing the asserted concept.
@@ -2602,16 +2412,11 @@ type CtxAccessDescribeRequirementsRequestBody struct {
 	Marking *string `json:"marking,omitempty"`
 }
 
-// CtxAccessDescribeRuleRequestBody POST /v1/ctx/{ctxId}/{version?}/access/describe-rule
-type CtxAccessDescribeRuleRequestBody struct {
-	// RuleID Access rule id from the loaded access policy.
-	RuleID string `json:"ruleId"`
-}
-
-// CtxAccessRulesResponseBody Response body for GET /v1/ctx/{ctxId}/{version?}/access/rules: every rule in the context's access policy.
-//
-// One route serves both halves of the adapter contract. A caller that wants the descriptions has them; a caller that only wants the rule ids reads them off the same response instead of spending a second round trip on a projection of what it already holds.
+// CtxAccessRulesResponseBody Response body for GET /v1/ctx/{ctxId}/{version?}/access/rules: every rule in the context's access policy, with the policy's own marking.
 type CtxAccessRulesResponseBody struct {
+	// Marking The access policy document's own overall marking, exactly as its `access.marking` writes it. Display only: never interpreted. Omitted when the document declares none.
+	Marking *string `json:"marking,omitempty"`
+
 	// Rules Descriptions for every rule in the access policy, in declared order.
 	Rules []AccessRuleDescription `json:"rules"`
 }
@@ -2631,6 +2436,14 @@ type CtxComponentDescriptor struct {
 	Version string `json:"version"`
 }
 
+// CtxCrosswalkDescribeResponseBody Response body for GET /v1/ctx/{ctxId}/{version?}/crosswalk/describe: every crosswalk the context holds.
+//
+// A dedicated read rather than a member of the context description, because a crosswalk's reviewed mappings run to tens of kilobytes and every client reads the description when it connects, translating or not.
+type CtxCrosswalkDescribeResponseBody struct {
+	// Crosswalks Every crosswalk in the context, in declaration order.
+	Crosswalks []ContextCrosswalkDescriptor `json:"crosswalks"`
+}
+
 // CtxCrosswalkTranslateRequestBody POST /v1/ctx/{ctxId}/{version?}/crosswalk/translate. The adapter takes the SOURCE as one field holding either a marking string or its parsed assertions; the wire splits that into the same two fields `CtxAccessCheckRequestBody` uses for its target, because a field that is a string or an array is a shape the MCP catalog builder refuses to describe as a tool input. Exactly one of `marking` and `assertions` is required: neither is a request with no source, both is two sources with no rule for which one the crosswalk reads, and either is a 400.
 type CtxCrosswalkTranslateRequestBody struct {
 	// Assertions SOURCE as structured assertions, for callers that already hold the parsed form. Provide this OR `marking`, never both.
@@ -2648,7 +2461,7 @@ type CtxDescribeResponseBody struct {
 	// Access Component reference echoed in a `CtxDescribeResponseBody`.
 	Access *CtxComponentDescriptor `json:"access,omitempty"`
 
-	// Crosswalks Crosswalk components in declaration order, or omitted when the context declares none. A crosswalk the context follows at `latest` reports here the concrete version that answered.
+	// Crosswalks Crosswalk components in declaration order, or omitted when the context declares none. A crosswalk the context follows at `latest` reports here the concrete version that answered. This is provenance; the source and target schemes and the reviewed mappings are on `crosswalk/describe`.
 	Crosswalks *[]CtxComponentDescriptor `json:"crosswalks,omitempty"`
 
 	// Description Optional human-readable description copied from the declaration.
@@ -2672,24 +2485,6 @@ type CtxDescribeResponseBody struct {
 	Version string `json:"version"`
 }
 
-// CtxDocumentAssessAccessRequestBody POST /v1/ctx/{ctxId}/{version?}/document/assess-access
-type CtxDocumentAssessAccessRequestBody struct {
-	// Context Optional relationship attributes used with the user attributes.
-	Context *map[string]interface{} `json:"context,omitempty"`
-
-	// GuideDeterminations Set-semantic analyst input supplied to guide evaluation.
-	GuideDeterminations *GuideDeterminationInput `json:"guideDeterminations,omitempty"`
-
-	// ResponseProfile Controls how much evidence detail a document operation returns.
-	ResponseProfile *DocumentResponseProfile `json:"responseProfile,omitempty"`
-
-	// Text Full document text to audit before access is assessed.
-	Text string `json:"text"`
-
-	// UserAttributes User attributes interpreted by the Context's access policy.
-	UserAttributes map[string]interface{} `json:"userAttributes"`
-}
-
 // CtxDocumentAuditRequestBody POST /v1/ctx/{ctxId}/{version?}/document/audit
 type CtxDocumentAuditRequestBody struct {
 	// GuideDeterminations Set-semantic analyst input supplied to guide evaluation.
@@ -2702,34 +2497,18 @@ type CtxDocumentAuditRequestBody struct {
 	Text string `json:"text"`
 }
 
-// CtxGuideDescribeRuleRequestBody POST /v1/ctx/{ctxId}/{version?}/guide/describe-rule
-type CtxGuideDescribeRuleRequestBody struct {
-	// GuideID Guide id when the context has multiple guides. Defaults to the first guide.
-	GuideID *string `json:"guideId,omitempty"`
-
-	// RuleID Rule id to describe.
-	RuleID string `json:"ruleId"`
-}
-
 // CtxGuideEvaluateRequestBody POST /v1/ctx/{ctxId}/{version?}/guide/evaluate
+//
+// Two forms, exactly one per request: `guideId` with `selectedRuleIds` evaluates one guide, and `selections` rolls up a selection that spans guides. Any other combination is a 400. The rule is stated here rather than as a root `oneOf`, which would make every generated SDK model this request as a union of two request types.
 type CtxGuideEvaluateRequestBody struct {
-	// AllGuides Evaluate and combine every loaded guide through the context's scheme.
-	AllGuides *bool `json:"allGuides,omitempty"`
-
-	// GuideID ID of one guide within the context. Supply this or `allGuides: true`.
+	// GuideID ID of the one guide to evaluate, with `selectedRuleIds`. Refused with `selections`.
 	GuideID *string `json:"guideId,omitempty"`
 
-	// SelectedRuleIds Rule IDs the user selected (checked) in the guide wizard.
-	SelectedRuleIds []string `json:"selectedRuleIds"`
-}
+	// SelectedRuleIds IDs of the rules selected in the guide `guideId` names. Required with `guideId`, refused with `selections`.
+	SelectedRuleIds *[]string `json:"selectedRuleIds,omitempty"`
 
-// CtxGuideFilterRulesRequestBody POST /v1/ctx/{ctxId}/{version?}/guide/filter-rules
-type CtxGuideFilterRulesRequestBody struct {
-	// GuideID Guide id when the context has multiple guides. Defaults to the first guide.
-	GuideID *string `json:"guideId,omitempty"`
-
-	// Query Text query to filter rules.
-	Query string `json:"query"`
+	// Selections The selected rules, each named by its guide, rolled up across guides: each guide evaluates the rules selected from it, and the outcomes are rolled up per target scheme. No guide overrides or depends on another, so every selected rule's outcome counts. Refused with `guideId` or `selectedRuleIds`.
+	Selections *[]GuideRuleSelection `json:"selections,omitempty"`
 }
 
 // CtxGuideScanRequestBody POST /v1/ctx/{ctxId}/{version?}/guide/scan
@@ -2758,7 +2537,9 @@ type CtxSchemeAggregateRequestBody struct {
 	// AssertionSets Already-parsed assertion sets to aggregate, one inner array per marking. Skips the string-parse stage; the rest of the aggregate pipeline runs identically to `inputs`. Transports marking state losslessly (scope-only assertions and capture values survive). Mutually exclusive with `inputs`.
 	AssertionSets *[][]Assertion `json:"assertionSets,omitempty"`
 
-	// Context Caller-supplied context describing the role of a marking being processed. No context (or role='whole') means an overall/document-level marking. role='part' means a portion/paragraph that belongs to another marking.
+	// Context Caller-supplied context naming the role the marking being read plays. No context, or `role: 'whole'`, means a whole: a marking that stands for everything it covers. `role: 'part'` means a part that belongs to a whole, named in `partOf` when it is known.
+	//
+	// On a rollup the context names the contributors' role, never the rollup's: the rollup is always a whole. So no context rolls wholes up into an aggregate, and `{ role: 'part', partOf }` rolls a whole's parts up. See `SchemeEngineAdapter.aggregate`.
 	Context *ProcessingContext `json:"context,omitempty"`
 
 	// InputFormat The format the strings in `inputs` are written in. For a scheme that declares `render.surfaces`, the view they are read as, or one of its forms, as the scheme document's `render.surfaces` defines them. Omitted or empty, recognition works it out. Refused with `assertionSets`, which carries no text to read.
@@ -2770,7 +2551,7 @@ type CtxSchemeAggregateRequestBody struct {
 	// OutputFormat The format the combined marking is rendered in. Omitted or empty, the scheme's default format. It selects output only. For a scheme that declares `render.surfaces`, an output as the scheme document's `render.surfaces` defines it.
 	OutputFormat *string `json:"outputFormat,omitempty"`
 
-	// Surface Validation surface of the rollup, using the scheme's scope ids. Names what the combined marking is, not what any one contributor was. Omitted, the rollup is a whole marking and every required category belonging to the marking as a whole must be covered by the combined result, which is the whole-document case: a portion that omits one is not faulted for it. Given a scope id, the inputs are fragments of that one surface and only the required categories that surface owns are demanded of the rollup.
+	// Surface Validation surface of the rollup, using the scheme's scope ids. Names what the combined marking is, not what any one contributor was. Omitted, the rollup is a whole marking and every required category belonging to the marking as a whole must be covered by the combined result: a contributor that omits one is not faulted for it. Given a scope id, the inputs are fragments of that one surface and only the required categories that surface owns are demanded of the rollup.
 	Surface *string `json:"surface,omitempty"`
 }
 
@@ -2810,7 +2591,9 @@ type CtxSchemeExplainRequestBody struct {
 	// Assertions The facts already chosen, settled together with what `input` states as one marking.
 	Assertions *[]Assertion `json:"assertions,omitempty"`
 
-	// Context Caller-supplied context describing the role of a marking being processed. No context (or role='whole') means an overall/document-level marking. role='part' means a portion/paragraph that belongs to another marking.
+	// Context Caller-supplied context naming the role the marking being read plays. No context, or `role: 'whole'`, means a whole: a marking that stands for everything it covers. `role: 'part'` means a part that belongs to a whole, named in `partOf` when it is known.
+	//
+	// On a rollup the context names the contributors' role, never the rollup's: the rollup is always a whole. So no context rolls wholes up into an aggregate, and `{ role: 'part', partOf }` rolls a whole's parts up. See `SchemeEngineAdapter.aggregate`.
 	Context *ProcessingContext `json:"context,omitempty"`
 
 	// Input The marking text, as typed.
@@ -2819,7 +2602,7 @@ type CtxSchemeExplainRequestBody struct {
 	// InputFormat The format `input` is written in. For a scheme that declares `render.surfaces`, the view it is read as, or one of its forms, as the scheme document's `render.surfaces` defines them. Omitted or empty, recognition works it out.
 	InputFormat *string `json:"inputFormat,omitempty"`
 
-	// OutputFormat The output the trace's `rendered` is written in. For a scheme that declares `render.surfaces`, an output as the scheme document's `render.surfaces` defines it. Omitted or empty, the scheme's default format, or with `render.surfaces`, each written surface's default for the marking's role, by the rule `render.surfaces` states for a request that names no output.
+	// OutputFormat The output the trace's `rendered` is written in. For a scheme that declares `render.surfaces`, an output as the scheme document's `render.surfaces` defines it. Omitted or empty, the scheme's default format, or with `render.surfaces`, the written surfaces' defaults for the marking's role, one alone when it writes the others' scopes, by the rule `render.surfaces` states for a request that names no output.
 	OutputFormat *string `json:"outputFormat,omitempty"`
 
 	// Parts Part markings the whole must cover. The whole is judged as covering them, as on the process request.
@@ -2827,26 +2610,6 @@ type CtxSchemeExplainRequestBody struct {
 
 	// Surface Validation surface: names which surface of a marking `input` is, using the scheme's scope ids. Omitted, the input is a whole marking.
 	Surface *string `json:"surface,omitempty"`
-}
-
-// CtxSchemeFilterConceptsRequestBody POST /v1/ctx/{ctxId}/{version?}/scheme/filter-concepts
-type CtxSchemeFilterConceptsRequestBody struct {
-	// Query Text query to filter the concept list.
-	Query string `json:"query"`
-}
-
-// CtxSchemeNormalizeRequestBody POST /v1/ctx/{ctxId}/{version?}/scheme/normalize
-type CtxSchemeNormalizeRequestBody struct {
-	// Input Marking string to normalize.
-	Input string `json:"input"`
-
-	// InputFormat The format `input` is written in. For a scheme that declares `render.surfaces`, the view it is read as, or one of its forms, as the scheme document's `render.surfaces` defines them. Omitted or empty, recognition works it out and reports what the text was read as on `recognition.inputFormat`.
-	InputFormat *string `json:"inputFormat,omitempty"`
-
-	// OutputFormat The format the result is rendered in. Omitted or empty, the scheme's default format. It selects output only: it never narrows what may be read.
-	//
-	// For a scheme that declares `render.surfaces`, an output as the scheme document's `render.surfaces` defines it.
-	OutputFormat *string `json:"outputFormat,omitempty"`
 }
 
 // CtxSchemeNoticesRequestBody POST /v1/ctx/{ctxId}/{version?}/scheme/notices
@@ -2862,7 +2625,9 @@ type CtxSchemeProcessRequestBody struct {
 	// Assertions The facts already chosen, settled together with what `input` states as one marking.
 	Assertions *[]Assertion `json:"assertions,omitempty"`
 
-	// Context Caller-supplied context describing the role of a marking being processed. No context (or role='whole') means an overall/document-level marking. role='part' means a portion/paragraph that belongs to another marking.
+	// Context Caller-supplied context naming the role the marking being read plays. No context, or `role: 'whole'`, means a whole: a marking that stands for everything it covers. `role: 'part'` means a part that belongs to a whole, named in `partOf` when it is known.
+	//
+	// On a rollup the context names the contributors' role, never the rollup's: the rollup is always a whole. So no context rolls wholes up into an aggregate, and `{ role: 'part', partOf }` rolls a whole's parts up. See `SchemeEngineAdapter.aggregate`.
 	Context *ProcessingContext `json:"context,omitempty"`
 
 	// Input The marking text, as typed.
@@ -2873,7 +2638,7 @@ type CtxSchemeProcessRequestBody struct {
 
 	// OutputFormat The output the result is rendered in. It selects output only: it never narrows what may be read. For a scheme that declares `render.surfaces`, an output as the scheme document's `render.surfaces` defines it.
 	//
-	// Omitted or empty, the scheme's default format, or with `render.surfaces`, each written surface's default for the marking's role, by the rule `render.surfaces` states for a request that names no output.
+	// Omitted or empty, the scheme's default format, or with `render.surfaces`, the written surfaces' defaults for the marking's role, one alone when it writes the others' scopes, by the rule `render.surfaces` states for a request that names no output.
 	OutputFormat *string `json:"outputFormat,omitempty"`
 
 	// Outputs The outputs to write into `renders`, each an output address spelled exactly as a key of `renders` is: `surface/view` for a scheme that declares `render.surfaces`, a format id otherwise. Omitted or empty, `renders` is empty. An address the scheme does not declare is refused.
@@ -2967,7 +2732,9 @@ type CtxSchemeValidateRequestBody struct {
 	// Assertions The marking as facts as stated: what a document or an author states, before any engine settled them. Never the `assertions` of an earlier result, which are settled already and can read valid where the text they came from did not. Provide this or `input`, never both.
 	Assertions *[]Assertion `json:"assertions,omitempty"`
 
-	// Context Caller-supplied context describing the role of a marking being processed. No context (or role='whole') means an overall/document-level marking. role='part' means a portion/paragraph that belongs to another marking.
+	// Context Caller-supplied context naming the role the marking being read plays. No context, or `role: 'whole'`, means a whole: a marking that stands for everything it covers. `role: 'part'` means a part that belongs to a whole, named in `partOf` when it is known.
+	//
+	// On a rollup the context names the contributors' role, never the rollup's: the rollup is always a whole. So no context rolls wholes up into an aggregate, and `{ role: 'part', partOf }` rolls a whole's parts up. See `SchemeEngineAdapter.aggregate`.
 	Context *ProcessingContext `json:"context,omitempty"`
 
 	// Input The marking as text. Provide this or `assertions`, never both.
@@ -2978,7 +2745,7 @@ type CtxSchemeValidateRequestBody struct {
 
 	// OutputFormat The output the result is rendered in. It selects output only: it never narrows what may be read. For a scheme that declares `render.surfaces`, an output as the scheme document's `render.surfaces` defines it.
 	//
-	// Omitted or empty, the scheme's default format, or with `render.surfaces`, each written surface's default for the marking's role, by the rule `render.surfaces` states for a request that names no output.
+	// Omitted or empty, the scheme's default format, or with `render.surfaces`, the written surfaces' defaults for the marking's role, one alone when it writes the others' scopes, by the rule `render.surfaces` states for a request that names no output.
 	OutputFormat *string `json:"outputFormat,omitempty"`
 
 	// Parts Part markings the whole must cover. The whole is judged as covering them: a part it does not cover is an error, and so is a part that does not read as a marking. Each entry is a marking in one of the scheme's part formats, or any format the scheme reads. Empty or absent, the whole stands alone.
@@ -3013,21 +2780,6 @@ type DiffResult struct {
 
 	// Removed Assertions in the first marking and not the second.
 	Removed []Assertion `json:"removed"`
-}
-
-// DocumentAccessAssessment Three-scenario document access result with no fused grant or denial.
-type DocumentAccessAssessment struct {
-	// Audit Authored structural and analyst-determined guide audit of one document.
-	Audit DocumentAuditReport `json:"audit"`
-
-	// Authored Access result for one authored, authoritative, or projected target.
-	Authored AccessScenarioAssessment `json:"authored"`
-
-	// Authoritative Access result for one authored, authoritative, or projected target.
-	Authoritative AccessScenarioAssessment `json:"authoritative"`
-
-	// Projected Advisory unresolved-nomination scenario when it adds an assertion.
-	Projected *AccessScenarioAssessment `json:"projected"`
 }
 
 // DocumentAuditReport Authored structural and analyst-determined guide audit of one document.
@@ -3156,15 +2908,6 @@ type DocumentPartAssessment struct {
 
 // DocumentResponseCounts Counts the full, unprojected semantic result of a document operation.
 type DocumentResponseCounts struct {
-	// AccessRuleResults Access-rule results across all scenarios.
-	AccessRuleResults int `json:"accessRuleResults"`
-
-	// ContentRequirements Content requirements across all scenarios.
-	ContentRequirements int `json:"contentRequirements"`
-
-	// ContextRequirements Context requirements across all scenarios.
-	ContextRequirements int `json:"contextRequirements"`
-
 	// EvidenceSpans Number of evidence spans.
 	EvidenceSpans int `json:"evidenceSpans"`
 
@@ -3232,36 +2975,12 @@ type EachAffix struct {
 	Suffix *string `json:"suffix,omitempty"`
 }
 
-// EffectiveDocumentTarget Effective marking/assertion target evaluated in one access scenario.
-type EffectiveDocumentTarget struct {
-	// Assertions Effective assertions evaluated by access policy, listed in print order: the order `marking` places each concept; a concept it leaves out appears where it would print.
-	Assertions []Assertion `json:"assertions"`
-
-	// AuthoredParts Authored part markings.
-	AuthoredParts []string `json:"authoredParts"`
-
-	// AuthoredWhole Authored document-wide marking when present.
-	AuthoredWhole *string `json:"authoredWhole,omitempty"`
-
-	// Basis Authority basis used to construct an access scenario.
-	Basis AccessScenarioBasis `json:"basis"`
-
-	// DeterminedGuideRequiredWhole Whole required by accepted/manual guide facts.
-	DeterminedGuideRequiredWhole *string `json:"determinedGuideRequiredWhole,omitempty"`
-
-	// Marking Scheme-rendered effective marking.
-	Marking string `json:"marking"`
-
-	// ProjectedGuideRequiredWhole Advisory whole additionally assuming unresolved nominations.
-	ProjectedGuideRequiredWhole *string `json:"projectedGuideRequiredWhole,omitempty"`
-}
-
 // EmbeddedMarkingStyle One way a marking can appear embedded inside free text, e.g. a parenthesized short form like "(H)" at the start of a paragraph. A scheme may declare multiple styles; all are matched during scanning.
 type EmbeddedMarkingStyle struct {
 	// AutoInsert When a host UI should proactively prompt for an embedded marking.
 	AutoInsert *EmbeddedMarkingStyleAutoInsert `json:"autoInsert,omitempty"`
 
-	// Pattern RegExp source (no flags) whose first capture group is the raw marking text. Example: `\((.+)\)` for a marking in parentheses.
+	// Pattern RegExp source (no flags) whose first capture group is the raw marking text. Example: `\(([^)]+)\)` for a marking in parentheses.
 	Pattern string `json:"pattern"`
 
 	// Template Template used when inserting a new embedded marking. Must include the literal token "{marking}" where the rendered marking is substituted. Example: "({marking}) ".
@@ -3269,14 +2988,14 @@ type EmbeddedMarkingStyle struct {
 }
 
 // EmbeddedMarkingStyleAutoInsert When a host UI should proactively prompt for an embedded marking.
-type EmbeddedMarkingStyleAutoInsert string
+type EmbeddedMarkingStyleAutoInsert = string
 
 // ErrorResponse Response body for error responses (4xx / 5xx).
 type ErrorResponse struct {
-	// Code Stable machine-readable classification of the failure, present whenever the server can name one. Set to `INVALID_INPUT` when the failure originated in engine input or the request carried something the operation does not declare, and to `route_not_found` on a 404 that reached routing and matched no route. A request refused before routing carries the constant refusal body instead, which has no `code` at all by design, so the absence of a code on a 404 is itself uninformative.
+	// Code Stable machine-readable classification of the failure, present whenever the server can name one. Set to `INVALID_INPUT` when the failure originated in engine input or the request carried something the operation does not declare, to `route_not_found` on a 404 that reached routing and matched no route, and to `scheme_not_found` on a 404 for a `?scheme=` key the Context does not hold. A request refused before routing carries the constant refusal body instead, which has no `code` at all by design, so the absence of a code on a 404 is itself uninformative.
 	Code *string `json:"code,omitempty"`
 
-	// Detail What the failure is about, beside `code`: a stable operation-specific detail used to classify it. For a request that names a format, a concept or a category the scheme does not declare, it is the request field and the id it named, written `field: id`, such as `outputFormat: nope` or `conceptId: NOPE`. For a request that carries a query parameter the operation does not declare, it is `query: ` and the parameter's name; for an undeclared body field, `body`, the JSON pointer of the object that holds it, `: ` and the field, such as `body: extra` or `body/context: extra`. Never a scheme's internals.
+	// Detail What the failure is about, beside `code`: a stable operation-specific detail used to classify it. For a request that names a format, a concept or a category the scheme does not declare, it is the request field and the id it named, written `field: id`, such as `outputFormat: nope` or `conceptId: NOPE`. For a request that carries a query parameter the operation does not declare, or names a declared one twice, it is `query: ` and the parameter's name; for an undeclared body field, `body`, the JSON pointer of the object that holds it, `: ` and the field, such as `body: extra` or `body/context: extra`. Never a scheme's internals.
 	Detail *string `json:"detail,omitempty"`
 
 	// Error Human-readable error message. Prose for an operator, not a contract: a client that branches on this string breaks the first time the wording is improved. Branch on `code` instead.
@@ -3305,9 +3024,6 @@ type EvaluationResult struct {
 
 	// GuideID The id of the guide evaluated. Absent when the result combines several guides.
 	GuideID *string `json:"guideId,omitempty"`
-
-	// Provenance Records source identity and mandatory attribution for an operation.
-	Provenance *SourceReference `json:"provenance,omitempty"`
 
 	// SelectedRules The selected rules that were evaluated. Rules with a `when` condition are computed, not selected, and are not listed here.
 	SelectedRules []GuideRule `json:"selectedRules"`
@@ -3340,32 +3056,6 @@ type ExplanationTrace struct {
 
 	// ValidationErrors The constraints the settled marking violates.
 	ValidationErrors []TraceValidationIssue `json:"validationErrors"`
-}
-
-// FilterResult JSON-safe serialization of the engine's Set/Map-based FilterResult.
-//
-// The engine returns FilterResult with Set<string> and Map<string, ...> fields; this interface is what the server writes to the wire.
-type FilterResult struct {
-	// CategoryCounts Per-category counts.
-	CategoryCounts map[string]struct {
-		// Total Items in the category.
-		Total int `json:"total"`
-
-		// Visible Items in the category that matched the query.
-		Visible int `json:"visible"`
-	} `json:"categoryCounts"`
-
-	// Total Aggregate counts across all categories.
-	Total struct {
-		// Total Items in every category.
-		Total int `json:"total"`
-
-		// Visible Items that matched the query.
-		Visible int `json:"visible"`
-	} `json:"total"`
-
-	// VisibleIds IDs of concepts or rules that matched the query.
-	VisibleIds []string `json:"visibleIds"`
 }
 
 // Fix One way to make the marking valid. Every change in it answers an error.
@@ -3694,7 +3384,7 @@ type GuideNomination struct {
 //
 // Rules are presented as checkboxes in the UI. `keywords` enables keyword-search filtering; `match` enables text-scan detection (e.g., finding IPv4 addresses in a document body). `outcome.rendered` or `outcome.concepts` provides the marking contribution. Rules with `when` are computed; they auto-activate based on sibling rule selection state and do not appear as user-visible checkboxes.
 //
-// This is the named runtime/read-result shape. Authoring input is carried by the guide definition's `rules.inline` entries.
+// This is the named runtime/read-result shape. A guide document authors its rules as `GuideRuleDoc` entries in `guide.rules`.
 type GuideRule struct {
 	// Category Guide category ID for grouping in the UI.
 	Category *string `json:"category,omitempty"`
@@ -3723,12 +3413,8 @@ type GuideRule struct {
 	// Rationale Explanation of why this outcome applies.
 	Rationale *string `json:"rationale,omitempty"`
 
-	// When Conditions that trigger a rule. Supports shorthand forms:
-	//
-	// - `string`: concept ID must be present (any category)
-	// - `string[]`: any of these concept IDs must be present
-	// - `object`: structured `{ any | all | none }` block, possibly nested
-	When *RuleWhen `json:"when,omitempty"`
+	// When A block of conditions over the rules the user selected. Every list present must hold: `any` when one of its nodes holds, `all` when each does, `none` when none does.
+	When *GuideWhen `json:"when,omitempty"`
 }
 
 // GuideRuleOutcome The effect of a guide rule: what it contributes to the marking.
@@ -3738,6 +3424,17 @@ type GuideRuleOutcome struct {
 
 	// Rendered Pre-rendered marking string: parsed by engine.process() during evaluation.
 	Rendered *string `json:"rendered,omitempty"`
+}
+
+// GuideRuleSelection One selected rule, named by the guide that holds it.
+//
+// Guides in a Context are independent, so two of them may use the same rule id. A selection names the guide as well as the rule, and the two pairs are two rules.
+type GuideRuleSelection struct {
+	// GuideID Id of the guide that holds the rule.
+	GuideID string `json:"guideId"`
+
+	// RuleID Id of the rule within that guide.
+	RuleID string `json:"ruleId"`
 }
 
 // GuideRuleView Item row rendered by the Guidebook / GuideChecklist (one per rule in a guide).
@@ -3786,20 +3483,17 @@ type GuideRuleView struct {
 //
 // Parallels the scheme-side scan result: one entry per rule hit, with offsets into the scanned text.
 type GuideScanResult struct {
-	// GuideID The id of the guide the rule belongs to, when the scan covered more than one.
-	GuideID *string `json:"guideId,omitempty"`
+	// GuideID The id of the guide the rule belongs to. Rule ids are unique only within a guide, so a selection built from this hit names this guide.
+	GuideID string `json:"guideId"`
 
 	// MatchedKeywords Each keyword or matcher label that fired, once each.
 	MatchedKeywords []string `json:"matchedKeywords"`
-
-	// Provenance Records source identity and mandatory attribution for an operation.
-	Provenance *SourceReference `json:"provenance,omitempty"`
 
 	// Rule A rule in a marking guide: a data-element description with an outcome that contributes to the aggregate marking when activated.
 	//
 	// Rules are presented as checkboxes in the UI. `keywords` enables keyword-search filtering; `match` enables text-scan detection (e.g., finding IPv4 addresses in a document body). `outcome.rendered` or `outcome.concepts` provides the marking contribution. Rules with `when` are computed; they auto-activate based on sibling rule selection state and do not appear as user-visible checkboxes.
 	//
-	// This is the named runtime/read-result shape. Authoring input is carried by the guide definition's `rules.inline` entries.
+	// This is the named runtime/read-result shape. A guide document authors its rules as `GuideRuleDoc` entries in `guide.rules`.
 	Rule GuideRule `json:"rule"`
 
 	// Spans Every place in the text where the rule fired, in the order found.
@@ -3808,9 +3502,6 @@ type GuideScanResult struct {
 
 // GuideScanSpan A span, by offsets into the scanned text, where a guide rule keyword or pattern matched.
 type GuideScanSpan struct {
-	// Confidence Advisory confidence in [0, 1], present only when the scan asked for it with the `confidence` scan option. An ordinal hint derived from the match's shape, not a calibrated probability.
-	Confidence *float32 `json:"confidence,omitempty"`
-
 	// End Offset in the scanned text just past the end of the match, in UTF-16 code units.
 	End int `json:"end"`
 
@@ -3877,6 +3568,9 @@ type GuideViewResponse struct {
 	// ID The guide id.
 	ID string `json:"id"`
 
+	// Marking The guide document's own overall marking, exactly as its `guide.marking` writes it. Display only: never interpreted. Absent when the document declares none.
+	Marking *string `json:"marking,omitempty"`
+
 	// Name The guide's display name.
 	Name string `json:"name"`
 
@@ -3887,6 +3581,52 @@ type GuideViewResponse struct {
 	//
 	// Purely a presentation hint: nothing in the engine's evaluation logic reads it. Each consumer owns its own default map and calls `resolveVocabulary(source, defaults)` to merge.
 	Vocabulary *Vocabulary `json:"vocabulary,omitempty"`
+}
+
+// GuideWhen A block of conditions over the rules the user selected. Every list present must hold: `any` when one of its nodes holds, `all` when each does, `none` when none does.
+type GuideWhen struct {
+	// All Every one of these holds.
+	All *[]GuideWhenNode `json:"all,omitempty"`
+
+	// Any At least one of these holds.
+	Any *[]GuideWhenNode `json:"any,omitempty"`
+
+	// None None of these holds.
+	None *[]GuideWhenNode `json:"none,omitempty"`
+}
+
+// GuideWhenHas A guide condition that holds when the user selected one rule.
+type GuideWhenHas struct {
+	// Has The id of a selectable rule of this guide.
+	Has string `json:"has"`
+}
+
+// GuideWhenNode One node of a guide `when` block: a condition, or a nested block.
+type GuideWhenNode struct {
+	union json.RawMessage
+}
+
+// GuideWhenOperator The tests a guide `when` condition can apply to the rules the user selected. `has_concept` and `not_has_concept` name a rule by id in `value`; the `count_*` tests (greater than, greater than or equal, equal, less than, less than or equal) compare the number of selected rules with the number in `value`; `has_content` holds when any rule is selected.
+type GuideWhenOperator string
+
+// GuideWhenTest A guide condition that tests the user's selection with an operator.
+type GuideWhenTest struct {
+	// Operator The tests a guide `when` condition can apply to the rules the user selected. `has_concept` and `not_has_concept` name a rule by id in `value`; the `count_*` tests (greater than, greater than or equal, equal, less than, less than or equal) compare the number of selected rules with the number in `value`; `has_content` holds when any rule is selected.
+	Operator GuideWhenOperator `json:"operator"`
+
+	// Value A rule id for `has_concept` and `not_has_concept`, a count for the `count_*` tests, absent for `has_content`.
+	Value *GuideWhenTest_Value `json:"value,omitempty"`
+}
+
+// GuideWhenTestValue0 defines model for GuideWhenTest.Value.0.
+type GuideWhenTestValue0 = string
+
+// GuideWhenTestValue1 defines model for GuideWhenTest.Value.1.
+type GuideWhenTestValue1 = float32
+
+// GuideWhenTest_Value A rule id for `has_concept` and `not_has_concept`, a count for the `count_*` tests, absent for `has_content`.
+type GuideWhenTest_Value struct {
+	union json.RawMessage
 }
 
 // HealthResponse Response body for GET /v1/health
@@ -4019,7 +3759,7 @@ type MarkingValidation struct {
 	// This is what a reader needs and what validate returns. Process returns `RecognitionWithCorrections`, which adds how to correct the text.
 	Recognition RecognitionResult `json:"recognition"`
 
-	// Rendered The settled marking, written as validate writes it when the request names no output: in the scheme's default format, or for a scheme that declares `render.surfaces`, each written surface in its default for the role the marking has in this document, by the rule `RenderConfigDoc.surfaces` states.
+	// Rendered The settled marking, written as validate writes it when the request names no output: in the scheme's default format, or for a scheme that declares `render.surfaces`, in the defaults for the role the marking has in this document that the rule `RenderConfigDoc.surfaces` states for an unnamed output selects.
 	Rendered string `json:"rendered"`
 
 	// Valid Whether the marking stands once settled, as `ValidateResult.valid`.
@@ -4148,12 +3888,6 @@ type MatchValidationExpression struct {
 // MatchValidationKeep Validator outcome retained by a validation expression.
 type MatchValidationKeep string
 
-// NormalizeResponse Response body for Context normalization.
-type NormalizeResponse struct {
-	// Result Canonical normalized form of the marking string.
-	Result string `json:"result"`
-}
-
 // Notice A notice that was resolved and collected for a specific concept in a processed marking. Notices originate from the concept's `documentation.notices` definitions and may be conditional (only fire when another concept is simultaneously asserted) or unconditional.
 //
 // Returned by `SchemeEngine.collectNotices()`, and carried on every result that describes a marking, so reading the notices for a processed marking does not take a second call. The `required` flag indicates whether the notice represents a mandatory acknowledgment the UI must surface before the user can submit the marking.
@@ -4206,13 +3940,6 @@ type ProcessResult struct {
 	// Listed in print order: the order the rendered marking places each concept; a concept the rendering leaves out appears where it would print. A concept the rendering has no place for at all follows the others of its category, or comes last when its category has none, in the order the scheme declares.
 	Assertions []Assertion `json:"assertions"`
 
-	// AssertionsBeforeRepair What was read before repair: the assertions the input stated, before the repair pass took anything away or rewrote it. A retired concept appears under its replacement's name, as it does in `assertions` and in the fixes.
-	//
-	// Present only when repair rewrote something that was read. Absent, everything read came through repair. This is a record of the reading; proposed fixes are computed against the resulting `assertions`, never against this earlier set. Repair leaves author-stated rule conflicts in the resulting value for the author to resolve.
-	//
-	// Listed in print order, placed by the same rendering as `assertions`. A concept repair took away has no place in it, so it follows the others of its category.
-	AssertionsBeforeRepair *[]Assertion `json:"assertionsBeforeRepair,omitempty"`
-
 	// Assessment What a render did to the state it was given, bound to that state and that format.
 	//
 	// Answered against the state actually rendered: what was emitted, what was left out, what collapsed into an equivalent, and what could not be written at all.
@@ -4225,9 +3952,7 @@ type ProcessResult struct {
 	// Both values are CSS hex (`#rgb` or `#rrggbb`). The pair travels together so a host never composes one authored color against an unknown surface (the white-on-white failure mode).
 	DisplayColor *ConceptColor `json:"displayColor,omitempty"`
 
-	// Errors What the scheme's rules find wrong with the settled marking. An entry whose severity is `error` makes `valid` false.
-	//
-	// No entry here points at a fix path: `suggestedFix` is set only on a result that carries the fix it names, and this result carries none.
+	// Errors What the scheme's rules find wrong with the settled marking. Any entry makes `valid` false.
 	Errors []ValidationError `json:"errors"`
 
 	// InputWasValid True when the text or facts as given needed no change to stand.
@@ -4242,7 +3967,7 @@ type ProcessResult struct {
 	// Notices The notices the scheme attaches to the concepts in `assertions`, collected the same way `SchemeEngine.collectNotices()` collects them. Always present, empty when the marking carries none, so a consumer can read the field without checking that it exists.
 	Notices []Notice `json:"notices"`
 
-	// ProposedFixes The ways to make the resulting value valid, computed from that value after applied changes, each a whole marking the engine has read back and found valid before offering it. Empty when the marking is valid, or when no change the engine could prove would make it so. An error's `suggestedFix` names one of these by its `message`.
+	// ProposedFixes The ways to make the resulting value valid, computed from that value after applied changes, each a whole marking the engine has read back and found valid before offering it. Empty when the marking is valid, or when no change the engine could prove would make it so.
 	//
 	// A request's `parts` go back in with each fix, as the caller will send them, so they are read again in the fix's whole and the fix is judged with them: every part that read as a valid part marking in the call still does, and the fix covers every part that does. A part that did not read as a valid part marking in the call is one no fix to the whole can mend, so it does not keep a fix from being offered, and it may still fail beside the fix.
 	//
@@ -4256,9 +3981,9 @@ type ProcessResult struct {
 
 	// Rendered The settled marking, in one string.
 	//
-	// It is written in the output the request names. With none named, a scheme without `render.surfaces` writes its default format, and a scheme with them writes each surface in its default for the marking's role, by the rule `RenderConfigDoc.surfaces` states. Every operation that returns this shape follows that one rule.
+	// It is written in the output the request names, and in that output alone. With none named, a scheme without `render.surfaces` writes its default format, and a scheme with them writes each surface the result writes in its default for the marking's role, by the rule `RenderConfigDoc.surfaces` states. Every operation that returns this shape follows that one rule.
 	//
-	// For a scheme that declares `render.surfaces`, the string is the output resolved on each surface the result writes, as `RenderConfigDoc.surfaces` describes, in declared surface order and joined by `render.surface_separator`. An output that writes nothing adds nothing, and outputs written as XML attributes in one namespace merge into one attribute list. One refused output refuses the whole string, and `assessment` says which one and why.
+	// For a scheme that declares `render.surfaces`, the string holds the outputs `RenderConfigDoc.surfaces` selects, in declared surface order and joined by `render.surface_separator`: the one output a request names, or with none named the one default that writes every other surface's scope beside its own, else each surface's default. An output that writes nothing adds nothing, and outputs written as XML attributes in one namespace merge into one attribute list. One refused output refuses the whole string, and `assessment` says which one and why.
 	Rendered string `json:"rendered"`
 
 	// Renders Renders of one state, one per output, keyed by output address.
@@ -4282,7 +4007,9 @@ type ProcessResult struct {
 	Warnings []Warning `json:"warnings"`
 }
 
-// ProcessingContext Caller-supplied context describing the role of a marking being processed. No context (or role='whole') means an overall/document-level marking. role='part' means a portion/paragraph that belongs to another marking.
+// ProcessingContext Caller-supplied context naming the role the marking being read plays. No context, or `role: 'whole'`, means a whole: a marking that stands for everything it covers. `role: 'part'` means a part that belongs to a whole, named in `partOf` when it is known.
+//
+// On a rollup the context names the contributors' role, never the rollup's: the rollup is always a whole. So no context rolls wholes up into an aggregate, and `{ role: 'part', partOf }` rolls a whole's parts up. See `SchemeEngineAdapter.aggregate`.
 type ProcessingContext struct {
 	// PartOf The whole marking this is part of (when role='part').
 	//
@@ -4300,7 +4027,7 @@ type ProcessingContext struct {
 	// - A whole that reads but is invalid, or does not read, is not verified. The part is still read and judged by its own rules but is not compared with the whole, so it never carries `_exceeds_whole`. It always carries the `_whole_unverified` notice.
 	// - With no whole given, the part is judged by its own rules alone. It carries the `_whole_unverified` notice only when one of its rules was left unresolved.
 	//
-	// Without a verified whole, what needs the whole is left open instead of guessed: a rule condition with `target: 'context'` is unresolved, so its rule never fires, as `RuleConditionTarget` describes.
+	// Without a verified whole, what needs the whole is left open instead of guessed: a rule condition with `target: 'context'` is unresolved, so its rule never fires, as `RuleConditionTarget` describes. A stand-in is the exception, because it is shorthand for the whole's values and means nothing without them: a part that leaves a category to a concept that declares `stands_for_whole` carries a `_stand_in_requires_whole` error naming it.
 	PartOf *struct {
 		// Assertions Pre-resolved assertions of the whole marking (populated by the engine)
 		Assertions *[]Assertion `json:"assertions,omitempty"`
@@ -4331,7 +4058,7 @@ type RateLimitError struct {
 //
 // `audit-degraded`: the runtime could not write one or more audit records and keeps answering requests without them until audit writes succeed again.
 //
-// `clock-rollback`: the system clock reads further behind a time this runtime already accepted than the tolerated skew allows, so license evaluation holds at that accepted time and update entitlement is suspended until the clock is corrected.
+// `application-allowance-exceeded`: more distinct application ids have called the runtime than its license's application allowance. Every application is still served, registered or not: the warning informs and never refuses a request.
 //
 // `generation-refused`: a managed runtime refused what its control plane last offered, either the newest generation or the desired-state page as a whole, and keeps the generation it already holds, if it holds one.
 //
@@ -4377,7 +4104,7 @@ type RecognitionCorrectionReason string
 
 // RecognitionLimit The ceilings recognition can reach.
 //
-// Closed, because a caller distinguishing a cancelled run from an exhausted one is writing a branch, not a message. `aborted` is the caller's own `AbortSignal` firing, which is a ceiling in the sense that matters here: the answer is not a confident one. `wall-clock` is the operator's time limit, and it is a separate word from `transitions` because the two say different things to whoever set them: one means the input was harder than the work ceiling allows, the other that the host was slower than the time allowed or the input harder than both.
+// Closed, because a caller telling one exhausted ceiling from another is writing a branch, not a message. `input-length` is the longest input the engine reads, `transitions` and `lookups` are the work it spends reading, and `live-states` is how many readings it keeps open at once.
 type RecognitionLimit string
 
 // RecognitionResult What recognition made of an input string: how far it got, what it read, and what it could not account for.
@@ -4523,45 +4250,7 @@ type RenderResult struct {
 // On a process result it holds exactly the outputs the request named in `outputs`. An output that was asked for and could not write the state says so in its assessment rather than being left out, because a missing key would mean nobody asked for it.
 type RenderResultsByFormat map[string]RenderResult
 
-// RepairConfidence Confidence assigned to a deterministic repair.
-type RepairConfidence string
-
-// Reproducibility Describes whether an observed source can be loaded again byte-for-byte.
-type Reproducibility string
-
-// ReproducibleRuleSourceReference Compact source join carried by a qualified rule reference.
-type ReproducibleRuleSourceReference struct {
-	// ProviderID Stable identifier for the source provider.
-	ProviderID string `json:"providerId"`
-
-	// Reproducibility Whether the source observation can be reproduced byte-for-byte.
-	Reproducibility string `json:"reproducibility"`
-
-	// SnapshotID Immutable snapshot containing the rule.
-	SnapshotID string `json:"snapshotId"`
-}
-
-// ReproducibleSourceReference Reproducible source identity and mandatory attribution for an operation.
-type ReproducibleSourceReference struct {
-	// Attribution Provenance attached to every source so downstream consumers can render proper attribution and license notices.
-	//
-	// Mandatory because most source data we'll integrate (NIST, ICS, IANA, external taxonomies) requires citation. Sources that don't have a formal license should set `license: 'unspecified'` rather than omit it.
-	Attribution Attribution `json:"attribution"`
-
-	// Locator Location from which the content was observed.
-	Locator *string `json:"locator,omitempty"`
-
-	// ProviderID Stable identifier for the source provider.
-	ProviderID string `json:"providerId"`
-
-	// Reproducibility Whether the source observation can be reproduced byte-for-byte.
-	Reproducibility string `json:"reproducibility"`
-
-	// SnapshotID Immutable content identity.
-	SnapshotID string `json:"snapshotId"`
-}
-
-// Rollup Canonical rollup operator. `pipeline` requires a matching entry in the scheme's `rollup_pipelines`. Most merge operators are set-algebraic over each input's assertions; rank-based operators (max/min/least_upper_bound) require categories whose concepts declare `rank`.
+// Rollup Canonical rollup operator. `pipeline` requires a matching entry in the scheme's `rollup_pipelines`. Most merge operators are set-algebraic over each input's assertions; rank-based operators (max/min) require categories whose concepts declare `rank`.
 type Rollup string
 
 // RuleCondition A single condition in a rule's `when` block. Can test category contents, processing context role, or concept presence.
@@ -4572,11 +4261,8 @@ type RuleCondition struct {
 	// Has Shorthand for has_concept: check if this concept is present
 	Has *string `json:"has,omitempty"`
 
-	// Is Combined operator+value shorthand (e.g. "count_eq 1", "has_content")
-	Is *string `json:"is,omitempty"`
-
-	// Operator Explicit operator for the condition
-	Operator *string `json:"operator,omitempty"`
+	// Operator The test a scheme condition applies to one category's assertions. `has_concept` and `not_has_concept` name a concept in `value`; `has_content` holds when the category holds anything; the `count_*` tests (greater than, greater than or equal, equal, less than, less than or equal) compare the number of concepts in the category with the number in `value`; `min_rank` holds when the category holds a concept ranked at or above the rank in `value`; `subset_of` holds when this category's concepts are a subset of the category named in `value`, and `shares_concept_with` when the two share a concept; `every_has_concept` and `any_lacks_concept` ask whether every assertion set, or at least one, holds the concept named in `value`.
+	Operator *RuleConditionOperator `json:"operator,omitempty"`
 
 	// Role Structural role of a marking within a processing operation.
 	Role *ProcessingRole `json:"role,omitempty"`
@@ -4584,7 +4270,7 @@ type RuleCondition struct {
 	// Target Assertion set a rule condition is evaluated against.
 	//
 	// - `'self'` (default): the assertions currently under evaluation.
-	// - `'context'`: the assertions of the whole marking this one is part of. Such a condition has an answer only when the part has a verified whole, one that reads and is valid. Without one (no whole given, a whole that does not read, or a whole that reads but is invalid) the condition is unresolved, and so is any `all`, `any` or `none` around it whose answer depends on it. A rule whose `when` is unresolved never fires, changes no value, reports no error and offers no fix; a check rule (`require`, `require_any`, `restrict`, `forbid`, `exclusive`, `cardinality`) that the marking already meets still passes, and any other unresolved rule gives the part the `_whole_unverified` notice.
+	// - `'context'`: the assertions of the whole marking this one is part of. Such a condition has an answer only when the part has a verified whole, one that reads and is valid. Without one (no whole given, a whole that does not read, or a whole that reads but is invalid) the condition is unresolved, and so is any `all`, `any` or `none` around it whose answer depends on it. A rule whose `when` is unresolved never fires, changes no value, reports no error and offers no fix; a check rule (`require`, `require_any`, `restrict`, `forbid`, `exclusive`, `cardinality`) that the marking already meets still passes, and any other unresolved rule gives the part the `_whole_unverified` notice. A part's stand-in for its whole's values is not left open this way: without a verified whole it is a `_stand_in_requires_whole` error. See `ProcessingContext.partOf`.
 	// - `'contributors'`: each contributing assertion set that went into an aggregate, evaluated separately. The condition holds only when EVERY contributor satisfies it, and it is never satisfied outside aggregation, where there are no contributors to inspect. Use it to describe what must be true of every part of a document, which the merged set can no longer answer once the parts have been collapsed into one.
 	Target *RuleConditionTarget `json:"target,omitempty"`
 
@@ -4603,48 +4289,18 @@ type RuleCondition_Value struct {
 	union json.RawMessage
 }
 
+// RuleConditionOperator The test a scheme condition applies to one category's assertions. `has_concept` and `not_has_concept` name a concept in `value`; `has_content` holds when the category holds anything; the `count_*` tests (greater than, greater than or equal, equal, less than, less than or equal) compare the number of concepts in the category with the number in `value`; `min_rank` holds when the category holds a concept ranked at or above the rank in `value`; `subset_of` holds when this category's concepts are a subset of the category named in `value`, and `shares_concept_with` when the two share a concept; `every_has_concept` and `any_lacks_concept` ask whether every assertion set, or at least one, holds the concept named in `value`.
+type RuleConditionOperator string
+
 // RuleConditionTarget Assertion set a rule condition is evaluated against.
 //
 // - `'self'` (default): the assertions currently under evaluation.
-// - `'context'`: the assertions of the whole marking this one is part of. Such a condition has an answer only when the part has a verified whole, one that reads and is valid. Without one (no whole given, a whole that does not read, or a whole that reads but is invalid) the condition is unresolved, and so is any `all`, `any` or `none` around it whose answer depends on it. A rule whose `when` is unresolved never fires, changes no value, reports no error and offers no fix; a check rule (`require`, `require_any`, `restrict`, `forbid`, `exclusive`, `cardinality`) that the marking already meets still passes, and any other unresolved rule gives the part the `_whole_unverified` notice.
+// - `'context'`: the assertions of the whole marking this one is part of. Such a condition has an answer only when the part has a verified whole, one that reads and is valid. Without one (no whole given, a whole that does not read, or a whole that reads but is invalid) the condition is unresolved, and so is any `all`, `any` or `none` around it whose answer depends on it. A rule whose `when` is unresolved never fires, changes no value, reports no error and offers no fix; a check rule (`require`, `require_any`, `restrict`, `forbid`, `exclusive`, `cardinality`) that the marking already meets still passes, and any other unresolved rule gives the part the `_whole_unverified` notice. A part's stand-in for its whole's values is not left open this way: without a verified whole it is a `_stand_in_requires_whole` error. See `ProcessingContext.partOf`.
 // - `'contributors'`: each contributing assertion set that went into an aggregate, evaluated separately. The condition holds only when EVERY contributor satisfies it, and it is never satisfied outside aggregation, where there are no contributors to inspect. Use it to describe what must be true of every part of a document, which the merged set can no longer answer once the parts have been collapsed into one.
 type RuleConditionTarget string
 
 // RuleContributorQuantifier Quantifies a condition block over contributing assertion sets.
 type RuleContributorQuantifier string
-
-// RuleDescription Human-readable description of a guide rule. Parallels `ConceptDescription` on the scheme side.
-type RuleDescription struct {
-	// DependsOn Qualified rules referenced by this rule's activation block.
-	DependsOn []RuleReference `json:"dependsOn"`
-
-	// Description Optional policy-authored description.
-	Description *string `json:"description,omitempty"`
-
-	// Guide Identifies an immutable artifact participating in a composed operation.
-	Guide ArtifactReference `json:"guide"`
-
-	// IsComputed Whether the rule is computed from other guide facts.
-	IsComputed bool `json:"isComputed"`
-
-	// Lines Flattened multi-line description matching `ConceptDescription.lines`.
-	Lines []string `json:"lines"`
-
-	// Name Human-readable rule name.
-	Name string `json:"name"`
-
-	// OutcomeText Human-readable outcome expression.
-	OutcomeText string `json:"outcomeText"`
-
-	// Overrides Qualified rules this rule overrides when it fires.
-	Overrides []RuleReference `json:"overrides"`
-
-	// Rule Identifies the exact resolved semantics of one policy rule.
-	Rule RuleReference `json:"rule"`
-
-	// WhenText Human-readable activation expression.
-	WhenText *string `json:"whenText,omitempty"`
-}
 
 // RuleReference Identifies the exact resolved semantics of one policy rule.
 type RuleReference struct {
@@ -4656,14 +4312,6 @@ type RuleReference struct {
 
 	// RuleID Rule identifier within the owning artifact.
 	RuleID string `json:"ruleId"`
-
-	// Source Compact source join carried by a qualified rule reference.
-	Source *RuleSourceReference `json:"source,omitempty"`
-}
-
-// RuleSourceReference Compact source join carried by a qualified rule reference.
-type RuleSourceReference struct {
-	union json.RawMessage
 }
 
 // RuleWhen Conditions that trigger a rule. Supports shorthand forms:
@@ -4714,7 +4362,7 @@ type RuleWhenQuantifier struct {
 type ScanLimits struct {
 	// LimitHit The ceilings recognition can reach.
 	//
-	// Closed, because a caller distinguishing a cancelled run from an exhausted one is writing a branch, not a message. `aborted` is the caller's own `AbortSignal` firing, which is a ceiling in the sense that matters here: the answer is not a confident one. `wall-clock` is the operator's time limit, and it is a separate word from `transitions` because the two say different things to whoever set them: one means the input was harder than the work ceiling allows, the other that the host was slower than the time allowed or the input harder than both.
+	// Closed, because a caller telling one exhausted ceiling from another is writing a branch, not a message. `input-length` is the longest input the engine reads, `transitions` and `lookups` are the work it spends reading, and `live-states` is how many readings it keeps open at once.
 	LimitHit *RecognitionLimit `json:"limitHit,omitempty"`
 
 	// RegionsCapped Whether the per-document region cap was reached.
@@ -4742,6 +4390,9 @@ type ScanResponseBody struct {
 
 	// Results The markings the scan found, in document order.
 	Results []ScanResult `json:"results"`
+
+	// Unread The wrapped marks the scan found but could not read, in document order. Empty when every wrapped mark it reached was read. Text past where the scan stopped was never offered to recognition, so none of it is listed.
+	Unread []UnreadMark `json:"unread"`
 }
 
 // ScanResult A single marking found during a scheme scan of free text.
@@ -4785,17 +4436,6 @@ type ScanResult struct {
 //
 // `complete` means the whole document was offered to recognition. `truncated` means the region cap was reached with budget to spare. `resource-limit` means the budget was spent or the caller aborted.
 type ScanStatus string
-
-// SchemeGrammar Context scheme grammar response: the scheme's recognition policy.
-//
-// No separator. Every boundary belongs to the field that writes it, so there is no global one to publish; what is left is how a spelling found at a boundary is compared against the vocabulary.
-type SchemeGrammar struct {
-	// CaseSensitive Whether the vocabulary is matched case-sensitively.
-	CaseSensitive bool `json:"caseSensitive"`
-
-	// StripWhitespace Whether surrounding whitespace is ignored when a spelling is compared.
-	StripWhitespace bool `json:"stripWhitespace"`
-}
 
 // SchemeScope One scope a scheme declares, as the scopes resource lists it.
 type SchemeScope struct {
@@ -4847,8 +4487,8 @@ type SchemeSummary struct {
 	// Definition Human-readable definition of the scheme, for tooltips and about panels.
 	Definition *string `json:"definition,omitempty"`
 
-	// Description Free-text description from the scheme metadata.
-	Description string `json:"description"`
+	// Description Free-text description from the scheme metadata. Omitted when the scheme has none.
+	Description *string `json:"description,omitempty"`
 
 	// EmbeddedMarking Ways a marking may appear embedded in free text. Omitted when the scheme declares none, which is how a client tells that inline marking is off.
 	EmbeddedMarking *[]EmbeddedMarkingStyle `json:"embeddedMarking,omitempty"`
@@ -4858,6 +4498,9 @@ type SchemeSummary struct {
 
 	// ID Scheme identifier from the scheme metadata.
 	ID string `json:"id"`
+
+	// Marking The scheme document's own overall marking, exactly as its `scheme.marking` writes it. Display only: never interpreted. Omitted when the document declares none.
+	Marking *string `json:"marking,omitempty"`
 
 	// Name Display name from the scheme metadata.
 	Name string `json:"name"`
@@ -4900,6 +4543,9 @@ type SchemeViewResponse struct {
 	// ID The scheme id.
 	ID string `json:"id"`
 
+	// Marking The scheme document's own overall marking, exactly as its `scheme.marking` writes it. Display only: never interpreted. Absent when the document declares none.
+	Marking *string `json:"marking,omitempty"`
+
 	// Name The scheme's display name.
 	Name string `json:"name"`
 
@@ -4914,32 +4560,6 @@ type SchemeViewResponse struct {
 
 // SortType How concepts within a category are sorted during rendering.
 type SortType string
-
-// SourceReference Records source identity and mandatory attribution for an operation.
-type SourceReference struct {
-	union json.RawMessage
-}
-
-// SubjectContextRequirement Conditional external relationship needed by a subject-context comparison.
-type SubjectContextRequirement struct {
-	// AcceptableValues Context values that would satisfy the relationship, when known.
-	AcceptableValues *[]interface{} `json:"acceptableValues,omitempty"`
-
-	// ContextPath Supplied context operand path.
-	ContextPath string `json:"contextPath"`
-
-	// Instruction Conditional explanation of the external-state prerequisite.
-	Instruction string `json:"instruction"`
-
-	// Operator Comparison operator.
-	Operator string `json:"operator"`
-
-	// Rule Identifies the exact resolved semantics of one policy rule.
-	Rule RuleReference `json:"rule"`
-
-	// SubjectPath Immutable subject operand path.
-	SubjectPath string `json:"subjectPath"`
-}
 
 // SuggestResult What suggest answers: the concepts a picker may offer, and nothing about the marking itself.
 //
@@ -5100,9 +4720,6 @@ type TraceRepair struct {
 	// Before The text before the repair.
 	Before string `json:"before"`
 
-	// Confidence Confidence assigned to a deterministic repair.
-	Confidence RepairConfidence `json:"confidence"`
-
 	// Cosmetic True when the repair changed only formatting and left the assertions as they were.
 	Cosmetic *bool `json:"cosmetic,omitempty"`
 
@@ -5120,6 +4737,32 @@ type TraceValidationIssue struct {
 
 	// Message What is wrong, in words.
 	Message string `json:"message"`
+}
+
+// UnreadMark A wrapped mark a scan found but could not read.
+//
+// The text matched the scheme's `embeddedMarking` pattern, which is how a part marking is written, but recognition read no marking in it, and it has no entry in `ScanOutcome.results`. Text that looks like a marking and carries none is reported rather than dropped, so a reader can see it and correct it. `start`/`end` are offsets in UTF-16 code units in the input text, as on `ScanResult`.
+type UnreadMark struct {
+	// End End position in the input text
+	End int `json:"end"`
+
+	// Inner The text inside the wrapper: the capture group of the scheme's `embeddedMarking` pattern.
+	Inner string `json:"inner"`
+
+	// Leading Whether the mark stands where a part mark goes: at the start of its paragraph. Both of these hold for a leading mark.
+	//
+	// Its line starts a paragraph. The line starts at the beginning of the text or just after the last line feed before `start`. It starts a paragraph when it is the first line, when the line before it is blank or ends in `.`, `!`, `?`, `:` or `;`, or when the line before it holds nothing but a marking read in the whole role, such as a banner.
+	//
+	// Only whitespace and outline labels come before it on its line: at most three labels, each followed by whitespace, in no more than 64 UTF-16 code units after the line's leading whitespace. A line feed is not whitespace here. An outline label is one or more groups of one to four letters or digits, each closed by `.` or `)` and optionally opened by `(` (`1.`, `a)`, `(1)`, `iv.`, `1.a.`, `(a)(1)`); a dotted numeral (`1.2`, `1.2.3.`); one bullet (`-`, `*`, `•`, `‣`, `⁃`, `◦`, `▪` or `–`); or one to six `#`. So the mark in `(QQ) text`, `1. (QQ) text` and `a) 2. (QQ) text` leads, and the one in `See (QQ) text` does not.
+	//
+	// A mark that follows another mark on its line does not lead, whether the earlier mark was read or not: in `(S)(QQ)` and in `(S) (QQ)` only `(S)` leads. Wrapped text before a mark is a label rather than a mark when its text is one lowercase letter, that letter two or three times, one to three digits, or a lowercase roman numeral, so the mark in `(a) (QQ) text` leads.
+	Leading bool `json:"leading"`
+
+	// Start Start position in the input text
+	Start int `json:"start"`
+
+	// Text The wrapped text as found in the document, wrapper included.
+	Text string `json:"text"`
 }
 
 // UnrepresentableFact A fact this format has no way to write.
@@ -5195,9 +4838,7 @@ type ValidateResult struct {
 	// Both values are CSS hex (`#rgb` or `#rrggbb`). The pair travels together so a host never composes one authored color against an unknown surface (the white-on-white failure mode).
 	DisplayColor *ConceptColor `json:"displayColor,omitempty"`
 
-	// Errors What the scheme's rules find wrong with the settled marking. An entry whose severity is `error` makes `valid` false.
-	//
-	// No entry here points at a fix path: `suggestedFix` is set only on a result that carries the fix it names, and this result carries none.
+	// Errors What the scheme's rules find wrong with the settled marking. Any entry makes `valid` false.
 	Errors []ValidationError `json:"errors"`
 
 	// InputWasValid True when the text or facts as given needed no change to stand.
@@ -5221,9 +4862,9 @@ type ValidateResult struct {
 
 	// Rendered The settled marking, in one string.
 	//
-	// It is written in the output the request names. With none named, a scheme without `render.surfaces` writes its default format, and a scheme with them writes each surface in its default for the marking's role, by the rule `RenderConfigDoc.surfaces` states. Every operation that returns this shape follows that one rule.
+	// It is written in the output the request names, and in that output alone. With none named, a scheme without `render.surfaces` writes its default format, and a scheme with them writes each surface the result writes in its default for the marking's role, by the rule `RenderConfigDoc.surfaces` states. Every operation that returns this shape follows that one rule.
 	//
-	// For a scheme that declares `render.surfaces`, the string is the output resolved on each surface the result writes, as `RenderConfigDoc.surfaces` describes, in declared surface order and joined by `render.surface_separator`. An output that writes nothing adds nothing, and outputs written as XML attributes in one namespace merge into one attribute list. One refused output refuses the whole string, and `assessment` says which one and why.
+	// For a scheme that declares `render.surfaces`, the string holds the outputs `RenderConfigDoc.surfaces` selects, in declared surface order and joined by `render.surface_separator`: the one output a request names, or with none named the one default that writes every other surface's scope beside its own, else each surface's default. An output that writes nothing adds nothing, and outputs written as XML attributes in one namespace merge into one attribute list. One refused output refuses the whole string, and `assessment` says which one and why.
 	Rendered string `json:"rendered"`
 
 	// Valid True when the marking stands once the engine has settled it: read, repaired, completed by what the scheme's rules imply, and judged with no error left.
@@ -5237,11 +4878,13 @@ type ValidateResult struct {
 
 // ValidationError A constraint violation detected during validation, referencing the constraint ID and a human-readable message.
 //
-// Carried in the `errors` of every result that judges a marking. `constraintId` identifies the rule that fired; `message` is human-readable. When `severity` is `'warning'`, the violation is advisory and does not set `valid` to `false`. Use `categoryId` and `affectedConcepts` to highlight the specific UI elements involved.
+// Carried in the `errors` of every result that judges a marking. `constraintId` identifies the rule that fired; `message` is human-readable. Every entry sets `valid` to `false`; advisories are warnings, not errors. Use `categoryId` and `affectedConcepts` to highlight the specific UI elements involved.
 //
 // Two of the ids the engine keeps for itself are for a fact a caller hands in that cannot be settled as given: `_missing_assertion_value`, a concept that takes a value handed in with none, and `_invalid_assertion_value`, a value the concept's encoding cannot read. Each is an error on the result, not a refused request: the fact is left out of the settled marking and named in `affectedConcepts`.
 //
 // Another, `_exceeds_whole`, is a part that carries more than the whole it is read in: the whole does not cover a value the part holds, carries one the part does not allow, or, in a category a rollup pipeline resolves, would change if rolled up with the part. It is given only for a part that is valid on its own, read in a whole that reads and is valid. `affectedConcepts` names every finding, and no fix answers it. See `ProcessingContext.partOf`.
+//
+// And `_stand_in_requires_whole` is a part that leaves a category to a stand-in, a concept that declares `stands_for_whole`, with no verified whole to take the values from. `affectedConcepts` names the stand-in and `categoryId` its category.
 type ValidationError struct {
 	// AffectedConcepts Concept IDs involved in this validation failure.
 	AffectedConcepts *[]string `json:"affectedConcepts,omitempty"`
@@ -5258,23 +4901,12 @@ type ValidationError struct {
 	//
 	// Its absence is no evidence that the token is stray text. A token too short to judge carries none, and so does one equally near to too many concepts. A token that already spells a concept, apart from case, carries none even when it is also near another concept: it was left unread for another reason, such as where it stands, and naming a different concept would point the author away from a word they spelled right.
 	//
-	// It is not a fix: nothing here has been proven to make the marking valid, and `suggestedFix` and the result's fix paths do not depend on it.
+	// It is not a fix: nothing here has been proven to make the marking valid, and the result's fix paths do not depend on it.
 	DidYouMean *[]string `json:"didYouMean,omitempty"`
 
 	// Message What is wrong, in words a person can act on.
 	Message string `json:"message"`
-
-	// Severity Severity assigned to a validation issue.
-	Severity *ValidationSeverity `json:"severity,omitempty"`
-
-	// SuggestedFix The `message` of the proposed fix that answers this error, such as "Add CTRL-A".
-	//
-	// Set only on a result that carries that fix in its own `proposedFixes`. A result with no fix paths, such as a `ValidateResult` or a scan region, never sets it, so a reader never holds a pointer to a fix it was not given.
-	SuggestedFix *string `json:"suggestedFix,omitempty"`
 }
-
-// ValidationSeverity Severity assigned to a validation issue.
-type ValidationSeverity string
 
 // ValueEncoding How a free-text value is spelled and stored: the resolved codec.
 //
@@ -5327,6 +4959,9 @@ type Win struct {
 	union json.RawMessage
 }
 
+// ApplicationID defines model for ApplicationId.
+type ApplicationID = string
+
 // BadRequest Response body for error responses (4xx / 5xx).
 type BadRequest = ErrorResponse
 
@@ -5348,22 +4983,130 @@ type TooManyRequests = RateLimitError
 // UnprocessableEntity Response body for error responses (4xx / 5xx).
 type UnprocessableEntity = ErrorResponse
 
+// CtxListParams defines parameters for CtxList.
+type CtxListParams struct {
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxVersionsParams defines parameters for CtxVersions.
+type CtxVersionsParams struct {
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxDescribeParams defines parameters for CtxDescribe.
+type CtxDescribeParams struct {
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxAccessCheckParams defines parameters for CtxAccessCheck.
+type CtxAccessCheckParams struct {
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxAccessDescribeRequirementsParams defines parameters for CtxAccessDescribeRequirements.
+type CtxAccessDescribeRequirementsParams struct {
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxAccessRulesParams defines parameters for CtxAccessRules.
+type CtxAccessRulesParams struct {
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxCrosswalkDescribeParams defines parameters for CtxCrosswalkDescribe.
+type CtxCrosswalkDescribeParams struct {
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxCrosswalkTranslateParams defines parameters for CtxCrosswalkTranslate.
+type CtxCrosswalkTranslateParams struct {
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxDocumentAuditParams defines parameters for CtxDocumentAudit.
+type CtxDocumentAuditParams struct {
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxGuideEvaluateParams defines parameters for CtxGuideEvaluate.
+type CtxGuideEvaluateParams struct {
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxGuideScanParams defines parameters for CtxGuideScan.
+type CtxGuideScanParams struct {
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxGuideViewParams defines parameters for CtxGuideView.
+type CtxGuideViewParams struct {
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
 // CtxSchemeSummaryParams defines parameters for CtxSchemeSummary.
 type CtxSchemeSummaryParams struct {
-	// Scheme Context-local key, or unambiguous artifact id, of the scheme to read. Defaults to the context's primary scheme; a crosswalk's source or target scheme is named here. A key the context does not hold answers 404.
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
 	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxSchemeAggregateParams defines parameters for CtxSchemeAggregate.
+type CtxSchemeAggregateParams struct {
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
+	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxSchemeApplyPresetParams defines parameters for CtxSchemeApplyPreset.
+type CtxSchemeApplyPresetParams struct {
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
+	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
 }
 
 // CtxSchemeCategoriesParams defines parameters for CtxSchemeCategories.
 type CtxSchemeCategoriesParams struct {
-	// Scheme Context-local key, or unambiguous artifact id, of the scheme to read. Defaults to the context's primary scheme; a crosswalk's source or target scheme is named here. A key the context does not hold answers 404.
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
 	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxSchemeCheckCoverageParams defines parameters for CtxSchemeCheckCoverage.
+type CtxSchemeCheckCoverageParams struct {
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
+	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
 }
 
 // CtxSchemeConceptsParams defines parameters for CtxSchemeConcepts.
 type CtxSchemeConceptsParams struct {
-	// Scheme Context-local key, or unambiguous artifact id, of the scheme to read. Defaults to the context's primary scheme; a crosswalk's source or target scheme is named here. A key the context does not hold answers 404.
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
 	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
 }
 
 // CtxSchemeDescribeConceptParams defines parameters for CtxSchemeDescribeConcept.
@@ -5376,24 +5119,129 @@ type CtxSchemeDescribeConceptParams struct {
 
 	// View The view to name the concept in: a key of the concept's `views`. Omitted, its default view.
 	View *string `form:"view,omitempty" json:"view,omitempty"`
+
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
+	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxSchemeDiffParams defines parameters for CtxSchemeDiff.
+type CtxSchemeDiffParams struct {
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
+	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxSchemeExplainParams defines parameters for CtxSchemeExplain.
+type CtxSchemeExplainParams struct {
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
+	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
 }
 
 // CtxSchemeFormatsParams defines parameters for CtxSchemeFormats.
 type CtxSchemeFormatsParams struct {
-	// Scheme Context-local key, or unambiguous artifact id, of the scheme to read. Defaults to the context's primary scheme; a crosswalk's source or target scheme is named here. A key the context does not hold answers 404.
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
 	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
 }
 
-// CtxSchemeGrammarParams defines parameters for CtxSchemeGrammar.
-type CtxSchemeGrammarParams struct {
-	// Scheme Context-local key, or unambiguous artifact id, of the scheme to read. Defaults to the context's primary scheme; a crosswalk's source or target scheme is named here. A key the context does not hold answers 404.
+// CtxSchemeLabelPresetsParams defines parameters for CtxSchemeLabelPresets.
+type CtxSchemeLabelPresetsParams struct {
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
 	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxSchemeNoticesParams defines parameters for CtxSchemeNotices.
+type CtxSchemeNoticesParams struct {
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
+	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxSchemeProcessParams defines parameters for CtxSchemeProcess.
+type CtxSchemeProcessParams struct {
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
+	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxSchemeRenderParams defines parameters for CtxSchemeRender.
+type CtxSchemeRenderParams struct {
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
+	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxSchemeScanParams defines parameters for CtxSchemeScan.
+type CtxSchemeScanParams struct {
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
+	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
 }
 
 // CtxSchemeScopesParams defines parameters for CtxSchemeScopes.
 type CtxSchemeScopesParams struct {
-	// Scheme Context-local key, or unambiguous artifact id, of the scheme to read. Defaults to the context's primary scheme; a crosswalk's source or target scheme is named here. A key the context does not hold answers 404.
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
 	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxSchemeSuggestParams defines parameters for CtxSchemeSuggest.
+type CtxSchemeSuggestParams struct {
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
+	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxSchemeSuggestForCategoriesParams defines parameters for CtxSchemeSuggestForCategories.
+type CtxSchemeSuggestForCategoriesParams struct {
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
+	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxSchemeValidateParams defines parameters for CtxSchemeValidate.
+type CtxSchemeValidateParams struct {
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
+	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
+}
+
+// CtxSchemeViewParams defines parameters for CtxSchemeView.
+type CtxSchemeViewParams struct {
+	// Scheme Context-local key of the scheme the request is answered in, as `GET /v1/ctx/{ctxId}/{version}` lists it. Without it the context's primary scheme answers. Any scheme the context holds may be named, a crosswalk's source or target among them. A key the context does not hold answers 404 with code `scheme_not_found`; it never falls back to the primary. Name it once: a repeated selector answers 400.
+	Scheme *string `form:"scheme,omitempty" json:"scheme,omitempty"`
+
+	// XEzclassifyApplicationID Identifies the calling application for per-application usage reporting: the id the application is registered under. It is not a credential and authorizes nothing. A request without it, or with an id the deployment has not registered, is served the same way. An id is 1 to 128 printable ASCII characters (0x21 to 0x7E), with no spaces. A value that does not match is served and counted as unidentified.
+	XEzclassifyApplicationID *ApplicationID `json:"x-ezclassify-application-id,omitempty"`
 }
 
 // CtxAccessCheckJSONRequestBody defines body for CtxAccessCheck for application/json ContentType.
@@ -5402,26 +5250,14 @@ type CtxAccessCheckJSONRequestBody = CtxAccessCheckRequestBody
 // CtxAccessDescribeRequirementsJSONRequestBody defines body for CtxAccessDescribeRequirements for application/json ContentType.
 type CtxAccessDescribeRequirementsJSONRequestBody = CtxAccessDescribeRequirementsRequestBody
 
-// CtxAccessDescribeRuleJSONRequestBody defines body for CtxAccessDescribeRule for application/json ContentType.
-type CtxAccessDescribeRuleJSONRequestBody = CtxAccessDescribeRuleRequestBody
-
 // CtxCrosswalkTranslateJSONRequestBody defines body for CtxCrosswalkTranslate for application/json ContentType.
 type CtxCrosswalkTranslateJSONRequestBody = CtxCrosswalkTranslateRequestBody
-
-// CtxDocumentAssessAccessJSONRequestBody defines body for CtxDocumentAssessAccess for application/json ContentType.
-type CtxDocumentAssessAccessJSONRequestBody = CtxDocumentAssessAccessRequestBody
 
 // CtxDocumentAuditJSONRequestBody defines body for CtxDocumentAudit for application/json ContentType.
 type CtxDocumentAuditJSONRequestBody = CtxDocumentAuditRequestBody
 
-// CtxGuideDescribeRuleJSONRequestBody defines body for CtxGuideDescribeRule for application/json ContentType.
-type CtxGuideDescribeRuleJSONRequestBody = CtxGuideDescribeRuleRequestBody
-
 // CtxGuideEvaluateJSONRequestBody defines body for CtxGuideEvaluate for application/json ContentType.
 type CtxGuideEvaluateJSONRequestBody = CtxGuideEvaluateRequestBody
-
-// CtxGuideFilterRulesJSONRequestBody defines body for CtxGuideFilterRules for application/json ContentType.
-type CtxGuideFilterRulesJSONRequestBody = CtxGuideFilterRulesRequestBody
 
 // CtxGuideScanJSONRequestBody defines body for CtxGuideScan for application/json ContentType.
 type CtxGuideScanJSONRequestBody = CtxGuideScanRequestBody
@@ -5443,12 +5279,6 @@ type CtxSchemeDiffJSONRequestBody = CtxSchemeDiffRequestBody
 
 // CtxSchemeExplainJSONRequestBody defines body for CtxSchemeExplain for application/json ContentType.
 type CtxSchemeExplainJSONRequestBody = CtxSchemeExplainRequestBody
-
-// CtxSchemeFilterConceptsJSONRequestBody defines body for CtxSchemeFilterConcepts for application/json ContentType.
-type CtxSchemeFilterConceptsJSONRequestBody = CtxSchemeFilterConceptsRequestBody
-
-// CtxSchemeNormalizeJSONRequestBody defines body for CtxSchemeNormalize for application/json ContentType.
-type CtxSchemeNormalizeJSONRequestBody = CtxSchemeNormalizeRequestBody
 
 // CtxSchemeNoticesJSONRequestBody defines body for CtxSchemeNotices for application/json ContentType.
 type CtxSchemeNoticesJSONRequestBody = CtxSchemeNoticesRequestBody
@@ -5712,6 +5542,32 @@ func (t *CrosswalkOutcome_Disposition) MergeCrosswalkOutcomeDisposition1(v Cross
 	return err
 }
 
+// AsCrosswalkOutcomeDisposition2 returns the union data inside the CrosswalkOutcome_Disposition as a CrosswalkOutcomeDisposition2
+func (t CrosswalkOutcome_Disposition) AsCrosswalkOutcomeDisposition2() (CrosswalkOutcomeDisposition2, error) {
+	var body CrosswalkOutcomeDisposition2
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromCrosswalkOutcomeDisposition2 overwrites any union data inside the CrosswalkOutcome_Disposition as the provided CrosswalkOutcomeDisposition2
+func (t *CrosswalkOutcome_Disposition) FromCrosswalkOutcomeDisposition2(v CrosswalkOutcomeDisposition2) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeCrosswalkOutcomeDisposition2 performs a merge with any union data inside the CrosswalkOutcome_Disposition, using the provided CrosswalkOutcomeDisposition2
+func (t *CrosswalkOutcome_Disposition) MergeCrosswalkOutcomeDisposition2(v CrosswalkOutcomeDisposition2) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
 func (t CrosswalkOutcome_Disposition) MarshalJSON() ([]byte, error) {
 	b, err := t.union.MarshalJSON()
 	return b, err
@@ -5842,6 +5698,156 @@ func (t FormatSyntaxType) MarshalJSON() ([]byte, error) {
 }
 
 func (t *FormatSyntaxType) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsGuideWhenHas returns the union data inside the GuideWhenNode as a GuideWhenHas
+func (t GuideWhenNode) AsGuideWhenHas() (GuideWhenHas, error) {
+	var body GuideWhenHas
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromGuideWhenHas overwrites any union data inside the GuideWhenNode as the provided GuideWhenHas
+func (t *GuideWhenNode) FromGuideWhenHas(v GuideWhenHas) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeGuideWhenHas performs a merge with any union data inside the GuideWhenNode, using the provided GuideWhenHas
+func (t *GuideWhenNode) MergeGuideWhenHas(v GuideWhenHas) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsGuideWhenTest returns the union data inside the GuideWhenNode as a GuideWhenTest
+func (t GuideWhenNode) AsGuideWhenTest() (GuideWhenTest, error) {
+	var body GuideWhenTest
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromGuideWhenTest overwrites any union data inside the GuideWhenNode as the provided GuideWhenTest
+func (t *GuideWhenNode) FromGuideWhenTest(v GuideWhenTest) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeGuideWhenTest performs a merge with any union data inside the GuideWhenNode, using the provided GuideWhenTest
+func (t *GuideWhenNode) MergeGuideWhenTest(v GuideWhenTest) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsGuideWhen returns the union data inside the GuideWhenNode as a GuideWhen
+func (t GuideWhenNode) AsGuideWhen() (GuideWhen, error) {
+	var body GuideWhen
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromGuideWhen overwrites any union data inside the GuideWhenNode as the provided GuideWhen
+func (t *GuideWhenNode) FromGuideWhen(v GuideWhen) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeGuideWhen performs a merge with any union data inside the GuideWhenNode, using the provided GuideWhen
+func (t *GuideWhenNode) MergeGuideWhen(v GuideWhen) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t GuideWhenNode) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *GuideWhenNode) UnmarshalJSON(b []byte) error {
+	err := t.union.UnmarshalJSON(b)
+	return err
+}
+
+// AsGuideWhenTestValue0 returns the union data inside the GuideWhenTest_Value as a GuideWhenTestValue0
+func (t GuideWhenTest_Value) AsGuideWhenTestValue0() (GuideWhenTestValue0, error) {
+	var body GuideWhenTestValue0
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromGuideWhenTestValue0 overwrites any union data inside the GuideWhenTest_Value as the provided GuideWhenTestValue0
+func (t *GuideWhenTest_Value) FromGuideWhenTestValue0(v GuideWhenTestValue0) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeGuideWhenTestValue0 performs a merge with any union data inside the GuideWhenTest_Value, using the provided GuideWhenTestValue0
+func (t *GuideWhenTest_Value) MergeGuideWhenTestValue0(v GuideWhenTestValue0) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsGuideWhenTestValue1 returns the union data inside the GuideWhenTest_Value as a GuideWhenTestValue1
+func (t GuideWhenTest_Value) AsGuideWhenTestValue1() (GuideWhenTestValue1, error) {
+	var body GuideWhenTestValue1
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromGuideWhenTestValue1 overwrites any union data inside the GuideWhenTest_Value as the provided GuideWhenTestValue1
+func (t *GuideWhenTest_Value) FromGuideWhenTestValue1(v GuideWhenTestValue1) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeGuideWhenTestValue1 performs a merge with any union data inside the GuideWhenTest_Value, using the provided GuideWhenTestValue1
+func (t *GuideWhenTest_Value) MergeGuideWhenTestValue1(v GuideWhenTestValue1) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+func (t GuideWhenTest_Value) MarshalJSON() ([]byte, error) {
+	b, err := t.union.MarshalJSON()
+	return b, err
+}
+
+func (t *GuideWhenTest_Value) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -6100,68 +6106,6 @@ func (t *RuleCondition_Value) UnmarshalJSON(b []byte) error {
 	return err
 }
 
-// AsReproducibleRuleSourceReference returns the union data inside the RuleSourceReference as a ReproducibleRuleSourceReference
-func (t RuleSourceReference) AsReproducibleRuleSourceReference() (ReproducibleRuleSourceReference, error) {
-	var body ReproducibleRuleSourceReference
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromReproducibleRuleSourceReference overwrites any union data inside the RuleSourceReference as the provided ReproducibleRuleSourceReference
-func (t *RuleSourceReference) FromReproducibleRuleSourceReference(v ReproducibleRuleSourceReference) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeReproducibleRuleSourceReference performs a merge with any union data inside the RuleSourceReference, using the provided ReproducibleRuleSourceReference
-func (t *RuleSourceReference) MergeReproducibleRuleSourceReference(v ReproducibleRuleSourceReference) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsBestEffortRuleSourceReference returns the union data inside the RuleSourceReference as a BestEffortRuleSourceReference
-func (t RuleSourceReference) AsBestEffortRuleSourceReference() (BestEffortRuleSourceReference, error) {
-	var body BestEffortRuleSourceReference
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromBestEffortRuleSourceReference overwrites any union data inside the RuleSourceReference as the provided BestEffortRuleSourceReference
-func (t *RuleSourceReference) FromBestEffortRuleSourceReference(v BestEffortRuleSourceReference) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeBestEffortRuleSourceReference performs a merge with any union data inside the RuleSourceReference, using the provided BestEffortRuleSourceReference
-func (t *RuleSourceReference) MergeBestEffortRuleSourceReference(v BestEffortRuleSourceReference) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t RuleSourceReference) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *RuleSourceReference) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
 // AsRuleWhen0 returns the union data inside the RuleWhen as a RuleWhen0
 func (t RuleWhen) AsRuleWhen0() (RuleWhen0, error) {
 	var body RuleWhen0
@@ -6308,68 +6252,6 @@ func (t RuleWhenNode) MarshalJSON() ([]byte, error) {
 }
 
 func (t *RuleWhenNode) UnmarshalJSON(b []byte) error {
-	err := t.union.UnmarshalJSON(b)
-	return err
-}
-
-// AsReproducibleSourceReference returns the union data inside the SourceReference as a ReproducibleSourceReference
-func (t SourceReference) AsReproducibleSourceReference() (ReproducibleSourceReference, error) {
-	var body ReproducibleSourceReference
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromReproducibleSourceReference overwrites any union data inside the SourceReference as the provided ReproducibleSourceReference
-func (t *SourceReference) FromReproducibleSourceReference(v ReproducibleSourceReference) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeReproducibleSourceReference performs a merge with any union data inside the SourceReference, using the provided ReproducibleSourceReference
-func (t *SourceReference) MergeReproducibleSourceReference(v ReproducibleSourceReference) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-// AsBestEffortSourceReference returns the union data inside the SourceReference as a BestEffortSourceReference
-func (t SourceReference) AsBestEffortSourceReference() (BestEffortSourceReference, error) {
-	var body BestEffortSourceReference
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromBestEffortSourceReference overwrites any union data inside the SourceReference as the provided BestEffortSourceReference
-func (t *SourceReference) FromBestEffortSourceReference(v BestEffortSourceReference) error {
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeBestEffortSourceReference performs a merge with any union data inside the SourceReference, using the provided BestEffortSourceReference
-func (t *SourceReference) MergeBestEffortSourceReference(v BestEffortSourceReference) error {
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
-func (t SourceReference) MarshalJSON() ([]byte, error) {
-	b, err := t.union.MarshalJSON()
-	return b, err
-}
-
-func (t *SourceReference) UnmarshalJSON(b []byte) error {
 	err := t.union.UnmarshalJSON(b)
 	return err
 }
@@ -6665,21 +6547,21 @@ type ClientInterface interface {
 	// Lists the installed context ids the caller may use. On a managed deployment, a Context token lists the one context it names, and an API-key caller without a token lists the contexts the deployment approves for its organization, when the deployment accepts API keys. A standalone runtime takes no Context token: installation is the grant, and it lists every installed context it can serve now, leaving out one whose latest version does not resolve or whose content the license does not cover. The list is unpaginated. On a managed deployment, returns 404 when authorization is denied.
 	//
 	// Corresponds with GET /v1/ctx (the `CtxList` operationId).
-	CtxList(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxList(ctx context.Context, params *CtxListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxVersions List available versions for a context id
 	//
 	// Lists every installed version of one context id that the caller may use, highest semver first. On a managed deployment, these are the versions its Context token or API key admits. A standalone runtime takes no Context token: installation is the grant, and it lists every installed version it can serve, leaving out one whose content the license does not cover. Returns 404 when the id is not installed or authorization is denied.
 	//
 	// Corresponds with GET /v1/ctx/{ctxId} (the `CtxVersions` operationId).
-	CtxVersions(ctx context.Context, ctxID string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxVersions(ctx context.Context, ctxID string, params *CtxVersionsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxDescribe Describe a resolved context
 	//
 	// Returns the component breakdown for the resolved context: scheme, ordered layers, ordered guides, optional access policy, and ordered crosswalks, each with the version it declares and the concrete version that answered. The :version segment may be a concrete semver or the literal "latest"; the resolved version is reported in the X-EzClassify-Resolved-Version response header and echoed in the response body.
 	//
 	// Corresponds with GET /v1/ctx/{ctxId}/{version} (the `CtxDescribe` operationId).
-	CtxDescribe(ctx context.Context, ctxID string, version string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxDescribe(ctx context.Context, ctxID string, version string, params *CtxDescribeParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxAccessCheckWithBody Check access decision in a context
 	//
@@ -6688,7 +6570,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/access/check (the `CtxAccessCheck` operationId).
-	CtxAccessCheckWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxAccessCheckWithBody(ctx context.Context, ctxID string, version string, params *CtxAccessCheckParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxAccessCheck Check access decision in a context
 	//
@@ -6697,50 +6579,39 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/access/check (the `CtxAccessCheck` operationId).
-	CtxAccessCheck(ctx context.Context, ctxID string, version string, body CtxAccessCheckJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxAccessCheck(ctx context.Context, ctxID string, version string, params *CtxAccessCheckParams, body CtxAccessCheckJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxAccessDescribeRequirementsWithBody Describe access requirements for a target in a context
 	//
-	// Describes requirements imposed by immutable policy for a trusted target supplied as `marking`, structured `assertions`, or both. Both target forms are normalized through the same Context scheme path used by access check. These are policy requirements for the supplied target, not remediation instructions and not advice to change immutable `userAttributes`. Document access assessment (POST /v1/ctx/{ctxId}/{version}/document/assess-access) answers document receivability and content or context remediation questions.
+	// Describes requirements imposed by immutable policy for a trusted target supplied as `marking`, structured `assertions`, or both. Both target forms are normalized through the same Context scheme path used by access check. These are policy requirements for the supplied target, not remediation instructions and not advice to change immutable `userAttributes`.
 	//
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/access/describe-requirements (the `CtxAccessDescribeRequirements` operationId).
-	CtxAccessDescribeRequirementsWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxAccessDescribeRequirementsWithBody(ctx context.Context, ctxID string, version string, params *CtxAccessDescribeRequirementsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxAccessDescribeRequirements Describe access requirements for a target in a context
 	//
-	// Describes requirements imposed by immutable policy for a trusted target supplied as `marking`, structured `assertions`, or both. Both target forms are normalized through the same Context scheme path used by access check. These are policy requirements for the supplied target, not remediation instructions and not advice to change immutable `userAttributes`. Document access assessment (POST /v1/ctx/{ctxId}/{version}/document/assess-access) answers document receivability and content or context remediation questions.
+	// Describes requirements imposed by immutable policy for a trusted target supplied as `marking`, structured `assertions`, or both. Both target forms are normalized through the same Context scheme path used by access check. These are policy requirements for the supplied target, not remediation instructions and not advice to change immutable `userAttributes`.
 	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/access/describe-requirements (the `CtxAccessDescribeRequirements` operationId).
-	CtxAccessDescribeRequirements(ctx context.Context, ctxID string, version string, body CtxAccessDescribeRequirementsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CtxAccessDescribeRuleWithBody Describe an access rule in a context
-	//
-	// Returns the human-readable predicate, the `userAttributes` paths the rule reads, and the data categories its `when` block depends on, scoped to the context's access policy.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/access/describe-rule (the `CtxAccessDescribeRule` operationId).
-	CtxAccessDescribeRuleWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CtxAccessDescribeRule Describe an access rule in a context
-	//
-	// Returns the human-readable predicate, the `userAttributes` paths the rule reads, and the data categories its `when` block depends on, scoped to the context's access policy.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/access/describe-rule (the `CtxAccessDescribeRule` operationId).
-	CtxAccessDescribeRule(ctx context.Context, ctxID string, version string, body CtxAccessDescribeRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxAccessDescribeRequirements(ctx context.Context, ctxID string, version string, params *CtxAccessDescribeRequirementsParams, body CtxAccessDescribeRequirementsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxAccessRules Describe every access rule in a context
 	//
 	// Returns the human-readable predicate, the `userAttributes` paths, and the data categories each rule depends on, for every rule in the context's access policy. A caller that only needs the rule ids reads them from the same response. The :version segment may be omitted to default to "latest".
 	//
 	// Corresponds with GET /v1/ctx/{ctxId}/{version}/access/rules (the `CtxAccessRules` operationId).
-	CtxAccessRules(ctx context.Context, ctxID string, version string, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxAccessRules(ctx context.Context, ctxID string, version string, params *CtxAccessRulesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CtxCrosswalkDescribe Describe every crosswalk in a context
+	//
+	// Returns every crosswalk the context holds, in declaration order: its id and the concrete version that answers, its name, guidance and citation, the source and target schemes as the selectors the context description lists under `schemes`, and the mappings and selections a translation applies, each with its disposition and reason. A context that declares no crosswalk answers with an empty list. The :version segment may be omitted to default to "latest".
+	//
+	// Corresponds with GET /v1/ctx/{ctxId}/{version}/crosswalk/describe (the `CtxCrosswalkDescribe` operationId).
+	CtxCrosswalkDescribe(ctx context.Context, ctxID string, version string, params *CtxCrosswalkDescribeParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxCrosswalkTranslateWithBody Translate a marking through a crosswalk in a context
 	//
@@ -6749,7 +6620,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/crosswalk/translate (the `CtxCrosswalkTranslate` operationId).
-	CtxCrosswalkTranslateWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxCrosswalkTranslateWithBody(ctx context.Context, ctxID string, version string, params *CtxCrosswalkTranslateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxCrosswalkTranslate Translate a marking through a crosswalk in a context
 	//
@@ -6758,97 +6629,43 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/crosswalk/translate (the `CtxCrosswalkTranslate` operationId).
-	CtxCrosswalkTranslate(ctx context.Context, ctxID string, version string, body CtxCrosswalkTranslateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CtxDocumentAssessAccessWithBody Assess document access in a context
-	//
-	// Answers whether the supplied userAttributes satisfy a document under the Context policy. It audits the document once and evaluates authored, authoritative, and projected access scenarios against immutable userAttributes and Context policy. Lexical matches are nominations, never automatic decisions; accepted findings bind to the returned finding ID and document digest, and revised text requires new decisions. Authoritative includes authored facts plus explicit analyst decisions. Projected assumes unresolved nominations and remains advisory. contentRequirements identify supported content that must cease to apply after content change and re-evaluation; they are not instructions to lower a marking. contextRequirements are conditional future relationships between userAttributes and authoritative context, not mutations performed by EzClassify. A denial remains denied until revised text or authoritative external state is re-evaluated. The standard profile is the default; summary suits only an initial large-document overview, standard is needed before decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/document/assess-access (the `CtxDocumentAssessAccess` operationId).
-	CtxDocumentAssessAccessWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CtxDocumentAssessAccess Assess document access in a context
-	//
-	// Answers whether the supplied userAttributes satisfy a document under the Context policy. It audits the document once and evaluates authored, authoritative, and projected access scenarios against immutable userAttributes and Context policy. Lexical matches are nominations, never automatic decisions; accepted findings bind to the returned finding ID and document digest, and revised text requires new decisions. Authoritative includes authored facts plus explicit analyst decisions. Projected assumes unresolved nominations and remains advisory. contentRequirements identify supported content that must cease to apply after content change and re-evaluation; they are not instructions to lower a marking. contextRequirements are conditional future relationships between userAttributes and authoritative context, not mutations performed by EzClassify. A denial remains denied until revised text or authoritative external state is re-evaluated. The standard profile is the default; summary suits only an initial large-document overview, standard is needed before decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/document/assess-access (the `CtxDocumentAssessAccess` operationId).
-	CtxDocumentAssessAccess(ctx context.Context, ctxID string, version string, body CtxDocumentAssessAccessJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxCrosswalkTranslate(ctx context.Context, ctxID string, version string, params *CtxCrosswalkTranslateParams, body CtxCrosswalkTranslateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxDocumentAuditWithBody Audit a document for marking coverage in a context
 	//
-	// Audits authored document markings and evaluates guide nominations without treating lexical matches as authoritative facts. Never accept a nomination without an explicit analyst decision bound to its finding ID and document digest; revised text requires new decisions. Determined results include only accepted findings and manual selections, while projected results assume unresolved nominations and remain advisory. This operation answers authored correctness and guide review; document access assessment (POST /v1/ctx/{ctxId}/{version}/document/assess-access) answers whether supplied userAttributes satisfy the document policy. The standard response profile is the default; summary suits only an initial large-document overview, standard is needed before analyst decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
+	// Audits authored document markings and evaluates guide nominations without treating lexical matches as authoritative facts. Never accept a nomination without an explicit analyst decision bound to its finding ID and document digest; revised text requires new decisions. Determined results include only accepted findings and manual selections, while projected results assume unresolved nominations and remain advisory. This operation answers authored correctness and guide review. The standard response profile is the default; summary suits only an initial large-document overview, standard is needed before analyst decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
 	//
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/document/audit (the `CtxDocumentAudit` operationId).
-	CtxDocumentAuditWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxDocumentAuditWithBody(ctx context.Context, ctxID string, version string, params *CtxDocumentAuditParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxDocumentAudit Audit a document for marking coverage in a context
 	//
-	// Audits authored document markings and evaluates guide nominations without treating lexical matches as authoritative facts. Never accept a nomination without an explicit analyst decision bound to its finding ID and document digest; revised text requires new decisions. Determined results include only accepted findings and manual selections, while projected results assume unresolved nominations and remain advisory. This operation answers authored correctness and guide review; document access assessment (POST /v1/ctx/{ctxId}/{version}/document/assess-access) answers whether supplied userAttributes satisfy the document policy. The standard response profile is the default; summary suits only an initial large-document overview, standard is needed before analyst decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
+	// Audits authored document markings and evaluates guide nominations without treating lexical matches as authoritative facts. Never accept a nomination without an explicit analyst decision bound to its finding ID and document digest; revised text requires new decisions. Determined results include only accepted findings and manual selections, while projected results assume unresolved nominations and remain advisory. This operation answers authored correctness and guide review. The standard response profile is the default; summary suits only an initial large-document overview, standard is needed before analyst decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
 	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/document/audit (the `CtxDocumentAudit` operationId).
-	CtxDocumentAudit(ctx context.Context, ctxID string, version string, body CtxDocumentAuditJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CtxGuideDescribeRuleWithBody Describe a guide rule in a context
-	//
-	// Returns structured metadata for a guide rule (outcome text, when conditions, dependencies, overrides) looking up the rule by id in the guide(s) bound to the context. Pass guideId when the context has multiple guides; otherwise the first guide is used.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/describe-rule (the `CtxGuideDescribeRule` operationId).
-	CtxGuideDescribeRuleWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CtxGuideDescribeRule Describe a guide rule in a context
-	//
-	// Returns structured metadata for a guide rule (outcome text, when conditions, dependencies, overrides) looking up the rule by id in the guide(s) bound to the context. Pass guideId when the context has multiple guides; otherwise the first guide is used.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/describe-rule (the `CtxGuideDescribeRule` operationId).
-	CtxGuideDescribeRule(ctx context.Context, ctxID string, version string, body CtxGuideDescribeRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxDocumentAudit(ctx context.Context, ctxID string, version string, params *CtxDocumentAuditParams, body CtxDocumentAuditJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxGuideEvaluateWithBody Evaluate selected guide rules in a context
 	//
-	// Supply exactly one of guideId or allGuides: true. A named guide is evaluated alone. allGuides combines every loaded guide in load order through the context's composed scheme, with the later guide owning duplicate rule IDs. Returns the engine's structured evaluation result.
+	// Send `guideId` with `selectedRuleIds` to evaluate that one guide, or `selections` to roll up rules selected from several guides. Each selection names its guide, so two guides that use the same rule ID hold two rules. Each guide evaluates its own selected rules, with its own dependencies and overrides, and the outcomes are rolled up per target scheme. No guide overrides or depends on another. Returns the engine's structured evaluation result.
 	//
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/evaluate (the `CtxGuideEvaluate` operationId).
-	CtxGuideEvaluateWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxGuideEvaluateWithBody(ctx context.Context, ctxID string, version string, params *CtxGuideEvaluateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxGuideEvaluate Evaluate selected guide rules in a context
 	//
-	// Supply exactly one of guideId or allGuides: true. A named guide is evaluated alone. allGuides combines every loaded guide in load order through the context's composed scheme, with the later guide owning duplicate rule IDs. Returns the engine's structured evaluation result.
+	// Send `guideId` with `selectedRuleIds` to evaluate that one guide, or `selections` to roll up rules selected from several guides. Each selection names its guide, so two guides that use the same rule ID hold two rules. Each guide evaluates its own selected rules, with its own dependencies and overrides, and the outcomes are rolled up per target scheme. No guide overrides or depends on another. Returns the engine's structured evaluation result.
 	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/evaluate (the `CtxGuideEvaluate` operationId).
-	CtxGuideEvaluate(ctx context.Context, ctxID string, version string, body CtxGuideEvaluateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CtxGuideFilterRulesWithBody Filter guide rules in a context
-	//
-	// Returns the subset of rules in the context-bound guide that match a free-text query. Pass guideId to disambiguate when the context has multiple guides.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/filter-rules (the `CtxGuideFilterRules` operationId).
-	CtxGuideFilterRulesWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CtxGuideFilterRules Filter guide rules in a context
-	//
-	// Returns the subset of rules in the context-bound guide that match a free-text query. Pass guideId to disambiguate when the context has multiple guides.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/filter-rules (the `CtxGuideFilterRules` operationId).
-	CtxGuideFilterRules(ctx context.Context, ctxID string, version string, body CtxGuideFilterRulesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxGuideEvaluate(ctx context.Context, ctxID string, version string, params *CtxGuideEvaluateParams, body CtxGuideEvaluateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxGuideScanWithBody Scan text against context guides
 	//
@@ -6857,7 +6674,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/scan (the `CtxGuideScan` operationId).
-	CtxGuideScanWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxGuideScanWithBody(ctx context.Context, ctxID string, version string, params *CtxGuideScanParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxGuideScan Scan text against context guides
 	//
@@ -6866,7 +6683,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/scan (the `CtxGuideScan` operationId).
-	CtxGuideScan(ctx context.Context, ctxID string, version string, body CtxGuideScanJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxGuideScan(ctx context.Context, ctxID string, version string, params *CtxGuideScanParams, body CtxGuideScanJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxGuideViewWithBody Build guide structural view in a context
 	//
@@ -6875,7 +6692,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/view (the `CtxGuideView` operationId).
-	CtxGuideViewWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxGuideViewWithBody(ctx context.Context, ctxID string, version string, params *CtxGuideViewParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxGuideView Build guide structural view in a context
 	//
@@ -6884,7 +6701,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/view (the `CtxGuideView` operationId).
-	CtxGuideView(ctx context.Context, ctxID string, version string, body CtxGuideViewJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxGuideView(ctx context.Context, ctxID string, version string, params *CtxGuideViewParams, body CtxGuideViewJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeSummary Get the scheme summary in a context
 	//
@@ -6895,21 +6712,21 @@ type ClientInterface interface {
 
 	// CtxSchemeAggregateWithBody Aggregate marking strings in a context
 	//
-	// Combines part markings into a single aggregate marking using the context's composed scheme aggregation rules. Supply either `inputs` (marking strings) or `assertionSets` (already-parsed assertion arrays for lossless transport of scope-only assertions and capture values): exactly one, not both. The :version segment may be omitted to default to "latest".
+	// Rolls markings up into the one whole marking that covers them, using the context's composed scheme rollup rules. With no `context` the inputs are read as wholes, as in an aggregate such as the documents in a folder; `context` names the role the inputs are read in, and `{ role: 'part', partOf }` reads each as a part of that whole, as in a whole's parts rollup. Supply either `inputs` (marking strings) or `assertionSets` (already-parsed assertion arrays for lossless transport of scope-only assertions and capture values): exactly one, not both. The :version segment may be omitted to default to "latest".
 	//
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/aggregate (the `CtxSchemeAggregate` operationId).
-	CtxSchemeAggregateWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeAggregateWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeAggregateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeAggregate Aggregate marking strings in a context
 	//
-	// Combines part markings into a single aggregate marking using the context's composed scheme aggregation rules. Supply either `inputs` (marking strings) or `assertionSets` (already-parsed assertion arrays for lossless transport of scope-only assertions and capture values): exactly one, not both. The :version segment may be omitted to default to "latest".
+	// Rolls markings up into the one whole marking that covers them, using the context's composed scheme rollup rules. With no `context` the inputs are read as wholes, as in an aggregate such as the documents in a folder; `context` names the role the inputs are read in, and `{ role: 'part', partOf }` reads each as a part of that whole, as in a whole's parts rollup. Supply either `inputs` (marking strings) or `assertionSets` (already-parsed assertion arrays for lossless transport of scope-only assertions and capture values): exactly one, not both. The :version segment may be omitted to default to "latest".
 	//
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/aggregate (the `CtxSchemeAggregate` operationId).
-	CtxSchemeAggregate(ctx context.Context, ctxID string, version string, body CtxSchemeAggregateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeAggregate(ctx context.Context, ctxID string, version string, params *CtxSchemeAggregateParams, body CtxSchemeAggregateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeApplyPresetWithBody Apply a label preset in a context
 	//
@@ -6918,7 +6735,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/apply-preset (the `CtxSchemeApplyPreset` operationId).
-	CtxSchemeApplyPresetWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeApplyPresetWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeApplyPresetParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeApplyPreset Apply a label preset in a context
 	//
@@ -6927,7 +6744,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/apply-preset (the `CtxSchemeApplyPreset` operationId).
-	CtxSchemeApplyPreset(ctx context.Context, ctxID string, version string, body CtxSchemeApplyPresetJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeApplyPreset(ctx context.Context, ctxID string, version string, params *CtxSchemeApplyPresetParams, body CtxSchemeApplyPresetJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeCategories Get the scheme categories in a context
 	//
@@ -6943,7 +6760,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/check-coverage (the `CtxSchemeCheckCoverage` operationId).
-	CtxSchemeCheckCoverageWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeCheckCoverageWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeCheckCoverageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeCheckCoverage Check marking coverage in a context
 	//
@@ -6952,7 +6769,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/check-coverage (the `CtxSchemeCheckCoverage` operationId).
-	CtxSchemeCheckCoverage(ctx context.Context, ctxID string, version string, body CtxSchemeCheckCoverageJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeCheckCoverage(ctx context.Context, ctxID string, version string, params *CtxSchemeCheckCoverageParams, body CtxSchemeCheckCoverageJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeConcepts Get the scheme concepts in a context
 	//
@@ -6975,7 +6792,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/diff (the `CtxSchemeDiff` operationId).
-	CtxSchemeDiffWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeDiffWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeDiffParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeDiff Diff two markings in a context
 	//
@@ -6984,7 +6801,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/diff (the `CtxSchemeDiff` operationId).
-	CtxSchemeDiff(ctx context.Context, ctxID string, version string, body CtxSchemeDiffJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeDiff(ctx context.Context, ctxID string, version string, params *CtxSchemeDiffParams, body CtxSchemeDiffJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeExplainWithBody Explain how a marking is processed in a context
 	//
@@ -6993,7 +6810,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/explain (the `CtxSchemeExplain` operationId).
-	CtxSchemeExplainWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeExplainWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeExplainParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeExplain Explain how a marking is processed in a context
 	//
@@ -7002,25 +6819,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/explain (the `CtxSchemeExplain` operationId).
-	CtxSchemeExplain(ctx context.Context, ctxID string, version string, body CtxSchemeExplainJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CtxSchemeFilterConceptsWithBody Filter scheme concepts in a context
-	//
-	// Filters the context's composed scheme concept list by a text query. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/filter-concepts (the `CtxSchemeFilterConcepts` operationId).
-	CtxSchemeFilterConceptsWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CtxSchemeFilterConcepts Filter scheme concepts in a context
-	//
-	// Filters the context's composed scheme concept list by a text query. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/filter-concepts (the `CtxSchemeFilterConcepts` operationId).
-	CtxSchemeFilterConcepts(ctx context.Context, ctxID string, version string, body CtxSchemeFilterConceptsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeExplain(ctx context.Context, ctxID string, version string, params *CtxSchemeExplainParams, body CtxSchemeExplainJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeFormats Get the scheme render formats in a context
 	//
@@ -7029,37 +6828,12 @@ type ClientInterface interface {
 	// Corresponds with GET /v1/ctx/{ctxId}/{version}/scheme/formats (the `CtxSchemeFormats` operationId).
 	CtxSchemeFormats(ctx context.Context, ctxID string, version string, params *CtxSchemeFormatsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// CtxSchemeGrammar Get the scheme parse grammar in a context
-	//
-	// Returns the parse grammar for the context's composed scheme: whether its vocabulary is matched case-sensitively and whether surrounding whitespace is ignored. There is no separator; each field of a marking writes its own boundaries. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-	//
-	// Corresponds with GET /v1/ctx/{ctxId}/{version}/scheme/grammar (the `CtxSchemeGrammar` operationId).
-	CtxSchemeGrammar(ctx context.Context, ctxID string, version string, params *CtxSchemeGrammarParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// CtxSchemeLabelPresets List the label presets in a context
 	//
-	// Returns the label presets of the context's primary scheme, the scheme apply-preset expands them in, as preset views: id, label, description, and scope. Empty when the scheme declares none. The marking string and tag list stay server-side; expand a preset with POST /v1/ctx/{ctxId}/{version}/scheme/apply-preset. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
+	// Returns the label presets of the selected scheme as preset views: id, label, description, and scope. Empty when the scheme declares none. The marking string and tag list stay server-side; expand a preset with POST /v1/ctx/{ctxId}/{version}/scheme/apply-preset under the same selector. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
 	//
 	// Corresponds with GET /v1/ctx/{ctxId}/{version}/scheme/label-presets (the `CtxSchemeLabelPresets` operationId).
-	CtxSchemeLabelPresets(ctx context.Context, ctxID string, version string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CtxSchemeNormalizeWithBody Normalize a marking in a context
-	//
-	// Returns the canonical normalized form of a marking against the context's composed scheme. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-	//
-	// Takes any type of body and a specified content type.
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/normalize (the `CtxSchemeNormalize` operationId).
-	CtxSchemeNormalizeWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// CtxSchemeNormalize Normalize a marking in a context
-	//
-	// Returns the canonical normalized form of a marking against the context's composed scheme. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-	//
-	// Takes a body of the `application/json` content type.
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/normalize (the `CtxSchemeNormalize` operationId).
-	CtxSchemeNormalize(ctx context.Context, ctxID string, version string, body CtxSchemeNormalizeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeLabelPresets(ctx context.Context, ctxID string, version string, params *CtxSchemeLabelPresetsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeNoticesWithBody Collect notices for assertions in a context
 	//
@@ -7068,7 +6842,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/notices (the `CtxSchemeNotices` operationId).
-	CtxSchemeNoticesWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeNoticesWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeNoticesParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeNotices Collect notices for assertions in a context
 	//
@@ -7077,7 +6851,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/notices (the `CtxSchemeNotices` operationId).
-	CtxSchemeNotices(ctx context.Context, ctxID string, version string, body CtxSchemeNoticesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeNotices(ctx context.Context, ctxID string, version string, params *CtxSchemeNoticesParams, body CtxSchemeNoticesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeProcessWithBody Process a marking in a context
 	//
@@ -7086,7 +6860,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/process (the `CtxSchemeProcess` operationId).
-	CtxSchemeProcessWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeProcessWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeProcessParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeProcess Process a marking in a context
 	//
@@ -7095,7 +6869,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/process (the `CtxSchemeProcess` operationId).
-	CtxSchemeProcess(ctx context.Context, ctxID string, version string, body CtxSchemeProcessJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeProcess(ctx context.Context, ctxID string, version string, params *CtxSchemeProcessParams, body CtxSchemeProcessJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeRenderWithBody Render assertions in a context
 	//
@@ -7104,7 +6878,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/render (the `CtxSchemeRender` operationId).
-	CtxSchemeRenderWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeRenderWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeRenderParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeRender Render assertions in a context
 	//
@@ -7113,7 +6887,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/render (the `CtxSchemeRender` operationId).
-	CtxSchemeRender(ctx context.Context, ctxID string, version string, body CtxSchemeRenderJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeRender(ctx context.Context, ctxID string, version string, params *CtxSchemeRenderParams, body CtxSchemeRenderJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeScanWithBody Scan text for markings in a context
 	//
@@ -7122,7 +6896,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/scan (the `CtxSchemeScan` operationId).
-	CtxSchemeScanWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeScanWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeScanParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeScan Scan text for markings in a context
 	//
@@ -7131,7 +6905,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/scan (the `CtxSchemeScan` operationId).
-	CtxSchemeScan(ctx context.Context, ctxID string, version string, body CtxSchemeScanJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeScan(ctx context.Context, ctxID string, version string, params *CtxSchemeScanParams, body CtxSchemeScanJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeScopes Get the scheme scopes in a context
 	//
@@ -7147,7 +6921,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/suggest (the `CtxSchemeSuggest` operationId).
-	CtxSchemeSuggestWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeSuggestWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeSuggestParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeSuggest Suggest marking completions in a context
 	//
@@ -7156,7 +6930,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/suggest (the `CtxSchemeSuggest` operationId).
-	CtxSchemeSuggest(ctx context.Context, ctxID string, version string, body CtxSchemeSuggestJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeSuggest(ctx context.Context, ctxID string, version string, params *CtxSchemeSuggestParams, body CtxSchemeSuggestJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeSuggestForCategoriesWithBody Suggest completions for several categories in a context
 	//
@@ -7165,7 +6939,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/suggest-for-categories (the `CtxSchemeSuggestForCategories` operationId).
-	CtxSchemeSuggestForCategoriesWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeSuggestForCategoriesWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeSuggestForCategoriesParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeSuggestForCategories Suggest completions for several categories in a context
 	//
@@ -7174,7 +6948,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/suggest-for-categories (the `CtxSchemeSuggestForCategories` operationId).
-	CtxSchemeSuggestForCategories(ctx context.Context, ctxID string, version string, body CtxSchemeSuggestForCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeSuggestForCategories(ctx context.Context, ctxID string, version string, params *CtxSchemeSuggestForCategoriesParams, body CtxSchemeSuggestForCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeValidateWithBody Validate a marking in a context
 	//
@@ -7183,7 +6957,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/validate (the `CtxSchemeValidate` operationId).
-	CtxSchemeValidateWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeValidateWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeValidateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeValidate Validate a marking in a context
 	//
@@ -7192,7 +6966,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/validate (the `CtxSchemeValidate` operationId).
-	CtxSchemeValidate(ctx context.Context, ctxID string, version string, body CtxSchemeValidateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeValidate(ctx context.Context, ctxID string, version string, params *CtxSchemeValidateParams, body CtxSchemeValidateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeViewWithBody Build scheme structural view in a context
 	//
@@ -7201,7 +6975,7 @@ type ClientInterface interface {
 	// Takes any type of body and a specified content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/view (the `CtxSchemeView` operationId).
-	CtxSchemeViewWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeViewWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeViewParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// CtxSchemeView Build scheme structural view in a context
 	//
@@ -7210,7 +6984,7 @@ type ClientInterface interface {
 	// Takes a body of the `application/json` content type.
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/view (the `CtxSchemeView` operationId).
-	CtxSchemeView(ctx context.Context, ctxID string, version string, body CtxSchemeViewJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	CtxSchemeView(ctx context.Context, ctxID string, version string, params *CtxSchemeViewParams, body CtxSchemeViewJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetHealth Health check
 	//
@@ -7232,8 +7006,8 @@ type ClientInterface interface {
 // Lists the installed context ids the caller may use. On a managed deployment, a Context token lists the one context it names, and an API-key caller without a token lists the contexts the deployment approves for its organization, when the deployment accepts API keys. A standalone runtime takes no Context token: installation is the grant, and it lists every installed context it can serve now, leaving out one whose latest version does not resolve or whose content the license does not cover. The list is unpaginated. On a managed deployment, returns 404 when authorization is denied.
 //
 // Corresponds with GET /v1/ctx (the `CtxList` operationId).
-func (c *Client) CtxList(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxListRequest(c.Server)
+func (c *Client) CtxList(ctx context.Context, params *CtxListParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxListRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}
@@ -7249,8 +7023,8 @@ func (c *Client) CtxList(ctx context.Context, reqEditors ...RequestEditorFn) (*h
 // Lists every installed version of one context id that the caller may use, highest semver first. On a managed deployment, these are the versions its Context token or API key admits. A standalone runtime takes no Context token: installation is the grant, and it lists every installed version it can serve, leaving out one whose content the license does not cover. Returns 404 when the id is not installed or authorization is denied.
 //
 // Corresponds with GET /v1/ctx/{ctxId} (the `CtxVersions` operationId).
-func (c *Client) CtxVersions(ctx context.Context, ctxID string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxVersionsRequest(c.Server, ctxID)
+func (c *Client) CtxVersions(ctx context.Context, ctxID string, params *CtxVersionsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxVersionsRequest(c.Server, ctxID, params)
 	if err != nil {
 		return nil, err
 	}
@@ -7266,8 +7040,8 @@ func (c *Client) CtxVersions(ctx context.Context, ctxID string, reqEditors ...Re
 // Returns the component breakdown for the resolved context: scheme, ordered layers, ordered guides, optional access policy, and ordered crosswalks, each with the version it declares and the concrete version that answered. The :version segment may be a concrete semver or the literal "latest"; the resolved version is reported in the X-EzClassify-Resolved-Version response header and echoed in the response body.
 //
 // Corresponds with GET /v1/ctx/{ctxId}/{version} (the `CtxDescribe` operationId).
-func (c *Client) CtxDescribe(ctx context.Context, ctxID string, version string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxDescribeRequest(c.Server, ctxID, version)
+func (c *Client) CtxDescribe(ctx context.Context, ctxID string, version string, params *CtxDescribeParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxDescribeRequest(c.Server, ctxID, version, params)
 	if err != nil {
 		return nil, err
 	}
@@ -7285,8 +7059,8 @@ func (c *Client) CtxDescribe(ctx context.Context, ctxID string, version string, 
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/access/check (the `CtxAccessCheck` operationId).
-func (c *Client) CtxAccessCheckWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxAccessCheckRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxAccessCheckWithBody(ctx context.Context, ctxID string, version string, params *CtxAccessCheckParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxAccessCheckRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7304,8 +7078,8 @@ func (c *Client) CtxAccessCheckWithBody(ctx context.Context, ctxID string, versi
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/access/check (the `CtxAccessCheck` operationId).
-func (c *Client) CtxAccessCheck(ctx context.Context, ctxID string, version string, body CtxAccessCheckJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxAccessCheckRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxAccessCheck(ctx context.Context, ctxID string, version string, params *CtxAccessCheckParams, body CtxAccessCheckJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxAccessCheckRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7318,13 +7092,13 @@ func (c *Client) CtxAccessCheck(ctx context.Context, ctxID string, version strin
 
 // CtxAccessDescribeRequirementsWithBody Describe access requirements for a target in a context
 //
-// Describes requirements imposed by immutable policy for a trusted target supplied as `marking`, structured `assertions`, or both. Both target forms are normalized through the same Context scheme path used by access check. These are policy requirements for the supplied target, not remediation instructions and not advice to change immutable `userAttributes`. Document access assessment (POST /v1/ctx/{ctxId}/{version}/document/assess-access) answers document receivability and content or context remediation questions.
+// Describes requirements imposed by immutable policy for a trusted target supplied as `marking`, structured `assertions`, or both. Both target forms are normalized through the same Context scheme path used by access check. These are policy requirements for the supplied target, not remediation instructions and not advice to change immutable `userAttributes`.
 //
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/access/describe-requirements (the `CtxAccessDescribeRequirements` operationId).
-func (c *Client) CtxAccessDescribeRequirementsWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxAccessDescribeRequirementsRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxAccessDescribeRequirementsWithBody(ctx context.Context, ctxID string, version string, params *CtxAccessDescribeRequirementsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxAccessDescribeRequirementsRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7337,51 +7111,13 @@ func (c *Client) CtxAccessDescribeRequirementsWithBody(ctx context.Context, ctxI
 
 // CtxAccessDescribeRequirements Describe access requirements for a target in a context
 //
-// Describes requirements imposed by immutable policy for a trusted target supplied as `marking`, structured `assertions`, or both. Both target forms are normalized through the same Context scheme path used by access check. These are policy requirements for the supplied target, not remediation instructions and not advice to change immutable `userAttributes`. Document access assessment (POST /v1/ctx/{ctxId}/{version}/document/assess-access) answers document receivability and content or context remediation questions.
+// Describes requirements imposed by immutable policy for a trusted target supplied as `marking`, structured `assertions`, or both. Both target forms are normalized through the same Context scheme path used by access check. These are policy requirements for the supplied target, not remediation instructions and not advice to change immutable `userAttributes`.
 //
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/access/describe-requirements (the `CtxAccessDescribeRequirements` operationId).
-func (c *Client) CtxAccessDescribeRequirements(ctx context.Context, ctxID string, version string, body CtxAccessDescribeRequirementsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxAccessDescribeRequirementsRequest(c.Server, ctxID, version, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CtxAccessDescribeRuleWithBody Describe an access rule in a context
-//
-// Returns the human-readable predicate, the `userAttributes` paths the rule reads, and the data categories its `when` block depends on, scoped to the context's access policy.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/access/describe-rule (the `CtxAccessDescribeRule` operationId).
-func (c *Client) CtxAccessDescribeRuleWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxAccessDescribeRuleRequestWithBody(c.Server, ctxID, version, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CtxAccessDescribeRule Describe an access rule in a context
-//
-// Returns the human-readable predicate, the `userAttributes` paths the rule reads, and the data categories its `when` block depends on, scoped to the context's access policy.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/access/describe-rule (the `CtxAccessDescribeRule` operationId).
-func (c *Client) CtxAccessDescribeRule(ctx context.Context, ctxID string, version string, body CtxAccessDescribeRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxAccessDescribeRuleRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxAccessDescribeRequirements(ctx context.Context, ctxID string, version string, params *CtxAccessDescribeRequirementsParams, body CtxAccessDescribeRequirementsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxAccessDescribeRequirementsRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7397,8 +7133,25 @@ func (c *Client) CtxAccessDescribeRule(ctx context.Context, ctxID string, versio
 // Returns the human-readable predicate, the `userAttributes` paths, and the data categories each rule depends on, for every rule in the context's access policy. A caller that only needs the rule ids reads them from the same response. The :version segment may be omitted to default to "latest".
 //
 // Corresponds with GET /v1/ctx/{ctxId}/{version}/access/rules (the `CtxAccessRules` operationId).
-func (c *Client) CtxAccessRules(ctx context.Context, ctxID string, version string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxAccessRulesRequest(c.Server, ctxID, version)
+func (c *Client) CtxAccessRules(ctx context.Context, ctxID string, version string, params *CtxAccessRulesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxAccessRulesRequest(c.Server, ctxID, version, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+// CtxCrosswalkDescribe Describe every crosswalk in a context
+//
+// Returns every crosswalk the context holds, in declaration order: its id and the concrete version that answers, its name, guidance and citation, the source and target schemes as the selectors the context description lists under `schemes`, and the mappings and selections a translation applies, each with its disposition and reason. A context that declares no crosswalk answers with an empty list. The :version segment may be omitted to default to "latest".
+//
+// Corresponds with GET /v1/ctx/{ctxId}/{version}/crosswalk/describe (the `CtxCrosswalkDescribe` operationId).
+func (c *Client) CtxCrosswalkDescribe(ctx context.Context, ctxID string, version string, params *CtxCrosswalkDescribeParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxCrosswalkDescribeRequest(c.Server, ctxID, version, params)
 	if err != nil {
 		return nil, err
 	}
@@ -7416,8 +7169,8 @@ func (c *Client) CtxAccessRules(ctx context.Context, ctxID string, version strin
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/crosswalk/translate (the `CtxCrosswalkTranslate` operationId).
-func (c *Client) CtxCrosswalkTranslateWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxCrosswalkTranslateRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxCrosswalkTranslateWithBody(ctx context.Context, ctxID string, version string, params *CtxCrosswalkTranslateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxCrosswalkTranslateRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7435,46 +7188,8 @@ func (c *Client) CtxCrosswalkTranslateWithBody(ctx context.Context, ctxID string
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/crosswalk/translate (the `CtxCrosswalkTranslate` operationId).
-func (c *Client) CtxCrosswalkTranslate(ctx context.Context, ctxID string, version string, body CtxCrosswalkTranslateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxCrosswalkTranslateRequest(c.Server, ctxID, version, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CtxDocumentAssessAccessWithBody Assess document access in a context
-//
-// Answers whether the supplied userAttributes satisfy a document under the Context policy. It audits the document once and evaluates authored, authoritative, and projected access scenarios against immutable userAttributes and Context policy. Lexical matches are nominations, never automatic decisions; accepted findings bind to the returned finding ID and document digest, and revised text requires new decisions. Authoritative includes authored facts plus explicit analyst decisions. Projected assumes unresolved nominations and remains advisory. contentRequirements identify supported content that must cease to apply after content change and re-evaluation; they are not instructions to lower a marking. contextRequirements are conditional future relationships between userAttributes and authoritative context, not mutations performed by EzClassify. A denial remains denied until revised text or authoritative external state is re-evaluated. The standard profile is the default; summary suits only an initial large-document overview, standard is needed before decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/document/assess-access (the `CtxDocumentAssessAccess` operationId).
-func (c *Client) CtxDocumentAssessAccessWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxDocumentAssessAccessRequestWithBody(c.Server, ctxID, version, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CtxDocumentAssessAccess Assess document access in a context
-//
-// Answers whether the supplied userAttributes satisfy a document under the Context policy. It audits the document once and evaluates authored, authoritative, and projected access scenarios against immutable userAttributes and Context policy. Lexical matches are nominations, never automatic decisions; accepted findings bind to the returned finding ID and document digest, and revised text requires new decisions. Authoritative includes authored facts plus explicit analyst decisions. Projected assumes unresolved nominations and remains advisory. contentRequirements identify supported content that must cease to apply after content change and re-evaluation; they are not instructions to lower a marking. contextRequirements are conditional future relationships between userAttributes and authoritative context, not mutations performed by EzClassify. A denial remains denied until revised text or authoritative external state is re-evaluated. The standard profile is the default; summary suits only an initial large-document overview, standard is needed before decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/document/assess-access (the `CtxDocumentAssessAccess` operationId).
-func (c *Client) CtxDocumentAssessAccess(ctx context.Context, ctxID string, version string, body CtxDocumentAssessAccessJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxDocumentAssessAccessRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxCrosswalkTranslate(ctx context.Context, ctxID string, version string, params *CtxCrosswalkTranslateParams, body CtxCrosswalkTranslateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxCrosswalkTranslateRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7487,13 +7202,13 @@ func (c *Client) CtxDocumentAssessAccess(ctx context.Context, ctxID string, vers
 
 // CtxDocumentAuditWithBody Audit a document for marking coverage in a context
 //
-// Audits authored document markings and evaluates guide nominations without treating lexical matches as authoritative facts. Never accept a nomination without an explicit analyst decision bound to its finding ID and document digest; revised text requires new decisions. Determined results include only accepted findings and manual selections, while projected results assume unresolved nominations and remain advisory. This operation answers authored correctness and guide review; document access assessment (POST /v1/ctx/{ctxId}/{version}/document/assess-access) answers whether supplied userAttributes satisfy the document policy. The standard response profile is the default; summary suits only an initial large-document overview, standard is needed before analyst decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
+// Audits authored document markings and evaluates guide nominations without treating lexical matches as authoritative facts. Never accept a nomination without an explicit analyst decision bound to its finding ID and document digest; revised text requires new decisions. Determined results include only accepted findings and manual selections, while projected results assume unresolved nominations and remain advisory. This operation answers authored correctness and guide review. The standard response profile is the default; summary suits only an initial large-document overview, standard is needed before analyst decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
 //
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/document/audit (the `CtxDocumentAudit` operationId).
-func (c *Client) CtxDocumentAuditWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxDocumentAuditRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxDocumentAuditWithBody(ctx context.Context, ctxID string, version string, params *CtxDocumentAuditParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxDocumentAuditRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7506,51 +7221,13 @@ func (c *Client) CtxDocumentAuditWithBody(ctx context.Context, ctxID string, ver
 
 // CtxDocumentAudit Audit a document for marking coverage in a context
 //
-// Audits authored document markings and evaluates guide nominations without treating lexical matches as authoritative facts. Never accept a nomination without an explicit analyst decision bound to its finding ID and document digest; revised text requires new decisions. Determined results include only accepted findings and manual selections, while projected results assume unresolved nominations and remain advisory. This operation answers authored correctness and guide review; document access assessment (POST /v1/ctx/{ctxId}/{version}/document/assess-access) answers whether supplied userAttributes satisfy the document policy. The standard response profile is the default; summary suits only an initial large-document overview, standard is needed before analyst decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
+// Audits authored document markings and evaluates guide nominations without treating lexical matches as authoritative facts. Never accept a nomination without an explicit analyst decision bound to its finding ID and document digest; revised text requires new decisions. Determined results include only accepted findings and manual selections, while projected results assume unresolved nominations and remain advisory. This operation answers authored correctness and guide review. The standard response profile is the default; summary suits only an initial large-document overview, standard is needed before analyst decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
 //
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/document/audit (the `CtxDocumentAudit` operationId).
-func (c *Client) CtxDocumentAudit(ctx context.Context, ctxID string, version string, body CtxDocumentAuditJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxDocumentAuditRequest(c.Server, ctxID, version, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CtxGuideDescribeRuleWithBody Describe a guide rule in a context
-//
-// Returns structured metadata for a guide rule (outcome text, when conditions, dependencies, overrides) looking up the rule by id in the guide(s) bound to the context. Pass guideId when the context has multiple guides; otherwise the first guide is used.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/describe-rule (the `CtxGuideDescribeRule` operationId).
-func (c *Client) CtxGuideDescribeRuleWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxGuideDescribeRuleRequestWithBody(c.Server, ctxID, version, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CtxGuideDescribeRule Describe a guide rule in a context
-//
-// Returns structured metadata for a guide rule (outcome text, when conditions, dependencies, overrides) looking up the rule by id in the guide(s) bound to the context. Pass guideId when the context has multiple guides; otherwise the first guide is used.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/describe-rule (the `CtxGuideDescribeRule` operationId).
-func (c *Client) CtxGuideDescribeRule(ctx context.Context, ctxID string, version string, body CtxGuideDescribeRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxGuideDescribeRuleRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxDocumentAudit(ctx context.Context, ctxID string, version string, params *CtxDocumentAuditParams, body CtxDocumentAuditJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxDocumentAuditRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7563,13 +7240,13 @@ func (c *Client) CtxGuideDescribeRule(ctx context.Context, ctxID string, version
 
 // CtxGuideEvaluateWithBody Evaluate selected guide rules in a context
 //
-// Supply exactly one of guideId or allGuides: true. A named guide is evaluated alone. allGuides combines every loaded guide in load order through the context's composed scheme, with the later guide owning duplicate rule IDs. Returns the engine's structured evaluation result.
+// Send `guideId` with `selectedRuleIds` to evaluate that one guide, or `selections` to roll up rules selected from several guides. Each selection names its guide, so two guides that use the same rule ID hold two rules. Each guide evaluates its own selected rules, with its own dependencies and overrides, and the outcomes are rolled up per target scheme. No guide overrides or depends on another. Returns the engine's structured evaluation result.
 //
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/evaluate (the `CtxGuideEvaluate` operationId).
-func (c *Client) CtxGuideEvaluateWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxGuideEvaluateRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxGuideEvaluateWithBody(ctx context.Context, ctxID string, version string, params *CtxGuideEvaluateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxGuideEvaluateRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7582,51 +7259,13 @@ func (c *Client) CtxGuideEvaluateWithBody(ctx context.Context, ctxID string, ver
 
 // CtxGuideEvaluate Evaluate selected guide rules in a context
 //
-// Supply exactly one of guideId or allGuides: true. A named guide is evaluated alone. allGuides combines every loaded guide in load order through the context's composed scheme, with the later guide owning duplicate rule IDs. Returns the engine's structured evaluation result.
+// Send `guideId` with `selectedRuleIds` to evaluate that one guide, or `selections` to roll up rules selected from several guides. Each selection names its guide, so two guides that use the same rule ID hold two rules. Each guide evaluates its own selected rules, with its own dependencies and overrides, and the outcomes are rolled up per target scheme. No guide overrides or depends on another. Returns the engine's structured evaluation result.
 //
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/evaluate (the `CtxGuideEvaluate` operationId).
-func (c *Client) CtxGuideEvaluate(ctx context.Context, ctxID string, version string, body CtxGuideEvaluateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxGuideEvaluateRequest(c.Server, ctxID, version, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CtxGuideFilterRulesWithBody Filter guide rules in a context
-//
-// Returns the subset of rules in the context-bound guide that match a free-text query. Pass guideId to disambiguate when the context has multiple guides.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/filter-rules (the `CtxGuideFilterRules` operationId).
-func (c *Client) CtxGuideFilterRulesWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxGuideFilterRulesRequestWithBody(c.Server, ctxID, version, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CtxGuideFilterRules Filter guide rules in a context
-//
-// Returns the subset of rules in the context-bound guide that match a free-text query. Pass guideId to disambiguate when the context has multiple guides.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/filter-rules (the `CtxGuideFilterRules` operationId).
-func (c *Client) CtxGuideFilterRules(ctx context.Context, ctxID string, version string, body CtxGuideFilterRulesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxGuideFilterRulesRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxGuideEvaluate(ctx context.Context, ctxID string, version string, params *CtxGuideEvaluateParams, body CtxGuideEvaluateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxGuideEvaluateRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7644,8 +7283,8 @@ func (c *Client) CtxGuideFilterRules(ctx context.Context, ctxID string, version 
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/scan (the `CtxGuideScan` operationId).
-func (c *Client) CtxGuideScanWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxGuideScanRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxGuideScanWithBody(ctx context.Context, ctxID string, version string, params *CtxGuideScanParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxGuideScanRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7663,8 +7302,8 @@ func (c *Client) CtxGuideScanWithBody(ctx context.Context, ctxID string, version
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/scan (the `CtxGuideScan` operationId).
-func (c *Client) CtxGuideScan(ctx context.Context, ctxID string, version string, body CtxGuideScanJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxGuideScanRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxGuideScan(ctx context.Context, ctxID string, version string, params *CtxGuideScanParams, body CtxGuideScanJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxGuideScanRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7682,8 +7321,8 @@ func (c *Client) CtxGuideScan(ctx context.Context, ctxID string, version string,
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/view (the `CtxGuideView` operationId).
-func (c *Client) CtxGuideViewWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxGuideViewRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxGuideViewWithBody(ctx context.Context, ctxID string, version string, params *CtxGuideViewParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxGuideViewRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7701,8 +7340,8 @@ func (c *Client) CtxGuideViewWithBody(ctx context.Context, ctxID string, version
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/view (the `CtxGuideView` operationId).
-func (c *Client) CtxGuideView(ctx context.Context, ctxID string, version string, body CtxGuideViewJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxGuideViewRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxGuideView(ctx context.Context, ctxID string, version string, params *CtxGuideViewParams, body CtxGuideViewJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxGuideViewRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7732,13 +7371,13 @@ func (c *Client) CtxSchemeSummary(ctx context.Context, ctxID string, version str
 
 // CtxSchemeAggregateWithBody Aggregate marking strings in a context
 //
-// Combines part markings into a single aggregate marking using the context's composed scheme aggregation rules. Supply either `inputs` (marking strings) or `assertionSets` (already-parsed assertion arrays for lossless transport of scope-only assertions and capture values): exactly one, not both. The :version segment may be omitted to default to "latest".
+// Rolls markings up into the one whole marking that covers them, using the context's composed scheme rollup rules. With no `context` the inputs are read as wholes, as in an aggregate such as the documents in a folder; `context` names the role the inputs are read in, and `{ role: 'part', partOf }` reads each as a part of that whole, as in a whole's parts rollup. Supply either `inputs` (marking strings) or `assertionSets` (already-parsed assertion arrays for lossless transport of scope-only assertions and capture values): exactly one, not both. The :version segment may be omitted to default to "latest".
 //
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/aggregate (the `CtxSchemeAggregate` operationId).
-func (c *Client) CtxSchemeAggregateWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeAggregateRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxSchemeAggregateWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeAggregateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeAggregateRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7751,13 +7390,13 @@ func (c *Client) CtxSchemeAggregateWithBody(ctx context.Context, ctxID string, v
 
 // CtxSchemeAggregate Aggregate marking strings in a context
 //
-// Combines part markings into a single aggregate marking using the context's composed scheme aggregation rules. Supply either `inputs` (marking strings) or `assertionSets` (already-parsed assertion arrays for lossless transport of scope-only assertions and capture values): exactly one, not both. The :version segment may be omitted to default to "latest".
+// Rolls markings up into the one whole marking that covers them, using the context's composed scheme rollup rules. With no `context` the inputs are read as wholes, as in an aggregate such as the documents in a folder; `context` names the role the inputs are read in, and `{ role: 'part', partOf }` reads each as a part of that whole, as in a whole's parts rollup. Supply either `inputs` (marking strings) or `assertionSets` (already-parsed assertion arrays for lossless transport of scope-only assertions and capture values): exactly one, not both. The :version segment may be omitted to default to "latest".
 //
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/aggregate (the `CtxSchemeAggregate` operationId).
-func (c *Client) CtxSchemeAggregate(ctx context.Context, ctxID string, version string, body CtxSchemeAggregateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeAggregateRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxSchemeAggregate(ctx context.Context, ctxID string, version string, params *CtxSchemeAggregateParams, body CtxSchemeAggregateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeAggregateRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7775,8 +7414,8 @@ func (c *Client) CtxSchemeAggregate(ctx context.Context, ctxID string, version s
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/apply-preset (the `CtxSchemeApplyPreset` operationId).
-func (c *Client) CtxSchemeApplyPresetWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeApplyPresetRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxSchemeApplyPresetWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeApplyPresetParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeApplyPresetRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7794,8 +7433,8 @@ func (c *Client) CtxSchemeApplyPresetWithBody(ctx context.Context, ctxID string,
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/apply-preset (the `CtxSchemeApplyPreset` operationId).
-func (c *Client) CtxSchemeApplyPreset(ctx context.Context, ctxID string, version string, body CtxSchemeApplyPresetJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeApplyPresetRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxSchemeApplyPreset(ctx context.Context, ctxID string, version string, params *CtxSchemeApplyPresetParams, body CtxSchemeApplyPresetJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeApplyPresetRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7830,8 +7469,8 @@ func (c *Client) CtxSchemeCategories(ctx context.Context, ctxID string, version 
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/check-coverage (the `CtxSchemeCheckCoverage` operationId).
-func (c *Client) CtxSchemeCheckCoverageWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeCheckCoverageRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxSchemeCheckCoverageWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeCheckCoverageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeCheckCoverageRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7849,8 +7488,8 @@ func (c *Client) CtxSchemeCheckCoverageWithBody(ctx context.Context, ctxID strin
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/check-coverage (the `CtxSchemeCheckCoverage` operationId).
-func (c *Client) CtxSchemeCheckCoverage(ctx context.Context, ctxID string, version string, body CtxSchemeCheckCoverageJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeCheckCoverageRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxSchemeCheckCoverage(ctx context.Context, ctxID string, version string, params *CtxSchemeCheckCoverageParams, body CtxSchemeCheckCoverageJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeCheckCoverageRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7902,8 +7541,8 @@ func (c *Client) CtxSchemeDescribeConcept(ctx context.Context, ctxID string, ver
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/diff (the `CtxSchemeDiff` operationId).
-func (c *Client) CtxSchemeDiffWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeDiffRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxSchemeDiffWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeDiffParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeDiffRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7921,8 +7560,8 @@ func (c *Client) CtxSchemeDiffWithBody(ctx context.Context, ctxID string, versio
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/diff (the `CtxSchemeDiff` operationId).
-func (c *Client) CtxSchemeDiff(ctx context.Context, ctxID string, version string, body CtxSchemeDiffJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeDiffRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxSchemeDiff(ctx context.Context, ctxID string, version string, params *CtxSchemeDiffParams, body CtxSchemeDiffJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeDiffRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7940,8 +7579,8 @@ func (c *Client) CtxSchemeDiff(ctx context.Context, ctxID string, version string
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/explain (the `CtxSchemeExplain` operationId).
-func (c *Client) CtxSchemeExplainWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeExplainRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxSchemeExplainWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeExplainParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeExplainRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7959,46 +7598,8 @@ func (c *Client) CtxSchemeExplainWithBody(ctx context.Context, ctxID string, ver
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/explain (the `CtxSchemeExplain` operationId).
-func (c *Client) CtxSchemeExplain(ctx context.Context, ctxID string, version string, body CtxSchemeExplainJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeExplainRequest(c.Server, ctxID, version, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CtxSchemeFilterConceptsWithBody Filter scheme concepts in a context
-//
-// Filters the context's composed scheme concept list by a text query. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/filter-concepts (the `CtxSchemeFilterConcepts` operationId).
-func (c *Client) CtxSchemeFilterConceptsWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeFilterConceptsRequestWithBody(c.Server, ctxID, version, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CtxSchemeFilterConcepts Filter scheme concepts in a context
-//
-// Filters the context's composed scheme concept list by a text query. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/filter-concepts (the `CtxSchemeFilterConcepts` operationId).
-func (c *Client) CtxSchemeFilterConcepts(ctx context.Context, ctxID string, version string, body CtxSchemeFilterConceptsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeFilterConceptsRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxSchemeExplain(ctx context.Context, ctxID string, version string, params *CtxSchemeExplainParams, body CtxSchemeExplainJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeExplainRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8026,68 +7627,13 @@ func (c *Client) CtxSchemeFormats(ctx context.Context, ctxID string, version str
 	return c.Client.Do(req)
 }
 
-// CtxSchemeGrammar Get the scheme parse grammar in a context
-//
-// Returns the parse grammar for the context's composed scheme: whether its vocabulary is matched case-sensitively and whether surrounding whitespace is ignored. There is no separator; each field of a marking writes its own boundaries. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-//
-// Corresponds with GET /v1/ctx/{ctxId}/{version}/scheme/grammar (the `CtxSchemeGrammar` operationId).
-func (c *Client) CtxSchemeGrammar(ctx context.Context, ctxID string, version string, params *CtxSchemeGrammarParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeGrammarRequest(c.Server, ctxID, version, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
 // CtxSchemeLabelPresets List the label presets in a context
 //
-// Returns the label presets of the context's primary scheme, the scheme apply-preset expands them in, as preset views: id, label, description, and scope. Empty when the scheme declares none. The marking string and tag list stay server-side; expand a preset with POST /v1/ctx/{ctxId}/{version}/scheme/apply-preset. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
+// Returns the label presets of the selected scheme as preset views: id, label, description, and scope. Empty when the scheme declares none. The marking string and tag list stay server-side; expand a preset with POST /v1/ctx/{ctxId}/{version}/scheme/apply-preset under the same selector. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
 //
 // Corresponds with GET /v1/ctx/{ctxId}/{version}/scheme/label-presets (the `CtxSchemeLabelPresets` operationId).
-func (c *Client) CtxSchemeLabelPresets(ctx context.Context, ctxID string, version string, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeLabelPresetsRequest(c.Server, ctxID, version)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CtxSchemeNormalizeWithBody Normalize a marking in a context
-//
-// Returns the canonical normalized form of a marking against the context's composed scheme. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-//
-// Takes any type of body and a specified content type.
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/normalize (the `CtxSchemeNormalize` operationId).
-func (c *Client) CtxSchemeNormalizeWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeNormalizeRequestWithBody(c.Server, ctxID, version, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-
-// CtxSchemeNormalize Normalize a marking in a context
-//
-// Returns the canonical normalized form of a marking against the context's composed scheme. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-//
-// Takes a body of the `application/json` content type.
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/normalize (the `CtxSchemeNormalize` operationId).
-func (c *Client) CtxSchemeNormalize(ctx context.Context, ctxID string, version string, body CtxSchemeNormalizeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeNormalizeRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxSchemeLabelPresets(ctx context.Context, ctxID string, version string, params *CtxSchemeLabelPresetsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeLabelPresetsRequest(c.Server, ctxID, version, params)
 	if err != nil {
 		return nil, err
 	}
@@ -8105,8 +7651,8 @@ func (c *Client) CtxSchemeNormalize(ctx context.Context, ctxID string, version s
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/notices (the `CtxSchemeNotices` operationId).
-func (c *Client) CtxSchemeNoticesWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeNoticesRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxSchemeNoticesWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeNoticesParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeNoticesRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8124,8 +7670,8 @@ func (c *Client) CtxSchemeNoticesWithBody(ctx context.Context, ctxID string, ver
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/notices (the `CtxSchemeNotices` operationId).
-func (c *Client) CtxSchemeNotices(ctx context.Context, ctxID string, version string, body CtxSchemeNoticesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeNoticesRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxSchemeNotices(ctx context.Context, ctxID string, version string, params *CtxSchemeNoticesParams, body CtxSchemeNoticesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeNoticesRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8143,8 +7689,8 @@ func (c *Client) CtxSchemeNotices(ctx context.Context, ctxID string, version str
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/process (the `CtxSchemeProcess` operationId).
-func (c *Client) CtxSchemeProcessWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeProcessRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxSchemeProcessWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeProcessParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeProcessRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8162,8 +7708,8 @@ func (c *Client) CtxSchemeProcessWithBody(ctx context.Context, ctxID string, ver
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/process (the `CtxSchemeProcess` operationId).
-func (c *Client) CtxSchemeProcess(ctx context.Context, ctxID string, version string, body CtxSchemeProcessJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeProcessRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxSchemeProcess(ctx context.Context, ctxID string, version string, params *CtxSchemeProcessParams, body CtxSchemeProcessJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeProcessRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8181,8 +7727,8 @@ func (c *Client) CtxSchemeProcess(ctx context.Context, ctxID string, version str
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/render (the `CtxSchemeRender` operationId).
-func (c *Client) CtxSchemeRenderWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeRenderRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxSchemeRenderWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeRenderParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeRenderRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8200,8 +7746,8 @@ func (c *Client) CtxSchemeRenderWithBody(ctx context.Context, ctxID string, vers
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/render (the `CtxSchemeRender` operationId).
-func (c *Client) CtxSchemeRender(ctx context.Context, ctxID string, version string, body CtxSchemeRenderJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeRenderRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxSchemeRender(ctx context.Context, ctxID string, version string, params *CtxSchemeRenderParams, body CtxSchemeRenderJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeRenderRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8219,8 +7765,8 @@ func (c *Client) CtxSchemeRender(ctx context.Context, ctxID string, version stri
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/scan (the `CtxSchemeScan` operationId).
-func (c *Client) CtxSchemeScanWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeScanRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxSchemeScanWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeScanParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeScanRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8238,8 +7784,8 @@ func (c *Client) CtxSchemeScanWithBody(ctx context.Context, ctxID string, versio
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/scan (the `CtxSchemeScan` operationId).
-func (c *Client) CtxSchemeScan(ctx context.Context, ctxID string, version string, body CtxSchemeScanJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeScanRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxSchemeScan(ctx context.Context, ctxID string, version string, params *CtxSchemeScanParams, body CtxSchemeScanJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeScanRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8274,8 +7820,8 @@ func (c *Client) CtxSchemeScopes(ctx context.Context, ctxID string, version stri
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/suggest (the `CtxSchemeSuggest` operationId).
-func (c *Client) CtxSchemeSuggestWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeSuggestRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxSchemeSuggestWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeSuggestParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeSuggestRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8293,8 +7839,8 @@ func (c *Client) CtxSchemeSuggestWithBody(ctx context.Context, ctxID string, ver
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/suggest (the `CtxSchemeSuggest` operationId).
-func (c *Client) CtxSchemeSuggest(ctx context.Context, ctxID string, version string, body CtxSchemeSuggestJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeSuggestRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxSchemeSuggest(ctx context.Context, ctxID string, version string, params *CtxSchemeSuggestParams, body CtxSchemeSuggestJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeSuggestRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8312,8 +7858,8 @@ func (c *Client) CtxSchemeSuggest(ctx context.Context, ctxID string, version str
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/suggest-for-categories (the `CtxSchemeSuggestForCategories` operationId).
-func (c *Client) CtxSchemeSuggestForCategoriesWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeSuggestForCategoriesRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxSchemeSuggestForCategoriesWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeSuggestForCategoriesParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeSuggestForCategoriesRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8331,8 +7877,8 @@ func (c *Client) CtxSchemeSuggestForCategoriesWithBody(ctx context.Context, ctxI
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/suggest-for-categories (the `CtxSchemeSuggestForCategories` operationId).
-func (c *Client) CtxSchemeSuggestForCategories(ctx context.Context, ctxID string, version string, body CtxSchemeSuggestForCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeSuggestForCategoriesRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxSchemeSuggestForCategories(ctx context.Context, ctxID string, version string, params *CtxSchemeSuggestForCategoriesParams, body CtxSchemeSuggestForCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeSuggestForCategoriesRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8350,8 +7896,8 @@ func (c *Client) CtxSchemeSuggestForCategories(ctx context.Context, ctxID string
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/validate (the `CtxSchemeValidate` operationId).
-func (c *Client) CtxSchemeValidateWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeValidateRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxSchemeValidateWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeValidateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeValidateRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8369,8 +7915,8 @@ func (c *Client) CtxSchemeValidateWithBody(ctx context.Context, ctxID string, ve
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/validate (the `CtxSchemeValidate` operationId).
-func (c *Client) CtxSchemeValidate(ctx context.Context, ctxID string, version string, body CtxSchemeValidateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeValidateRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxSchemeValidate(ctx context.Context, ctxID string, version string, params *CtxSchemeValidateParams, body CtxSchemeValidateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeValidateRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8388,8 +7934,8 @@ func (c *Client) CtxSchemeValidate(ctx context.Context, ctxID string, version st
 // Takes any type of body and a specified content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/view (the `CtxSchemeView` operationId).
-func (c *Client) CtxSchemeViewWithBody(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeViewRequestWithBody(c.Server, ctxID, version, contentType, body)
+func (c *Client) CtxSchemeViewWithBody(ctx context.Context, ctxID string, version string, params *CtxSchemeViewParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeViewRequestWithBody(c.Server, ctxID, version, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8407,8 +7953,8 @@ func (c *Client) CtxSchemeViewWithBody(ctx context.Context, ctxID string, versio
 // Takes a body of the `application/json` content type.
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/view (the `CtxSchemeView` operationId).
-func (c *Client) CtxSchemeView(ctx context.Context, ctxID string, version string, body CtxSchemeViewJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCtxSchemeViewRequest(c.Server, ctxID, version, body)
+func (c *Client) CtxSchemeView(ctx context.Context, ctxID string, version string, params *CtxSchemeViewParams, body CtxSchemeViewJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCtxSchemeViewRequest(c.Server, ctxID, version, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8454,7 +8000,7 @@ func (c *Client) GetReady(ctx context.Context, reqEditors ...RequestEditorFn) (*
 }
 
 // NewCtxListRequest constructs an http.Request for the CtxList method
-func NewCtxListRequest(server string) (*http.Request, error) {
+func NewCtxListRequest(server string, params *CtxListParams) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -8477,11 +8023,26 @@ func NewCtxListRequest(server string) (*http.Request, error) {
 		return nil, err
 	}
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxVersionsRequest constructs an http.Request for the CtxVersions method
-func NewCtxVersionsRequest(server string, ctxID string) (*http.Request, error) {
+func NewCtxVersionsRequest(server string, ctxID string, params *CtxVersionsParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -8511,11 +8072,26 @@ func NewCtxVersionsRequest(server string, ctxID string) (*http.Request, error) {
 		return nil, err
 	}
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxDescribeRequest constructs an http.Request for the CtxDescribe method
-func NewCtxDescribeRequest(server string, ctxID string, version string) (*http.Request, error) {
+func NewCtxDescribeRequest(server string, ctxID string, version string, params *CtxDescribeParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -8552,22 +8128,37 @@ func NewCtxDescribeRequest(server string, ctxID string, version string) (*http.R
 		return nil, err
 	}
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxAccessCheckRequest calls the generic CtxAccessCheck builder with application/json body
-func NewCtxAccessCheckRequest(server string, ctxID string, version string, body CtxAccessCheckJSONRequestBody) (*http.Request, error) {
+func NewCtxAccessCheckRequest(server string, ctxID string, version string, params *CtxAccessCheckParams, body CtxAccessCheckJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxAccessCheckRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxAccessCheckRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxAccessCheckRequestWithBody constructs an http.Request for the CtxAccessCheck method, with any body, and a specified content type
-func NewCtxAccessCheckRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxAccessCheckRequestWithBody(server string, ctxID string, version string, params *CtxAccessCheckParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -8606,22 +8197,37 @@ func NewCtxAccessCheckRequestWithBody(server string, ctxID string, version strin
 
 	req.Header.Add("Content-Type", contentType)
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxAccessDescribeRequirementsRequest calls the generic CtxAccessDescribeRequirements builder with application/json body
-func NewCtxAccessDescribeRequirementsRequest(server string, ctxID string, version string, body CtxAccessDescribeRequirementsJSONRequestBody) (*http.Request, error) {
+func NewCtxAccessDescribeRequirementsRequest(server string, ctxID string, version string, params *CtxAccessDescribeRequirementsParams, body CtxAccessDescribeRequirementsJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxAccessDescribeRequirementsRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxAccessDescribeRequirementsRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxAccessDescribeRequirementsRequestWithBody constructs an http.Request for the CtxAccessDescribeRequirements method, with any body, and a specified content type
-func NewCtxAccessDescribeRequirementsRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxAccessDescribeRequirementsRequestWithBody(server string, ctxID string, version string, params *CtxAccessDescribeRequirementsParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -8660,65 +8266,26 @@ func NewCtxAccessDescribeRequirementsRequestWithBody(server string, ctxID string
 
 	req.Header.Add("Content-Type", contentType)
 
-	return req, nil
-}
+	if params != nil {
 
-// NewCtxAccessDescribeRuleRequest calls the generic CtxAccessDescribeRule builder with application/json body
-func NewCtxAccessDescribeRuleRequest(server string, ctxID string, version string, body CtxAccessDescribeRuleJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
 	}
-	bodyReader = bytes.NewReader(buf)
-	return NewCtxAccessDescribeRuleRequestWithBody(server, ctxID, version, "application/json", bodyReader)
-}
-
-// NewCtxAccessDescribeRuleRequestWithBody constructs an http.Request for the CtxAccessDescribeRule method, with any body, and a specified content type
-func NewCtxAccessDescribeRuleRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "ctxId", ctxID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version", version, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/v1/ctx/%s/%s/access/describe-rule", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }
 
 // NewCtxAccessRulesRequest constructs an http.Request for the CtxAccessRules method
-func NewCtxAccessRulesRequest(server string, ctxID string, version string) (*http.Request, error) {
+func NewCtxAccessRulesRequest(server string, ctxID string, version string, params *CtxAccessRulesParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -8755,22 +8322,93 @@ func NewCtxAccessRulesRequest(server string, ctxID string, version string) (*htt
 		return nil, err
 	}
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
+	return req, nil
+}
+
+// NewCtxCrosswalkDescribeRequest constructs an http.Request for the CtxCrosswalkDescribe method
+func NewCtxCrosswalkDescribeRequest(server string, ctxID string, version string, params *CtxCrosswalkDescribeParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "ctxId", ctxID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version", version, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/v1/ctx/%s/%s/crosswalk/describe", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxCrosswalkTranslateRequest calls the generic CtxCrosswalkTranslate builder with application/json body
-func NewCtxCrosswalkTranslateRequest(server string, ctxID string, version string, body CtxCrosswalkTranslateJSONRequestBody) (*http.Request, error) {
+func NewCtxCrosswalkTranslateRequest(server string, ctxID string, version string, params *CtxCrosswalkTranslateParams, body CtxCrosswalkTranslateJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxCrosswalkTranslateRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxCrosswalkTranslateRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxCrosswalkTranslateRequestWithBody constructs an http.Request for the CtxCrosswalkTranslate method, with any body, and a specified content type
-func NewCtxCrosswalkTranslateRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxCrosswalkTranslateRequestWithBody(server string, ctxID string, version string, params *CtxCrosswalkTranslateParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -8809,76 +8447,37 @@ func NewCtxCrosswalkTranslateRequestWithBody(server string, ctxID string, versio
 
 	req.Header.Add("Content-Type", contentType)
 
-	return req, nil
-}
+	if params != nil {
 
-// NewCtxDocumentAssessAccessRequest calls the generic CtxDocumentAssessAccess builder with application/json body
-func NewCtxDocumentAssessAccessRequest(server string, ctxID string, version string, body CtxDocumentAssessAccessJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
 	}
-	bodyReader = bytes.NewReader(buf)
-	return NewCtxDocumentAssessAccessRequestWithBody(server, ctxID, version, "application/json", bodyReader)
-}
-
-// NewCtxDocumentAssessAccessRequestWithBody constructs an http.Request for the CtxDocumentAssessAccess method, with any body, and a specified content type
-func NewCtxDocumentAssessAccessRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "ctxId", ctxID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version", version, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/v1/ctx/%s/%s/document/assess-access", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }
 
 // NewCtxDocumentAuditRequest calls the generic CtxDocumentAudit builder with application/json body
-func NewCtxDocumentAuditRequest(server string, ctxID string, version string, body CtxDocumentAuditJSONRequestBody) (*http.Request, error) {
+func NewCtxDocumentAuditRequest(server string, ctxID string, version string, params *CtxDocumentAuditParams, body CtxDocumentAuditJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxDocumentAuditRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxDocumentAuditRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxDocumentAuditRequestWithBody constructs an http.Request for the CtxDocumentAudit method, with any body, and a specified content type
-func NewCtxDocumentAuditRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxDocumentAuditRequestWithBody(server string, ctxID string, version string, params *CtxDocumentAuditParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -8917,76 +8516,37 @@ func NewCtxDocumentAuditRequestWithBody(server string, ctxID string, version str
 
 	req.Header.Add("Content-Type", contentType)
 
-	return req, nil
-}
+	if params != nil {
 
-// NewCtxGuideDescribeRuleRequest calls the generic CtxGuideDescribeRule builder with application/json body
-func NewCtxGuideDescribeRuleRequest(server string, ctxID string, version string, body CtxGuideDescribeRuleJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
 	}
-	bodyReader = bytes.NewReader(buf)
-	return NewCtxGuideDescribeRuleRequestWithBody(server, ctxID, version, "application/json", bodyReader)
-}
-
-// NewCtxGuideDescribeRuleRequestWithBody constructs an http.Request for the CtxGuideDescribeRule method, with any body, and a specified content type
-func NewCtxGuideDescribeRuleRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "ctxId", ctxID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version", version, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/v1/ctx/%s/%s/guide/describe-rule", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }
 
 // NewCtxGuideEvaluateRequest calls the generic CtxGuideEvaluate builder with application/json body
-func NewCtxGuideEvaluateRequest(server string, ctxID string, version string, body CtxGuideEvaluateJSONRequestBody) (*http.Request, error) {
+func NewCtxGuideEvaluateRequest(server string, ctxID string, version string, params *CtxGuideEvaluateParams, body CtxGuideEvaluateJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxGuideEvaluateRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxGuideEvaluateRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxGuideEvaluateRequestWithBody constructs an http.Request for the CtxGuideEvaluate method, with any body, and a specified content type
-func NewCtxGuideEvaluateRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxGuideEvaluateRequestWithBody(server string, ctxID string, version string, params *CtxGuideEvaluateParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -9025,76 +8585,37 @@ func NewCtxGuideEvaluateRequestWithBody(server string, ctxID string, version str
 
 	req.Header.Add("Content-Type", contentType)
 
-	return req, nil
-}
+	if params != nil {
 
-// NewCtxGuideFilterRulesRequest calls the generic CtxGuideFilterRules builder with application/json body
-func NewCtxGuideFilterRulesRequest(server string, ctxID string, version string, body CtxGuideFilterRulesJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
 	}
-	bodyReader = bytes.NewReader(buf)
-	return NewCtxGuideFilterRulesRequestWithBody(server, ctxID, version, "application/json", bodyReader)
-}
-
-// NewCtxGuideFilterRulesRequestWithBody constructs an http.Request for the CtxGuideFilterRules method, with any body, and a specified content type
-func NewCtxGuideFilterRulesRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "ctxId", ctxID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version", version, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/v1/ctx/%s/%s/guide/filter-rules", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }
 
 // NewCtxGuideScanRequest calls the generic CtxGuideScan builder with application/json body
-func NewCtxGuideScanRequest(server string, ctxID string, version string, body CtxGuideScanJSONRequestBody) (*http.Request, error) {
+func NewCtxGuideScanRequest(server string, ctxID string, version string, params *CtxGuideScanParams, body CtxGuideScanJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxGuideScanRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxGuideScanRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxGuideScanRequestWithBody constructs an http.Request for the CtxGuideScan method, with any body, and a specified content type
-func NewCtxGuideScanRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxGuideScanRequestWithBody(server string, ctxID string, version string, params *CtxGuideScanParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -9133,22 +8654,37 @@ func NewCtxGuideScanRequestWithBody(server string, ctxID string, version string,
 
 	req.Header.Add("Content-Type", contentType)
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxGuideViewRequest calls the generic CtxGuideView builder with application/json body
-func NewCtxGuideViewRequest(server string, ctxID string, version string, body CtxGuideViewJSONRequestBody) (*http.Request, error) {
+func NewCtxGuideViewRequest(server string, ctxID string, version string, params *CtxGuideViewParams, body CtxGuideViewJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxGuideViewRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxGuideViewRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxGuideViewRequestWithBody constructs an http.Request for the CtxGuideView method, with any body, and a specified content type
-func NewCtxGuideViewRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxGuideViewRequestWithBody(server string, ctxID string, version string, params *CtxGuideViewParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -9186,6 +8722,21 @@ func NewCtxGuideViewRequestWithBody(server string, ctxID string, version string,
 	}
 
 	req.Header.Add("Content-Type", contentType)
+
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
 
 	return req, nil
 }
@@ -9255,22 +8806,37 @@ func NewCtxSchemeSummaryRequest(server string, ctxID string, version string, par
 		return nil, err
 	}
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxSchemeAggregateRequest calls the generic CtxSchemeAggregate builder with application/json body
-func NewCtxSchemeAggregateRequest(server string, ctxID string, version string, body CtxSchemeAggregateJSONRequestBody) (*http.Request, error) {
+func NewCtxSchemeAggregateRequest(server string, ctxID string, version string, params *CtxSchemeAggregateParams, body CtxSchemeAggregateJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxSchemeAggregateRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxSchemeAggregateRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxSchemeAggregateRequestWithBody constructs an http.Request for the CtxSchemeAggregate method, with any body, and a specified content type
-func NewCtxSchemeAggregateRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxSchemeAggregateRequestWithBody(server string, ctxID string, version string, params *CtxSchemeAggregateParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -9302,6 +8868,33 @@ func NewCtxSchemeAggregateRequestWithBody(server string, ctxID string, version s
 		return nil, err
 	}
 
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Scheme != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "scheme", *params.Scheme, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
 	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
 	if err != nil {
 		return nil, err
@@ -9309,22 +8902,37 @@ func NewCtxSchemeAggregateRequestWithBody(server string, ctxID string, version s
 
 	req.Header.Add("Content-Type", contentType)
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxSchemeApplyPresetRequest calls the generic CtxSchemeApplyPreset builder with application/json body
-func NewCtxSchemeApplyPresetRequest(server string, ctxID string, version string, body CtxSchemeApplyPresetJSONRequestBody) (*http.Request, error) {
+func NewCtxSchemeApplyPresetRequest(server string, ctxID string, version string, params *CtxSchemeApplyPresetParams, body CtxSchemeApplyPresetJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxSchemeApplyPresetRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxSchemeApplyPresetRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxSchemeApplyPresetRequestWithBody constructs an http.Request for the CtxSchemeApplyPreset method, with any body, and a specified content type
-func NewCtxSchemeApplyPresetRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxSchemeApplyPresetRequestWithBody(server string, ctxID string, version string, params *CtxSchemeApplyPresetParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -9356,12 +8964,54 @@ func NewCtxSchemeApplyPresetRequestWithBody(server string, ctxID string, version
 		return nil, err
 	}
 
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Scheme != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "scheme", *params.Scheme, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
 	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
 	if err != nil {
 		return nil, err
 	}
 
 	req.Header.Add("Content-Type", contentType)
+
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
 
 	return req, nil
 }
@@ -9431,22 +9081,37 @@ func NewCtxSchemeCategoriesRequest(server string, ctxID string, version string, 
 		return nil, err
 	}
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxSchemeCheckCoverageRequest calls the generic CtxSchemeCheckCoverage builder with application/json body
-func NewCtxSchemeCheckCoverageRequest(server string, ctxID string, version string, body CtxSchemeCheckCoverageJSONRequestBody) (*http.Request, error) {
+func NewCtxSchemeCheckCoverageRequest(server string, ctxID string, version string, params *CtxSchemeCheckCoverageParams, body CtxSchemeCheckCoverageJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxSchemeCheckCoverageRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxSchemeCheckCoverageRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxSchemeCheckCoverageRequestWithBody constructs an http.Request for the CtxSchemeCheckCoverage method, with any body, and a specified content type
-func NewCtxSchemeCheckCoverageRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxSchemeCheckCoverageRequestWithBody(server string, ctxID string, version string, params *CtxSchemeCheckCoverageParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -9478,12 +9143,54 @@ func NewCtxSchemeCheckCoverageRequestWithBody(server string, ctxID string, versi
 		return nil, err
 	}
 
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Scheme != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "scheme", *params.Scheme, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
 	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
 	if err != nil {
 		return nil, err
 	}
 
 	req.Header.Add("Content-Type", contentType)
+
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
 
 	return req, nil
 }
@@ -9551,6 +9258,21 @@ func NewCtxSchemeConceptsRequest(server string, ctxID string, version string, pa
 	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
 	if err != nil {
 		return nil, err
+	}
+
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
 	}
 
 	return req, nil
@@ -9626,6 +9348,18 @@ func NewCtxSchemeDescribeConceptRequest(server string, ctxID string, version str
 
 		}
 
+		if params.Scheme != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "scheme", *params.Scheme, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
 		if encoded := queryValues.Encode(); encoded != "" {
 			rawQueryFragments = append(rawQueryFragments, encoded)
 		}
@@ -9637,22 +9371,37 @@ func NewCtxSchemeDescribeConceptRequest(server string, ctxID string, version str
 		return nil, err
 	}
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxSchemeDiffRequest calls the generic CtxSchemeDiff builder with application/json body
-func NewCtxSchemeDiffRequest(server string, ctxID string, version string, body CtxSchemeDiffJSONRequestBody) (*http.Request, error) {
+func NewCtxSchemeDiffRequest(server string, ctxID string, version string, params *CtxSchemeDiffParams, body CtxSchemeDiffJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxSchemeDiffRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxSchemeDiffRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxSchemeDiffRequestWithBody constructs an http.Request for the CtxSchemeDiff method, with any body, and a specified content type
-func NewCtxSchemeDiffRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxSchemeDiffRequestWithBody(server string, ctxID string, version string, params *CtxSchemeDiffParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -9684,6 +9433,33 @@ func NewCtxSchemeDiffRequestWithBody(server string, ctxID string, version string
 		return nil, err
 	}
 
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Scheme != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "scheme", *params.Scheme, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
 	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
 	if err != nil {
 		return nil, err
@@ -9691,22 +9467,37 @@ func NewCtxSchemeDiffRequestWithBody(server string, ctxID string, version string
 
 	req.Header.Add("Content-Type", contentType)
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxSchemeExplainRequest calls the generic CtxSchemeExplain builder with application/json body
-func NewCtxSchemeExplainRequest(server string, ctxID string, version string, body CtxSchemeExplainJSONRequestBody) (*http.Request, error) {
+func NewCtxSchemeExplainRequest(server string, ctxID string, version string, params *CtxSchemeExplainParams, body CtxSchemeExplainJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxSchemeExplainRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxSchemeExplainRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxSchemeExplainRequestWithBody constructs an http.Request for the CtxSchemeExplain method, with any body, and a specified content type
-func NewCtxSchemeExplainRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxSchemeExplainRequestWithBody(server string, ctxID string, version string, params *CtxSchemeExplainParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -9738,58 +9529,31 @@ func NewCtxSchemeExplainRequestWithBody(server string, ctxID string, version str
 		return nil, err
 	}
 
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
 
-	req.Header.Add("Content-Type", contentType)
+		if params.Scheme != nil {
 
-	return req, nil
-}
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "scheme", *params.Scheme, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
 
-// NewCtxSchemeFilterConceptsRequest calls the generic CtxSchemeFilterConcepts builder with application/json body
-func NewCtxSchemeFilterConceptsRequest(server string, ctxID string, version string, body CtxSchemeFilterConceptsJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewCtxSchemeFilterConceptsRequestWithBody(server, ctxID, version, "application/json", bodyReader)
-}
+		}
 
-// NewCtxSchemeFilterConceptsRequestWithBody constructs an http.Request for the CtxSchemeFilterConcepts method, with any body, and a specified content type
-func NewCtxSchemeFilterConceptsRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "ctxId", ctxID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version", version, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/v1/ctx/%s/%s/scheme/filter-concepts", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
 	}
 
 	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
@@ -9798,6 +9562,21 @@ func NewCtxSchemeFilterConceptsRequestWithBody(server string, ctxID string, vers
 	}
 
 	req.Header.Add("Content-Type", contentType)
+
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
 
 	return req, nil
 }
@@ -9867,11 +9646,26 @@ func NewCtxSchemeFormatsRequest(server string, ctxID string, version string, par
 		return nil, err
 	}
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
-// NewCtxSchemeGrammarRequest constructs an http.Request for the CtxSchemeGrammar method
-func NewCtxSchemeGrammarRequest(server string, ctxID string, version string, params *CtxSchemeGrammarParams) (*http.Request, error) {
+// NewCtxSchemeLabelPresetsRequest constructs an http.Request for the CtxSchemeLabelPresets method
+func NewCtxSchemeLabelPresetsRequest(server string, ctxID string, version string, params *CtxSchemeLabelPresetsParams) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -9893,7 +9687,7 @@ func NewCtxSchemeGrammarRequest(server string, ctxID string, version string, par
 		return nil, err
 	}
 
-	operationPath := fmt.Sprintf("/v1/ctx/%s/%s/scheme/grammar", pathParam0, pathParam1)
+	operationPath := fmt.Sprintf("/v1/ctx/%s/%s/scheme/label-presets", pathParam0, pathParam1)
 	if operationPath[0] == '/' {
 		operationPath = "." + operationPath
 	}
@@ -9935,117 +9729,37 @@ func NewCtxSchemeGrammarRequest(server string, ctxID string, version string, par
 		return nil, err
 	}
 
-	return req, nil
-}
+	if params != nil {
 
-// NewCtxSchemeLabelPresetsRequest constructs an http.Request for the CtxSchemeLabelPresets method
-func NewCtxSchemeLabelPresetsRequest(server string, ctxID string, version string) (*http.Request, error) {
-	var err error
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
 
-	var pathParam0 string
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
 
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "ctxId", ctxID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
 	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version", version, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/v1/ctx/%s/%s/scheme/label-presets", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-
-// NewCtxSchemeNormalizeRequest calls the generic CtxSchemeNormalize builder with application/json body
-func NewCtxSchemeNormalizeRequest(server string, ctxID string, version string, body CtxSchemeNormalizeJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewCtxSchemeNormalizeRequestWithBody(server, ctxID, version, "application/json", bodyReader)
-}
-
-// NewCtxSchemeNormalizeRequestWithBody constructs an http.Request for the CtxSchemeNormalize method, with any body, and a specified content type
-func NewCtxSchemeNormalizeRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "ctxId", ctxID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "version", version, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/v1/ctx/%s/%s/scheme/normalize", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }
 
 // NewCtxSchemeNoticesRequest calls the generic CtxSchemeNotices builder with application/json body
-func NewCtxSchemeNoticesRequest(server string, ctxID string, version string, body CtxSchemeNoticesJSONRequestBody) (*http.Request, error) {
+func NewCtxSchemeNoticesRequest(server string, ctxID string, version string, params *CtxSchemeNoticesParams, body CtxSchemeNoticesJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxSchemeNoticesRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxSchemeNoticesRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxSchemeNoticesRequestWithBody constructs an http.Request for the CtxSchemeNotices method, with any body, and a specified content type
-func NewCtxSchemeNoticesRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxSchemeNoticesRequestWithBody(server string, ctxID string, version string, params *CtxSchemeNoticesParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -10077,6 +9791,33 @@ func NewCtxSchemeNoticesRequestWithBody(server string, ctxID string, version str
 		return nil, err
 	}
 
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Scheme != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "scheme", *params.Scheme, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
 	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
 	if err != nil {
 		return nil, err
@@ -10084,22 +9825,37 @@ func NewCtxSchemeNoticesRequestWithBody(server string, ctxID string, version str
 
 	req.Header.Add("Content-Type", contentType)
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxSchemeProcessRequest calls the generic CtxSchemeProcess builder with application/json body
-func NewCtxSchemeProcessRequest(server string, ctxID string, version string, body CtxSchemeProcessJSONRequestBody) (*http.Request, error) {
+func NewCtxSchemeProcessRequest(server string, ctxID string, version string, params *CtxSchemeProcessParams, body CtxSchemeProcessJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxSchemeProcessRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxSchemeProcessRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxSchemeProcessRequestWithBody constructs an http.Request for the CtxSchemeProcess method, with any body, and a specified content type
-func NewCtxSchemeProcessRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxSchemeProcessRequestWithBody(server string, ctxID string, version string, params *CtxSchemeProcessParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -10131,6 +9887,33 @@ func NewCtxSchemeProcessRequestWithBody(server string, ctxID string, version str
 		return nil, err
 	}
 
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Scheme != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "scheme", *params.Scheme, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
 	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
 	if err != nil {
 		return nil, err
@@ -10138,22 +9921,37 @@ func NewCtxSchemeProcessRequestWithBody(server string, ctxID string, version str
 
 	req.Header.Add("Content-Type", contentType)
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxSchemeRenderRequest calls the generic CtxSchemeRender builder with application/json body
-func NewCtxSchemeRenderRequest(server string, ctxID string, version string, body CtxSchemeRenderJSONRequestBody) (*http.Request, error) {
+func NewCtxSchemeRenderRequest(server string, ctxID string, version string, params *CtxSchemeRenderParams, body CtxSchemeRenderJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxSchemeRenderRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxSchemeRenderRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxSchemeRenderRequestWithBody constructs an http.Request for the CtxSchemeRender method, with any body, and a specified content type
-func NewCtxSchemeRenderRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxSchemeRenderRequestWithBody(server string, ctxID string, version string, params *CtxSchemeRenderParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -10185,6 +9983,33 @@ func NewCtxSchemeRenderRequestWithBody(server string, ctxID string, version stri
 		return nil, err
 	}
 
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Scheme != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "scheme", *params.Scheme, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
 	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
 	if err != nil {
 		return nil, err
@@ -10192,22 +10017,37 @@ func NewCtxSchemeRenderRequestWithBody(server string, ctxID string, version stri
 
 	req.Header.Add("Content-Type", contentType)
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxSchemeScanRequest calls the generic CtxSchemeScan builder with application/json body
-func NewCtxSchemeScanRequest(server string, ctxID string, version string, body CtxSchemeScanJSONRequestBody) (*http.Request, error) {
+func NewCtxSchemeScanRequest(server string, ctxID string, version string, params *CtxSchemeScanParams, body CtxSchemeScanJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxSchemeScanRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxSchemeScanRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxSchemeScanRequestWithBody constructs an http.Request for the CtxSchemeScan method, with any body, and a specified content type
-func NewCtxSchemeScanRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxSchemeScanRequestWithBody(server string, ctxID string, version string, params *CtxSchemeScanParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -10239,12 +10079,54 @@ func NewCtxSchemeScanRequestWithBody(server string, ctxID string, version string
 		return nil, err
 	}
 
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Scheme != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "scheme", *params.Scheme, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
 	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
 	if err != nil {
 		return nil, err
 	}
 
 	req.Header.Add("Content-Type", contentType)
+
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
 
 	return req, nil
 }
@@ -10314,22 +10196,37 @@ func NewCtxSchemeScopesRequest(server string, ctxID string, version string, para
 		return nil, err
 	}
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxSchemeSuggestRequest calls the generic CtxSchemeSuggest builder with application/json body
-func NewCtxSchemeSuggestRequest(server string, ctxID string, version string, body CtxSchemeSuggestJSONRequestBody) (*http.Request, error) {
+func NewCtxSchemeSuggestRequest(server string, ctxID string, version string, params *CtxSchemeSuggestParams, body CtxSchemeSuggestJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxSchemeSuggestRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxSchemeSuggestRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxSchemeSuggestRequestWithBody constructs an http.Request for the CtxSchemeSuggest method, with any body, and a specified content type
-func NewCtxSchemeSuggestRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxSchemeSuggestRequestWithBody(server string, ctxID string, version string, params *CtxSchemeSuggestParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -10361,6 +10258,33 @@ func NewCtxSchemeSuggestRequestWithBody(server string, ctxID string, version str
 		return nil, err
 	}
 
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Scheme != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "scheme", *params.Scheme, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
 	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
 	if err != nil {
 		return nil, err
@@ -10368,22 +10292,37 @@ func NewCtxSchemeSuggestRequestWithBody(server string, ctxID string, version str
 
 	req.Header.Add("Content-Type", contentType)
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxSchemeSuggestForCategoriesRequest calls the generic CtxSchemeSuggestForCategories builder with application/json body
-func NewCtxSchemeSuggestForCategoriesRequest(server string, ctxID string, version string, body CtxSchemeSuggestForCategoriesJSONRequestBody) (*http.Request, error) {
+func NewCtxSchemeSuggestForCategoriesRequest(server string, ctxID string, version string, params *CtxSchemeSuggestForCategoriesParams, body CtxSchemeSuggestForCategoriesJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxSchemeSuggestForCategoriesRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxSchemeSuggestForCategoriesRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxSchemeSuggestForCategoriesRequestWithBody constructs an http.Request for the CtxSchemeSuggestForCategories method, with any body, and a specified content type
-func NewCtxSchemeSuggestForCategoriesRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxSchemeSuggestForCategoriesRequestWithBody(server string, ctxID string, version string, params *CtxSchemeSuggestForCategoriesParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -10415,6 +10354,33 @@ func NewCtxSchemeSuggestForCategoriesRequestWithBody(server string, ctxID string
 		return nil, err
 	}
 
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Scheme != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "scheme", *params.Scheme, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
 	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
 	if err != nil {
 		return nil, err
@@ -10422,22 +10388,37 @@ func NewCtxSchemeSuggestForCategoriesRequestWithBody(server string, ctxID string
 
 	req.Header.Add("Content-Type", contentType)
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxSchemeValidateRequest calls the generic CtxSchemeValidate builder with application/json body
-func NewCtxSchemeValidateRequest(server string, ctxID string, version string, body CtxSchemeValidateJSONRequestBody) (*http.Request, error) {
+func NewCtxSchemeValidateRequest(server string, ctxID string, version string, params *CtxSchemeValidateParams, body CtxSchemeValidateJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxSchemeValidateRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxSchemeValidateRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxSchemeValidateRequestWithBody constructs an http.Request for the CtxSchemeValidate method, with any body, and a specified content type
-func NewCtxSchemeValidateRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxSchemeValidateRequestWithBody(server string, ctxID string, version string, params *CtxSchemeValidateParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -10469,6 +10450,33 @@ func NewCtxSchemeValidateRequestWithBody(server string, ctxID string, version st
 		return nil, err
 	}
 
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Scheme != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "scheme", *params.Scheme, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
 	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
 	if err != nil {
 		return nil, err
@@ -10476,22 +10484,37 @@ func NewCtxSchemeValidateRequestWithBody(server string, ctxID string, version st
 
 	req.Header.Add("Content-Type", contentType)
 
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
+
 	return req, nil
 }
 
 // NewCtxSchemeViewRequest calls the generic CtxSchemeView builder with application/json body
-func NewCtxSchemeViewRequest(server string, ctxID string, version string, body CtxSchemeViewJSONRequestBody) (*http.Request, error) {
+func NewCtxSchemeViewRequest(server string, ctxID string, version string, params *CtxSchemeViewParams, body CtxSchemeViewJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCtxSchemeViewRequestWithBody(server, ctxID, version, "application/json", bodyReader)
+	return NewCtxSchemeViewRequestWithBody(server, ctxID, version, params, "application/json", bodyReader)
 }
 
 // NewCtxSchemeViewRequestWithBody constructs an http.Request for the CtxSchemeView method, with any body, and a specified content type
-func NewCtxSchemeViewRequestWithBody(server string, ctxID string, version string, contentType string, body io.Reader) (*http.Request, error) {
+func NewCtxSchemeViewRequestWithBody(server string, ctxID string, version string, params *CtxSchemeViewParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -10523,12 +10546,54 @@ func NewCtxSchemeViewRequestWithBody(server string, ctxID string, version string
 		return nil, err
 	}
 
+	if params != nil {
+		// queryValues collects non-styled parameters (passthrough, JSON)
+		// that are safe to round-trip through url.Values.Encode().
+		queryValues := queryURL.Query()
+		// rawQueryFragments collects pre-encoded query fragments from
+		// styled parameters, preserving literal commas as delimiters
+		// per the OpenAPI spec (e.g. "color=blue,black,brown").
+		var rawQueryFragments []string
+
+		if params.Scheme != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "scheme", *params.Scheme, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else {
+				for _, qp := range strings.Split(queryFrag, "&") {
+					rawQueryFragments = append(rawQueryFragments, qp)
+				}
+			}
+
+		}
+
+		if encoded := queryValues.Encode(); encoded != "" {
+			rawQueryFragments = append(rawQueryFragments, encoded)
+		}
+		queryURL.RawQuery = strings.Join(rawQueryFragments, "&")
+	}
+
 	req, err := http.NewRequest(http.MethodPost, queryURL.String(), body)
 	if err != nil {
 		return nil, err
 	}
 
 	req.Header.Add("Content-Type", contentType)
+
+	if params != nil {
+
+		if params.XEzclassifyApplicationID != nil {
+			var headerParam0 string
+
+			headerParam0, err = runtime.StyleParamWithOptions("simple", false, "x-ezclassify-application-id", *params.XEzclassifyApplicationID, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
+			if err != nil {
+				return nil, err
+			}
+
+			req.Header.Set("x-ezclassify-application-id", headerParam0)
+		}
+
+	}
 
 	return req, nil
 }
@@ -10638,7 +10703,7 @@ type ClientWithResponsesInterface interface {
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /v1/ctx (the `CtxList` operationId).
-	CtxListWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*CtxListHTTP, error)
+	CtxListWithResponse(ctx context.Context, params *CtxListParams, reqEditors ...RequestEditorFn) (*CtxListHTTP, error)
 
 	// CtxVersionsWithResponse List available versions for a context id
 	//
@@ -10647,7 +10712,7 @@ type ClientWithResponsesInterface interface {
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /v1/ctx/{ctxId} (the `CtxVersions` operationId).
-	CtxVersionsWithResponse(ctx context.Context, ctxID string, reqEditors ...RequestEditorFn) (*CtxVersionsHTTP, error)
+	CtxVersionsWithResponse(ctx context.Context, ctxID string, params *CtxVersionsParams, reqEditors ...RequestEditorFn) (*CtxVersionsHTTP, error)
 
 	// CtxDescribeWithResponse Describe a resolved context
 	//
@@ -10656,7 +10721,7 @@ type ClientWithResponsesInterface interface {
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /v1/ctx/{ctxId}/{version} (the `CtxDescribe` operationId).
-	CtxDescribeWithResponse(ctx context.Context, ctxID string, version string, reqEditors ...RequestEditorFn) (*CtxDescribeHTTP, error)
+	CtxDescribeWithResponse(ctx context.Context, ctxID string, version string, params *CtxDescribeParams, reqEditors ...RequestEditorFn) (*CtxDescribeHTTP, error)
 
 	// CtxAccessCheckWithBodyWithResponse Check access decision in a context
 	//
@@ -10665,7 +10730,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/access/check (the `CtxAccessCheck` operationId).
-	CtxAccessCheckWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxAccessCheckHTTP, error)
+	CtxAccessCheckWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxAccessCheckParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxAccessCheckHTTP, error)
 
 	// CtxAccessCheckWithResponse Check access decision in a context
 	//
@@ -10674,43 +10739,25 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/access/check (the `CtxAccessCheck` operationId).
-	CtxAccessCheckWithResponse(ctx context.Context, ctxID string, version string, body CtxAccessCheckJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxAccessCheckHTTP, error)
+	CtxAccessCheckWithResponse(ctx context.Context, ctxID string, version string, params *CtxAccessCheckParams, body CtxAccessCheckJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxAccessCheckHTTP, error)
 
 	// CtxAccessDescribeRequirementsWithBodyWithResponse Describe access requirements for a target in a context
 	//
-	// Describes requirements imposed by immutable policy for a trusted target supplied as `marking`, structured `assertions`, or both. Both target forms are normalized through the same Context scheme path used by access check. These are policy requirements for the supplied target, not remediation instructions and not advice to change immutable `userAttributes`. Document access assessment (POST /v1/ctx/{ctxId}/{version}/document/assess-access) answers document receivability and content or context remediation questions.
+	// Describes requirements imposed by immutable policy for a trusted target supplied as `marking`, structured `assertions`, or both. Both target forms are normalized through the same Context scheme path used by access check. These are policy requirements for the supplied target, not remediation instructions and not advice to change immutable `userAttributes`.
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/access/describe-requirements (the `CtxAccessDescribeRequirements` operationId).
-	CtxAccessDescribeRequirementsWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxAccessDescribeRequirementsHTTP, error)
+	CtxAccessDescribeRequirementsWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxAccessDescribeRequirementsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxAccessDescribeRequirementsHTTP, error)
 
 	// CtxAccessDescribeRequirementsWithResponse Describe access requirements for a target in a context
 	//
-	// Describes requirements imposed by immutable policy for a trusted target supplied as `marking`, structured `assertions`, or both. Both target forms are normalized through the same Context scheme path used by access check. These are policy requirements for the supplied target, not remediation instructions and not advice to change immutable `userAttributes`. Document access assessment (POST /v1/ctx/{ctxId}/{version}/document/assess-access) answers document receivability and content or context remediation questions.
+	// Describes requirements imposed by immutable policy for a trusted target supplied as `marking`, structured `assertions`, or both. Both target forms are normalized through the same Context scheme path used by access check. These are policy requirements for the supplied target, not remediation instructions and not advice to change immutable `userAttributes`.
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/access/describe-requirements (the `CtxAccessDescribeRequirements` operationId).
-	CtxAccessDescribeRequirementsWithResponse(ctx context.Context, ctxID string, version string, body CtxAccessDescribeRequirementsJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxAccessDescribeRequirementsHTTP, error)
-
-	// CtxAccessDescribeRuleWithBodyWithResponse Describe an access rule in a context
-	//
-	// Returns the human-readable predicate, the `userAttributes` paths the rule reads, and the data categories its `when` block depends on, scoped to the context's access policy.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/access/describe-rule (the `CtxAccessDescribeRule` operationId).
-	CtxAccessDescribeRuleWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxAccessDescribeRuleHTTP, error)
-
-	// CtxAccessDescribeRuleWithResponse Describe an access rule in a context
-	//
-	// Returns the human-readable predicate, the `userAttributes` paths the rule reads, and the data categories its `when` block depends on, scoped to the context's access policy.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/access/describe-rule (the `CtxAccessDescribeRule` operationId).
-	CtxAccessDescribeRuleWithResponse(ctx context.Context, ctxID string, version string, body CtxAccessDescribeRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxAccessDescribeRuleHTTP, error)
+	CtxAccessDescribeRequirementsWithResponse(ctx context.Context, ctxID string, version string, params *CtxAccessDescribeRequirementsParams, body CtxAccessDescribeRequirementsJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxAccessDescribeRequirementsHTTP, error)
 
 	// CtxAccessRulesWithResponse Describe every access rule in a context
 	//
@@ -10719,7 +10766,16 @@ type ClientWithResponsesInterface interface {
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /v1/ctx/{ctxId}/{version}/access/rules (the `CtxAccessRules` operationId).
-	CtxAccessRulesWithResponse(ctx context.Context, ctxID string, version string, reqEditors ...RequestEditorFn) (*CtxAccessRulesHTTP, error)
+	CtxAccessRulesWithResponse(ctx context.Context, ctxID string, version string, params *CtxAccessRulesParams, reqEditors ...RequestEditorFn) (*CtxAccessRulesHTTP, error)
+
+	// CtxCrosswalkDescribeWithResponse Describe every crosswalk in a context
+	//
+	// Returns every crosswalk the context holds, in declaration order: its id and the concrete version that answers, its name, guidance and citation, the source and target schemes as the selectors the context description lists under `schemes`, and the mappings and selections a translation applies, each with its disposition and reason. A context that declares no crosswalk answers with an empty list. The :version segment may be omitted to default to "latest".
+	//
+	// Returns a wrapper object for the known response body format(s).
+	//
+	// Corresponds with GET /v1/ctx/{ctxId}/{version}/crosswalk/describe (the `CtxCrosswalkDescribe` operationId).
+	CtxCrosswalkDescribeWithResponse(ctx context.Context, ctxID string, version string, params *CtxCrosswalkDescribeParams, reqEditors ...RequestEditorFn) (*CtxCrosswalkDescribeHTTP, error)
 
 	// CtxCrosswalkTranslateWithBodyWithResponse Translate a marking through a crosswalk in a context
 	//
@@ -10728,7 +10784,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/crosswalk/translate (the `CtxCrosswalkTranslate` operationId).
-	CtxCrosswalkTranslateWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxCrosswalkTranslateHTTP, error)
+	CtxCrosswalkTranslateWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxCrosswalkTranslateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxCrosswalkTranslateHTTP, error)
 
 	// CtxCrosswalkTranslateWithResponse Translate a marking through a crosswalk in a context
 	//
@@ -10737,97 +10793,43 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/crosswalk/translate (the `CtxCrosswalkTranslate` operationId).
-	CtxCrosswalkTranslateWithResponse(ctx context.Context, ctxID string, version string, body CtxCrosswalkTranslateJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxCrosswalkTranslateHTTP, error)
-
-	// CtxDocumentAssessAccessWithBodyWithResponse Assess document access in a context
-	//
-	// Answers whether the supplied userAttributes satisfy a document under the Context policy. It audits the document once and evaluates authored, authoritative, and projected access scenarios against immutable userAttributes and Context policy. Lexical matches are nominations, never automatic decisions; accepted findings bind to the returned finding ID and document digest, and revised text requires new decisions. Authoritative includes authored facts plus explicit analyst decisions. Projected assumes unresolved nominations and remains advisory. contentRequirements identify supported content that must cease to apply after content change and re-evaluation; they are not instructions to lower a marking. contextRequirements are conditional future relationships between userAttributes and authoritative context, not mutations performed by EzClassify. A denial remains denied until revised text or authoritative external state is re-evaluated. The standard profile is the default; summary suits only an initial large-document overview, standard is needed before decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/document/assess-access (the `CtxDocumentAssessAccess` operationId).
-	CtxDocumentAssessAccessWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxDocumentAssessAccessHTTP, error)
-
-	// CtxDocumentAssessAccessWithResponse Assess document access in a context
-	//
-	// Answers whether the supplied userAttributes satisfy a document under the Context policy. It audits the document once and evaluates authored, authoritative, and projected access scenarios against immutable userAttributes and Context policy. Lexical matches are nominations, never automatic decisions; accepted findings bind to the returned finding ID and document digest, and revised text requires new decisions. Authoritative includes authored facts plus explicit analyst decisions. Projected assumes unresolved nominations and remains advisory. contentRequirements identify supported content that must cease to apply after content change and re-evaluation; they are not instructions to lower a marking. contextRequirements are conditional future relationships between userAttributes and authoritative context, not mutations performed by EzClassify. A denial remains denied until revised text or authoritative external state is re-evaluated. The standard profile is the default; summary suits only an initial large-document overview, standard is needed before decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/document/assess-access (the `CtxDocumentAssessAccess` operationId).
-	CtxDocumentAssessAccessWithResponse(ctx context.Context, ctxID string, version string, body CtxDocumentAssessAccessJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxDocumentAssessAccessHTTP, error)
+	CtxCrosswalkTranslateWithResponse(ctx context.Context, ctxID string, version string, params *CtxCrosswalkTranslateParams, body CtxCrosswalkTranslateJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxCrosswalkTranslateHTTP, error)
 
 	// CtxDocumentAuditWithBodyWithResponse Audit a document for marking coverage in a context
 	//
-	// Audits authored document markings and evaluates guide nominations without treating lexical matches as authoritative facts. Never accept a nomination without an explicit analyst decision bound to its finding ID and document digest; revised text requires new decisions. Determined results include only accepted findings and manual selections, while projected results assume unresolved nominations and remain advisory. This operation answers authored correctness and guide review; document access assessment (POST /v1/ctx/{ctxId}/{version}/document/assess-access) answers whether supplied userAttributes satisfy the document policy. The standard response profile is the default; summary suits only an initial large-document overview, standard is needed before analyst decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
+	// Audits authored document markings and evaluates guide nominations without treating lexical matches as authoritative facts. Never accept a nomination without an explicit analyst decision bound to its finding ID and document digest; revised text requires new decisions. Determined results include only accepted findings and manual selections, while projected results assume unresolved nominations and remain advisory. This operation answers authored correctness and guide review. The standard response profile is the default; summary suits only an initial large-document overview, standard is needed before analyst decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/document/audit (the `CtxDocumentAudit` operationId).
-	CtxDocumentAuditWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxDocumentAuditHTTP, error)
+	CtxDocumentAuditWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxDocumentAuditParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxDocumentAuditHTTP, error)
 
 	// CtxDocumentAuditWithResponse Audit a document for marking coverage in a context
 	//
-	// Audits authored document markings and evaluates guide nominations without treating lexical matches as authoritative facts. Never accept a nomination without an explicit analyst decision bound to its finding ID and document digest; revised text requires new decisions. Determined results include only accepted findings and manual selections, while projected results assume unresolved nominations and remain advisory. This operation answers authored correctness and guide review; document access assessment (POST /v1/ctx/{ctxId}/{version}/document/assess-access) answers whether supplied userAttributes satisfy the document policy. The standard response profile is the default; summary suits only an initial large-document overview, standard is needed before analyst decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
+	// Audits authored document markings and evaluates guide nominations without treating lexical matches as authoritative facts. Never accept a nomination without an explicit analyst decision bound to its finding ID and document digest; revised text requires new decisions. Determined results include only accepted findings and manual selections, while projected results assume unresolved nominations and remain advisory. This operation answers authored correctness and guide review. The standard response profile is the default; summary suits only an initial large-document overview, standard is needed before analyst decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/document/audit (the `CtxDocumentAudit` operationId).
-	CtxDocumentAuditWithResponse(ctx context.Context, ctxID string, version string, body CtxDocumentAuditJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxDocumentAuditHTTP, error)
-
-	// CtxGuideDescribeRuleWithBodyWithResponse Describe a guide rule in a context
-	//
-	// Returns structured metadata for a guide rule (outcome text, when conditions, dependencies, overrides) looking up the rule by id in the guide(s) bound to the context. Pass guideId when the context has multiple guides; otherwise the first guide is used.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/describe-rule (the `CtxGuideDescribeRule` operationId).
-	CtxGuideDescribeRuleWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxGuideDescribeRuleHTTP, error)
-
-	// CtxGuideDescribeRuleWithResponse Describe a guide rule in a context
-	//
-	// Returns structured metadata for a guide rule (outcome text, when conditions, dependencies, overrides) looking up the rule by id in the guide(s) bound to the context. Pass guideId when the context has multiple guides; otherwise the first guide is used.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/describe-rule (the `CtxGuideDescribeRule` operationId).
-	CtxGuideDescribeRuleWithResponse(ctx context.Context, ctxID string, version string, body CtxGuideDescribeRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxGuideDescribeRuleHTTP, error)
+	CtxDocumentAuditWithResponse(ctx context.Context, ctxID string, version string, params *CtxDocumentAuditParams, body CtxDocumentAuditJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxDocumentAuditHTTP, error)
 
 	// CtxGuideEvaluateWithBodyWithResponse Evaluate selected guide rules in a context
 	//
-	// Supply exactly one of guideId or allGuides: true. A named guide is evaluated alone. allGuides combines every loaded guide in load order through the context's composed scheme, with the later guide owning duplicate rule IDs. Returns the engine's structured evaluation result.
+	// Send `guideId` with `selectedRuleIds` to evaluate that one guide, or `selections` to roll up rules selected from several guides. Each selection names its guide, so two guides that use the same rule ID hold two rules. Each guide evaluates its own selected rules, with its own dependencies and overrides, and the outcomes are rolled up per target scheme. No guide overrides or depends on another. Returns the engine's structured evaluation result.
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/evaluate (the `CtxGuideEvaluate` operationId).
-	CtxGuideEvaluateWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxGuideEvaluateHTTP, error)
+	CtxGuideEvaluateWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxGuideEvaluateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxGuideEvaluateHTTP, error)
 
 	// CtxGuideEvaluateWithResponse Evaluate selected guide rules in a context
 	//
-	// Supply exactly one of guideId or allGuides: true. A named guide is evaluated alone. allGuides combines every loaded guide in load order through the context's composed scheme, with the later guide owning duplicate rule IDs. Returns the engine's structured evaluation result.
+	// Send `guideId` with `selectedRuleIds` to evaluate that one guide, or `selections` to roll up rules selected from several guides. Each selection names its guide, so two guides that use the same rule ID hold two rules. Each guide evaluates its own selected rules, with its own dependencies and overrides, and the outcomes are rolled up per target scheme. No guide overrides or depends on another. Returns the engine's structured evaluation result.
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/evaluate (the `CtxGuideEvaluate` operationId).
-	CtxGuideEvaluateWithResponse(ctx context.Context, ctxID string, version string, body CtxGuideEvaluateJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxGuideEvaluateHTTP, error)
-
-	// CtxGuideFilterRulesWithBodyWithResponse Filter guide rules in a context
-	//
-	// Returns the subset of rules in the context-bound guide that match a free-text query. Pass guideId to disambiguate when the context has multiple guides.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/filter-rules (the `CtxGuideFilterRules` operationId).
-	CtxGuideFilterRulesWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxGuideFilterRulesHTTP, error)
-
-	// CtxGuideFilterRulesWithResponse Filter guide rules in a context
-	//
-	// Returns the subset of rules in the context-bound guide that match a free-text query. Pass guideId to disambiguate when the context has multiple guides.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/filter-rules (the `CtxGuideFilterRules` operationId).
-	CtxGuideFilterRulesWithResponse(ctx context.Context, ctxID string, version string, body CtxGuideFilterRulesJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxGuideFilterRulesHTTP, error)
+	CtxGuideEvaluateWithResponse(ctx context.Context, ctxID string, version string, params *CtxGuideEvaluateParams, body CtxGuideEvaluateJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxGuideEvaluateHTTP, error)
 
 	// CtxGuideScanWithBodyWithResponse Scan text against context guides
 	//
@@ -10836,7 +10838,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/scan (the `CtxGuideScan` operationId).
-	CtxGuideScanWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxGuideScanHTTP, error)
+	CtxGuideScanWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxGuideScanParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxGuideScanHTTP, error)
 
 	// CtxGuideScanWithResponse Scan text against context guides
 	//
@@ -10845,7 +10847,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/scan (the `CtxGuideScan` operationId).
-	CtxGuideScanWithResponse(ctx context.Context, ctxID string, version string, body CtxGuideScanJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxGuideScanHTTP, error)
+	CtxGuideScanWithResponse(ctx context.Context, ctxID string, version string, params *CtxGuideScanParams, body CtxGuideScanJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxGuideScanHTTP, error)
 
 	// CtxGuideViewWithBodyWithResponse Build guide structural view in a context
 	//
@@ -10854,7 +10856,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/view (the `CtxGuideView` operationId).
-	CtxGuideViewWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxGuideViewHTTP, error)
+	CtxGuideViewWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxGuideViewParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxGuideViewHTTP, error)
 
 	// CtxGuideViewWithResponse Build guide structural view in a context
 	//
@@ -10863,7 +10865,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/view (the `CtxGuideView` operationId).
-	CtxGuideViewWithResponse(ctx context.Context, ctxID string, version string, body CtxGuideViewJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxGuideViewHTTP, error)
+	CtxGuideViewWithResponse(ctx context.Context, ctxID string, version string, params *CtxGuideViewParams, body CtxGuideViewJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxGuideViewHTTP, error)
 
 	// CtxSchemeSummaryWithResponse Get the scheme summary in a context
 	//
@@ -10876,21 +10878,21 @@ type ClientWithResponsesInterface interface {
 
 	// CtxSchemeAggregateWithBodyWithResponse Aggregate marking strings in a context
 	//
-	// Combines part markings into a single aggregate marking using the context's composed scheme aggregation rules. Supply either `inputs` (marking strings) or `assertionSets` (already-parsed assertion arrays for lossless transport of scope-only assertions and capture values): exactly one, not both. The :version segment may be omitted to default to "latest".
+	// Rolls markings up into the one whole marking that covers them, using the context's composed scheme rollup rules. With no `context` the inputs are read as wholes, as in an aggregate such as the documents in a folder; `context` names the role the inputs are read in, and `{ role: 'part', partOf }` reads each as a part of that whole, as in a whole's parts rollup. Supply either `inputs` (marking strings) or `assertionSets` (already-parsed assertion arrays for lossless transport of scope-only assertions and capture values): exactly one, not both. The :version segment may be omitted to default to "latest".
 	//
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/aggregate (the `CtxSchemeAggregate` operationId).
-	CtxSchemeAggregateWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeAggregateHTTP, error)
+	CtxSchemeAggregateWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeAggregateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeAggregateHTTP, error)
 
 	// CtxSchemeAggregateWithResponse Aggregate marking strings in a context
 	//
-	// Combines part markings into a single aggregate marking using the context's composed scheme aggregation rules. Supply either `inputs` (marking strings) or `assertionSets` (already-parsed assertion arrays for lossless transport of scope-only assertions and capture values): exactly one, not both. The :version segment may be omitted to default to "latest".
+	// Rolls markings up into the one whole marking that covers them, using the context's composed scheme rollup rules. With no `context` the inputs are read as wholes, as in an aggregate such as the documents in a folder; `context` names the role the inputs are read in, and `{ role: 'part', partOf }` reads each as a part of that whole, as in a whole's parts rollup. Supply either `inputs` (marking strings) or `assertionSets` (already-parsed assertion arrays for lossless transport of scope-only assertions and capture values): exactly one, not both. The :version segment may be omitted to default to "latest".
 	//
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/aggregate (the `CtxSchemeAggregate` operationId).
-	CtxSchemeAggregateWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeAggregateJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeAggregateHTTP, error)
+	CtxSchemeAggregateWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeAggregateParams, body CtxSchemeAggregateJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeAggregateHTTP, error)
 
 	// CtxSchemeApplyPresetWithBodyWithResponse Apply a label preset in a context
 	//
@@ -10899,7 +10901,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/apply-preset (the `CtxSchemeApplyPreset` operationId).
-	CtxSchemeApplyPresetWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeApplyPresetHTTP, error)
+	CtxSchemeApplyPresetWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeApplyPresetParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeApplyPresetHTTP, error)
 
 	// CtxSchemeApplyPresetWithResponse Apply a label preset in a context
 	//
@@ -10908,7 +10910,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/apply-preset (the `CtxSchemeApplyPreset` operationId).
-	CtxSchemeApplyPresetWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeApplyPresetJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeApplyPresetHTTP, error)
+	CtxSchemeApplyPresetWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeApplyPresetParams, body CtxSchemeApplyPresetJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeApplyPresetHTTP, error)
 
 	// CtxSchemeCategoriesWithResponse Get the scheme categories in a context
 	//
@@ -10926,7 +10928,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/check-coverage (the `CtxSchemeCheckCoverage` operationId).
-	CtxSchemeCheckCoverageWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeCheckCoverageHTTP, error)
+	CtxSchemeCheckCoverageWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeCheckCoverageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeCheckCoverageHTTP, error)
 
 	// CtxSchemeCheckCoverageWithResponse Check marking coverage in a context
 	//
@@ -10935,7 +10937,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/check-coverage (the `CtxSchemeCheckCoverage` operationId).
-	CtxSchemeCheckCoverageWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeCheckCoverageJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeCheckCoverageHTTP, error)
+	CtxSchemeCheckCoverageWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeCheckCoverageParams, body CtxSchemeCheckCoverageJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeCheckCoverageHTTP, error)
 
 	// CtxSchemeConceptsWithResponse Get the scheme concepts in a context
 	//
@@ -10962,7 +10964,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/diff (the `CtxSchemeDiff` operationId).
-	CtxSchemeDiffWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeDiffHTTP, error)
+	CtxSchemeDiffWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeDiffParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeDiffHTTP, error)
 
 	// CtxSchemeDiffWithResponse Diff two markings in a context
 	//
@@ -10971,7 +10973,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/diff (the `CtxSchemeDiff` operationId).
-	CtxSchemeDiffWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeDiffJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeDiffHTTP, error)
+	CtxSchemeDiffWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeDiffParams, body CtxSchemeDiffJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeDiffHTTP, error)
 
 	// CtxSchemeExplainWithBodyWithResponse Explain how a marking is processed in a context
 	//
@@ -10980,7 +10982,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/explain (the `CtxSchemeExplain` operationId).
-	CtxSchemeExplainWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeExplainHTTP, error)
+	CtxSchemeExplainWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeExplainParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeExplainHTTP, error)
 
 	// CtxSchemeExplainWithResponse Explain how a marking is processed in a context
 	//
@@ -10989,25 +10991,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/explain (the `CtxSchemeExplain` operationId).
-	CtxSchemeExplainWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeExplainJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeExplainHTTP, error)
-
-	// CtxSchemeFilterConceptsWithBodyWithResponse Filter scheme concepts in a context
-	//
-	// Filters the context's composed scheme concept list by a text query. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/filter-concepts (the `CtxSchemeFilterConcepts` operationId).
-	CtxSchemeFilterConceptsWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeFilterConceptsHTTP, error)
-
-	// CtxSchemeFilterConceptsWithResponse Filter scheme concepts in a context
-	//
-	// Filters the context's composed scheme concept list by a text query. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/filter-concepts (the `CtxSchemeFilterConcepts` operationId).
-	CtxSchemeFilterConceptsWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeFilterConceptsJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeFilterConceptsHTTP, error)
+	CtxSchemeExplainWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeExplainParams, body CtxSchemeExplainJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeExplainHTTP, error)
 
 	// CtxSchemeFormatsWithResponse Get the scheme render formats in a context
 	//
@@ -11018,41 +11002,14 @@ type ClientWithResponsesInterface interface {
 	// Corresponds with GET /v1/ctx/{ctxId}/{version}/scheme/formats (the `CtxSchemeFormats` operationId).
 	CtxSchemeFormatsWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeFormatsParams, reqEditors ...RequestEditorFn) (*CtxSchemeFormatsHTTP, error)
 
-	// CtxSchemeGrammarWithResponse Get the scheme parse grammar in a context
-	//
-	// Returns the parse grammar for the context's composed scheme: whether its vocabulary is matched case-sensitively and whether surrounding whitespace is ignored. There is no separator; each field of a marking writes its own boundaries. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-	//
-	// Returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with GET /v1/ctx/{ctxId}/{version}/scheme/grammar (the `CtxSchemeGrammar` operationId).
-	CtxSchemeGrammarWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeGrammarParams, reqEditors ...RequestEditorFn) (*CtxSchemeGrammarHTTP, error)
-
 	// CtxSchemeLabelPresetsWithResponse List the label presets in a context
 	//
-	// Returns the label presets of the context's primary scheme, the scheme apply-preset expands them in, as preset views: id, label, description, and scope. Empty when the scheme declares none. The marking string and tag list stay server-side; expand a preset with POST /v1/ctx/{ctxId}/{version}/scheme/apply-preset. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
+	// Returns the label presets of the selected scheme as preset views: id, label, description, and scope. Empty when the scheme declares none. The marking string and tag list stay server-side; expand a preset with POST /v1/ctx/{ctxId}/{version}/scheme/apply-preset under the same selector. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
 	//
 	// Returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with GET /v1/ctx/{ctxId}/{version}/scheme/label-presets (the `CtxSchemeLabelPresets` operationId).
-	CtxSchemeLabelPresetsWithResponse(ctx context.Context, ctxID string, version string, reqEditors ...RequestEditorFn) (*CtxSchemeLabelPresetsHTTP, error)
-
-	// CtxSchemeNormalizeWithBodyWithResponse Normalize a marking in a context
-	//
-	// Returns the canonical normalized form of a marking against the context's composed scheme. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-	//
-	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/normalize (the `CtxSchemeNormalize` operationId).
-	CtxSchemeNormalizeWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeNormalizeHTTP, error)
-
-	// CtxSchemeNormalizeWithResponse Normalize a marking in a context
-	//
-	// Returns the canonical normalized form of a marking against the context's composed scheme. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-	//
-	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-	//
-	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/normalize (the `CtxSchemeNormalize` operationId).
-	CtxSchemeNormalizeWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeNormalizeJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeNormalizeHTTP, error)
+	CtxSchemeLabelPresetsWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeLabelPresetsParams, reqEditors ...RequestEditorFn) (*CtxSchemeLabelPresetsHTTP, error)
 
 	// CtxSchemeNoticesWithBodyWithResponse Collect notices for assertions in a context
 	//
@@ -11061,7 +11018,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/notices (the `CtxSchemeNotices` operationId).
-	CtxSchemeNoticesWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeNoticesHTTP, error)
+	CtxSchemeNoticesWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeNoticesParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeNoticesHTTP, error)
 
 	// CtxSchemeNoticesWithResponse Collect notices for assertions in a context
 	//
@@ -11070,7 +11027,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/notices (the `CtxSchemeNotices` operationId).
-	CtxSchemeNoticesWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeNoticesJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeNoticesHTTP, error)
+	CtxSchemeNoticesWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeNoticesParams, body CtxSchemeNoticesJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeNoticesHTTP, error)
 
 	// CtxSchemeProcessWithBodyWithResponse Process a marking in a context
 	//
@@ -11079,7 +11036,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/process (the `CtxSchemeProcess` operationId).
-	CtxSchemeProcessWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeProcessHTTP, error)
+	CtxSchemeProcessWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeProcessParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeProcessHTTP, error)
 
 	// CtxSchemeProcessWithResponse Process a marking in a context
 	//
@@ -11088,7 +11045,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/process (the `CtxSchemeProcess` operationId).
-	CtxSchemeProcessWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeProcessJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeProcessHTTP, error)
+	CtxSchemeProcessWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeProcessParams, body CtxSchemeProcessJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeProcessHTTP, error)
 
 	// CtxSchemeRenderWithBodyWithResponse Render assertions in a context
 	//
@@ -11097,7 +11054,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/render (the `CtxSchemeRender` operationId).
-	CtxSchemeRenderWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeRenderHTTP, error)
+	CtxSchemeRenderWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeRenderParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeRenderHTTP, error)
 
 	// CtxSchemeRenderWithResponse Render assertions in a context
 	//
@@ -11106,7 +11063,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/render (the `CtxSchemeRender` operationId).
-	CtxSchemeRenderWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeRenderJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeRenderHTTP, error)
+	CtxSchemeRenderWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeRenderParams, body CtxSchemeRenderJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeRenderHTTP, error)
 
 	// CtxSchemeScanWithBodyWithResponse Scan text for markings in a context
 	//
@@ -11115,7 +11072,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/scan (the `CtxSchemeScan` operationId).
-	CtxSchemeScanWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeScanHTTP, error)
+	CtxSchemeScanWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeScanParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeScanHTTP, error)
 
 	// CtxSchemeScanWithResponse Scan text for markings in a context
 	//
@@ -11124,7 +11081,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/scan (the `CtxSchemeScan` operationId).
-	CtxSchemeScanWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeScanJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeScanHTTP, error)
+	CtxSchemeScanWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeScanParams, body CtxSchemeScanJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeScanHTTP, error)
 
 	// CtxSchemeScopesWithResponse Get the scheme scopes in a context
 	//
@@ -11142,7 +11099,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/suggest (the `CtxSchemeSuggest` operationId).
-	CtxSchemeSuggestWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeSuggestHTTP, error)
+	CtxSchemeSuggestWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeSuggestParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeSuggestHTTP, error)
 
 	// CtxSchemeSuggestWithResponse Suggest marking completions in a context
 	//
@@ -11151,7 +11108,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/suggest (the `CtxSchemeSuggest` operationId).
-	CtxSchemeSuggestWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeSuggestJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeSuggestHTTP, error)
+	CtxSchemeSuggestWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeSuggestParams, body CtxSchemeSuggestJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeSuggestHTTP, error)
 
 	// CtxSchemeSuggestForCategoriesWithBodyWithResponse Suggest completions for several categories in a context
 	//
@@ -11160,7 +11117,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/suggest-for-categories (the `CtxSchemeSuggestForCategories` operationId).
-	CtxSchemeSuggestForCategoriesWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeSuggestForCategoriesHTTP, error)
+	CtxSchemeSuggestForCategoriesWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeSuggestForCategoriesParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeSuggestForCategoriesHTTP, error)
 
 	// CtxSchemeSuggestForCategoriesWithResponse Suggest completions for several categories in a context
 	//
@@ -11169,7 +11126,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/suggest-for-categories (the `CtxSchemeSuggestForCategories` operationId).
-	CtxSchemeSuggestForCategoriesWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeSuggestForCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeSuggestForCategoriesHTTP, error)
+	CtxSchemeSuggestForCategoriesWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeSuggestForCategoriesParams, body CtxSchemeSuggestForCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeSuggestForCategoriesHTTP, error)
 
 	// CtxSchemeValidateWithBodyWithResponse Validate a marking in a context
 	//
@@ -11178,7 +11135,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/validate (the `CtxSchemeValidate` operationId).
-	CtxSchemeValidateWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeValidateHTTP, error)
+	CtxSchemeValidateWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeValidateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeValidateHTTP, error)
 
 	// CtxSchemeValidateWithResponse Validate a marking in a context
 	//
@@ -11187,7 +11144,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/validate (the `CtxSchemeValidate` operationId).
-	CtxSchemeValidateWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeValidateJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeValidateHTTP, error)
+	CtxSchemeValidateWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeValidateParams, body CtxSchemeValidateJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeValidateHTTP, error)
 
 	// CtxSchemeViewWithBodyWithResponse Build scheme structural view in a context
 	//
@@ -11196,7 +11153,7 @@ type ClientWithResponsesInterface interface {
 	// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/view (the `CtxSchemeView` operationId).
-	CtxSchemeViewWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeViewHTTP, error)
+	CtxSchemeViewWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeViewParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeViewHTTP, error)
 
 	// CtxSchemeViewWithResponse Build scheme structural view in a context
 	//
@@ -11205,7 +11162,7 @@ type ClientWithResponsesInterface interface {
 	// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 	//
 	// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/view (the `CtxSchemeView` operationId).
-	CtxSchemeViewWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeViewJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeViewHTTP, error)
+	CtxSchemeViewWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeViewParams, body CtxSchemeViewJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeViewHTTP, error)
 
 	// GetHealthWithResponse Health check
 	//
@@ -11656,99 +11613,6 @@ func (r CtxAccessDescribeRequirementsHTTP) ContentType() string {
 	return ""
 }
 
-// CtxAccessDescribeRuleHTTP200Headers the declared response headers of an HTTP 200 response for CtxAccessDescribeRule
-type CtxAccessDescribeRuleHTTP200Headers struct {
-	XEzClassifyResolvedVersion *string
-}
-
-// CtxAccessDescribeRuleHTTP429Headers the declared response headers of an HTTP 429 response for CtxAccessDescribeRule
-type CtxAccessDescribeRuleHTTP429Headers struct {
-	RetryAfter          *int
-	XRateLimitLimit     *int
-	XRateLimitRemaining *int
-	XRateLimitReset     *int
-}
-
-type CtxAccessDescribeRuleHTTP struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ContextAccessRuleDescriptionResult
-	// JSON400 the response for an HTTP 400 `application/json` response
-	JSON400 *BadRequest
-	// JSON404 the response for an HTTP 404 `application/json` response
-	JSON404 *NotFound
-	// JSON422 the response for an HTTP 422 `application/json` response
-	JSON422 *UnprocessableEntity
-	// JSON429 the response for an HTTP 429 `application/json` response
-	JSON429 *TooManyRequests
-	// JSON500 the response for an HTTP 500 `application/json` response
-	JSON500 *InternalError
-	// Headers200 the parsed response headers for an HTTP 200 response
-	Headers200 *CtxAccessDescribeRuleHTTP200Headers
-	// Headers429 the parsed response headers for an HTTP 429 response
-	Headers429 *CtxAccessDescribeRuleHTTP429Headers
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CtxAccessDescribeRuleHTTP) GetJSON200() *ContextAccessRuleDescriptionResult {
-	return r.JSON200
-}
-
-// GetJSON400 returns the response for an HTTP 400 `application/json` response
-func (r CtxAccessDescribeRuleHTTP) GetJSON400() *BadRequest {
-	return r.JSON400
-}
-
-// GetJSON404 returns the response for an HTTP 404 `application/json` response
-func (r CtxAccessDescribeRuleHTTP) GetJSON404() *NotFound {
-	return r.JSON404
-}
-
-// GetJSON422 returns the response for an HTTP 422 `application/json` response
-func (r CtxAccessDescribeRuleHTTP) GetJSON422() *UnprocessableEntity {
-	return r.JSON422
-}
-
-// GetJSON429 returns the response for an HTTP 429 `application/json` response
-func (r CtxAccessDescribeRuleHTTP) GetJSON429() *TooManyRequests {
-	return r.JSON429
-}
-
-// GetJSON500 returns the response for an HTTP 500 `application/json` response
-func (r CtxAccessDescribeRuleHTTP) GetJSON500() *InternalError {
-	return r.JSON500
-}
-
-// GetBody returns the raw response body bytes
-func (r CtxAccessDescribeRuleHTTP) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r CtxAccessDescribeRuleHTTP) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r CtxAccessDescribeRuleHTTP) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r CtxAccessDescribeRuleHTTP) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
 // CtxAccessRulesHTTP200Headers the declared response headers of an HTTP 200 response for CtxAccessRules
 type CtxAccessRulesHTTP200Headers struct {
 	XEzClassifyResolvedVersion *string
@@ -11836,6 +11700,92 @@ func (r CtxAccessRulesHTTP) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r CtxAccessRulesHTTP) ContentType() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Header.Get("Content-Type")
+	}
+	return ""
+}
+
+// CtxCrosswalkDescribeHTTP200Headers the declared response headers of an HTTP 200 response for CtxCrosswalkDescribe
+type CtxCrosswalkDescribeHTTP200Headers struct {
+	XEzClassifyResolvedVersion *string
+}
+
+// CtxCrosswalkDescribeHTTP429Headers the declared response headers of an HTTP 429 response for CtxCrosswalkDescribe
+type CtxCrosswalkDescribeHTTP429Headers struct {
+	RetryAfter          *int
+	XRateLimitLimit     *int
+	XRateLimitRemaining *int
+	XRateLimitReset     *int
+}
+
+type CtxCrosswalkDescribeHTTP struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	// JSON200 the response for an HTTP 200 `application/json` response
+	JSON200 *CtxCrosswalkDescribeResponseBody
+	// JSON400 the response for an HTTP 400 `application/json` response
+	JSON400 *BadRequest
+	// JSON404 the response for an HTTP 404 `application/json` response
+	JSON404 *NotFound
+	// JSON429 the response for an HTTP 429 `application/json` response
+	JSON429 *TooManyRequests
+	// JSON500 the response for an HTTP 500 `application/json` response
+	JSON500 *InternalError
+	// Headers200 the parsed response headers for an HTTP 200 response
+	Headers200 *CtxCrosswalkDescribeHTTP200Headers
+	// Headers429 the parsed response headers for an HTTP 429 response
+	Headers429 *CtxCrosswalkDescribeHTTP429Headers
+}
+
+// GetJSON200 returns the response for an HTTP 200 `application/json` response
+func (r CtxCrosswalkDescribeHTTP) GetJSON200() *CtxCrosswalkDescribeResponseBody {
+	return r.JSON200
+}
+
+// GetJSON400 returns the response for an HTTP 400 `application/json` response
+func (r CtxCrosswalkDescribeHTTP) GetJSON400() *BadRequest {
+	return r.JSON400
+}
+
+// GetJSON404 returns the response for an HTTP 404 `application/json` response
+func (r CtxCrosswalkDescribeHTTP) GetJSON404() *NotFound {
+	return r.JSON404
+}
+
+// GetJSON429 returns the response for an HTTP 429 `application/json` response
+func (r CtxCrosswalkDescribeHTTP) GetJSON429() *TooManyRequests {
+	return r.JSON429
+}
+
+// GetJSON500 returns the response for an HTTP 500 `application/json` response
+func (r CtxCrosswalkDescribeHTTP) GetJSON500() *InternalError {
+	return r.JSON500
+}
+
+// GetBody returns the raw response body bytes
+func (r CtxCrosswalkDescribeHTTP) GetBody() []byte {
+	return r.Body
+}
+
+// Status returns HTTPResponse.Status
+func (r CtxCrosswalkDescribeHTTP) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r CtxCrosswalkDescribeHTTP) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
+func (r CtxCrosswalkDescribeHTTP) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -11935,106 +11885,6 @@ func (r CtxCrosswalkTranslateHTTP) ContentType() string {
 	return ""
 }
 
-// CtxDocumentAssessAccessHTTP200Headers the declared response headers of an HTTP 200 response for CtxDocumentAssessAccess
-type CtxDocumentAssessAccessHTTP200Headers struct {
-	XEzClassifyResolvedVersion *string
-}
-
-// CtxDocumentAssessAccessHTTP429Headers the declared response headers of an HTTP 429 response for CtxDocumentAssessAccess
-type CtxDocumentAssessAccessHTTP429Headers struct {
-	RetryAfter          *int
-	XRateLimitLimit     *int
-	XRateLimitRemaining *int
-	XRateLimitReset     *int
-}
-
-type CtxDocumentAssessAccessHTTP struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ContextDocumentAccessAssessmentResult
-	// JSON400 the response for an HTTP 400 `application/json` response
-	JSON400 *BadRequest
-	// JSON404 the response for an HTTP 404 `application/json` response
-	JSON404 *NotFound
-	// JSON409 the response for an HTTP 409 `application/json` response
-	JSON409 *Conflict
-	// JSON422 the response for an HTTP 422 `application/json` response
-	JSON422 *UnprocessableEntity
-	// JSON429 the response for an HTTP 429 `application/json` response
-	JSON429 *TooManyRequests
-	// JSON500 the response for an HTTP 500 `application/json` response
-	JSON500 *InternalError
-	// Headers200 the parsed response headers for an HTTP 200 response
-	Headers200 *CtxDocumentAssessAccessHTTP200Headers
-	// Headers429 the parsed response headers for an HTTP 429 response
-	Headers429 *CtxDocumentAssessAccessHTTP429Headers
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CtxDocumentAssessAccessHTTP) GetJSON200() *ContextDocumentAccessAssessmentResult {
-	return r.JSON200
-}
-
-// GetJSON400 returns the response for an HTTP 400 `application/json` response
-func (r CtxDocumentAssessAccessHTTP) GetJSON400() *BadRequest {
-	return r.JSON400
-}
-
-// GetJSON404 returns the response for an HTTP 404 `application/json` response
-func (r CtxDocumentAssessAccessHTTP) GetJSON404() *NotFound {
-	return r.JSON404
-}
-
-// GetJSON409 returns the response for an HTTP 409 `application/json` response
-func (r CtxDocumentAssessAccessHTTP) GetJSON409() *Conflict {
-	return r.JSON409
-}
-
-// GetJSON422 returns the response for an HTTP 422 `application/json` response
-func (r CtxDocumentAssessAccessHTTP) GetJSON422() *UnprocessableEntity {
-	return r.JSON422
-}
-
-// GetJSON429 returns the response for an HTTP 429 `application/json` response
-func (r CtxDocumentAssessAccessHTTP) GetJSON429() *TooManyRequests {
-	return r.JSON429
-}
-
-// GetJSON500 returns the response for an HTTP 500 `application/json` response
-func (r CtxDocumentAssessAccessHTTP) GetJSON500() *InternalError {
-	return r.JSON500
-}
-
-// GetBody returns the raw response body bytes
-func (r CtxDocumentAssessAccessHTTP) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r CtxDocumentAssessAccessHTTP) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r CtxDocumentAssessAccessHTTP) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r CtxDocumentAssessAccessHTTP) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
 // CtxDocumentAuditHTTP200Headers the declared response headers of an HTTP 200 response for CtxDocumentAudit
 type CtxDocumentAuditHTTP200Headers struct {
 	XEzClassifyResolvedVersion *string
@@ -12128,99 +11978,6 @@ func (r CtxDocumentAuditHTTP) ContentType() string {
 	return ""
 }
 
-// CtxGuideDescribeRuleHTTP200Headers the declared response headers of an HTTP 200 response for CtxGuideDescribeRule
-type CtxGuideDescribeRuleHTTP200Headers struct {
-	XEzClassifyResolvedVersion *string
-}
-
-// CtxGuideDescribeRuleHTTP429Headers the declared response headers of an HTTP 429 response for CtxGuideDescribeRule
-type CtxGuideDescribeRuleHTTP429Headers struct {
-	RetryAfter          *int
-	XRateLimitLimit     *int
-	XRateLimitRemaining *int
-	XRateLimitReset     *int
-}
-
-type CtxGuideDescribeRuleHTTP struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ContextGuideRuleDescriptionResult
-	// JSON400 the response for an HTTP 400 `application/json` response
-	JSON400 *BadRequest
-	// JSON404 the response for an HTTP 404 `application/json` response
-	JSON404 *NotFound
-	// JSON422 the response for an HTTP 422 `application/json` response
-	JSON422 *UnprocessableEntity
-	// JSON429 the response for an HTTP 429 `application/json` response
-	JSON429 *TooManyRequests
-	// JSON500 the response for an HTTP 500 `application/json` response
-	JSON500 *InternalError
-	// Headers200 the parsed response headers for an HTTP 200 response
-	Headers200 *CtxGuideDescribeRuleHTTP200Headers
-	// Headers429 the parsed response headers for an HTTP 429 response
-	Headers429 *CtxGuideDescribeRuleHTTP429Headers
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CtxGuideDescribeRuleHTTP) GetJSON200() *ContextGuideRuleDescriptionResult {
-	return r.JSON200
-}
-
-// GetJSON400 returns the response for an HTTP 400 `application/json` response
-func (r CtxGuideDescribeRuleHTTP) GetJSON400() *BadRequest {
-	return r.JSON400
-}
-
-// GetJSON404 returns the response for an HTTP 404 `application/json` response
-func (r CtxGuideDescribeRuleHTTP) GetJSON404() *NotFound {
-	return r.JSON404
-}
-
-// GetJSON422 returns the response for an HTTP 422 `application/json` response
-func (r CtxGuideDescribeRuleHTTP) GetJSON422() *UnprocessableEntity {
-	return r.JSON422
-}
-
-// GetJSON429 returns the response for an HTTP 429 `application/json` response
-func (r CtxGuideDescribeRuleHTTP) GetJSON429() *TooManyRequests {
-	return r.JSON429
-}
-
-// GetJSON500 returns the response for an HTTP 500 `application/json` response
-func (r CtxGuideDescribeRuleHTTP) GetJSON500() *InternalError {
-	return r.JSON500
-}
-
-// GetBody returns the raw response body bytes
-func (r CtxGuideDescribeRuleHTTP) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r CtxGuideDescribeRuleHTTP) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r CtxGuideDescribeRuleHTTP) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r CtxGuideDescribeRuleHTTP) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
 // CtxGuideEvaluateHTTP200Headers the declared response headers of an HTTP 200 response for CtxGuideEvaluate
 type CtxGuideEvaluateHTTP200Headers struct {
 	XEzClassifyResolvedVersion *string
@@ -12308,99 +12065,6 @@ func (r CtxGuideEvaluateHTTP) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r CtxGuideEvaluateHTTP) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-// CtxGuideFilterRulesHTTP200Headers the declared response headers of an HTTP 200 response for CtxGuideFilterRules
-type CtxGuideFilterRulesHTTP200Headers struct {
-	XEzClassifyResolvedVersion *string
-}
-
-// CtxGuideFilterRulesHTTP429Headers the declared response headers of an HTTP 429 response for CtxGuideFilterRules
-type CtxGuideFilterRulesHTTP429Headers struct {
-	RetryAfter          *int
-	XRateLimitLimit     *int
-	XRateLimitRemaining *int
-	XRateLimitReset     *int
-}
-
-type CtxGuideFilterRulesHTTP struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ContextGuideFilterRulesResult
-	// JSON400 the response for an HTTP 400 `application/json` response
-	JSON400 *BadRequest
-	// JSON404 the response for an HTTP 404 `application/json` response
-	JSON404 *NotFound
-	// JSON422 the response for an HTTP 422 `application/json` response
-	JSON422 *UnprocessableEntity
-	// JSON429 the response for an HTTP 429 `application/json` response
-	JSON429 *TooManyRequests
-	// JSON500 the response for an HTTP 500 `application/json` response
-	JSON500 *InternalError
-	// Headers200 the parsed response headers for an HTTP 200 response
-	Headers200 *CtxGuideFilterRulesHTTP200Headers
-	// Headers429 the parsed response headers for an HTTP 429 response
-	Headers429 *CtxGuideFilterRulesHTTP429Headers
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CtxGuideFilterRulesHTTP) GetJSON200() *ContextGuideFilterRulesResult {
-	return r.JSON200
-}
-
-// GetJSON400 returns the response for an HTTP 400 `application/json` response
-func (r CtxGuideFilterRulesHTTP) GetJSON400() *BadRequest {
-	return r.JSON400
-}
-
-// GetJSON404 returns the response for an HTTP 404 `application/json` response
-func (r CtxGuideFilterRulesHTTP) GetJSON404() *NotFound {
-	return r.JSON404
-}
-
-// GetJSON422 returns the response for an HTTP 422 `application/json` response
-func (r CtxGuideFilterRulesHTTP) GetJSON422() *UnprocessableEntity {
-	return r.JSON422
-}
-
-// GetJSON429 returns the response for an HTTP 429 `application/json` response
-func (r CtxGuideFilterRulesHTTP) GetJSON429() *TooManyRequests {
-	return r.JSON429
-}
-
-// GetJSON500 returns the response for an HTTP 500 `application/json` response
-func (r CtxGuideFilterRulesHTTP) GetJSON500() *InternalError {
-	return r.JSON500
-}
-
-// GetBody returns the raw response body bytes
-func (r CtxGuideFilterRulesHTTP) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r CtxGuideFilterRulesHTTP) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r CtxGuideFilterRulesHTTP) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r CtxGuideFilterRulesHTTP) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -13367,92 +13031,6 @@ func (r CtxSchemeExplainHTTP) ContentType() string {
 	return ""
 }
 
-// CtxSchemeFilterConceptsHTTP200Headers the declared response headers of an HTTP 200 response for CtxSchemeFilterConcepts
-type CtxSchemeFilterConceptsHTTP200Headers struct {
-	XEzClassifyResolvedVersion *string
-}
-
-// CtxSchemeFilterConceptsHTTP429Headers the declared response headers of an HTTP 429 response for CtxSchemeFilterConcepts
-type CtxSchemeFilterConceptsHTTP429Headers struct {
-	RetryAfter          *int
-	XRateLimitLimit     *int
-	XRateLimitRemaining *int
-	XRateLimitReset     *int
-}
-
-type CtxSchemeFilterConceptsHTTP struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ContextSchemeFilterConceptsResult
-	// JSON400 the response for an HTTP 400 `application/json` response
-	JSON400 *BadRequest
-	// JSON404 the response for an HTTP 404 `application/json` response
-	JSON404 *NotFound
-	// JSON429 the response for an HTTP 429 `application/json` response
-	JSON429 *TooManyRequests
-	// JSON500 the response for an HTTP 500 `application/json` response
-	JSON500 *InternalError
-	// Headers200 the parsed response headers for an HTTP 200 response
-	Headers200 *CtxSchemeFilterConceptsHTTP200Headers
-	// Headers429 the parsed response headers for an HTTP 429 response
-	Headers429 *CtxSchemeFilterConceptsHTTP429Headers
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CtxSchemeFilterConceptsHTTP) GetJSON200() *ContextSchemeFilterConceptsResult {
-	return r.JSON200
-}
-
-// GetJSON400 returns the response for an HTTP 400 `application/json` response
-func (r CtxSchemeFilterConceptsHTTP) GetJSON400() *BadRequest {
-	return r.JSON400
-}
-
-// GetJSON404 returns the response for an HTTP 404 `application/json` response
-func (r CtxSchemeFilterConceptsHTTP) GetJSON404() *NotFound {
-	return r.JSON404
-}
-
-// GetJSON429 returns the response for an HTTP 429 `application/json` response
-func (r CtxSchemeFilterConceptsHTTP) GetJSON429() *TooManyRequests {
-	return r.JSON429
-}
-
-// GetJSON500 returns the response for an HTTP 500 `application/json` response
-func (r CtxSchemeFilterConceptsHTTP) GetJSON500() *InternalError {
-	return r.JSON500
-}
-
-// GetBody returns the raw response body bytes
-func (r CtxSchemeFilterConceptsHTTP) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r CtxSchemeFilterConceptsHTTP) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r CtxSchemeFilterConceptsHTTP) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r CtxSchemeFilterConceptsHTTP) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
 // CtxSchemeFormatsHTTP200Headers the declared response headers of an HTTP 200 response for CtxSchemeFormats
 type CtxSchemeFormatsHTTP200Headers struct {
 	XEzClassifyResolvedVersion *string
@@ -13539,92 +13117,6 @@ func (r CtxSchemeFormatsHTTP) ContentType() string {
 	return ""
 }
 
-// CtxSchemeGrammarHTTP200Headers the declared response headers of an HTTP 200 response for CtxSchemeGrammar
-type CtxSchemeGrammarHTTP200Headers struct {
-	XEzClassifyResolvedVersion *string
-}
-
-// CtxSchemeGrammarHTTP429Headers the declared response headers of an HTTP 429 response for CtxSchemeGrammar
-type CtxSchemeGrammarHTTP429Headers struct {
-	RetryAfter          *int
-	XRateLimitLimit     *int
-	XRateLimitRemaining *int
-	XRateLimitReset     *int
-}
-
-type CtxSchemeGrammarHTTP struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *SchemeGrammar
-	// JSON400 the response for an HTTP 400 `application/json` response
-	JSON400 *BadRequest
-	// JSON404 the response for an HTTP 404 `application/json` response
-	JSON404 *NotFound
-	// JSON429 the response for an HTTP 429 `application/json` response
-	JSON429 *TooManyRequests
-	// JSON500 the response for an HTTP 500 `application/json` response
-	JSON500 *InternalError
-	// Headers200 the parsed response headers for an HTTP 200 response
-	Headers200 *CtxSchemeGrammarHTTP200Headers
-	// Headers429 the parsed response headers for an HTTP 429 response
-	Headers429 *CtxSchemeGrammarHTTP429Headers
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CtxSchemeGrammarHTTP) GetJSON200() *SchemeGrammar {
-	return r.JSON200
-}
-
-// GetJSON400 returns the response for an HTTP 400 `application/json` response
-func (r CtxSchemeGrammarHTTP) GetJSON400() *BadRequest {
-	return r.JSON400
-}
-
-// GetJSON404 returns the response for an HTTP 404 `application/json` response
-func (r CtxSchemeGrammarHTTP) GetJSON404() *NotFound {
-	return r.JSON404
-}
-
-// GetJSON429 returns the response for an HTTP 429 `application/json` response
-func (r CtxSchemeGrammarHTTP) GetJSON429() *TooManyRequests {
-	return r.JSON429
-}
-
-// GetJSON500 returns the response for an HTTP 500 `application/json` response
-func (r CtxSchemeGrammarHTTP) GetJSON500() *InternalError {
-	return r.JSON500
-}
-
-// GetBody returns the raw response body bytes
-func (r CtxSchemeGrammarHTTP) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r CtxSchemeGrammarHTTP) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r CtxSchemeGrammarHTTP) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r CtxSchemeGrammarHTTP) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
 // CtxSchemeLabelPresetsHTTP200Headers the declared response headers of an HTTP 200 response for CtxSchemeLabelPresets
 type CtxSchemeLabelPresetsHTTP200Headers struct {
 	XEzClassifyResolvedVersion *string
@@ -13705,92 +13197,6 @@ func (r CtxSchemeLabelPresetsHTTP) StatusCode() int {
 
 // ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
 func (r CtxSchemeLabelPresetsHTTP) ContentType() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Header.Get("Content-Type")
-	}
-	return ""
-}
-
-// CtxSchemeNormalizeHTTP200Headers the declared response headers of an HTTP 200 response for CtxSchemeNormalize
-type CtxSchemeNormalizeHTTP200Headers struct {
-	XEzClassifyResolvedVersion *string
-}
-
-// CtxSchemeNormalizeHTTP429Headers the declared response headers of an HTTP 429 response for CtxSchemeNormalize
-type CtxSchemeNormalizeHTTP429Headers struct {
-	RetryAfter          *int
-	XRateLimitLimit     *int
-	XRateLimitRemaining *int
-	XRateLimitReset     *int
-}
-
-type CtxSchemeNormalizeHTTP struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	// JSON200 the response for an HTTP 200 `application/json` response
-	JSON200 *ContextSchemeNormalizeResult
-	// JSON400 the response for an HTTP 400 `application/json` response
-	JSON400 *BadRequest
-	// JSON404 the response for an HTTP 404 `application/json` response
-	JSON404 *NotFound
-	// JSON429 the response for an HTTP 429 `application/json` response
-	JSON429 *TooManyRequests
-	// JSON500 the response for an HTTP 500 `application/json` response
-	JSON500 *InternalError
-	// Headers200 the parsed response headers for an HTTP 200 response
-	Headers200 *CtxSchemeNormalizeHTTP200Headers
-	// Headers429 the parsed response headers for an HTTP 429 response
-	Headers429 *CtxSchemeNormalizeHTTP429Headers
-}
-
-// GetJSON200 returns the response for an HTTP 200 `application/json` response
-func (r CtxSchemeNormalizeHTTP) GetJSON200() *ContextSchemeNormalizeResult {
-	return r.JSON200
-}
-
-// GetJSON400 returns the response for an HTTP 400 `application/json` response
-func (r CtxSchemeNormalizeHTTP) GetJSON400() *BadRequest {
-	return r.JSON400
-}
-
-// GetJSON404 returns the response for an HTTP 404 `application/json` response
-func (r CtxSchemeNormalizeHTTP) GetJSON404() *NotFound {
-	return r.JSON404
-}
-
-// GetJSON429 returns the response for an HTTP 429 `application/json` response
-func (r CtxSchemeNormalizeHTTP) GetJSON429() *TooManyRequests {
-	return r.JSON429
-}
-
-// GetJSON500 returns the response for an HTTP 500 `application/json` response
-func (r CtxSchemeNormalizeHTTP) GetJSON500() *InternalError {
-	return r.JSON500
-}
-
-// GetBody returns the raw response body bytes
-func (r CtxSchemeNormalizeHTTP) GetBody() []byte {
-	return r.Body
-}
-
-// Status returns HTTPResponse.Status
-func (r CtxSchemeNormalizeHTTP) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-
-// StatusCode returns HTTPResponse.StatusCode
-func (r CtxSchemeNormalizeHTTP) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-
-// ContentType is a convenience method to retrieve the Content-Type value from the HTTP response headers
-func (r CtxSchemeNormalizeHTTP) ContentType() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Header.Get("Content-Type")
 	}
@@ -14715,8 +14121,8 @@ func (r GetReadyHTTP) ContentType() string {
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /v1/ctx (the `CtxList` operationId).
-func (c *ClientWithResponses) CtxListWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*CtxListHTTP, error) {
-	rsp, err := c.CtxList(ctx, reqEditors...)
+func (c *ClientWithResponses) CtxListWithResponse(ctx context.Context, params *CtxListParams, reqEditors ...RequestEditorFn) (*CtxListHTTP, error) {
+	rsp, err := c.CtxList(ctx, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -14730,8 +14136,8 @@ func (c *ClientWithResponses) CtxListWithResponse(ctx context.Context, reqEditor
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /v1/ctx/{ctxId} (the `CtxVersions` operationId).
-func (c *ClientWithResponses) CtxVersionsWithResponse(ctx context.Context, ctxID string, reqEditors ...RequestEditorFn) (*CtxVersionsHTTP, error) {
-	rsp, err := c.CtxVersions(ctx, ctxID, reqEditors...)
+func (c *ClientWithResponses) CtxVersionsWithResponse(ctx context.Context, ctxID string, params *CtxVersionsParams, reqEditors ...RequestEditorFn) (*CtxVersionsHTTP, error) {
+	rsp, err := c.CtxVersions(ctx, ctxID, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -14745,8 +14151,8 @@ func (c *ClientWithResponses) CtxVersionsWithResponse(ctx context.Context, ctxID
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /v1/ctx/{ctxId}/{version} (the `CtxDescribe` operationId).
-func (c *ClientWithResponses) CtxDescribeWithResponse(ctx context.Context, ctxID string, version string, reqEditors ...RequestEditorFn) (*CtxDescribeHTTP, error) {
-	rsp, err := c.CtxDescribe(ctx, ctxID, version, reqEditors...)
+func (c *ClientWithResponses) CtxDescribeWithResponse(ctx context.Context, ctxID string, version string, params *CtxDescribeParams, reqEditors ...RequestEditorFn) (*CtxDescribeHTTP, error) {
+	rsp, err := c.CtxDescribe(ctx, ctxID, version, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -14760,8 +14166,8 @@ func (c *ClientWithResponses) CtxDescribeWithResponse(ctx context.Context, ctxID
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/access/check (the `CtxAccessCheck` operationId).
-func (c *ClientWithResponses) CtxAccessCheckWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxAccessCheckHTTP, error) {
-	rsp, err := c.CtxAccessCheckWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxAccessCheckWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxAccessCheckParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxAccessCheckHTTP, error) {
+	rsp, err := c.CtxAccessCheckWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -14775,8 +14181,8 @@ func (c *ClientWithResponses) CtxAccessCheckWithBodyWithResponse(ctx context.Con
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/access/check (the `CtxAccessCheck` operationId).
-func (c *ClientWithResponses) CtxAccessCheckWithResponse(ctx context.Context, ctxID string, version string, body CtxAccessCheckJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxAccessCheckHTTP, error) {
-	rsp, err := c.CtxAccessCheck(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxAccessCheckWithResponse(ctx context.Context, ctxID string, version string, params *CtxAccessCheckParams, body CtxAccessCheckJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxAccessCheckHTTP, error) {
+	rsp, err := c.CtxAccessCheck(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -14785,13 +14191,13 @@ func (c *ClientWithResponses) CtxAccessCheckWithResponse(ctx context.Context, ct
 
 // CtxAccessDescribeRequirementsWithBodyWithResponse Describe access requirements for a target in a context
 //
-// Describes requirements imposed by immutable policy for a trusted target supplied as `marking`, structured `assertions`, or both. Both target forms are normalized through the same Context scheme path used by access check. These are policy requirements for the supplied target, not remediation instructions and not advice to change immutable `userAttributes`. Document access assessment (POST /v1/ctx/{ctxId}/{version}/document/assess-access) answers document receivability and content or context remediation questions.
+// Describes requirements imposed by immutable policy for a trusted target supplied as `marking`, structured `assertions`, or both. Both target forms are normalized through the same Context scheme path used by access check. These are policy requirements for the supplied target, not remediation instructions and not advice to change immutable `userAttributes`.
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/access/describe-requirements (the `CtxAccessDescribeRequirements` operationId).
-func (c *ClientWithResponses) CtxAccessDescribeRequirementsWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxAccessDescribeRequirementsHTTP, error) {
-	rsp, err := c.CtxAccessDescribeRequirementsWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxAccessDescribeRequirementsWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxAccessDescribeRequirementsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxAccessDescribeRequirementsHTTP, error) {
+	rsp, err := c.CtxAccessDescribeRequirementsWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -14800,47 +14206,17 @@ func (c *ClientWithResponses) CtxAccessDescribeRequirementsWithBodyWithResponse(
 
 // CtxAccessDescribeRequirementsWithResponse Describe access requirements for a target in a context
 //
-// Describes requirements imposed by immutable policy for a trusted target supplied as `marking`, structured `assertions`, or both. Both target forms are normalized through the same Context scheme path used by access check. These are policy requirements for the supplied target, not remediation instructions and not advice to change immutable `userAttributes`. Document access assessment (POST /v1/ctx/{ctxId}/{version}/document/assess-access) answers document receivability and content or context remediation questions.
+// Describes requirements imposed by immutable policy for a trusted target supplied as `marking`, structured `assertions`, or both. Both target forms are normalized through the same Context scheme path used by access check. These are policy requirements for the supplied target, not remediation instructions and not advice to change immutable `userAttributes`.
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/access/describe-requirements (the `CtxAccessDescribeRequirements` operationId).
-func (c *ClientWithResponses) CtxAccessDescribeRequirementsWithResponse(ctx context.Context, ctxID string, version string, body CtxAccessDescribeRequirementsJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxAccessDescribeRequirementsHTTP, error) {
-	rsp, err := c.CtxAccessDescribeRequirements(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxAccessDescribeRequirementsWithResponse(ctx context.Context, ctxID string, version string, params *CtxAccessDescribeRequirementsParams, body CtxAccessDescribeRequirementsJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxAccessDescribeRequirementsHTTP, error) {
+	rsp, err := c.CtxAccessDescribeRequirements(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseCtxAccessDescribeRequirementsHTTP(rsp)
-}
-
-// CtxAccessDescribeRuleWithBodyWithResponse Describe an access rule in a context
-//
-// Returns the human-readable predicate, the `userAttributes` paths the rule reads, and the data categories its `when` block depends on, scoped to the context's access policy.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/access/describe-rule (the `CtxAccessDescribeRule` operationId).
-func (c *ClientWithResponses) CtxAccessDescribeRuleWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxAccessDescribeRuleHTTP, error) {
-	rsp, err := c.CtxAccessDescribeRuleWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCtxAccessDescribeRuleHTTP(rsp)
-}
-
-// CtxAccessDescribeRuleWithResponse Describe an access rule in a context
-//
-// Returns the human-readable predicate, the `userAttributes` paths the rule reads, and the data categories its `when` block depends on, scoped to the context's access policy.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/access/describe-rule (the `CtxAccessDescribeRule` operationId).
-func (c *ClientWithResponses) CtxAccessDescribeRuleWithResponse(ctx context.Context, ctxID string, version string, body CtxAccessDescribeRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxAccessDescribeRuleHTTP, error) {
-	rsp, err := c.CtxAccessDescribeRule(ctx, ctxID, version, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCtxAccessDescribeRuleHTTP(rsp)
 }
 
 // CtxAccessRulesWithResponse Describe every access rule in a context
@@ -14850,12 +14226,27 @@ func (c *ClientWithResponses) CtxAccessDescribeRuleWithResponse(ctx context.Cont
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /v1/ctx/{ctxId}/{version}/access/rules (the `CtxAccessRules` operationId).
-func (c *ClientWithResponses) CtxAccessRulesWithResponse(ctx context.Context, ctxID string, version string, reqEditors ...RequestEditorFn) (*CtxAccessRulesHTTP, error) {
-	rsp, err := c.CtxAccessRules(ctx, ctxID, version, reqEditors...)
+func (c *ClientWithResponses) CtxAccessRulesWithResponse(ctx context.Context, ctxID string, version string, params *CtxAccessRulesParams, reqEditors ...RequestEditorFn) (*CtxAccessRulesHTTP, error) {
+	rsp, err := c.CtxAccessRules(ctx, ctxID, version, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseCtxAccessRulesHTTP(rsp)
+}
+
+// CtxCrosswalkDescribeWithResponse Describe every crosswalk in a context
+//
+// Returns every crosswalk the context holds, in declaration order: its id and the concrete version that answers, its name, guidance and citation, the source and target schemes as the selectors the context description lists under `schemes`, and the mappings and selections a translation applies, each with its disposition and reason. A context that declares no crosswalk answers with an empty list. The :version segment may be omitted to default to "latest".
+//
+// Returns a wrapper object for the known response body format(s).
+//
+// Corresponds with GET /v1/ctx/{ctxId}/{version}/crosswalk/describe (the `CtxCrosswalkDescribe` operationId).
+func (c *ClientWithResponses) CtxCrosswalkDescribeWithResponse(ctx context.Context, ctxID string, version string, params *CtxCrosswalkDescribeParams, reqEditors ...RequestEditorFn) (*CtxCrosswalkDescribeHTTP, error) {
+	rsp, err := c.CtxCrosswalkDescribe(ctx, ctxID, version, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCtxCrosswalkDescribeHTTP(rsp)
 }
 
 // CtxCrosswalkTranslateWithBodyWithResponse Translate a marking through a crosswalk in a context
@@ -14865,8 +14256,8 @@ func (c *ClientWithResponses) CtxAccessRulesWithResponse(ctx context.Context, ct
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/crosswalk/translate (the `CtxCrosswalkTranslate` operationId).
-func (c *ClientWithResponses) CtxCrosswalkTranslateWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxCrosswalkTranslateHTTP, error) {
-	rsp, err := c.CtxCrosswalkTranslateWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxCrosswalkTranslateWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxCrosswalkTranslateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxCrosswalkTranslateHTTP, error) {
+	rsp, err := c.CtxCrosswalkTranslateWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -14880,53 +14271,23 @@ func (c *ClientWithResponses) CtxCrosswalkTranslateWithBodyWithResponse(ctx cont
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/crosswalk/translate (the `CtxCrosswalkTranslate` operationId).
-func (c *ClientWithResponses) CtxCrosswalkTranslateWithResponse(ctx context.Context, ctxID string, version string, body CtxCrosswalkTranslateJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxCrosswalkTranslateHTTP, error) {
-	rsp, err := c.CtxCrosswalkTranslate(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxCrosswalkTranslateWithResponse(ctx context.Context, ctxID string, version string, params *CtxCrosswalkTranslateParams, body CtxCrosswalkTranslateJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxCrosswalkTranslateHTTP, error) {
+	rsp, err := c.CtxCrosswalkTranslate(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseCtxCrosswalkTranslateHTTP(rsp)
 }
 
-// CtxDocumentAssessAccessWithBodyWithResponse Assess document access in a context
-//
-// Answers whether the supplied userAttributes satisfy a document under the Context policy. It audits the document once and evaluates authored, authoritative, and projected access scenarios against immutable userAttributes and Context policy. Lexical matches are nominations, never automatic decisions; accepted findings bind to the returned finding ID and document digest, and revised text requires new decisions. Authoritative includes authored facts plus explicit analyst decisions. Projected assumes unresolved nominations and remains advisory. contentRequirements identify supported content that must cease to apply after content change and re-evaluation; they are not instructions to lower a marking. contextRequirements are conditional future relationships between userAttributes and authoritative context, not mutations performed by EzClassify. A denial remains denied until revised text or authoritative external state is re-evaluated. The standard profile is the default; summary suits only an initial large-document overview, standard is needed before decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/document/assess-access (the `CtxDocumentAssessAccess` operationId).
-func (c *ClientWithResponses) CtxDocumentAssessAccessWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxDocumentAssessAccessHTTP, error) {
-	rsp, err := c.CtxDocumentAssessAccessWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCtxDocumentAssessAccessHTTP(rsp)
-}
-
-// CtxDocumentAssessAccessWithResponse Assess document access in a context
-//
-// Answers whether the supplied userAttributes satisfy a document under the Context policy. It audits the document once and evaluates authored, authoritative, and projected access scenarios against immutable userAttributes and Context policy. Lexical matches are nominations, never automatic decisions; accepted findings bind to the returned finding ID and document digest, and revised text requires new decisions. Authoritative includes authored facts plus explicit analyst decisions. Projected assumes unresolved nominations and remains advisory. contentRequirements identify supported content that must cease to apply after content change and re-evaluation; they are not instructions to lower a marking. contextRequirements are conditional future relationships between userAttributes and authoritative context, not mutations performed by EzClassify. A denial remains denied until revised text or authoritative external state is re-evaluated. The standard profile is the default; summary suits only an initial large-document overview, standard is needed before decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/document/assess-access (the `CtxDocumentAssessAccess` operationId).
-func (c *ClientWithResponses) CtxDocumentAssessAccessWithResponse(ctx context.Context, ctxID string, version string, body CtxDocumentAssessAccessJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxDocumentAssessAccessHTTP, error) {
-	rsp, err := c.CtxDocumentAssessAccess(ctx, ctxID, version, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCtxDocumentAssessAccessHTTP(rsp)
-}
-
 // CtxDocumentAuditWithBodyWithResponse Audit a document for marking coverage in a context
 //
-// Audits authored document markings and evaluates guide nominations without treating lexical matches as authoritative facts. Never accept a nomination without an explicit analyst decision bound to its finding ID and document digest; revised text requires new decisions. Determined results include only accepted findings and manual selections, while projected results assume unresolved nominations and remain advisory. This operation answers authored correctness and guide review; document access assessment (POST /v1/ctx/{ctxId}/{version}/document/assess-access) answers whether supplied userAttributes satisfy the document policy. The standard response profile is the default; summary suits only an initial large-document overview, standard is needed before analyst decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
+// Audits authored document markings and evaluates guide nominations without treating lexical matches as authoritative facts. Never accept a nomination without an explicit analyst decision bound to its finding ID and document digest; revised text requires new decisions. Determined results include only accepted findings and manual selections, while projected results assume unresolved nominations and remain advisory. This operation answers authored correctness and guide review. The standard response profile is the default; summary suits only an initial large-document overview, standard is needed before analyst decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/document/audit (the `CtxDocumentAudit` operationId).
-func (c *ClientWithResponses) CtxDocumentAuditWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxDocumentAuditHTTP, error) {
-	rsp, err := c.CtxDocumentAuditWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxDocumentAuditWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxDocumentAuditParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxDocumentAuditHTTP, error) {
+	rsp, err := c.CtxDocumentAuditWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -14935,58 +14296,28 @@ func (c *ClientWithResponses) CtxDocumentAuditWithBodyWithResponse(ctx context.C
 
 // CtxDocumentAuditWithResponse Audit a document for marking coverage in a context
 //
-// Audits authored document markings and evaluates guide nominations without treating lexical matches as authoritative facts. Never accept a nomination without an explicit analyst decision bound to its finding ID and document digest; revised text requires new decisions. Determined results include only accepted findings and manual selections, while projected results assume unresolved nominations and remain advisory. This operation answers authored correctness and guide review; document access assessment (POST /v1/ctx/{ctxId}/{version}/document/assess-access) answers whether supplied userAttributes satisfy the document policy. The standard response profile is the default; summary suits only an initial large-document overview, standard is needed before analyst decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
+// Audits authored document markings and evaluates guide nominations without treating lexical matches as authoritative facts. Never accept a nomination without an explicit analyst decision bound to its finding ID and document digest; revised text requires new decisions. Determined results include only accepted findings and manual selections, while projected results assume unresolved nominations and remain advisory. This operation answers authored correctness and guide review. The standard response profile is the default; summary suits only an initial large-document overview, standard is needed before analyst decisions or remediation, and full only when matched text or complete breakdowns are necessary. responseProjection counts and omittedFields state what the profile left out; omitted detail is not absent evidence.
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/document/audit (the `CtxDocumentAudit` operationId).
-func (c *ClientWithResponses) CtxDocumentAuditWithResponse(ctx context.Context, ctxID string, version string, body CtxDocumentAuditJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxDocumentAuditHTTP, error) {
-	rsp, err := c.CtxDocumentAudit(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxDocumentAuditWithResponse(ctx context.Context, ctxID string, version string, params *CtxDocumentAuditParams, body CtxDocumentAuditJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxDocumentAuditHTTP, error) {
+	rsp, err := c.CtxDocumentAudit(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseCtxDocumentAuditHTTP(rsp)
 }
 
-// CtxGuideDescribeRuleWithBodyWithResponse Describe a guide rule in a context
-//
-// Returns structured metadata for a guide rule (outcome text, when conditions, dependencies, overrides) looking up the rule by id in the guide(s) bound to the context. Pass guideId when the context has multiple guides; otherwise the first guide is used.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/describe-rule (the `CtxGuideDescribeRule` operationId).
-func (c *ClientWithResponses) CtxGuideDescribeRuleWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxGuideDescribeRuleHTTP, error) {
-	rsp, err := c.CtxGuideDescribeRuleWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCtxGuideDescribeRuleHTTP(rsp)
-}
-
-// CtxGuideDescribeRuleWithResponse Describe a guide rule in a context
-//
-// Returns structured metadata for a guide rule (outcome text, when conditions, dependencies, overrides) looking up the rule by id in the guide(s) bound to the context. Pass guideId when the context has multiple guides; otherwise the first guide is used.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/describe-rule (the `CtxGuideDescribeRule` operationId).
-func (c *ClientWithResponses) CtxGuideDescribeRuleWithResponse(ctx context.Context, ctxID string, version string, body CtxGuideDescribeRuleJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxGuideDescribeRuleHTTP, error) {
-	rsp, err := c.CtxGuideDescribeRule(ctx, ctxID, version, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCtxGuideDescribeRuleHTTP(rsp)
-}
-
 // CtxGuideEvaluateWithBodyWithResponse Evaluate selected guide rules in a context
 //
-// Supply exactly one of guideId or allGuides: true. A named guide is evaluated alone. allGuides combines every loaded guide in load order through the context's composed scheme, with the later guide owning duplicate rule IDs. Returns the engine's structured evaluation result.
+// Send `guideId` with `selectedRuleIds` to evaluate that one guide, or `selections` to roll up rules selected from several guides. Each selection names its guide, so two guides that use the same rule ID hold two rules. Each guide evaluates its own selected rules, with its own dependencies and overrides, and the outcomes are rolled up per target scheme. No guide overrides or depends on another. Returns the engine's structured evaluation result.
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/evaluate (the `CtxGuideEvaluate` operationId).
-func (c *ClientWithResponses) CtxGuideEvaluateWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxGuideEvaluateHTTP, error) {
-	rsp, err := c.CtxGuideEvaluateWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxGuideEvaluateWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxGuideEvaluateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxGuideEvaluateHTTP, error) {
+	rsp, err := c.CtxGuideEvaluateWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -14995,47 +14326,17 @@ func (c *ClientWithResponses) CtxGuideEvaluateWithBodyWithResponse(ctx context.C
 
 // CtxGuideEvaluateWithResponse Evaluate selected guide rules in a context
 //
-// Supply exactly one of guideId or allGuides: true. A named guide is evaluated alone. allGuides combines every loaded guide in load order through the context's composed scheme, with the later guide owning duplicate rule IDs. Returns the engine's structured evaluation result.
+// Send `guideId` with `selectedRuleIds` to evaluate that one guide, or `selections` to roll up rules selected from several guides. Each selection names its guide, so two guides that use the same rule ID hold two rules. Each guide evaluates its own selected rules, with its own dependencies and overrides, and the outcomes are rolled up per target scheme. No guide overrides or depends on another. Returns the engine's structured evaluation result.
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/evaluate (the `CtxGuideEvaluate` operationId).
-func (c *ClientWithResponses) CtxGuideEvaluateWithResponse(ctx context.Context, ctxID string, version string, body CtxGuideEvaluateJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxGuideEvaluateHTTP, error) {
-	rsp, err := c.CtxGuideEvaluate(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxGuideEvaluateWithResponse(ctx context.Context, ctxID string, version string, params *CtxGuideEvaluateParams, body CtxGuideEvaluateJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxGuideEvaluateHTTP, error) {
+	rsp, err := c.CtxGuideEvaluate(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseCtxGuideEvaluateHTTP(rsp)
-}
-
-// CtxGuideFilterRulesWithBodyWithResponse Filter guide rules in a context
-//
-// Returns the subset of rules in the context-bound guide that match a free-text query. Pass guideId to disambiguate when the context has multiple guides.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/filter-rules (the `CtxGuideFilterRules` operationId).
-func (c *ClientWithResponses) CtxGuideFilterRulesWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxGuideFilterRulesHTTP, error) {
-	rsp, err := c.CtxGuideFilterRulesWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCtxGuideFilterRulesHTTP(rsp)
-}
-
-// CtxGuideFilterRulesWithResponse Filter guide rules in a context
-//
-// Returns the subset of rules in the context-bound guide that match a free-text query. Pass guideId to disambiguate when the context has multiple guides.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/filter-rules (the `CtxGuideFilterRules` operationId).
-func (c *ClientWithResponses) CtxGuideFilterRulesWithResponse(ctx context.Context, ctxID string, version string, body CtxGuideFilterRulesJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxGuideFilterRulesHTTP, error) {
-	rsp, err := c.CtxGuideFilterRules(ctx, ctxID, version, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCtxGuideFilterRulesHTTP(rsp)
 }
 
 // CtxGuideScanWithBodyWithResponse Scan text against context guides
@@ -15045,8 +14346,8 @@ func (c *ClientWithResponses) CtxGuideFilterRulesWithResponse(ctx context.Contex
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/scan (the `CtxGuideScan` operationId).
-func (c *ClientWithResponses) CtxGuideScanWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxGuideScanHTTP, error) {
-	rsp, err := c.CtxGuideScanWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxGuideScanWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxGuideScanParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxGuideScanHTTP, error) {
+	rsp, err := c.CtxGuideScanWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15060,8 +14361,8 @@ func (c *ClientWithResponses) CtxGuideScanWithBodyWithResponse(ctx context.Conte
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/scan (the `CtxGuideScan` operationId).
-func (c *ClientWithResponses) CtxGuideScanWithResponse(ctx context.Context, ctxID string, version string, body CtxGuideScanJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxGuideScanHTTP, error) {
-	rsp, err := c.CtxGuideScan(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxGuideScanWithResponse(ctx context.Context, ctxID string, version string, params *CtxGuideScanParams, body CtxGuideScanJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxGuideScanHTTP, error) {
+	rsp, err := c.CtxGuideScan(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15075,8 +14376,8 @@ func (c *ClientWithResponses) CtxGuideScanWithResponse(ctx context.Context, ctxI
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/view (the `CtxGuideView` operationId).
-func (c *ClientWithResponses) CtxGuideViewWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxGuideViewHTTP, error) {
-	rsp, err := c.CtxGuideViewWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxGuideViewWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxGuideViewParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxGuideViewHTTP, error) {
+	rsp, err := c.CtxGuideViewWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15090,8 +14391,8 @@ func (c *ClientWithResponses) CtxGuideViewWithBodyWithResponse(ctx context.Conte
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/guide/view (the `CtxGuideView` operationId).
-func (c *ClientWithResponses) CtxGuideViewWithResponse(ctx context.Context, ctxID string, version string, body CtxGuideViewJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxGuideViewHTTP, error) {
-	rsp, err := c.CtxGuideView(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxGuideViewWithResponse(ctx context.Context, ctxID string, version string, params *CtxGuideViewParams, body CtxGuideViewJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxGuideViewHTTP, error) {
+	rsp, err := c.CtxGuideView(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15115,13 +14416,13 @@ func (c *ClientWithResponses) CtxSchemeSummaryWithResponse(ctx context.Context, 
 
 // CtxSchemeAggregateWithBodyWithResponse Aggregate marking strings in a context
 //
-// Combines part markings into a single aggregate marking using the context's composed scheme aggregation rules. Supply either `inputs` (marking strings) or `assertionSets` (already-parsed assertion arrays for lossless transport of scope-only assertions and capture values): exactly one, not both. The :version segment may be omitted to default to "latest".
+// Rolls markings up into the one whole marking that covers them, using the context's composed scheme rollup rules. With no `context` the inputs are read as wholes, as in an aggregate such as the documents in a folder; `context` names the role the inputs are read in, and `{ role: 'part', partOf }` reads each as a part of that whole, as in a whole's parts rollup. Supply either `inputs` (marking strings) or `assertionSets` (already-parsed assertion arrays for lossless transport of scope-only assertions and capture values): exactly one, not both. The :version segment may be omitted to default to "latest".
 //
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/aggregate (the `CtxSchemeAggregate` operationId).
-func (c *ClientWithResponses) CtxSchemeAggregateWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeAggregateHTTP, error) {
-	rsp, err := c.CtxSchemeAggregateWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeAggregateWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeAggregateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeAggregateHTTP, error) {
+	rsp, err := c.CtxSchemeAggregateWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15130,13 +14431,13 @@ func (c *ClientWithResponses) CtxSchemeAggregateWithBodyWithResponse(ctx context
 
 // CtxSchemeAggregateWithResponse Aggregate marking strings in a context
 //
-// Combines part markings into a single aggregate marking using the context's composed scheme aggregation rules. Supply either `inputs` (marking strings) or `assertionSets` (already-parsed assertion arrays for lossless transport of scope-only assertions and capture values): exactly one, not both. The :version segment may be omitted to default to "latest".
+// Rolls markings up into the one whole marking that covers them, using the context's composed scheme rollup rules. With no `context` the inputs are read as wholes, as in an aggregate such as the documents in a folder; `context` names the role the inputs are read in, and `{ role: 'part', partOf }` reads each as a part of that whole, as in a whole's parts rollup. Supply either `inputs` (marking strings) or `assertionSets` (already-parsed assertion arrays for lossless transport of scope-only assertions and capture values): exactly one, not both. The :version segment may be omitted to default to "latest".
 //
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/aggregate (the `CtxSchemeAggregate` operationId).
-func (c *ClientWithResponses) CtxSchemeAggregateWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeAggregateJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeAggregateHTTP, error) {
-	rsp, err := c.CtxSchemeAggregate(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeAggregateWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeAggregateParams, body CtxSchemeAggregateJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeAggregateHTTP, error) {
+	rsp, err := c.CtxSchemeAggregate(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15150,8 +14451,8 @@ func (c *ClientWithResponses) CtxSchemeAggregateWithResponse(ctx context.Context
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/apply-preset (the `CtxSchemeApplyPreset` operationId).
-func (c *ClientWithResponses) CtxSchemeApplyPresetWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeApplyPresetHTTP, error) {
-	rsp, err := c.CtxSchemeApplyPresetWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeApplyPresetWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeApplyPresetParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeApplyPresetHTTP, error) {
+	rsp, err := c.CtxSchemeApplyPresetWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15165,8 +14466,8 @@ func (c *ClientWithResponses) CtxSchemeApplyPresetWithBodyWithResponse(ctx conte
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/apply-preset (the `CtxSchemeApplyPreset` operationId).
-func (c *ClientWithResponses) CtxSchemeApplyPresetWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeApplyPresetJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeApplyPresetHTTP, error) {
-	rsp, err := c.CtxSchemeApplyPreset(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeApplyPresetWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeApplyPresetParams, body CtxSchemeApplyPresetJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeApplyPresetHTTP, error) {
+	rsp, err := c.CtxSchemeApplyPreset(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15195,8 +14496,8 @@ func (c *ClientWithResponses) CtxSchemeCategoriesWithResponse(ctx context.Contex
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/check-coverage (the `CtxSchemeCheckCoverage` operationId).
-func (c *ClientWithResponses) CtxSchemeCheckCoverageWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeCheckCoverageHTTP, error) {
-	rsp, err := c.CtxSchemeCheckCoverageWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeCheckCoverageWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeCheckCoverageParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeCheckCoverageHTTP, error) {
+	rsp, err := c.CtxSchemeCheckCoverageWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15210,8 +14511,8 @@ func (c *ClientWithResponses) CtxSchemeCheckCoverageWithBodyWithResponse(ctx con
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/check-coverage (the `CtxSchemeCheckCoverage` operationId).
-func (c *ClientWithResponses) CtxSchemeCheckCoverageWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeCheckCoverageJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeCheckCoverageHTTP, error) {
-	rsp, err := c.CtxSchemeCheckCoverage(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeCheckCoverageWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeCheckCoverageParams, body CtxSchemeCheckCoverageJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeCheckCoverageHTTP, error) {
+	rsp, err := c.CtxSchemeCheckCoverage(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15255,8 +14556,8 @@ func (c *ClientWithResponses) CtxSchemeDescribeConceptWithResponse(ctx context.C
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/diff (the `CtxSchemeDiff` operationId).
-func (c *ClientWithResponses) CtxSchemeDiffWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeDiffHTTP, error) {
-	rsp, err := c.CtxSchemeDiffWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeDiffWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeDiffParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeDiffHTTP, error) {
+	rsp, err := c.CtxSchemeDiffWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15270,8 +14571,8 @@ func (c *ClientWithResponses) CtxSchemeDiffWithBodyWithResponse(ctx context.Cont
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/diff (the `CtxSchemeDiff` operationId).
-func (c *ClientWithResponses) CtxSchemeDiffWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeDiffJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeDiffHTTP, error) {
-	rsp, err := c.CtxSchemeDiff(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeDiffWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeDiffParams, body CtxSchemeDiffJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeDiffHTTP, error) {
+	rsp, err := c.CtxSchemeDiff(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15285,8 +14586,8 @@ func (c *ClientWithResponses) CtxSchemeDiffWithResponse(ctx context.Context, ctx
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/explain (the `CtxSchemeExplain` operationId).
-func (c *ClientWithResponses) CtxSchemeExplainWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeExplainHTTP, error) {
-	rsp, err := c.CtxSchemeExplainWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeExplainWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeExplainParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeExplainHTTP, error) {
+	rsp, err := c.CtxSchemeExplainWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15300,42 +14601,12 @@ func (c *ClientWithResponses) CtxSchemeExplainWithBodyWithResponse(ctx context.C
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/explain (the `CtxSchemeExplain` operationId).
-func (c *ClientWithResponses) CtxSchemeExplainWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeExplainJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeExplainHTTP, error) {
-	rsp, err := c.CtxSchemeExplain(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeExplainWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeExplainParams, body CtxSchemeExplainJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeExplainHTTP, error) {
+	rsp, err := c.CtxSchemeExplain(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseCtxSchemeExplainHTTP(rsp)
-}
-
-// CtxSchemeFilterConceptsWithBodyWithResponse Filter scheme concepts in a context
-//
-// Filters the context's composed scheme concept list by a text query. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/filter-concepts (the `CtxSchemeFilterConcepts` operationId).
-func (c *ClientWithResponses) CtxSchemeFilterConceptsWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeFilterConceptsHTTP, error) {
-	rsp, err := c.CtxSchemeFilterConceptsWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCtxSchemeFilterConceptsHTTP(rsp)
-}
-
-// CtxSchemeFilterConceptsWithResponse Filter scheme concepts in a context
-//
-// Filters the context's composed scheme concept list by a text query. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/filter-concepts (the `CtxSchemeFilterConcepts` operationId).
-func (c *ClientWithResponses) CtxSchemeFilterConceptsWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeFilterConceptsJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeFilterConceptsHTTP, error) {
-	rsp, err := c.CtxSchemeFilterConcepts(ctx, ctxID, version, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCtxSchemeFilterConceptsHTTP(rsp)
 }
 
 // CtxSchemeFormatsWithResponse Get the scheme render formats in a context
@@ -15353,64 +14624,19 @@ func (c *ClientWithResponses) CtxSchemeFormatsWithResponse(ctx context.Context, 
 	return ParseCtxSchemeFormatsHTTP(rsp)
 }
 
-// CtxSchemeGrammarWithResponse Get the scheme parse grammar in a context
-//
-// Returns the parse grammar for the context's composed scheme: whether its vocabulary is matched case-sensitively and whether surrounding whitespace is ignored. There is no separator; each field of a marking writes its own boundaries. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-//
-// Returns a wrapper object for the known response body format(s).
-//
-// Corresponds with GET /v1/ctx/{ctxId}/{version}/scheme/grammar (the `CtxSchemeGrammar` operationId).
-func (c *ClientWithResponses) CtxSchemeGrammarWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeGrammarParams, reqEditors ...RequestEditorFn) (*CtxSchemeGrammarHTTP, error) {
-	rsp, err := c.CtxSchemeGrammar(ctx, ctxID, version, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCtxSchemeGrammarHTTP(rsp)
-}
-
 // CtxSchemeLabelPresetsWithResponse List the label presets in a context
 //
-// Returns the label presets of the context's primary scheme, the scheme apply-preset expands them in, as preset views: id, label, description, and scope. Empty when the scheme declares none. The marking string and tag list stay server-side; expand a preset with POST /v1/ctx/{ctxId}/{version}/scheme/apply-preset. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
+// Returns the label presets of the selected scheme as preset views: id, label, description, and scope. Empty when the scheme declares none. The marking string and tag list stay server-side; expand a preset with POST /v1/ctx/{ctxId}/{version}/scheme/apply-preset under the same selector. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
 //
 // Returns a wrapper object for the known response body format(s).
 //
 // Corresponds with GET /v1/ctx/{ctxId}/{version}/scheme/label-presets (the `CtxSchemeLabelPresets` operationId).
-func (c *ClientWithResponses) CtxSchemeLabelPresetsWithResponse(ctx context.Context, ctxID string, version string, reqEditors ...RequestEditorFn) (*CtxSchemeLabelPresetsHTTP, error) {
-	rsp, err := c.CtxSchemeLabelPresets(ctx, ctxID, version, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeLabelPresetsWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeLabelPresetsParams, reqEditors ...RequestEditorFn) (*CtxSchemeLabelPresetsHTTP, error) {
+	rsp, err := c.CtxSchemeLabelPresets(ctx, ctxID, version, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseCtxSchemeLabelPresetsHTTP(rsp)
-}
-
-// CtxSchemeNormalizeWithBodyWithResponse Normalize a marking in a context
-//
-// Returns the canonical normalized form of a marking against the context's composed scheme. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-//
-// Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/normalize (the `CtxSchemeNormalize` operationId).
-func (c *ClientWithResponses) CtxSchemeNormalizeWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeNormalizeHTTP, error) {
-	rsp, err := c.CtxSchemeNormalizeWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCtxSchemeNormalizeHTTP(rsp)
-}
-
-// CtxSchemeNormalizeWithResponse Normalize a marking in a context
-//
-// Returns the canonical normalized form of a marking against the context's composed scheme. The :version segment may be omitted to default to "latest"; the resolved version is returned in the X-EzClassify-Resolved-Version response header.
-//
-// Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
-//
-// Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/normalize (the `CtxSchemeNormalize` operationId).
-func (c *ClientWithResponses) CtxSchemeNormalizeWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeNormalizeJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeNormalizeHTTP, error) {
-	rsp, err := c.CtxSchemeNormalize(ctx, ctxID, version, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseCtxSchemeNormalizeHTTP(rsp)
 }
 
 // CtxSchemeNoticesWithBodyWithResponse Collect notices for assertions in a context
@@ -15420,8 +14646,8 @@ func (c *ClientWithResponses) CtxSchemeNormalizeWithResponse(ctx context.Context
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/notices (the `CtxSchemeNotices` operationId).
-func (c *ClientWithResponses) CtxSchemeNoticesWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeNoticesHTTP, error) {
-	rsp, err := c.CtxSchemeNoticesWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeNoticesWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeNoticesParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeNoticesHTTP, error) {
+	rsp, err := c.CtxSchemeNoticesWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15435,8 +14661,8 @@ func (c *ClientWithResponses) CtxSchemeNoticesWithBodyWithResponse(ctx context.C
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/notices (the `CtxSchemeNotices` operationId).
-func (c *ClientWithResponses) CtxSchemeNoticesWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeNoticesJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeNoticesHTTP, error) {
-	rsp, err := c.CtxSchemeNotices(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeNoticesWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeNoticesParams, body CtxSchemeNoticesJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeNoticesHTTP, error) {
+	rsp, err := c.CtxSchemeNotices(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15450,8 +14676,8 @@ func (c *ClientWithResponses) CtxSchemeNoticesWithResponse(ctx context.Context, 
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/process (the `CtxSchemeProcess` operationId).
-func (c *ClientWithResponses) CtxSchemeProcessWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeProcessHTTP, error) {
-	rsp, err := c.CtxSchemeProcessWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeProcessWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeProcessParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeProcessHTTP, error) {
+	rsp, err := c.CtxSchemeProcessWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15465,8 +14691,8 @@ func (c *ClientWithResponses) CtxSchemeProcessWithBodyWithResponse(ctx context.C
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/process (the `CtxSchemeProcess` operationId).
-func (c *ClientWithResponses) CtxSchemeProcessWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeProcessJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeProcessHTTP, error) {
-	rsp, err := c.CtxSchemeProcess(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeProcessWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeProcessParams, body CtxSchemeProcessJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeProcessHTTP, error) {
+	rsp, err := c.CtxSchemeProcess(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15480,8 +14706,8 @@ func (c *ClientWithResponses) CtxSchemeProcessWithResponse(ctx context.Context, 
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/render (the `CtxSchemeRender` operationId).
-func (c *ClientWithResponses) CtxSchemeRenderWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeRenderHTTP, error) {
-	rsp, err := c.CtxSchemeRenderWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeRenderWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeRenderParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeRenderHTTP, error) {
+	rsp, err := c.CtxSchemeRenderWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15495,8 +14721,8 @@ func (c *ClientWithResponses) CtxSchemeRenderWithBodyWithResponse(ctx context.Co
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/render (the `CtxSchemeRender` operationId).
-func (c *ClientWithResponses) CtxSchemeRenderWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeRenderJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeRenderHTTP, error) {
-	rsp, err := c.CtxSchemeRender(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeRenderWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeRenderParams, body CtxSchemeRenderJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeRenderHTTP, error) {
+	rsp, err := c.CtxSchemeRender(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15510,8 +14736,8 @@ func (c *ClientWithResponses) CtxSchemeRenderWithResponse(ctx context.Context, c
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/scan (the `CtxSchemeScan` operationId).
-func (c *ClientWithResponses) CtxSchemeScanWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeScanHTTP, error) {
-	rsp, err := c.CtxSchemeScanWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeScanWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeScanParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeScanHTTP, error) {
+	rsp, err := c.CtxSchemeScanWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15525,8 +14751,8 @@ func (c *ClientWithResponses) CtxSchemeScanWithBodyWithResponse(ctx context.Cont
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/scan (the `CtxSchemeScan` operationId).
-func (c *ClientWithResponses) CtxSchemeScanWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeScanJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeScanHTTP, error) {
-	rsp, err := c.CtxSchemeScan(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeScanWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeScanParams, body CtxSchemeScanJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeScanHTTP, error) {
+	rsp, err := c.CtxSchemeScan(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15555,8 +14781,8 @@ func (c *ClientWithResponses) CtxSchemeScopesWithResponse(ctx context.Context, c
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/suggest (the `CtxSchemeSuggest` operationId).
-func (c *ClientWithResponses) CtxSchemeSuggestWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeSuggestHTTP, error) {
-	rsp, err := c.CtxSchemeSuggestWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeSuggestWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeSuggestParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeSuggestHTTP, error) {
+	rsp, err := c.CtxSchemeSuggestWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15570,8 +14796,8 @@ func (c *ClientWithResponses) CtxSchemeSuggestWithBodyWithResponse(ctx context.C
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/suggest (the `CtxSchemeSuggest` operationId).
-func (c *ClientWithResponses) CtxSchemeSuggestWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeSuggestJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeSuggestHTTP, error) {
-	rsp, err := c.CtxSchemeSuggest(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeSuggestWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeSuggestParams, body CtxSchemeSuggestJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeSuggestHTTP, error) {
+	rsp, err := c.CtxSchemeSuggest(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15585,8 +14811,8 @@ func (c *ClientWithResponses) CtxSchemeSuggestWithResponse(ctx context.Context, 
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/suggest-for-categories (the `CtxSchemeSuggestForCategories` operationId).
-func (c *ClientWithResponses) CtxSchemeSuggestForCategoriesWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeSuggestForCategoriesHTTP, error) {
-	rsp, err := c.CtxSchemeSuggestForCategoriesWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeSuggestForCategoriesWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeSuggestForCategoriesParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeSuggestForCategoriesHTTP, error) {
+	rsp, err := c.CtxSchemeSuggestForCategoriesWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15600,8 +14826,8 @@ func (c *ClientWithResponses) CtxSchemeSuggestForCategoriesWithBodyWithResponse(
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/suggest-for-categories (the `CtxSchemeSuggestForCategories` operationId).
-func (c *ClientWithResponses) CtxSchemeSuggestForCategoriesWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeSuggestForCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeSuggestForCategoriesHTTP, error) {
-	rsp, err := c.CtxSchemeSuggestForCategories(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeSuggestForCategoriesWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeSuggestForCategoriesParams, body CtxSchemeSuggestForCategoriesJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeSuggestForCategoriesHTTP, error) {
+	rsp, err := c.CtxSchemeSuggestForCategories(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15615,8 +14841,8 @@ func (c *ClientWithResponses) CtxSchemeSuggestForCategoriesWithResponse(ctx cont
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/validate (the `CtxSchemeValidate` operationId).
-func (c *ClientWithResponses) CtxSchemeValidateWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeValidateHTTP, error) {
-	rsp, err := c.CtxSchemeValidateWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeValidateWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeValidateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeValidateHTTP, error) {
+	rsp, err := c.CtxSchemeValidateWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15630,8 +14856,8 @@ func (c *ClientWithResponses) CtxSchemeValidateWithBodyWithResponse(ctx context.
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/validate (the `CtxSchemeValidate` operationId).
-func (c *ClientWithResponses) CtxSchemeValidateWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeValidateJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeValidateHTTP, error) {
-	rsp, err := c.CtxSchemeValidate(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeValidateWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeValidateParams, body CtxSchemeValidateJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeValidateHTTP, error) {
+	rsp, err := c.CtxSchemeValidate(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15645,8 +14871,8 @@ func (c *ClientWithResponses) CtxSchemeValidateWithResponse(ctx context.Context,
 // Takes any type of body and a specified content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/view (the `CtxSchemeView` operationId).
-func (c *ClientWithResponses) CtxSchemeViewWithBodyWithResponse(ctx context.Context, ctxID string, version string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeViewHTTP, error) {
-	rsp, err := c.CtxSchemeViewWithBody(ctx, ctxID, version, contentType, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeViewWithBodyWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeViewParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CtxSchemeViewHTTP, error) {
+	rsp, err := c.CtxSchemeViewWithBody(ctx, ctxID, version, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -15660,8 +14886,8 @@ func (c *ClientWithResponses) CtxSchemeViewWithBodyWithResponse(ctx context.Cont
 // Takes a body of the `application/json` content type, and returns a wrapper object for the known response body format(s).
 //
 // Corresponds with POST /v1/ctx/{ctxId}/{version}/scheme/view (the `CtxSchemeView` operationId).
-func (c *ClientWithResponses) CtxSchemeViewWithResponse(ctx context.Context, ctxID string, version string, body CtxSchemeViewJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeViewHTTP, error) {
-	rsp, err := c.CtxSchemeView(ctx, ctxID, version, body, reqEditors...)
+func (c *ClientWithResponses) CtxSchemeViewWithResponse(ctx context.Context, ctxID string, version string, params *CtxSchemeViewParams, body CtxSchemeViewJSONRequestBody, reqEditors ...RequestEditorFn) (*CtxSchemeViewHTTP, error) {
+	rsp, err := c.CtxSchemeView(ctx, ctxID, version, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -16182,111 +15408,6 @@ func ParseCtxAccessDescribeRequirementsHTTP(rsp *http.Response) (*CtxAccessDescr
 	return response, nil
 }
 
-// ParseCtxAccessDescribeRuleHTTP parses an HTTP response from a CtxAccessDescribeRuleWithResponse call
-func ParseCtxAccessDescribeRuleHTTP(rsp *http.Response) (*CtxAccessDescribeRuleHTTP, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &CtxAccessDescribeRuleHTTP{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ContextAccessRuleDescriptionResult
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest BadRequest
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest NotFound
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
-		var dest UnprocessableEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON422 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
-		var dest TooManyRequests
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON429 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest InternalError
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
-	}
-
-	switch {
-	case rsp.StatusCode == 200:
-		var headers CtxAccessDescribeRuleHTTP200Headers
-		if values := rsp.Header.Values("X-EzClassify-Resolved-Version"); len(values) > 0 {
-			var value string
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-EzClassify-Resolved-Version", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XEzClassifyResolvedVersion = &value
-		}
-		response.Headers200 = &headers
-	case rsp.StatusCode == 429:
-		var headers CtxAccessDescribeRuleHTTP429Headers
-		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.RetryAfter = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Limit"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Limit", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitLimit = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Remaining"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Remaining", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitRemaining = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Reset"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Reset", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitReset = &value
-		}
-		response.Headers429 = &headers
-	}
-
-	return response, nil
-}
-
 // ParseCtxAccessRulesHTTP parses an HTTP response from a CtxAccessRulesWithResponse call
 func ParseCtxAccessRulesHTTP(rsp *http.Response) (*CtxAccessRulesHTTP, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -16358,6 +15479,104 @@ func ParseCtxAccessRulesHTTP(rsp *http.Response) (*CtxAccessRulesHTTP, error) {
 		response.Headers200 = &headers
 	case rsp.StatusCode == 429:
 		var headers CtxAccessRulesHTTP429Headers
+		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.RetryAfter = &value
+		}
+		if values := rsp.Header.Values("X-RateLimit-Limit"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Limit", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.XRateLimitLimit = &value
+		}
+		if values := rsp.Header.Values("X-RateLimit-Remaining"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Remaining", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.XRateLimitRemaining = &value
+		}
+		if values := rsp.Header.Values("X-RateLimit-Reset"); len(values) > 0 {
+			var value int
+			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Reset", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.XRateLimitReset = &value
+		}
+		response.Headers429 = &headers
+	}
+
+	return response, nil
+}
+
+// ParseCtxCrosswalkDescribeHTTP parses an HTTP response from a CtxCrosswalkDescribeWithResponse call
+func ParseCtxCrosswalkDescribeHTTP(rsp *http.Response) (*CtxCrosswalkDescribeHTTP, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &CtxCrosswalkDescribeHTTP{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest CtxCrosswalkDescribeResponseBody
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest BadRequest
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest NotFound
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
+		var dest TooManyRequests
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON429 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
+		var dest InternalError
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON500 = &dest
+
+	}
+
+	switch {
+	case rsp.StatusCode == 200:
+		var headers CtxCrosswalkDescribeHTTP200Headers
+		if values := rsp.Header.Values("X-EzClassify-Resolved-Version"); len(values) > 0 {
+			var value string
+			if err := runtime.BindStyledParameterWithOptions("simple", "X-EzClassify-Resolved-Version", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			}
+			headers.XEzClassifyResolvedVersion = &value
+		}
+		response.Headers200 = &headers
+	case rsp.StatusCode == 429:
+		var headers CtxCrosswalkDescribeHTTP429Headers
 		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
 			var value int
 			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
@@ -16497,118 +15716,6 @@ func ParseCtxCrosswalkTranslateHTTP(rsp *http.Response) (*CtxCrosswalkTranslateH
 	return response, nil
 }
 
-// ParseCtxDocumentAssessAccessHTTP parses an HTTP response from a CtxDocumentAssessAccessWithResponse call
-func ParseCtxDocumentAssessAccessHTTP(rsp *http.Response) (*CtxDocumentAssessAccessHTTP, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &CtxDocumentAssessAccessHTTP{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ContextDocumentAccessAssessmentResult
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest BadRequest
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest NotFound
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
-		var dest Conflict
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON409 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
-		var dest UnprocessableEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON422 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
-		var dest TooManyRequests
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON429 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest InternalError
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
-	}
-
-	switch {
-	case rsp.StatusCode == 200:
-		var headers CtxDocumentAssessAccessHTTP200Headers
-		if values := rsp.Header.Values("X-EzClassify-Resolved-Version"); len(values) > 0 {
-			var value string
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-EzClassify-Resolved-Version", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XEzClassifyResolvedVersion = &value
-		}
-		response.Headers200 = &headers
-	case rsp.StatusCode == 429:
-		var headers CtxDocumentAssessAccessHTTP429Headers
-		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.RetryAfter = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Limit"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Limit", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitLimit = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Remaining"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Remaining", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitRemaining = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Reset"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Reset", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitReset = &value
-		}
-		response.Headers429 = &headers
-	}
-
-	return response, nil
-}
-
 // ParseCtxDocumentAuditHTTP parses an HTTP response from a CtxDocumentAuditWithResponse call
 func ParseCtxDocumentAuditHTTP(rsp *http.Response) (*CtxDocumentAuditHTTP, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -16714,111 +15821,6 @@ func ParseCtxDocumentAuditHTTP(rsp *http.Response) (*CtxDocumentAuditHTTP, error
 	return response, nil
 }
 
-// ParseCtxGuideDescribeRuleHTTP parses an HTTP response from a CtxGuideDescribeRuleWithResponse call
-func ParseCtxGuideDescribeRuleHTTP(rsp *http.Response) (*CtxGuideDescribeRuleHTTP, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &CtxGuideDescribeRuleHTTP{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ContextGuideRuleDescriptionResult
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest BadRequest
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest NotFound
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
-		var dest UnprocessableEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON422 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
-		var dest TooManyRequests
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON429 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest InternalError
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
-	}
-
-	switch {
-	case rsp.StatusCode == 200:
-		var headers CtxGuideDescribeRuleHTTP200Headers
-		if values := rsp.Header.Values("X-EzClassify-Resolved-Version"); len(values) > 0 {
-			var value string
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-EzClassify-Resolved-Version", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XEzClassifyResolvedVersion = &value
-		}
-		response.Headers200 = &headers
-	case rsp.StatusCode == 429:
-		var headers CtxGuideDescribeRuleHTTP429Headers
-		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.RetryAfter = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Limit"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Limit", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitLimit = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Remaining"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Remaining", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitRemaining = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Reset"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Reset", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitReset = &value
-		}
-		response.Headers429 = &headers
-	}
-
-	return response, nil
-}
-
 // ParseCtxGuideEvaluateHTTP parses an HTTP response from a CtxGuideEvaluateWithResponse call
 func ParseCtxGuideEvaluateHTTP(rsp *http.Response) (*CtxGuideEvaluateHTTP, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -16890,111 +15892,6 @@ func ParseCtxGuideEvaluateHTTP(rsp *http.Response) (*CtxGuideEvaluateHTTP, error
 		response.Headers200 = &headers
 	case rsp.StatusCode == 429:
 		var headers CtxGuideEvaluateHTTP429Headers
-		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.RetryAfter = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Limit"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Limit", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitLimit = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Remaining"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Remaining", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitRemaining = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Reset"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Reset", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitReset = &value
-		}
-		response.Headers429 = &headers
-	}
-
-	return response, nil
-}
-
-// ParseCtxGuideFilterRulesHTTP parses an HTTP response from a CtxGuideFilterRulesWithResponse call
-func ParseCtxGuideFilterRulesHTTP(rsp *http.Response) (*CtxGuideFilterRulesHTTP, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &CtxGuideFilterRulesHTTP{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ContextGuideFilterRulesResult
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest BadRequest
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest NotFound
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
-		var dest UnprocessableEntity
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON422 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
-		var dest TooManyRequests
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON429 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest InternalError
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
-	}
-
-	switch {
-	case rsp.StatusCode == 200:
-		var headers CtxGuideFilterRulesHTTP200Headers
-		if values := rsp.Header.Values("X-EzClassify-Resolved-Version"); len(values) > 0 {
-			var value string
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-EzClassify-Resolved-Version", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XEzClassifyResolvedVersion = &value
-		}
-		response.Headers200 = &headers
-	case rsp.StatusCode == 429:
-		var headers CtxGuideFilterRulesHTTP429Headers
 		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
 			var value int
 			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
@@ -18121,104 +17018,6 @@ func ParseCtxSchemeExplainHTTP(rsp *http.Response) (*CtxSchemeExplainHTTP, error
 	return response, nil
 }
 
-// ParseCtxSchemeFilterConceptsHTTP parses an HTTP response from a CtxSchemeFilterConceptsWithResponse call
-func ParseCtxSchemeFilterConceptsHTTP(rsp *http.Response) (*CtxSchemeFilterConceptsHTTP, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &CtxSchemeFilterConceptsHTTP{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ContextSchemeFilterConceptsResult
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest BadRequest
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest NotFound
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
-		var dest TooManyRequests
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON429 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest InternalError
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
-	}
-
-	switch {
-	case rsp.StatusCode == 200:
-		var headers CtxSchemeFilterConceptsHTTP200Headers
-		if values := rsp.Header.Values("X-EzClassify-Resolved-Version"); len(values) > 0 {
-			var value string
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-EzClassify-Resolved-Version", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XEzClassifyResolvedVersion = &value
-		}
-		response.Headers200 = &headers
-	case rsp.StatusCode == 429:
-		var headers CtxSchemeFilterConceptsHTTP429Headers
-		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.RetryAfter = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Limit"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Limit", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitLimit = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Remaining"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Remaining", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitRemaining = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Reset"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Reset", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitReset = &value
-		}
-		response.Headers429 = &headers
-	}
-
-	return response, nil
-}
-
 // ParseCtxSchemeFormatsHTTP parses an HTTP response from a CtxSchemeFormatsWithResponse call
 func ParseCtxSchemeFormatsHTTP(rsp *http.Response) (*CtxSchemeFormatsHTTP, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -18317,104 +17116,6 @@ func ParseCtxSchemeFormatsHTTP(rsp *http.Response) (*CtxSchemeFormatsHTTP, error
 	return response, nil
 }
 
-// ParseCtxSchemeGrammarHTTP parses an HTTP response from a CtxSchemeGrammarWithResponse call
-func ParseCtxSchemeGrammarHTTP(rsp *http.Response) (*CtxSchemeGrammarHTTP, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &CtxSchemeGrammarHTTP{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest SchemeGrammar
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest BadRequest
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest NotFound
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
-		var dest TooManyRequests
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON429 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest InternalError
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
-	}
-
-	switch {
-	case rsp.StatusCode == 200:
-		var headers CtxSchemeGrammarHTTP200Headers
-		if values := rsp.Header.Values("X-EzClassify-Resolved-Version"); len(values) > 0 {
-			var value string
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-EzClassify-Resolved-Version", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XEzClassifyResolvedVersion = &value
-		}
-		response.Headers200 = &headers
-	case rsp.StatusCode == 429:
-		var headers CtxSchemeGrammarHTTP429Headers
-		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.RetryAfter = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Limit"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Limit", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitLimit = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Remaining"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Remaining", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitRemaining = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Reset"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Reset", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitReset = &value
-		}
-		response.Headers429 = &headers
-	}
-
-	return response, nil
-}
-
 // ParseCtxSchemeLabelPresetsHTTP parses an HTTP response from a CtxSchemeLabelPresetsWithResponse call
 func ParseCtxSchemeLabelPresetsHTTP(rsp *http.Response) (*CtxSchemeLabelPresetsHTTP, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
@@ -18479,104 +17180,6 @@ func ParseCtxSchemeLabelPresetsHTTP(rsp *http.Response) (*CtxSchemeLabelPresetsH
 		response.Headers200 = &headers
 	case rsp.StatusCode == 429:
 		var headers CtxSchemeLabelPresetsHTTP429Headers
-		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.RetryAfter = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Limit"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Limit", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitLimit = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Remaining"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Remaining", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitRemaining = &value
-		}
-		if values := rsp.Header.Values("X-RateLimit-Reset"); len(values) > 0 {
-			var value int
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-RateLimit-Reset", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XRateLimitReset = &value
-		}
-		response.Headers429 = &headers
-	}
-
-	return response, nil
-}
-
-// ParseCtxSchemeNormalizeHTTP parses an HTTP response from a CtxSchemeNormalizeWithResponse call
-func ParseCtxSchemeNormalizeHTTP(rsp *http.Response) (*CtxSchemeNormalizeHTTP, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &CtxSchemeNormalizeHTTP{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest ContextSchemeNormalizeResult
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest BadRequest
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest NotFound
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 429:
-		var dest TooManyRequests
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON429 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 500:
-		var dest InternalError
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON500 = &dest
-
-	}
-
-	switch {
-	case rsp.StatusCode == 200:
-		var headers CtxSchemeNormalizeHTTP200Headers
-		if values := rsp.Header.Values("X-EzClassify-Resolved-Version"); len(values) > 0 {
-			var value string
-			if err := runtime.BindStyledParameterWithOptions("simple", "X-EzClassify-Resolved-Version", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			}
-			headers.XEzClassifyResolvedVersion = &value
-		}
-		response.Headers200 = &headers
-	case rsp.StatusCode == 429:
-		var headers CtxSchemeNormalizeHTTP429Headers
 		if values := rsp.Header.Values("Retry-After"); len(values) > 0 {
 			var value int
 			if err := runtime.BindStyledParameterWithOptions("simple", "Retry-After", values[0], &value, runtime.BindStyledParameterOptions{ParamLocation: runtime.ParamLocationHeader, Explode: false, Required: false, Type: "integer", Format: ""}); err != nil {

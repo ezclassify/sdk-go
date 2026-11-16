@@ -1,7 +1,7 @@
-# <img src="https://raw.githubusercontent.com/ezclassify/client-go/main/assets/icon.svg" alt="" width="32"> EzClassify Go SDK
+# <img src="https://raw.githubusercontent.com/ezclassify/sdk-go/main/assets/icon.svg" alt="" width="32"> EzClassify Go SDK
 
-[![CI](https://github.com/ezclassify/client-go/actions/workflows/ci.yml/badge.svg)](https://github.com/ezclassify/client-go/actions/workflows/ci.yml)
-[![Go Reference](https://pkg.go.dev/badge/github.com/ezclassify/client-go.svg)](https://pkg.go.dev/github.com/ezclassify/client-go)
+[![CI](https://github.com/ezclassify/sdk-go/actions/workflows/ci.yml/badge.svg)](https://github.com/ezclassify/sdk-go/actions/workflows/ci.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/ezclassify/sdk-go.svg)](https://pkg.go.dev/github.com/ezclassify/sdk-go)
 [![license: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Go 1.26.10+](https://img.shields.io/badge/go-1.26.10%2B-00ADD8.svg)](go.mod)
 
@@ -20,23 +20,23 @@ Go 1.26.10 or newer. Import the module directly in your application.
 ## Install
 
 ```sh
-go get github.com/ezclassify/client-go
+go get github.com/ezclassify/sdk-go
 ```
 
 Then import it under the module-root path:
 
 ```go
-import "github.com/ezclassify/client-go"
+import "github.com/ezclassify/sdk-go"
 ```
 
 Go 1.26.10+.
 
 ## Quickstart
 
-Start with the Cedar Valley replay server. It answers over real HTTP with recorded responses for a fictional school-district Context, so you can see your client work before you have a runtime. Node.js 22 or newer is needed for the replay server only.
+Start with the free developer runtime. It is one container that serves the built-in Contexts, such as `capco-demo` and `cedar-valley`, over real HTTP, with no license, credentials or account.
 
 ```sh
-npx @ezclassify/conformance-server --scenario cedar-valley --port 4010
+docker run --rm -p 3000:8080 ghcr.io/ezclassify/developer-runtime
 ```
 
 In your Go module, connect the normal client to it, process a marking, and check access:
@@ -49,12 +49,12 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/ezclassify/client-go"
+	"github.com/ezclassify/sdk-go"
 )
 
 func main() {
 	ctx := context.Background()
-	cx := ezclassify.Connect("http://127.0.0.1:4010", "cedar-valley", "1.0.0")
+	cx := ezclassify.Connect("http://localhost:3000", "cedar-valley", "1.0.0")
 
 	res, err := cx.Scheme.Process(ctx, ezclassify.CtxSchemeProcessRequest{Input: "INTERNAL"})
 	if err != nil {
@@ -86,15 +86,16 @@ protection-clearance false The reader’s trusted clearance is below this protec
 recipient-organization false The reader’s trusted recipient organization is not permitted.
 ```
 
-The context is `cedar-valley` at version `1.0.0`. The server replays recordings, so it answers a finite set of requests: markings such as `PUBLIC`, `INTERNAL`, and `CONFIDENTIAL`, plus the guide, aggregate, and access cases listed in the [scenario catalog](https://github.com/ezclassify/contracts/tree/main/packages/conformance-server/scenarios/cedar-valley). Any other request gets a 501 diagnostic that names the nearest recording. By default it asks for no credentials. Start it with `--auth simulated` to test sending a bearer token (`ezclassify-conformance-test-bearer`).
+The context is `cedar-valley` at version `1.0.0`, a fictional school district policy for teaching, so use synthetic markings with it. `GET /v1/ctx` on the runtime lists every built-in Context.
 
 ### Swap to your runtime
 
-When the integration works, point the same code at your runtime. Change the base URL, supply the credentials your administrator issued, and bind your own Context. The calls stay the same.
+When the integration works, point the same code at your runtime. Four values change: the base URL, the Context, your application id and the caller token. The calls stay the same.
 
 ```go
 client := ezclassify.New(
 	"https://runtime.example.com",
+	ezclassify.WithApplicationID("your-application-id"),
 	ezclassify.WithCredentials(ezclassify.RestClientCredentials{
 		AccessToken:  "caller-access-token",
 		ContextToken: "signed-context-token",
@@ -103,7 +104,7 @@ client := ezclassify.New(
 cx := ezclassify.ConnectWith(client, "your-context-id", "")
 ```
 
-The empty version lets the server choose: your Context token's default version, or the newest published when there is no token. Use markings your Context accepts, since the replay server's inputs belong to Cedar Valley. The next section walks a fuller call sequence against a runtime.
+The empty version lets the server choose: your Context token's default version, or the newest published when there is no token. Use markings your Context accepts. The next section walks a fuller call sequence against a runtime.
 
 ## Against a runtime
 
@@ -117,7 +118,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/ezclassify/client-go"
+	"github.com/ezclassify/sdk-go"
 )
 
 func main() {
@@ -188,9 +189,9 @@ Optional fields in generated request structs are pointers, hence `&input` and `&
 
 ## Caching
 
-A repeated identical call to the same Context handle does not go over the wire twice. The cache belongs to the handle (`cx`), holds up to 500 results, and is keyed by operation, Context binding and the whole request body. Every field of the request is part of the key, so two `Process` calls that name different `Outputs` or `SuggestFor` are two entries, and `Explain` never answers from a `Process` entry for the same request. A field left nil and a field never set are the same request.
+A repeated identical call to the same Context handle does not go over the wire twice. The cache belongs to the handle (`cx`), holds up to 500 results, and is keyed by operation, Context binding, the scheme a [scheme view](#a-contexts-other-schemes) addresses, and the whole request body. Every field of the request is part of the key, so two `Process` calls that name different `Outputs` or `SuggestFor` are two entries, and `Explain` never answers from a `Process` entry for the same request. A field left nil and a field never set are the same request.
 
-These calls are cached: `Scheme.ApplyPreset`, `Process`, `Validate`, `Explain`, `Suggest`, `SuggestForCategories`, `Aggregate`, `Scan`, `Render`, `Normalize`, `DescribeConcept`, `Diff`, and `Access.Rules`. Everything else reaches the server on every call: the guide operations, `CheckCoverage`, `FilterConcepts`, `Notices`, the scheme views and resources (`Summary`, `Concepts`, `Categories`, `Formats`, `Grammar`, `Scopes`, `LabelPresets`), `Describe`, and the composed document, access and crosswalk operations (`Document.Audit`, `Document.AssessAccess`, `Access.DescribeRequirements`, `Crosswalk.Translate`). The generated `Ctx*WithResponse` methods are direct wire methods and never use the cache. The same behavior holds in every EzClassify client; the [cache contract](https://github.com/ezclassify/contracts/blob/main/libs/conformance/cache/v1/CACHE-SEMANTICS.md) states it, and every client runs the same executable plans against it.
+These calls are cached: `Scheme.ApplyPreset`, `Process`, `Validate`, `Explain`, `Suggest`, `SuggestForCategories`, `Aggregate`, `Scan`, `Render`, `DescribeConcept`, `Diff`, `Access.Rules`, and `Crosswalk.Describe`. Everything else reaches the server on every call: the guide operations, `CheckCoverage`, `Notices`, the scheme views and resources (`Summary`, `Concepts`, `Categories`, `Formats`, `Scopes`, `LabelPresets`), `Describe`, and the composed document, access and crosswalk operations (`Document.Audit`, `Access.DescribeRequirements`, `Crosswalk.Translate`). The generated `Ctx*WithResponse` methods are direct wire methods and never use the cache. The same behavior holds in every EzClassify client; the [cache contract](https://github.com/ezclassify/contracts/blob/main/libs/conformance/cache/v1/CACHE-SEMANTICS.md) states it, and every client runs the same executable plans against it.
 
 Concurrent identical calls share one request. Canceling one caller's `context.Context` ends that caller's call and leaves the others on the shared request alone; the request itself is canceled when its last caller has gone. A caller that arrives already canceled gets `context.Canceled` without touching the cache.
 
@@ -211,14 +212,7 @@ The cache clears itself when an unpinned binding's resolved version changes, and
 
 ### Access decisions
 
-`Access.Check` calls the server every time by default. The request is what puts the decision in the deployment's audit record, against the exact artifact versions that answered it, and a decision served from client memory never made that trip. If you choose to trade those audit records for fewer requests on a concrete Context version, build the client with `ezclassify.WithCacheAccessDecisions()`:
-
-```go
-client := ezclassify.New(baseURL, ezclassify.WithCacheAccessDecisions())
-cx := ezclassify.ConnectWith(client, "cedar-valley", "1.0.0") // a concrete version
-```
-
-`ConnectWith` panics when the option is combined with `"latest"` or an empty version, because the composition behind an unpinned binding can move under a cached decision. The option reaches `Access.Check` and nothing else: document audit and assessment, access requirements and crosswalk translation stay on the wire.
+`Access.Check` is never served from client memory. Each call reaches the server, which records the decision against the exact artifact versions that answered it, and that record is what an accreditation review reads.
 
 ## Reading a marking and writing one
 
@@ -261,7 +255,7 @@ if draft.Result.SuggestionsFor != nil {
 
 `Renders` holds only the outputs you name, and `SuggestionsFor` is nil unless you name categories. `cx.Scheme.SuggestForCategories` answers the same map on its own, keyed by category id, when there is nothing to process. `cx.Scheme.Explain` takes what `Process` takes apart from `Outputs` and `SuggestFor`, and returns the trace instead: what was read, repaired, inferred, and found wrong, and what was written.
 
-Outputs are spelled the way the scheme declares them: a format id, or for a scheme that declares surfaces, a `surface/view` address such as `sensitivity/short`. When a request names no `OutputFormat`, a scheme without surfaces writes its default format, and a scheme with surfaces writes each surface in its default for the marking's role. That role is the request's `Context` role when it gives one, otherwise the role recognition reports in `Recognition.Role`, and a marking with neither is written as a whole. `Recognition.InputFormat` reports what the text was read as: the view's address for a scheme that declares surfaces, the format id otherwise. `cx.Scheme.Summary` reports `DefaultWholeRenderFormat` and `DefaultPartRenderFormat`, and each entry `cx.Scheme.Formats` returns lists in `DefaultFor` the roles it is the default for.
+Outputs are spelled the way the scheme declares them: a format id, or for a scheme that declares surfaces, a `surface/view` address such as `sensitivity/short`. When a request names no `OutputFormat`, a scheme without surfaces writes its default format, and a scheme with surfaces writes each surface in its default for the marking's role, or alone the one default that writes every other surface's scope beside its own. A named `OutputFormat` is written alone. That role is the request's `Context` role when it gives one, otherwise the role recognition reports in `Recognition.Role`, and a marking with neither is written as a whole. `Recognition.InputFormat` reports what the text was read as: the view's address for a scheme that declares surfaces, the format id otherwise. `cx.Scheme.Summary` reports `DefaultWholeRenderFormat` and `DefaultPartRenderFormat`, and each entry `cx.Scheme.Formats` returns lists in `DefaultFor` the roles it is the default for.
 
 What a render could not write is listed in `Assessment.Unrepresentable`, on the result and on each entry of `Renders`. An entry is either one fact the format has no way to write or, for a scheme that declares surfaces, a whole output that was refused. Both `As` methods decode any entry without an error, so tell them apart by `Output`, which only a refused output carries:
 
@@ -301,7 +295,7 @@ Context and credential refusals retain the binding error contract.
 
 ## Scheme views and presets
 
-`cx.Scheme.Categories`, `Concepts`, and `Formats` return the views a local engine's scheme view carries: `CategoryView`, `ConceptView`, and `FormatView`, which holds a format's resolved layout and its syntax. `cx.Scheme.LabelPresets` returns `LabelPresetView` entries for the Context's primary scheme, the scheme `ApplyPreset` expands them in, so it takes no scheme selector. `ApplyPreset` takes the preset id and the `OutputFormat` to write the expanded marking in, and answers what `Validate` answers:
+`cx.Scheme.Categories`, `Concepts`, and `Formats` return the views a local engine's scheme view carries: `CategoryView`, `ConceptView`, and `FormatView`, which holds a format's resolved layout and its syntax. `cx.Scheme.LabelPresets` returns `LabelPresetView` entries for the scheme, the one `ApplyPreset` expands them in. `ApplyPreset` takes the preset id and the `OutputFormat` to write the expanded marking in, and answers what `Validate` answers:
 
 ```go
 presets, err := cx.Scheme.LabelPresets(ctx)
@@ -318,6 +312,27 @@ if len(*presets) > 0 {
 ```
 
 `Scopes` returns the declared scopes in declaration order, an empty slice when the scheme declares none.
+
+### A Context's other schemes
+
+`cx.Scheme` is the Context's primary scheme. A Context can hold more, such as the source and target of a crosswalk, and `cx.Schemes.Get(key)` returns the same operations for one of them. The key is the scheme's Context-local key; `Describe` lists every scheme the Context holds with the key in its `Selector` field. Every call through the view, the operations and the reads alike, sends the key as `?scheme=`:
+
+```go
+description, err := cx.Describe(ctx)
+if err != nil {
+	log.Fatal(err)
+}
+for _, held := range description.Schemes[1:] {
+	other := cx.Schemes.Get(held.Selector)
+	res, err := other.Process(ctx, ezclassify.CtxSchemeProcessRequest{Input: "INTERNAL"})
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(held.Selector, res.Result.Rendered)
+}
+```
+
+The same key returns the same view, and a view shares the handle's binding and cache, with its results filed under its scheme. The server is the authority on keys and resolves one on every call: a key the Context does not hold is answered 404 with code `scheme_not_found` and returned as an error, never answered in the primary scheme. An empty key panics.
 
 ## Errors and rate limits
 
@@ -354,7 +369,7 @@ for _, n := range res.Result.Notices {
 
 ## Context discovery and generated surface
 
-Use `client.ListContexts(ctx)` and `client.ListContextVersions(ctx, id)` to discover bindings before calling `ConnectWith`. The embedded generated client also exposes canonical `Ctx*WithResponse` methods for callers that need response headers or typed error bodies directly. `cx.Describe(ctx)` returns a Context's component breakdown: its scheme, layers, guides, access policy, and crosswalks, each with the version it declares and the concrete version that answered; `client.CtxDescribeWithResponse` is the same request with the raw response.
+Use `client.ListContexts(ctx)` and `client.ListContextVersions(ctx, id)` to discover bindings before calling `ConnectWith`. `cx.Describe(ctx)` returns a Context's component breakdown: its scheme, layers, guides, access policy, and crosswalks, each with the version it declares and the concrete version that answered.
 
 ```go
 contexts, err := client.ListContexts(ctx)
@@ -377,7 +392,7 @@ Operations with no REST endpoint (registry mutation, in-process scheme loading, 
 
 ## Authentication
 
-Use `RestClientCredentials` for ordinary caller and Context tokens, or a managed application credential. `AccessToken` is sent as a bearer token on every REST request. `ContextToken` is sent as `x-ezclassify-context-token` only on `/v1/ctx` routes, so it cannot leak to health or other route families:
+Use `RestClientCredentials` for caller and Context tokens. `AccessToken` is sent as a bearer token on every REST request. `ContextToken` is sent as `x-ezclassify-context-token` only on `/v1/ctx` routes, so it cannot leak to health or other route families:
 
 ```go
 client := ezclassify.New(baseURL, ezclassify.WithCredentials(ezclassify.RestClientCredentials{
@@ -386,18 +401,15 @@ client := ezclassify.New(baseURL, ezclassify.WithCredentials(ezclassify.RestClie
 }))
 ```
 
-For an application grant, use the opaque credential issued by your deployment's management plane. Supply the current user's access token when the configured application policy requires verified user identity:
+Name the calling application with `WithApplicationID`. The runtime counts requests per application id and reports the usage to Studio, so pass the id your application is registered under:
 
 ```go
-client := ezclassify.New(baseURL, ezclassify.WithCredentials(ezclassify.RestClientCredentials{
-	ApplicationCredential: os.Getenv("EZCLASSIFY_APPLICATION_CREDENTIAL"),
-	AccessToken: currentUserAccessToken,
-}))
+client := ezclassify.New(baseURL, ezclassify.WithApplicationID("case-intake-portal"))
 ```
 
-The SDK sends the grant as `x-ezclassify-application-grant` only to Context routes on the configured origin, including deployments under a base path. It does not decode or refresh the credential. Combining it with `ContextToken` is rejected before any request. Omit `AccessToken` when the application's user policy does not use a bearer token. Your application authenticates users with its own identity provider and supplies their tokens; the SDK does not sign users in. Keep each client's credentials and caches scoped to one caller. A transport supplied with `WithHTTPClient` receives the credential on Context requests; what it does with that credential, including logging, is the caller's responsibility. Headers the transport adds or changes are outside construction-time credential validation.
+The SDK sends the id as `x-ezclassify-application-id` only to Context routes on the configured origin, including deployments under a base path. It is not a credential and authorizes nothing: a request without it, or with an id the deployment has not registered, is served the same way. An application id is 1 to 128 characters, each a visible ASCII character (0x21 to 0x7e). `WithApplicationID` panics at construction on an id outside that rule, and the message names the rule.
 
-The zero-value credential struct can call public probes and the replay server. Runtime execution requires an authorized application definition and its configured credential and user policy, including for ordinary caller credentials; public application identifiers alone grant no access. Standalone operators can supply protected application configuration without Studio. Blank non-empty tokens are rejected. Use `WithHTTPClient` when you also need a custom transport, retry policy, cookie jar, or redirect policy:
+Your application authenticates users with its own identity provider and supplies their tokens; the SDK does not sign users in. Keep each client's credentials and caches scoped to one caller. A transport supplied with `WithHTTPClient` receives the credentials on Context requests; what it does with them, including logging, is the caller's responsibility. Blank non-empty tokens are rejected. Use `WithHTTPClient` when you also need a custom transport, retry policy, cookie jar, or redirect policy:
 
 ```go
 type headerTransport struct {
@@ -440,13 +452,7 @@ client := ezclassify.New(baseURL, ezclassify.WithTimeout(10*time.Second))
 
 ### Response size
 
-`New` takes its settings as options. `WithMaxResponseBytes` sets the response ceiling: a client reads at most `ezclassify.DefaultMaxResponseBytes` (32 MiB) from a single response body and fails a longer one with an error wrapping `ezclassify.ErrResponseTooLarge`, rather than truncating it.
-
-```go
-client := ezclassify.New(baseURL, ezclassify.WithMaxResponseBytes(128<<20))
-```
-
-The limit must be positive: `WithMaxResponseBytes` panics on zero or less, so no caller code can remove the ceiling. It applies to every operation, generated or handwritten, because it sits on the transport.
+A client reads at most 32 MiB from a single response body and fails a longer one with an error wrapping `ezclassify.ErrResponseTooLarge`, rather than truncating it. The ceiling applies to every operation, generated or handwritten, because it sits on the transport.
 
 ## Versioning
 
@@ -454,33 +460,30 @@ SDK `major.minor` tracks the rest-api `major.minor`; patch versions may drift. `
 
 ## Examples
 
-Three runnable commands live under [`examples/`](examples/). Start the replay
-server from the [quickstart](#quickstart), then run either of these from the
+Three runnable commands live under [`examples/`](examples/). Start the developer
+runtime from the [quickstart](#quickstart), then run either of these from the
 repository root:
 
 ```sh
-go run ./examples/basic
-go run ./examples/server-tour
+go run ./examples/basic --server http://localhost:3000
+go run ./examples/server-tour --server http://localhost:3000
 ```
 
 [`basic`](examples/basic/README.md) validates a marking, aggregates two, and
 checks access. [`server-tour`](examples/server-tour/README.md) lists the
 Contexts a server publishes and processes a marking. Both default to
-`http://127.0.0.1:4010`, Context `cedar-valley`, version `1.0.0`, and their
-READMEs show the output. To switch to your runtime, pass `--server`, `--ctx` and
+Context `cedar-valley`, version `1.0.0`, and their READMEs show the output.
+To switch to your runtime, pass `--server`, `--ctx` and
 `--ctx-version`, set `EZC_ACCESS_TOKEN` and `EZC_CONTEXT_TOKEN` if your runtime
 requires them, and use markings your Context accepts.
 
 [`go-classify`](examples/go-classify/README.md) scans a directory of files for
-markings. It sends arbitrary file text, which the replay server has no
-recording for, so it needs a runtime that serves the Context; its README has
-the setup. `go build ./...` covers all three.
+markings. It sends arbitrary file text and needs a runtime that serves the
+Context; its README has the setup. `go build ./...` covers all three.
 
 ## Integration testing
 
-The quickstart server doubles as an integration test fixture for your backend. Use your normal client to test connectivity, response handling, and access-decision logging. Supported requests are listed in the
-[replay server guide](https://github.com/ezclassify/contracts/tree/main/packages/conformance-server#testing-an-application-integration).
-Unrecorded requests return a diagnostic rather than computing a new answer.
+The quickstart runtime doubles as an integration test fixture for your backend. Use your normal client to test connectivity, response handling, and access-decision logging.
 
 The quickstart prints each rule's explanation without copying subject
 attributes or credentials into the output. In your backend, derive attributes

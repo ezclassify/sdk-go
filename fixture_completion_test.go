@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"strings"
 
-	ez "github.com/ezclassify/client-go"
+	ez "github.com/ezclassify/sdk-go"
 )
 
 // contextResponseTypes maps a Context route's suffix to the response type the
@@ -18,23 +18,17 @@ var contextResponseTypes = map[string]reflect.Type{
 	"/scheme/aggregate":              reflect.TypeOf(ez.ContextSchemeAggregateResult{}),
 	"/scheme/scan":                   reflect.TypeOf(ez.ContextSchemeScanResult{}),
 	"/scheme/render":                 reflect.TypeOf(ez.ContextSchemeRenderResult{}),
-	"/scheme/normalize":              reflect.TypeOf(ez.ContextSchemeNormalizeResult{}),
 	"/scheme/check-coverage":         reflect.TypeOf(ez.ContextSchemeCoverageResult{}),
 	"/scheme/describe-concept":       reflect.TypeOf(ez.ContextSchemeConceptDescriptionResult{}),
 	"/scheme/diff":                   reflect.TypeOf(ez.ContextSchemeDiffResult{}),
-	"/scheme/filter-concepts":        reflect.TypeOf(ez.ContextSchemeFilterConceptsResult{}),
 	"/scheme/notices":                reflect.TypeOf(ez.ContextSchemeNoticesResult{}),
 	"/scheme/view":                   reflect.TypeOf(ez.ContextSchemeViewResult{}),
 	"/guide/scan":                    reflect.TypeOf(ez.ContextGuideScanResult{}),
 	"/guide/evaluate":                reflect.TypeOf(ez.ContextGuideEvaluationResult{}),
-	"/guide/filter-rules":            reflect.TypeOf(ez.ContextGuideFilterRulesResult{}),
-	"/guide/describe-rule":           reflect.TypeOf(ez.ContextGuideRuleDescriptionResult{}),
 	"/guide/view":                    reflect.TypeOf(ez.ContextGuideViewResult{}),
 	"/access/check":                  reflect.TypeOf(ez.ContextAccessDecisionResult{}),
 	"/access/describe-requirements":  reflect.TypeOf(ez.ContextAccessRequirementsResult{}),
-	"/access/describe-rule":          reflect.TypeOf(ez.ContextAccessRuleDescriptionResult{}),
 	"/document/audit":                reflect.TypeOf(ez.ContextDocumentAuditResult{}),
-	"/document/assess-access":        reflect.TypeOf(ez.ContextDocumentAccessAssessmentResult{}),
 	"/crosswalk/translate":           reflect.TypeOf(ez.ContextCrosswalkTranslationResult{}),
 }
 

@@ -12,15 +12,22 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ezclassify/client-go/internal/replayer"
+	"github.com/ezclassify/sdk-go/internal/replayer"
 )
 
 // computeRecordingKey reproduces the canonical recording hash algorithm.
 // Hash input: method | stableJSON(args) | stableJSON(fixture) | mode | ctxID | ctxVersion
-func computeRecordingKey(method string, args []interface{}, fixture interface{}, mode, ctxID, ctxVersion string) string {
-	fixtureJSON := replayer.StableJSON(fixture)
-	argsJSON := replayer.StableJSON(args)
-	raw := method + "|" + argsJSON + "|" + fixtureJSON + "|" + mode + "|" + ctxID + "|" + ctxVersion
+func computeRecordingKey(method string, args []interface{}, fixture interface{}, mode, ctxID, ctxVersion, guideFixture, accessFixture string) string {
+	raw := strings.Join([]string{
+		method,
+		replayer.StableJSON(args),
+		replayer.StableJSON(fixture),
+		mode,
+		ctxID,
+		ctxVersion,
+		guideFixture,
+		accessFixture,
+	}, "|")
 	return fmt.Sprintf("%x", sha256.Sum256([]byte(raw)))
 }
 
@@ -69,8 +76,12 @@ func loadAllRecordings(t *testing.T, dir string) map[string]json.RawMessage {
 // the same operation body from colliding in the replayer map.
 const conformanceCtxVersion = "1.0.0"
 
-func contextRouteBase(fixture interface{}) string {
-	digest := sha256.Sum256([]byte(replayer.StableJSON(fixture)))
+func contextRouteBase(fixture interface{}, guideFixture, accessFixture string) string {
+	digest := sha256.Sum256([]byte(replayer.StableJSON(map[string]interface{}{
+		"fixture":       fixture,
+		"guideFixture":  guideFixture,
+		"accessFixture": accessFixture,
+	})))
 	return fmt.Sprintf("/v1/ctx/conformance-%x/%s", digest[:8], conformanceCtxVersion)
 }
 
@@ -78,8 +89,8 @@ func contextRouteBase(fixture interface{}) string {
 // case. It returns a non-nil error for a method the Go runner does not
 // implement and when a fixture the case depends on cannot be loaded: a missing
 // or corrupt fixture must fail the suite, never skip it.
-func buildPlanBody(method string, args []interface{}, fixture interface{}, guideFixture string, fixtureDir string) (path string, body map[string]interface{}, err error) {
-	ctxBase := contextRouteBase(fixture)
+func buildPlanBody(method string, args []interface{}, fixture interface{}, guideFixture, accessFixture string, fixtureDir string) (path string, body map[string]interface{}, err error) {
+	ctxBase := contextRouteBase(fixture, guideFixture, accessFixture)
 	strArg := func(i int) string {
 		if i < len(args) {
 			if s, ok := args[i].(string); ok {
@@ -171,11 +182,15 @@ func buildPlanBody(method string, args []interface{}, fixture interface{}, guide
 			"assertions":     rawArg(0),
 			"userAttributes": rawArg(1),
 		}, nil
-	case "evaluateGuide", "evaluateMany":
-		// evaluateMany over the plan's single-guide fixtures is equivalent to a
-		// single-guide evaluate, so both fold onto the ctx guide/evaluate route
-		// (the same fold the client runner uses). The guide is bound to the
-		// context; the body carries only the guide id and the selected rules.
+	case "evaluateMany":
+		// The plan's selections already name each rule's guide, so they go out
+		// as they are.
+		return ctxBase + "/guide/evaluate", map[string]interface{}{
+			"selections": rawArg(0),
+		}, nil
+	case "evaluateGuide":
+		// The guide is bound to the context; the body carries only the guide
+		// id and the selected rules.
 		gf := guideFixture
 		if gf == "" {
 			if s, ok := fixture.(string); ok {
@@ -224,11 +239,12 @@ func runCase(
 	method string,
 	fixtureRaw interface{},
 	guideFixture string,
+	accessFixture string,
 	args []interface{},
 ) (interface{}, error) {
 	t.Helper()
 
-	apiPath, bodyMap, err := buildPlanBody(method, args, fixtureRaw, guideFixture, fixtureDir)
+	apiPath, bodyMap, err := buildPlanBody(method, args, fixtureRaw, guideFixture, accessFixture, fixtureDir)
 	if err != nil {
 		return nil, fmt.Errorf("build plan body: %w", err)
 	}

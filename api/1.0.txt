@@ -6,12 +6,6 @@ ezclassify, const AccessOperandSourceAssertion
 ezclassify, const AccessOperandSourceContext
 ezclassify, const AccessOperandSourceLiteral
 ezclassify, const AccessOperandSourceSubject
-ezclassify, const AccessScenarioBasisAuthored
-ezclassify, const AccessScenarioBasisAuthoritative
-ezclassify, const AccessScenarioBasisProjected
-ezclassify, const AccessScenarioStatusDenied
-ezclassify, const AccessScenarioStatusGranted
-ezclassify, const AccessScenarioStatusNotEvaluated
 ezclassify, const ArtifactKindAccess
 ezclassify, const ArtifactKindContext
 ezclassify, const ArtifactKindGuide
@@ -20,16 +14,11 @@ ezclassify, const ArtifactKindScheme
 ezclassify, const AssertionConfidenceCertain
 ezclassify, const AssertionConfidenceInferred
 ezclassify, const AssertionConfidenceRepaired
-ezclassify, const AssertionConfidenceUncertain
 ezclassify, const ConceptNoticeTypeAdmonition
-ezclassify, const ConceptNoticeTypeDistribution
-ezclassify, const ConceptNoticeTypeHandling
-ezclassify, const ConceptNoticeTypeInfo
 ezclassify, const ConceptNoticeTypeWarning
 ezclassify, const DecisionProposalOriginAgentDrafted
 ezclassify, const DecisionProposalOriginAnalystAuthored
 ezclassify, const DecisionProposalOriginHostImported
-ezclassify, const DefaultMaxResponseBytes int64
 ezclassify, const DocumentResponseProfileFull
 ezclassify, const DocumentResponseProfileStandard
 ezclassify, const DocumentResponseProfileSummary
@@ -57,14 +46,10 @@ ezclassify, const RecognitionCorrectionReasonAlias
 ezclassify, const RecognitionCorrectionReasonCase
 ezclassify, const RecognitionCorrectionReasonOrder
 ezclassify, const RecognitionCorrectionReasonSeparator
-ezclassify, const RecognitionLimitAborted
-ezclassify, const RecognitionLimitDepth
-ezclassify, const RecognitionLimitGrammarSize
 ezclassify, const RecognitionLimitInputLength
 ezclassify, const RecognitionLimitLiveStates
 ezclassify, const RecognitionLimitLookups
 ezclassify, const RecognitionLimitTransitions
-ezclassify, const RecognitionLimitWallClock
 ezclassify, const RecognitionStatusAmbiguous
 ezclassify, const RecognitionStatusComplete
 ezclassify, const RecognitionStatusPartial
@@ -80,8 +65,6 @@ ezclassify, const UnrepresentableFactReasonUnframable
 ezclassify, const UnrepresentableFactReasonValueLossy
 ezclassify, const UnrepresentableOutputReasonAmbiguousRepresentation
 ezclassify, const UnrepresentableOutputReasonUnresolvedContext
-ezclassify, const ValidationSeverityError
-ezclassify, const ValidationSeverityWarning
 ezclassify, const WarningKindDeprecation
 ezclassify, const WarningKindNotice
 ezclassify, const WarningKindRule
@@ -89,13 +72,10 @@ ezclassify, func Connect(string, string, string) *EzClassifyContext
 ezclassify, func ConnectWith(*Client, string, string) *EzClassifyContext
 ezclassify, func New(string, ...Option) *Client
 ezclassify, func UTF8ByteOffset(string, int) (int, error)
-ezclassify, func UTF8ByteOffsets(string, []int) ([]int, error)
 ezclassify, func UTF8RuneIndex(string, int) (int, error)
-ezclassify, func UTF8RuneIndexes(string, []int) ([]int, error)
-ezclassify, func WithCacheAccessDecisions() Option
+ezclassify, func WithApplicationID(string) Option
 ezclassify, func WithCredentials(RestClientCredentials) Option
 ezclassify, func WithHTTPClient(*http.Client) Option
-ezclassify, func WithMaxResponseBytes(int64) Option
 ezclassify, func WithResponseCacheDisabled() Option
 ezclassify, func WithTimeout(time.Duration) Option
 ezclassify, method (*APIError) Error() string
@@ -107,39 +87,34 @@ ezclassify, method (*ContextNotFoundError) Error() string
 ezclassify, method (*ContextNotFoundError) Unwrap() error
 ezclassify, method (*CtxAccess) Check(context.Context, CtxAccessCheckRequest) (*ContextAccessDecisionResult, error)
 ezclassify, method (*CtxAccess) DescribeRequirements(context.Context, CtxAccessDescribeRequirementsRequest) (*ContextAccessRequirementsResult, error)
-ezclassify, method (*CtxAccess) DescribeRule(context.Context, CtxAccessDescribeRuleRequest) (*ContextAccessRuleDescriptionResult, error)
 ezclassify, method (*CtxAccess) Rules(context.Context) (*AccessRulesResponse, error)
+ezclassify, method (*CtxCrosswalk) Describe(context.Context) (*CrosswalkInventory, error)
 ezclassify, method (*CtxCrosswalk) Translate(context.Context, CtxCrosswalkTranslateRequest) (*ContextCrosswalkTranslationResult, error)
-ezclassify, method (*CtxDocument) AssessAccess(context.Context, CtxDocumentAssessAccessRequest) (*ContextDocumentAccessAssessmentResult, error)
 ezclassify, method (*CtxDocument) Audit(context.Context, CtxDocumentAuditRequest) (*ContextDocumentAuditResult, error)
-ezclassify, method (*CtxGuide) DescribeRule(context.Context, CtxGuideDescribeRuleRequest) (*ContextGuideRuleDescriptionResult, error)
 ezclassify, method (*CtxGuide) Evaluate(context.Context, CtxGuideEvaluateRequest) (*ContextGuideEvaluationResult, error)
-ezclassify, method (*CtxGuide) FilterRules(context.Context, CtxGuideFilterRulesRequest) (*ContextGuideFilterRulesResult, error)
 ezclassify, method (*CtxGuide) Scan(context.Context, CtxGuideScanRequest) (*ContextGuideScanResult, error)
 ezclassify, method (*CtxGuide) View(context.Context, *string) (*ContextGuideViewResult, error)
 ezclassify, method (*CtxScheme) Aggregate(context.Context, CtxSchemeAggregateRequest) (*ContextSchemeAggregateResult, error)
 ezclassify, method (*CtxScheme) ApplyPreset(context.Context, ApplyPresetRequest) (*ContextSchemeValidateResult, error)
-ezclassify, method (*CtxScheme) Categories(context.Context, *string) (*[]CategoryView, error)
+ezclassify, method (*CtxScheme) Categories(context.Context) (*[]CategoryView, error)
 ezclassify, method (*CtxScheme) CheckCoverage(context.Context, CtxSchemeCheckCoverageRequest) (*ContextSchemeCoverageResult, error)
-ezclassify, method (*CtxScheme) Concepts(context.Context, *string) (*[]ConceptView, error)
+ezclassify, method (*CtxScheme) Concepts(context.Context) (*[]ConceptView, error)
 ezclassify, method (*CtxScheme) DescribeConcept(context.Context, string, string, *string) (*ContextSchemeConceptDescriptionResult, error)
 ezclassify, method (*CtxScheme) Diff(context.Context, CtxSchemeDiffRequest) (*ContextSchemeDiffResult, error)
 ezclassify, method (*CtxScheme) Explain(context.Context, CtxSchemeExplainRequest) (*ContextSchemeExplainResult, error)
-ezclassify, method (*CtxScheme) FilterConcepts(context.Context, CtxSchemeFilterConceptsRequest) (*ContextSchemeFilterConceptsResult, error)
-ezclassify, method (*CtxScheme) Formats(context.Context, *string) (*[]FormatView, error)
-ezclassify, method (*CtxScheme) Grammar(context.Context, *string) (*SchemeGrammar, error)
+ezclassify, method (*CtxScheme) Formats(context.Context) (*[]FormatView, error)
 ezclassify, method (*CtxScheme) LabelPresets(context.Context) (*[]LabelPresetView, error)
-ezclassify, method (*CtxScheme) Normalize(context.Context, CtxSchemeNormalizeRequest) (*ContextSchemeNormalizeResult, error)
 ezclassify, method (*CtxScheme) Notices(context.Context, CtxSchemeNoticesRequest) (*ContextSchemeNoticesResult, error)
 ezclassify, method (*CtxScheme) Process(context.Context, CtxSchemeProcessRequest) (*ContextSchemeProcessResult, error)
 ezclassify, method (*CtxScheme) Render(context.Context, CtxSchemeRenderRequest) (*ContextSchemeRenderResult, error)
 ezclassify, method (*CtxScheme) Scan(context.Context, CtxSchemeScanRequest) (*ContextSchemeScanResult, error)
-ezclassify, method (*CtxScheme) Scopes(context.Context, *string) (*[]SchemeScope, error)
+ezclassify, method (*CtxScheme) Scopes(context.Context) (*[]SchemeScope, error)
 ezclassify, method (*CtxScheme) Suggest(context.Context, CtxSchemeSuggestRequest) (*ContextSchemeSuggestResult, error)
 ezclassify, method (*CtxScheme) SuggestForCategories(context.Context, CtxSchemeSuggestForCategoriesRequest) (*ContextSchemeSuggestForCategoriesResult, error)
-ezclassify, method (*CtxScheme) Summary(context.Context, *string) (*SchemeSummary, error)
+ezclassify, method (*CtxScheme) Summary(context.Context) (*SchemeSummary, error)
 ezclassify, method (*CtxScheme) Validate(context.Context, CtxSchemeValidateRequest) (*ContextSchemeValidateResult, error)
 ezclassify, method (*CtxScheme) View(context.Context) (*ContextSchemeViewResult, error)
+ezclassify, method (*CtxSchemes) Get(string) *CtxScheme
 ezclassify, method (*EzClassifyContext) ClearCache()
 ezclassify, method (*EzClassifyContext) Describe(context.Context) (*ContextDescription, error)
 ezclassify, method (*EzClassifyContext) ID() string
@@ -162,9 +137,6 @@ ezclassify, type AccessRequirementsDescription = api.AccessRequirementsDescripti
 ezclassify, type AccessRuleDescription = api.AccessRuleDescription
 ezclassify, type AccessRuleResult = api.AccessRuleResult
 ezclassify, type AccessRulesResponse = api.CtxAccessRulesResponseBody
-ezclassify, type AccessScenarioAssessment = api.AccessScenarioAssessment
-ezclassify, type AccessScenarioBasis = api.AccessScenarioBasis
-ezclassify, type AccessScenarioStatus = api.AccessScenarioStatus
 ezclassify, type AggregateResult = api.AggregateResult
 ezclassify, type ApplyPresetRequest = api.ApplyPresetRequest
 ezclassify, type ArtifactKind = api.ArtifactKind
@@ -174,28 +146,21 @@ ezclassify, type AssertionConfidence = api.AssertionConfidence
 ezclassify, type AssertionReference = api.AssertionReference
 ezclassify, type AssertionSupport = api.AssertionSupport
 ezclassify, type AssessmentLimitation = api.AssessmentLimitation
-ezclassify, type BestEffortRuleSourceReference = api.BestEffortRuleSourceReference
-ezclassify, type BestEffortSourceReference = api.BestEffortSourceReference
 ezclassify, type CategoryPositionOverrides = api.CategoryPositionOverrides
 ezclassify, type CategoryView = api.CategoryView
 ezclassify, type Change = api.Change
 ezclassify, type Client struct
-ezclassify, type Client struct, embedded *api.ClientWithResponses
 ezclassify, type ConceptDescription = api.ConceptDescription
 ezclassify, type ConceptNoticeType = api.ConceptNoticeType
 ezclassify, type ConceptView = api.ConceptView
-ezclassify, type ContentChangeRequirement = api.ContentChangeRequirement
 ezclassify, type ContentEvidenceSpan = api.ContentEvidenceSpan
 ezclassify, type ContextAccessDecisionResult = api.ContextAccessDecisionResult
 ezclassify, type ContextAccessRequirementsResult = api.ContextAccessRequirementsResult
-ezclassify, type ContextAccessRuleDescriptionResult = api.ContextAccessRuleDescriptionResult
+ezclassify, type ContextCrosswalkDescriptor = api.ContextCrosswalkDescriptor
 ezclassify, type ContextCrosswalkTranslationResult = api.ContextCrosswalkTranslationResult
 ezclassify, type ContextDescription = api.CtxDescribeResponseBody
-ezclassify, type ContextDocumentAccessAssessmentResult = api.ContextDocumentAccessAssessmentResult
 ezclassify, type ContextDocumentAuditResult = api.ContextDocumentAuditResult
 ezclassify, type ContextGuideEvaluationResult = api.ContextGuideEvaluationResult
-ezclassify, type ContextGuideFilterRulesResult = api.ContextGuideFilterRulesResult
-ezclassify, type ContextGuideRuleDescriptionResult = api.ContextGuideRuleDescriptionResult
 ezclassify, type ContextGuideScanResult = api.ContextGuideScanResult
 ezclassify, type ContextGuideViewResult = api.ContextGuideViewResult
 ezclassify, type ContextListResponse = api.CtxListResponseBody
@@ -208,8 +173,6 @@ ezclassify, type ContextSchemeConceptDescriptionResult = api.ContextSchemeConcep
 ezclassify, type ContextSchemeCoverageResult = api.ContextSchemeCoverageResult
 ezclassify, type ContextSchemeDiffResult = api.ContextSchemeDiffResult
 ezclassify, type ContextSchemeExplainResult = api.ContextSchemeExplainResult
-ezclassify, type ContextSchemeFilterConceptsResult = api.ContextSchemeFilterConceptsResult
-ezclassify, type ContextSchemeNormalizeResult = api.ContextSchemeNormalizeResult
 ezclassify, type ContextSchemeNoticesResult = api.ContextSchemeNoticesResult
 ezclassify, type ContextSchemeProcessResult = api.ContextSchemeProcessResult
 ezclassify, type ContextSchemeRenderResult = api.ContextSchemeRenderResult
@@ -220,19 +183,16 @@ ezclassify, type ContextSchemeValidateResult = api.ContextSchemeValidateResult
 ezclassify, type ContextSchemeViewResult = api.ContextSchemeViewResult
 ezclassify, type ContextVersionsResponse = api.CtxVersionsResponseBody
 ezclassify, type CoverageReport = api.CheckCoverageResult
+ezclassify, type CrosswalkInventory = api.CtxCrosswalkDescribeResponseBody
 ezclassify, type CtxAccess struct
 ezclassify, type CtxAccessCheckRequest = api.CtxAccessCheckJSONRequestBody
 ezclassify, type CtxAccessDescribeRequirementsRequest = api.CtxAccessDescribeRequirementsJSONRequestBody
-ezclassify, type CtxAccessDescribeRuleRequest = api.CtxAccessDescribeRuleJSONRequestBody
 ezclassify, type CtxCrosswalk struct
 ezclassify, type CtxCrosswalkTranslateRequest = api.CtxCrosswalkTranslateJSONRequestBody
 ezclassify, type CtxDocument struct
-ezclassify, type CtxDocumentAssessAccessRequest = api.CtxDocumentAssessAccessJSONRequestBody
 ezclassify, type CtxDocumentAuditRequest = api.CtxDocumentAuditJSONRequestBody
 ezclassify, type CtxGuide struct
-ezclassify, type CtxGuideDescribeRuleRequest = api.CtxGuideDescribeRuleJSONRequestBody
 ezclassify, type CtxGuideEvaluateRequest = api.CtxGuideEvaluateJSONRequestBody
-ezclassify, type CtxGuideFilterRulesRequest = api.CtxGuideFilterRulesJSONRequestBody
 ezclassify, type CtxGuideScanRequest = api.CtxGuideScanJSONRequestBody
 ezclassify, type CtxGuideViewRequest = api.CtxGuideViewJSONRequestBody
 ezclassify, type CtxScheme struct
@@ -241,8 +201,6 @@ ezclassify, type CtxSchemeCheckCoverageRequest = api.CtxSchemeCheckCoverageJSONR
 ezclassify, type CtxSchemeDescribeConceptParams = api.CtxSchemeDescribeConceptParams
 ezclassify, type CtxSchemeDiffRequest = api.CtxSchemeDiffJSONRequestBody
 ezclassify, type CtxSchemeExplainRequest = api.CtxSchemeExplainJSONRequestBody
-ezclassify, type CtxSchemeFilterConceptsRequest = api.CtxSchemeFilterConceptsJSONRequestBody
-ezclassify, type CtxSchemeNormalizeRequest = api.CtxSchemeNormalizeJSONRequestBody
 ezclassify, type CtxSchemeNoticesRequest = api.CtxSchemeNoticesJSONRequestBody
 ezclassify, type CtxSchemeProcessRequest = api.CtxSchemeProcessJSONRequestBody
 ezclassify, type CtxSchemeRenderRequest = api.CtxSchemeRenderJSONRequestBody
@@ -251,9 +209,9 @@ ezclassify, type CtxSchemeSuggestForCategoriesRequest = api.CtxSchemeSuggestForC
 ezclassify, type CtxSchemeSuggestRequest = api.CtxSchemeSuggestJSONRequestBody
 ezclassify, type CtxSchemeValidateRequest = api.CtxSchemeValidateJSONRequestBody
 ezclassify, type CtxSchemeViewRequest = api.CtxSchemeViewJSONRequestBody
+ezclassify, type CtxSchemes struct
 ezclassify, type DecisionProposalOrigin = api.DecisionProposalOrigin
 ezclassify, type DiffResult = api.DiffResult
-ezclassify, type DocumentAccessAssessment = api.DocumentAccessAssessment
 ezclassify, type DocumentAuditReport = api.DocumentAuditReport
 ezclassify, type DocumentGuideAssessment = api.DocumentGuideAssessment
 ezclassify, type DocumentOverallVerdict = api.DocumentOverallVerdict
@@ -261,7 +219,6 @@ ezclassify, type DocumentResponseCounts = api.DocumentResponseCounts
 ezclassify, type DocumentResponseProfile = api.DocumentResponseProfile
 ezclassify, type DocumentResponseProjection = api.DocumentResponseProjection
 ezclassify, type DocumentUnmarkedSpan = api.DocumentUnmarkedSpan
-ezclassify, type EffectiveDocumentTarget = api.EffectiveDocumentTarget
 ezclassify, type ErrorResponse = api.ErrorResponse
 ezclassify, type EvaluationResult = api.EvaluationResult
 ezclassify, type ExplanationTrace = api.ExplanationTrace
@@ -271,7 +228,7 @@ ezclassify, type EzClassifyContext struct, Crosswalk *CtxCrosswalk
 ezclassify, type EzClassifyContext struct, Document *CtxDocument
 ezclassify, type EzClassifyContext struct, Guide *CtxGuide
 ezclassify, type EzClassifyContext struct, Scheme *CtxScheme
-ezclassify, type FilterResult = api.FilterResult
+ezclassify, type EzClassifyContext struct, Schemes *CtxSchemes
 ezclassify, type Fix = api.Fix
 ezclassify, type FixAction = api.FixAction
 ezclassify, type FixConceptReference = api.FixConceptReference
@@ -287,6 +244,7 @@ ezclassify, type GuideFactReference = api.GuideFactReference
 ezclassify, type GuideFindingDecision = api.GuideFindingDecision
 ezclassify, type GuideFindingDetermination = api.GuideFindingDetermination
 ezclassify, type GuideNomination = api.GuideNomination
+ezclassify, type GuideRuleSelection = api.GuideRuleSelection
 ezclassify, type GuideScanResult = api.GuideScanResult
 ezclassify, type GuideScopeCoverage = api.GuideScopeCoverage
 ezclassify, type GuideUnitEvaluation = api.GuideUnitEvaluation
@@ -300,7 +258,6 @@ ezclassify, type MalformedResponseError struct, Member string
 ezclassify, type MalformedResponseError struct, Op string
 ezclassify, type MalformedResponseError struct, StatusCode int
 ezclassify, type ManualGuideSelectionInput = api.ManualGuideSelectionInput
-ezclassify, type NormalizeResponse = api.NormalizeResponse
 ezclassify, type Notice = api.Notice
 ezclassify, type Option func(*clientConfig)
 ezclassify, type PingResult struct
@@ -322,29 +279,22 @@ ezclassify, type RenderPreservation = api.RenderPreservation
 ezclassify, type RenderResponse = api.RenderResponse
 ezclassify, type RenderResult = api.RenderResult
 ezclassify, type RenderResultsByFormat = api.RenderResultsByFormat
-ezclassify, type ReproducibleRuleSourceReference = api.ReproducibleRuleSourceReference
-ezclassify, type ReproducibleSourceReference = api.ReproducibleSourceReference
 ezclassify, type RestClientCredentials struct
 ezclassify, type RestClientCredentials struct, AccessToken string
-ezclassify, type RestClientCredentials struct, ApplicationCredential string
 ezclassify, type RestClientCredentials struct, ContextToken string
-ezclassify, type RuleDescription = api.RuleDescription
 ezclassify, type RuleReference = api.RuleReference
-ezclassify, type RuleSourceReference = api.RuleSourceReference
 ezclassify, type ScanLimits = api.ScanLimits
 ezclassify, type ScanMatch = api.ScanResult
 ezclassify, type ScanResponseBody = api.ScanResponseBody
 ezclassify, type ScanStatus = api.ScanStatus
-ezclassify, type SchemeGrammar = api.SchemeGrammar
 ezclassify, type SchemeScope = api.SchemeScope
 ezclassify, type SchemeSummary = api.SchemeSummary
 ezclassify, type SchemeView = api.SchemeViewResponse
-ezclassify, type SourceReference = api.SourceReference
-ezclassify, type SubjectContextRequirement = api.SubjectContextRequirement
 ezclassify, type SuggestResult = api.SuggestResult
 ezclassify, type SuggestResultsByCategory = api.SuggestResultsByCategory
 ezclassify, type Suggestion = api.Suggestion
 ezclassify, type TraceEntry = api.TraceEntry
+ezclassify, type UnreadMark = api.UnreadMark
 ezclassify, type UnrepresentableFact = api.UnrepresentableFact
 ezclassify, type UnrepresentableFactReason = api.UnrepresentableFactReason
 ezclassify, type UnrepresentableOutput = api.UnrepresentableOutput
@@ -352,7 +302,6 @@ ezclassify, type UnrepresentableOutputReason = api.UnrepresentableOutputReason
 ezclassify, type UnrepresentableValue = api.UnrepresentableValue
 ezclassify, type ValidateResult = api.ValidateResult
 ezclassify, type ValidationError = api.ValidationError
-ezclassify, type ValidationSeverity = api.ValidationSeverity
 ezclassify, type Warning = api.Warning
 ezclassify, type WarningKind = api.WarningKind
 ezclassify, var ErrResponseTooLarge

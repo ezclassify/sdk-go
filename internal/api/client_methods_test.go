@@ -48,119 +48,94 @@ func TestEndpointRoutes(t *testing.T) {
 	}{
 		{"Health", "GET", "/v1/health", func() error { _, e := c.GetHealthWithResponse(ctx); return e }},
 		{"Ready", "GET", "/v1/ready", func() error { _, e := c.GetReadyWithResponse(ctx); return e }},
-		{"CtxList", "GET", "/v1/ctx", func() error { _, e := c.CtxListWithResponse(ctx); return e }},
-		{"CtxVersions", "GET", "/v1/ctx/" + ctxID, func() error { _, e := c.CtxVersionsWithResponse(ctx, ctxID); return e }},
-		{"CtxDescribe", "GET", base, func() error { _, e := c.CtxDescribeWithResponse(ctx, ctxID, version); return e }},
-		{"AccessRules", "GET", base + "/access/rules", func() error { _, e := c.CtxAccessRulesWithResponse(ctx, ctxID, version); return e }},
+		{"CtxList", "GET", "/v1/ctx", func() error { _, e := c.CtxListWithResponse(ctx, nil); return e }},
+		{"CtxVersions", "GET", "/v1/ctx/" + ctxID, func() error { _, e := c.CtxVersionsWithResponse(ctx, ctxID, nil); return e }},
+		{"CtxDescribe", "GET", base, func() error { _, e := c.CtxDescribeWithResponse(ctx, ctxID, version, nil); return e }},
+		{"AccessRules", "GET", base + "/access/rules", func() error { _, e := c.CtxAccessRulesWithResponse(ctx, ctxID, version, nil); return e }},
 		{"SchemeSummary", "GET", base + "/scheme", func() error { _, e := c.CtxSchemeSummaryWithResponse(ctx, ctxID, version, nil); return e }},
 		{"SchemeCategories", "GET", base + "/scheme/categories", func() error { _, e := c.CtxSchemeCategoriesWithResponse(ctx, ctxID, version, nil); return e }},
 		{"SchemeConcepts", "GET", base + "/scheme/concepts", func() error { _, e := c.CtxSchemeConceptsWithResponse(ctx, ctxID, version, nil); return e }},
 		{"SchemeFormats", "GET", base + "/scheme/formats", func() error { _, e := c.CtxSchemeFormatsWithResponse(ctx, ctxID, version, nil); return e }},
-		{"SchemeGrammar", "GET", base + "/scheme/grammar", func() error { _, e := c.CtxSchemeGrammarWithResponse(ctx, ctxID, version, nil); return e }},
 		{"SchemeScopes", "GET", base + "/scheme/scopes", func() error { _, e := c.CtxSchemeScopesWithResponse(ctx, ctxID, version, nil); return e }},
-		{"SchemePresets", "GET", base + "/scheme/label-presets", func() error { _, e := c.CtxSchemeLabelPresetsWithResponse(ctx, ctxID, version); return e }},
+		{"SchemePresets", "GET", base + "/scheme/label-presets", func() error { _, e := c.CtxSchemeLabelPresetsWithResponse(ctx, ctxID, version, nil); return e }},
 		{"DescribeConcept", "GET", base + "/scheme/describe-concept", func() error {
 			_, e := c.CtxSchemeDescribeConceptWithResponse(ctx, ctxID, version, &CtxSchemeDescribeConceptParams{ConceptID: "c", CategoryID: "cat"})
 			return e
 		}},
 		{"AccessCheck", "POST", base + "/access/check", func() error {
-			_, e := c.CtxAccessCheckWithResponse(ctx, ctxID, version, CtxAccessCheckJSONRequestBody{})
+			_, e := c.CtxAccessCheckWithResponse(ctx, ctxID, version, nil, CtxAccessCheckJSONRequestBody{})
 			return e
 		}},
 		{"AccessRequirements", "POST", base + "/access/describe-requirements", func() error {
-			_, e := c.CtxAccessDescribeRequirementsWithResponse(ctx, ctxID, version, CtxAccessDescribeRequirementsJSONRequestBody{})
-			return e
-		}},
-		{"AccessRule", "POST", base + "/access/describe-rule", func() error {
-			_, e := c.CtxAccessDescribeRuleWithResponse(ctx, ctxID, version, CtxAccessDescribeRuleJSONRequestBody{})
+			_, e := c.CtxAccessDescribeRequirementsWithResponse(ctx, ctxID, version, nil, CtxAccessDescribeRequirementsJSONRequestBody{})
 			return e
 		}},
 		{"Crosswalk", "POST", base + "/crosswalk/translate", func() error {
-			_, e := c.CtxCrosswalkTranslateWithResponse(ctx, ctxID, version, CtxCrosswalkTranslateJSONRequestBody{})
+			_, e := c.CtxCrosswalkTranslateWithResponse(ctx, ctxID, version, nil, CtxCrosswalkTranslateJSONRequestBody{})
 			return e
 		}},
 		{"DocumentAudit", "POST", base + "/document/audit", func() error {
-			_, e := c.CtxDocumentAuditWithResponse(ctx, ctxID, version, CtxDocumentAuditJSONRequestBody{})
-			return e
-		}},
-		{"DocumentAccess", "POST", base + "/document/assess-access", func() error {
-			_, e := c.CtxDocumentAssessAccessWithResponse(ctx, ctxID, version, CtxDocumentAssessAccessJSONRequestBody{})
+			_, e := c.CtxDocumentAuditWithResponse(ctx, ctxID, version, nil, CtxDocumentAuditJSONRequestBody{})
 			return e
 		}},
 		{"GuideScan", "POST", base + "/guide/scan", func() error {
-			_, e := c.CtxGuideScanWithResponse(ctx, ctxID, version, CtxGuideScanJSONRequestBody{})
+			_, e := c.CtxGuideScanWithResponse(ctx, ctxID, version, nil, CtxGuideScanJSONRequestBody{})
 			return e
 		}},
 		{"GuideEvaluate", "POST", base + "/guide/evaluate", func() error {
-			_, e := c.CtxGuideEvaluateWithResponse(ctx, ctxID, version, CtxGuideEvaluateJSONRequestBody{})
-			return e
-		}},
-		{"GuideDescribe", "POST", base + "/guide/describe-rule", func() error {
-			_, e := c.CtxGuideDescribeRuleWithResponse(ctx, ctxID, version, CtxGuideDescribeRuleJSONRequestBody{})
-			return e
-		}},
-		{"GuideFilter", "POST", base + "/guide/filter-rules", func() error {
-			_, e := c.CtxGuideFilterRulesWithResponse(ctx, ctxID, version, CtxGuideFilterRulesJSONRequestBody{})
+			_, e := c.CtxGuideEvaluateWithResponse(ctx, ctxID, version, nil, CtxGuideEvaluateJSONRequestBody{})
 			return e
 		}},
 		{"GuideView", "POST", base + "/guide/view", func() error {
-			_, e := c.CtxGuideViewWithResponse(ctx, ctxID, version, CtxGuideViewJSONRequestBody{})
+			_, e := c.CtxGuideViewWithResponse(ctx, ctxID, version, nil, CtxGuideViewJSONRequestBody{})
 			return e
 		}},
 		{"SchemeProcess", "POST", base + "/scheme/process", func() error {
-			_, e := c.CtxSchemeProcessWithResponse(ctx, ctxID, version, CtxSchemeProcessJSONRequestBody{})
+			_, e := c.CtxSchemeProcessWithResponse(ctx, ctxID, version, nil, CtxSchemeProcessJSONRequestBody{})
 			return e
 		}},
 		{"SchemeValidate", "POST", base + "/scheme/validate", func() error {
-			_, e := c.CtxSchemeValidateWithResponse(ctx, ctxID, version, CtxSchemeValidateJSONRequestBody{})
-			return e
-		}},
-		{"SchemeNormalize", "POST", base + "/scheme/normalize", func() error {
-			_, e := c.CtxSchemeNormalizeWithResponse(ctx, ctxID, version, CtxSchemeNormalizeJSONRequestBody{})
+			_, e := c.CtxSchemeValidateWithResponse(ctx, ctxID, version, nil, CtxSchemeValidateJSONRequestBody{})
 			return e
 		}},
 		{"SchemeRender", "POST", base + "/scheme/render", func() error {
-			_, e := c.CtxSchemeRenderWithResponse(ctx, ctxID, version, CtxSchemeRenderJSONRequestBody{})
+			_, e := c.CtxSchemeRenderWithResponse(ctx, ctxID, version, nil, CtxSchemeRenderJSONRequestBody{})
 			return e
 		}},
 		{"SchemeDiff", "POST", base + "/scheme/diff", func() error {
-			_, e := c.CtxSchemeDiffWithResponse(ctx, ctxID, version, CtxSchemeDiffJSONRequestBody{})
+			_, e := c.CtxSchemeDiffWithResponse(ctx, ctxID, version, nil, CtxSchemeDiffJSONRequestBody{})
 			return e
 		}},
 		{"SchemeView", "POST", base + "/scheme/view", func() error {
-			_, e := c.CtxSchemeViewWithResponse(ctx, ctxID, version, CtxSchemeViewJSONRequestBody{})
+			_, e := c.CtxSchemeViewWithResponse(ctx, ctxID, version, nil, CtxSchemeViewJSONRequestBody{})
 			return e
 		}},
 		{"SchemeNotices", "POST", base + "/scheme/notices", func() error {
-			_, e := c.CtxSchemeNoticesWithResponse(ctx, ctxID, version, CtxSchemeNoticesJSONRequestBody{})
-			return e
-		}},
-		{"SchemeFilter", "POST", base + "/scheme/filter-concepts", func() error {
-			_, e := c.CtxSchemeFilterConceptsWithResponse(ctx, ctxID, version, CtxSchemeFilterConceptsJSONRequestBody{})
+			_, e := c.CtxSchemeNoticesWithResponse(ctx, ctxID, version, nil, CtxSchemeNoticesJSONRequestBody{})
 			return e
 		}},
 		{"SchemeScan", "POST", base + "/scheme/scan", func() error {
-			_, e := c.CtxSchemeScanWithResponse(ctx, ctxID, version, CtxSchemeScanJSONRequestBody{})
+			_, e := c.CtxSchemeScanWithResponse(ctx, ctxID, version, nil, CtxSchemeScanJSONRequestBody{})
 			return e
 		}},
 		{"SchemeAggregate", "POST", base + "/scheme/aggregate", func() error {
-			_, e := c.CtxSchemeAggregateWithResponse(ctx, ctxID, version, CtxSchemeAggregateJSONRequestBody{})
+			_, e := c.CtxSchemeAggregateWithResponse(ctx, ctxID, version, nil, CtxSchemeAggregateJSONRequestBody{})
 			return e
 		}},
 		{"SchemeSuggest", "POST", base + "/scheme/suggest", func() error {
-			_, e := c.CtxSchemeSuggestWithResponse(ctx, ctxID, version, CtxSchemeSuggestJSONRequestBody{})
+			_, e := c.CtxSchemeSuggestWithResponse(ctx, ctxID, version, nil, CtxSchemeSuggestJSONRequestBody{})
 			return e
 		}},
 		{"SchemeSuggestForCategories", "POST", base + "/scheme/suggest-for-categories", func() error {
-			_, e := c.CtxSchemeSuggestForCategoriesWithResponse(ctx, ctxID, version, CtxSchemeSuggestForCategoriesJSONRequestBody{})
+			_, e := c.CtxSchemeSuggestForCategoriesWithResponse(ctx, ctxID, version, nil, CtxSchemeSuggestForCategoriesJSONRequestBody{})
 			return e
 		}},
 		{"SchemeExplain", "POST", base + "/scheme/explain", func() error {
-			_, e := c.CtxSchemeExplainWithResponse(ctx, ctxID, version, CtxSchemeExplainJSONRequestBody{})
+			_, e := c.CtxSchemeExplainWithResponse(ctx, ctxID, version, nil, CtxSchemeExplainJSONRequestBody{})
 			return e
 		}},
 		{"SchemeCoverage", "POST", base + "/scheme/check-coverage", func() error {
-			_, e := c.CtxSchemeCheckCoverageWithResponse(ctx, ctxID, version, CtxSchemeCheckCoverageJSONRequestBody{})
+			_, e := c.CtxSchemeCheckCoverageWithResponse(ctx, ctxID, version, nil, CtxSchemeCheckCoverageJSONRequestBody{})
 			return e
 		}},
 	}

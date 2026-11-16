@@ -63,9 +63,13 @@
 // [CtxScheme.Categories], [CtxScheme.Concepts] and [CtxScheme.Formats] return
 // [CategoryView], [ConceptView] and [FormatView] values, the same views a
 // local engine's scheme view carries. [CtxScheme.LabelPresets] lists the
-// [LabelPresetView] entries of the Context's primary scheme, and
-// [CtxScheme.ApplyPreset] expands one into a marking written in the
-// request's OutputFormat.
+// scheme's [LabelPresetView] entries, and [CtxScheme.ApplyPreset] expands one
+// into a marking written in the request's OutputFormat.
+//
+// [EzClassifyContext.Scheme] addresses the Context's primary scheme.
+// [CtxSchemes.Get] on [EzClassifyContext.Schemes] returns the same operations
+// for another scheme the Context holds, named by the key [ContextDescription]
+// lists for it, and sends that key on every call.
 //
 // # Notices
 //

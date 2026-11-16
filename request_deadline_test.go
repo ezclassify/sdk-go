@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ezclassify/client-go"
+	"github.com/ezclassify/sdk-go"
 )
 
 // budget is the client timeout these tests configure. A call must end within
@@ -319,7 +319,7 @@ func requestGoroutines() []string {
 	buf = buf[:runtime.Stack(buf, true)]
 	var found []string
 	for _, stack := range strings.Split(string(buf), "\n\n") {
-		if strings.Contains(stack, "client-go.roundTripWithin") || strings.Contains(stack, "client-go.newDeadlineBody") {
+		if strings.Contains(stack, "sdk-go.roundTripWithin") || strings.Contains(stack, "sdk-go.newDeadlineBody") {
 			found = append(found, stack)
 		}
 	}
@@ -444,38 +444,5 @@ func TestPublicDeadlineDoesNotWaitForBodyClose(t *testing.T) {
 				t.Errorf("underlying Close called %d times, want once", got)
 			}
 		})
-	}
-}
-
-type closeErrorBody struct {
-	io.Reader
-	closes atomic.Int32
-	err    error
-}
-
-func (b *closeErrorBody) Close() error {
-	b.closes.Add(1)
-	return b.err
-}
-
-func TestResponseBodyClosePreservesErrorAndRunsOnce(t *testing.T) {
-	want := errors.New("close failed")
-	body := &closeErrorBody{Reader: strings.NewReader(`{"contexts":[]}`), err: want}
-	client := ezclassify.New("http://ezclassify.invalid",
-		ezclassify.WithHTTPClient(&http.Client{Transport: bodyTransport{body}}))
-	response, err := client.CtxList(context.Background())
-	if err != nil {
-		t.Fatal(err)
-	}
-	if _, err := io.ReadAll(response.Body); err != nil {
-		t.Fatal(err)
-	}
-	for range 2 {
-		if err := response.Body.Close(); !errors.Is(err, want) {
-			t.Errorf("Close error = %v, want %v", err, want)
-		}
-	}
-	if got := body.closes.Load(); got != 1 {
-		t.Errorf("underlying Close called %d times, want once", got)
 	}
 }

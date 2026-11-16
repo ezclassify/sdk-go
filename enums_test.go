@@ -15,16 +15,10 @@ func TestWireEnumConstantsCarryTheLockedWireValues(t *testing.T) {
 		{"AssertionConfidenceCertain", string(AssertionConfidenceCertain), "certain"},
 		{"AssertionConfidenceInferred", string(AssertionConfidenceInferred), "inferred"},
 		{"AssertionConfidenceRepaired", string(AssertionConfidenceRepaired), "repaired"},
-		{"AssertionConfidenceUncertain", string(AssertionConfidenceUncertain), "uncertain"},
 		{"ConceptNoticeTypeAdmonition", string(ConceptNoticeTypeAdmonition), "admonition"},
-		{"ConceptNoticeTypeDistribution", string(ConceptNoticeTypeDistribution), "distribution"},
-		{"ConceptNoticeTypeHandling", string(ConceptNoticeTypeHandling), "handling"},
-		{"ConceptNoticeTypeInfo", string(ConceptNoticeTypeInfo), "info"},
 		{"ConceptNoticeTypeWarning", string(ConceptNoticeTypeWarning), "warning"},
 		{"ProcessingRolePart", string(ProcessingRolePart), "part"},
 		{"ProcessingRoleWhole", string(ProcessingRoleWhole), "whole"},
-		{"ValidationSeverityError", string(ValidationSeverityError), "error"},
-		{"ValidationSeverityWarning", string(ValidationSeverityWarning), "warning"},
 		{"WarningKindDeprecation", string(WarningKindDeprecation), "deprecation"},
 		{"WarningKindRule", string(WarningKindRule), "rule"},
 		{"OverallVerdictPass", string(OverallVerdictPass), "pass"},
@@ -34,12 +28,6 @@ func TestWireEnumConstantsCarryTheLockedWireValues(t *testing.T) {
 		{"DocumentResponseProfileSummary", string(DocumentResponseProfileSummary), "summary"},
 		{"DocumentResponseProfileStandard", string(DocumentResponseProfileStandard), "standard"},
 		{"DocumentResponseProfileFull", string(DocumentResponseProfileFull), "full"},
-		{"AccessScenarioBasisAuthored", string(AccessScenarioBasisAuthored), "authored"},
-		{"AccessScenarioBasisAuthoritative", string(AccessScenarioBasisAuthoritative), "authoritative"},
-		{"AccessScenarioBasisProjected", string(AccessScenarioBasisProjected), "projected"},
-		{"AccessScenarioStatusDenied", string(AccessScenarioStatusDenied), "denied"},
-		{"AccessScenarioStatusGranted", string(AccessScenarioStatusGranted), "granted"},
-		{"AccessScenarioStatusNotEvaluated", string(AccessScenarioStatusNotEvaluated), "not-evaluated"},
 		{"GuideCompilationStatusDeterminedInsufficient", string(GuideCompilationStatusDeterminedInsufficient), "determined-insufficient"},
 		{"GuideCompilationStatusDeterminedSufficient", string(GuideCompilationStatusDeterminedSufficient), "determined-sufficient"},
 		{"GuideCompilationStatusNoFindings", string(GuideCompilationStatusNoFindings), "no-findings"},
@@ -67,7 +55,7 @@ func TestWireEnumConstantsCarryTheLockedWireValues(t *testing.T) {
 		}
 	}
 
-	if !ConceptNoticeTypeHandling.Valid() || ConceptNoticeType("bogus").Valid() {
+	if !ConceptNoticeTypeWarning.Valid() || ConceptNoticeType("bogus").Valid() {
 		t.Error("ConceptNoticeType.Valid() must accept locked members and reject unknown values")
 	}
 
@@ -77,9 +65,6 @@ func TestWireEnumConstantsCarryTheLockedWireValues(t *testing.T) {
 	}
 	if !DocumentResponseProfileStandard.Valid() || DocumentResponseProfile("bogus").Valid() {
 		t.Error("DocumentResponseProfile.Valid() must accept locked members and reject unknown values")
-	}
-	if !AccessScenarioStatusDenied.Valid() || AccessScenarioStatus("bogus").Valid() {
-		t.Error("AccessScenarioStatus.Valid() must accept locked members and reject unknown values")
 	}
 	if !GuideCompilationStatusPendingDetermination.Valid() || GuideCompilationStatus("bogus").Valid() {
 		t.Error("GuideCompilationStatus.Valid() must accept locked members and reject unknown values")

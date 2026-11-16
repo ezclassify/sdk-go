@@ -20,7 +20,7 @@ import (
 
 	"go.yaml.in/yaml/v3"
 
-	ez "github.com/ezclassify/client-go"
+	ez "github.com/ezclassify/sdk-go"
 )
 
 // specOperationMethods maps each operationId to the public method that sends it.
@@ -33,19 +33,16 @@ var specOperationMethods = map[string]string{
 	"ctxSchemeConcepts":             "CtxScheme.Concepts",
 	"ctxSchemeCategories":           "CtxScheme.Categories",
 	"ctxSchemeFormats":              "CtxScheme.Formats",
-	"ctxSchemeGrammar":              "CtxScheme.Grammar",
 	"ctxSchemeScopes":               "CtxScheme.Scopes",
 	"ctxSchemeLabelPresets":         "CtxScheme.LabelPresets",
 	"ctxSchemeApplyPreset":          "CtxScheme.ApplyPreset",
 	"ctxSchemeProcess":              "CtxScheme.Process",
 	"ctxSchemeValidate":             "CtxScheme.Validate",
 	"ctxSchemeExplain":              "CtxScheme.Explain",
-	"ctxSchemeNormalize":            "CtxScheme.Normalize",
 	"ctxSchemeRender":               "CtxScheme.Render",
 	"ctxSchemeDiff":                 "CtxScheme.Diff",
 	"ctxSchemeView":                 "CtxScheme.View",
 	"ctxSchemeNotices":              "CtxScheme.Notices",
-	"ctxSchemeFilterConcepts":       "CtxScheme.FilterConcepts",
 	"ctxSchemeScan":                 "CtxScheme.Scan",
 	"ctxSchemeAggregate":            "CtxScheme.Aggregate",
 	"ctxSchemeSuggest":              "CtxScheme.Suggest",
@@ -53,16 +50,13 @@ var specOperationMethods = map[string]string{
 	"ctxSchemeCheckCoverage":        "CtxScheme.CheckCoverage",
 	"ctxSchemeDescribeConcept":      "CtxScheme.DescribeConcept",
 	"ctxAccessCheck":                "CtxAccess.Check",
-	"ctxAccessDescribeRule":         "CtxAccess.DescribeRule",
 	"ctxAccessDescribeRequirements": "CtxAccess.DescribeRequirements",
 	"ctxAccessRules":                "CtxAccess.Rules",
 	"ctxGuideScan":                  "CtxGuide.Scan",
 	"ctxGuideEvaluate":              "CtxGuide.Evaluate",
-	"ctxGuideDescribeRule":          "CtxGuide.DescribeRule",
-	"ctxGuideFilterRules":           "CtxGuide.FilterRules",
 	"ctxGuideView":                  "CtxGuide.View",
 	"ctxDocumentAudit":              "CtxDocument.Audit",
-	"ctxDocumentAssessAccess":       "CtxDocument.AssessAccess",
+	"ctxCrosswalkDescribe":          "CtxCrosswalk.Describe",
 	"ctxCrosswalkTranslate":         "CtxCrosswalk.Translate",
 }
 

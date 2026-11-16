@@ -36,7 +36,7 @@ import (
 
 	"go.yaml.in/yaml/v3"
 
-	"github.com/ezclassify/client-go"
+	"github.com/ezclassify/sdk-go"
 )
 
 const (
@@ -507,7 +507,7 @@ type requestCase struct {
 // halves of aggregate, get their own case.
 var requestCases = []requestCase{
 	{"scheme.process", "scheme/process", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Process(ctx, ezclassify.CtxSchemeProcessRequest{
+		_, err := cx.Schemes.Get("acme").Process(ctx, ezclassify.CtxSchemeProcessRequest{
 			Input:        "H//A",
 			InputFormat:  ptr("marking/portion"),
 			OutputFormat: ptr("marking/banner"),
@@ -521,7 +521,7 @@ var requestCases = []requestCase{
 		return err
 	}},
 	{"scheme.explain", "scheme/explain", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Explain(ctx, ezclassify.CtxSchemeExplainRequest{
+		_, err := cx.Schemes.Get("acme").Explain(ctx, ezclassify.CtxSchemeExplainRequest{
 			Input:        "H//A",
 			InputFormat:  ptr("marking/portion"),
 			OutputFormat: ptr("marking/banner"),
@@ -535,7 +535,7 @@ var requestCases = []requestCase{
 	// The server takes the marking as text or as facts, never both, so each
 	// gets a case.
 	{"scheme.validate-text", "scheme/validate", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Validate(ctx, ezclassify.CtxSchemeValidateRequest{
+		_, err := cx.Schemes.Get("acme").Validate(ctx, ezclassify.CtxSchemeValidateRequest{
 			Input:        ptr("H//A"),
 			InputFormat:  ptr("marking/portion"),
 			OutputFormat: ptr("marking/banner"),
@@ -546,7 +546,7 @@ var requestCases = []requestCase{
 		return err
 	}},
 	{"scheme.validate-assertions", "scheme/validate", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Validate(ctx, ezclassify.CtxSchemeValidateRequest{
+		_, err := cx.Schemes.Get("acme").Validate(ctx, ezclassify.CtxSchemeValidateRequest{
 			Assertions:   &[]ezclassify.Assertion{caseLevel},
 			OutputFormat: ptr("marking/banner"),
 			Surface:      ptr("portion"),
@@ -556,7 +556,7 @@ var requestCases = []requestCase{
 		return err
 	}},
 	{"scheme.suggest", "scheme/suggest", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Suggest(ctx, ezclassify.CtxSchemeSuggestRequest{
+		_, err := cx.Schemes.Get("acme").Suggest(ctx, ezclassify.CtxSchemeSuggestRequest{
 			Input:        ptr("H//"),
 			InputFormat:  ptr("portion"),
 			OutputFormat: ptr("banner"),
@@ -567,7 +567,7 @@ var requestCases = []requestCase{
 		return err
 	}},
 	{"scheme.suggest-facts", "scheme/suggest", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Suggest(ctx, ezclassify.CtxSchemeSuggestRequest{
+		_, err := cx.Schemes.Get("acme").Suggest(ctx, ezclassify.CtxSchemeSuggestRequest{
 			Assertions:   &[]ezclassify.Assertion{caseLevel},
 			OutputFormat: ptr("banner"),
 			Surface:      ptr("portion"),
@@ -577,7 +577,7 @@ var requestCases = []requestCase{
 		return err
 	}},
 	{"scheme.suggest-for-categories", "scheme/suggest-for-categories", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.SuggestForCategories(ctx, ezclassify.CtxSchemeSuggestForCategoriesRequest{
+		_, err := cx.Schemes.Get("acme").SuggestForCategories(ctx, ezclassify.CtxSchemeSuggestForCategoriesRequest{
 			Assertions:   []ezclassify.Assertion{caseLevel},
 			CategoryIds:  []string{"level", "audience"},
 			OutputFormat: ptr("banner"),
@@ -586,7 +586,7 @@ var requestCases = []requestCase{
 		return err
 	}},
 	{"scheme.aggregate", "scheme/aggregate", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Aggregate(ctx, ezclassify.CtxSchemeAggregateRequest{
+		_, err := cx.Schemes.Get("acme").Aggregate(ctx, ezclassify.CtxSchemeAggregateRequest{
 			Inputs:       &[]string{"H", "L"},
 			InputFormat:  ptr("portion"),
 			OutputFormat: ptr("banner"),
@@ -596,7 +596,7 @@ var requestCases = []requestCase{
 		return err
 	}},
 	{"scheme.aggregate-assertions", "scheme/aggregate", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Aggregate(ctx, ezclassify.CtxSchemeAggregateRequest{
+		_, err := cx.Schemes.Get("acme").Aggregate(ctx, ezclassify.CtxSchemeAggregateRequest{
 			AssertionSets: &[][]ezclassify.Assertion{{caseLevel}},
 			OutputFormat:  ptr("banner"),
 			Surface:       ptr("portion"),
@@ -605,7 +605,7 @@ var requestCases = []requestCase{
 		return err
 	}},
 	{"scheme.scan", "scheme/scan", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Scan(ctx, ezclassify.CtxSchemeScanRequest{
+		_, err := cx.Schemes.Get("acme").Scan(ctx, ezclassify.CtxSchemeScanRequest{
 			Text:         "text H text",
 			InputFormat:  ptr("portion"),
 			OutputFormat: ptr("banner"),
@@ -613,23 +613,15 @@ var requestCases = []requestCase{
 		return err
 	}},
 	{"scheme.render", "scheme/render", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Render(ctx, ezclassify.CtxSchemeRenderRequest{
+		_, err := cx.Schemes.Get("acme").Render(ctx, ezclassify.CtxSchemeRenderRequest{
 			Assertions:   []ezclassify.Assertion{caseLevel},
 			OutputFormat: ptr("banner"),
 			Preservation: ptr(ezclassify.RenderPreservationFull),
 		})
 		return err
 	}},
-	{"scheme.normalize", "scheme/normalize", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Normalize(ctx, ezclassify.CtxSchemeNormalizeRequest{
-			Input:        "h",
-			InputFormat:  ptr("portion"),
-			OutputFormat: ptr("banner"),
-		})
-		return err
-	}},
 	{"scheme.check-coverage", "scheme/check-coverage", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.CheckCoverage(ctx, ezclassify.CtxSchemeCheckCoverageRequest{
+		_, err := cx.Schemes.Get("acme").CheckCoverage(ctx, ezclassify.CtxSchemeCheckCoverageRequest{
 			Children:     []string{"L"},
 			Parent:       "H",
 			InputFormat:  ptr("portion"),
@@ -638,23 +630,19 @@ var requestCases = []requestCase{
 		return err
 	}},
 	{"scheme.diff", "scheme/diff", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Diff(ctx, ezclassify.CtxSchemeDiffRequest{A: "H", B: "L", InputFormat: ptr("portion")})
-		return err
-	}},
-	{"scheme.filter-concepts", "scheme/filter-concepts", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.FilterConcepts(ctx, ezclassify.CtxSchemeFilterConceptsRequest{Query: "hi"})
+		_, err := cx.Schemes.Get("acme").Diff(ctx, ezclassify.CtxSchemeDiffRequest{A: "H", B: "L", InputFormat: ptr("portion")})
 		return err
 	}},
 	{"scheme.notices", "scheme/notices", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Notices(ctx, ezclassify.CtxSchemeNoticesRequest{Assertions: []ezclassify.Assertion{caseLevel}})
+		_, err := cx.Schemes.Get("acme").Notices(ctx, ezclassify.CtxSchemeNoticesRequest{Assertions: []ezclassify.Assertion{caseLevel}})
 		return err
 	}},
 	{"scheme.view", "scheme/view", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.View(ctx)
+		_, err := cx.Schemes.Get("acme").View(ctx)
 		return err
 	}},
 	{"scheme.apply-preset", "scheme/apply-preset", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.ApplyPreset(ctx, ezclassify.ApplyPresetRequest{PresetID: "default-label", OutputFormat: ptr("banner")})
+		_, err := cx.Schemes.Get("acme").ApplyPreset(ctx, ezclassify.ApplyPresetRequest{PresetID: "default-label", OutputFormat: ptr("banner")})
 		return err
 	}},
 	{"guide.scan", "guide/scan", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
@@ -662,19 +650,11 @@ var requestCases = []requestCase{
 		return err
 	}},
 	{"guide.evaluate", "guide/evaluate", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Guide.Evaluate(ctx, ezclassify.CtxGuideEvaluateRequest{GuideID: ptr("g1"), SelectedRuleIds: []string{"r1"}})
+		_, err := cx.Guide.Evaluate(ctx, ezclassify.CtxGuideEvaluateRequest{GuideID: ptr("g1"), SelectedRuleIds: &[]string{"r1"}})
 		return err
 	}},
 	{"guide.evaluateMany", "guide/evaluate", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Guide.Evaluate(ctx, ezclassify.CtxGuideEvaluateRequest{AllGuides: ptr(true), SelectedRuleIds: []string{"r1"}})
-		return err
-	}},
-	{"guide.filter-rules", "guide/filter-rules", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Guide.FilterRules(ctx, ezclassify.CtxGuideFilterRulesRequest{Query: "sec", GuideID: ptr("g1")})
-		return err
-	}},
-	{"guide.describe-rule", "guide/describe-rule", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Guide.DescribeRule(ctx, ezclassify.CtxGuideDescribeRuleRequest{RuleID: "r1", GuideID: ptr("g1")})
+		_, err := cx.Guide.Evaluate(ctx, ezclassify.CtxGuideEvaluateRequest{Selections: &[]ezclassify.GuideRuleSelection{{GuideID: "g1", RuleID: "r1"}}})
 		return err
 	}},
 	{"guide.view", "guide/view", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
@@ -697,10 +677,6 @@ var requestCases = []requestCase{
 		})
 		return err
 	}},
-	{"access.describe-rule", "access/describe-rule", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Access.DescribeRule(ctx, ezclassify.CtxAccessDescribeRuleRequest{RuleID: "rule-1"})
-		return err
-	}},
 	// The server takes exactly one crosswalk source, so each gets a case.
 	{"crosswalk.translate-marking", "crosswalk/translate", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
 		_, err := cx.Crosswalk.Translate(ctx, ezclassify.CtxCrosswalkTranslateRequest{CrosswalkID: "cw-1", Marking: ptr("H")})
@@ -716,16 +692,6 @@ var requestCases = []requestCase{
 	{"document.audit", "document/audit", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
 		_, err := cx.Document.Audit(ctx, ezclassify.CtxDocumentAuditRequest{
 			Text:                "document text",
-			GuideDeterminations: &caseDeterminations,
-			ResponseProfile:     ptr(ezclassify.DocumentResponseProfileFull),
-		})
-		return err
-	}},
-	{"document.assess-access", "document/assess-access", func(ctx context.Context, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Document.AssessAccess(ctx, ezclassify.CtxDocumentAssessAccessRequest{
-			Text:                "document text",
-			UserAttributes:      map[string]any{"clearance": "high"},
-			Context:             &map[string]any{"project": "p1"},
 			GuideDeterminations: &caseDeterminations,
 			ResponseProfile:     ptr(ezclassify.DocumentResponseProfileFull),
 		})
@@ -930,22 +896,19 @@ func TestDeclaredPropertiesFollowRefsAndBranches(t *testing.T) {
 	}
 }
 
-func TestValidatorRejectsRemovedFields(t *testing.T) {
+func TestValidatorRejectsAnUndeclaredField(t *testing.T) {
 	spec := requestSpec(t)
 	cases := []struct {
 		route string
 		body  map[string]any
 		field string
 	}{
-		{"scheme/process", map[string]any{"input": "H", "format": "banner"}, "format"},
-		{"scheme/process", map[string]any{"input": "H", "scope": "portion"}, "scope"},
-		{"scheme/validate", map[string]any{"input": "H", "scope": "portion"}, "scope"},
-		{"scheme/suggest", map[string]any{"input": "H", "format": "banner"}, "format"},
-		{"scheme/aggregate", map[string]any{"inputs": []any{"H"}, "format": "banner", "scope": "portion"}, "format"},
-		{"scheme/aggregate", map[string]any{"assertionSets": []any{}, "format": "banner"}, "format"},
-		{"scheme/diff", map[string]any{"a": "H", "b": "L", "format": "banner"}, "format"},
-		{"scheme/process", map[string]any{"input": "H", "tolerant": true}, "tolerant"},
-		{"scheme/process", map[string]any{"input": "H", "normalization": "loose"}, "normalization"},
+		{"scheme/process", map[string]any{"input": "H", "note": "kept"}, "note"},
+		{"scheme/validate", map[string]any{"input": "H", "note": "kept"}, "note"},
+		{"scheme/suggest", map[string]any{"input": "H", "note": "kept"}, "note"},
+		{"scheme/aggregate", map[string]any{"inputs": []any{"H"}, "note": "kept"}, "note"},
+		{"scheme/aggregate", map[string]any{"assertionSets": []any{}, "note": "kept"}, "note"},
+		{"scheme/diff", map[string]any{"a": "H", "b": "L", "note": "kept"}, "note"},
 		{"scheme/explain", map[string]any{"input": "H", "outputs": []any{"marking/banner"}}, "outputs"},
 		{"scheme/explain", map[string]any{"input": "H", "suggestFor": []any{"level"}}, "suggestFor"},
 		{"scheme/suggest-for-categories", map[string]any{"assertions": []any{}, "categoryIds": []any{}, "input": "H"}, "input"},
@@ -987,7 +950,7 @@ func TestValidatorRejectsAMissingRequiredFieldAndAWrongType(t *testing.T) {
 	}
 }
 
-func TestValidatorAcceptsTheRenamedFields(t *testing.T) {
+func TestValidatorAcceptsACurrentBody(t *testing.T) {
 	spec := requestSpec(t)
 	violations, err := spec.validate("post", requestRoutePrefix+"scheme/process", map[string]any{
 		"input":        "H",

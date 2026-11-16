@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ezclassify/client-go"
+	"github.com/ezclassify/sdk-go"
 )
 
 // TestUnknownResponseFieldsAreTolerated is this SDK's conformance case for the
@@ -116,7 +116,7 @@ func TestUnknownEnumValuesDecodeAtEveryPosition(t *testing.T) {
 		srv, _ := ctxServer(t, ver, map[string]string{
 			"/scheme/process": `{"valid":false,"rendered":"H","notices":[],` +
 				`"assertions":[{"conceptId":"L_H","categoryId":"level","confidence":"probable","source":"parse"}],` +
-				`"errors":[{"constraintId":"c1","message":"m","severity":"fatal"}],` +
+				`"errors":[{"constraintId":"c1","message":"m"}],` +
 				`"warnings":[{"kind":"advisory","message":"w"}]}`,
 		})
 		processed, err := ezclassify.Connect(srv.URL, "c", ver).Scheme.Process(ctx, ezclassify.CtxSchemeProcessRequest{Input: "H"})
@@ -129,9 +129,6 @@ func TestUnknownEnumValuesDecodeAtEveryPosition(t *testing.T) {
 		}
 		if c := r.Assertions[0].Confidence; c != "probable" || c.Valid() {
 			t.Errorf("Assertions[0].Confidence = %v, want the raw unknown value", c)
-		}
-		if s := r.Errors[0].Severity; s == nil || *s != "fatal" || s.Valid() {
-			t.Errorf("Errors[0].Severity = %v, want the raw unknown value", s)
 		}
 		if k := r.Warnings[0].Kind; k != "advisory" || k.Valid() {
 			t.Errorf("Warnings[0].Kind = %q, want the raw unknown value", k)
@@ -147,11 +144,11 @@ func TestUnknownEnumValuesDecodeAtEveryPosition(t *testing.T) {
 		if err := ezclassify.Connect(describe.URL, "c", ver).Resolve(ctx); err != nil {
 			t.Fatalf("Resolve against a newer scheme role: %v", err)
 		}
-		described, err := ezclassify.New(describe.URL).CtxDescribeWithResponse(ctx, "c", ver)
-		if err != nil || described.JSON200 == nil {
-			t.Fatalf("describe decode: err=%v status=%d", err, described.StatusCode())
+		described, err := ezclassify.Connect(describe.URL, "c", ver).Describe(ctx)
+		if err != nil {
+			t.Fatalf("describe decode: %v", err)
 		}
-		roles := described.JSON200.Schemes[0].Roles
+		roles := described.Schemes[0].Roles
 		if len(roles) != 2 || !roles[0].Valid() || roles[1] != "reviewer" || roles[1].Valid() {
 			t.Errorf("Roles = %v, want [primary reviewer] with the unknown role kept", roles)
 		}
@@ -179,10 +176,8 @@ func TestUnknownEnumValuesDecodeAtEveryPosition(t *testing.T) {
 			w.Header().Set("Content-Type", "application/json")
 			w.Header().Set("X-EzClassify-Resolved-Version", ver)
 			_, _ = io.WriteString(w, fixtureAs[ezclassify.ContextSchemeProcessResult](`{"resolution":{"contextId":"c","resolvedVersion":"1.0.0",`+
-				`"artifacts":[{"kind":"policy","id":"p","version":"1.0.0"}],`+
-				`"sources":[{"providerId":"idp","reproducibility":"pinned","snapshotId":"snap-1",`+
-				`"attribution":{"name":"IdP","license":"internal"}}]},`+
-				`"operationLimitations":[],"result":{"valid":true,"rendered":"H","notices":[]}}`))
+				`"artifacts":[{"kind":"policy","id":"p","version":"1.0.0"}]},`+
+				`"result":{"valid":true,"rendered":"H","notices":[]}}`))
 		}))
 		t.Cleanup(srv.Close)
 		processed, err := ezclassify.Connect(srv.URL, "c", ver).Scheme.Process(ctx, ezclassify.CtxSchemeProcessRequest{Input: "H"})
@@ -193,18 +188,11 @@ func TestUnknownEnumValuesDecodeAtEveryPosition(t *testing.T) {
 		if kind := res.Artifacts[0].Kind; kind != "policy" || kind.Valid() {
 			t.Errorf("Artifacts[0].Kind = %q, want the raw unknown value", kind)
 		}
-		source, err := res.Sources[0].AsReproducibleSourceReference()
-		if err != nil {
-			t.Fatalf("reading the unknown source variant: %v", err)
-		}
-		if source.Reproducibility != "pinned" || source.SnapshotID != "snap-1" {
-			t.Errorf("source = %+v, want the unknown discriminator and its fields kept", source)
-		}
 		wire, err := json.Marshal(res)
 		if err != nil {
 			t.Fatalf("re-encoding the resolution: %v", err)
 		}
-		for _, want := range []string{`"kind":"policy"`, `"reproducibility":"pinned"`} {
+		for _, want := range []string{`"kind":"policy"`} {
 			if !strings.Contains(string(wire), want) {
 				t.Errorf("re-encoded resolution %s lacks %s", wire, want)
 			}

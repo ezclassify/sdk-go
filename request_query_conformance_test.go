@@ -24,7 +24,7 @@ import (
 
 	"go.yaml.in/yaml/v3"
 
-	"github.com/ezclassify/client-go"
+	"github.com/ezclassify/sdk-go"
 )
 
 // specDocument is the vendored OpenAPI document as decoded JSON.
@@ -117,10 +117,6 @@ var readCases = []readCase{
 		_, err := c.Ping(ctx)
 		return err
 	}},
-	{"ready", "get", "/v1/ready", func(ctx context.Context, c *ezclassify.Client, _ *ezclassify.EzClassifyContext) error {
-		_, err := c.GetReadyWithResponse(ctx)
-		return err
-	}},
 	{"list-contexts", "get", "/v1/ctx", func(ctx context.Context, c *ezclassify.Client, _ *ezclassify.EzClassifyContext) error {
 		_, err := c.ListContexts(ctx)
 		return err
@@ -133,39 +129,39 @@ var readCases = []readCase{
 		return cx.Resolve(ctx)
 	}},
 	{"scheme.summary", "get", requestRoutePrefix + "scheme", func(ctx context.Context, _ *ezclassify.Client, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Summary(ctx, ptr("acme"))
+		_, err := cx.Schemes.Get("acme").Summary(ctx)
 		return err
 	}},
 	{"scheme.concepts", "get", requestRoutePrefix + "scheme/concepts", func(ctx context.Context, _ *ezclassify.Client, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Concepts(ctx, ptr("acme"))
+		_, err := cx.Schemes.Get("acme").Concepts(ctx)
 		return err
 	}},
 	{"scheme.categories", "get", requestRoutePrefix + "scheme/categories", func(ctx context.Context, _ *ezclassify.Client, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Categories(ctx, ptr("acme"))
+		_, err := cx.Schemes.Get("acme").Categories(ctx)
 		return err
 	}},
 	{"scheme.formats", "get", requestRoutePrefix + "scheme/formats", func(ctx context.Context, _ *ezclassify.Client, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Formats(ctx, ptr("acme"))
-		return err
-	}},
-	{"scheme.grammar", "get", requestRoutePrefix + "scheme/grammar", func(ctx context.Context, _ *ezclassify.Client, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Grammar(ctx, ptr("acme"))
+		_, err := cx.Schemes.Get("acme").Formats(ctx)
 		return err
 	}},
 	{"scheme.scopes", "get", requestRoutePrefix + "scheme/scopes", func(ctx context.Context, _ *ezclassify.Client, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.Scopes(ctx, ptr("acme"))
+		_, err := cx.Schemes.Get("acme").Scopes(ctx)
 		return err
 	}},
 	{"scheme.labelPresets", "get", requestRoutePrefix + "scheme/label-presets", func(ctx context.Context, _ *ezclassify.Client, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.LabelPresets(ctx)
+		_, err := cx.Schemes.Get("acme").LabelPresets(ctx)
 		return err
 	}},
 	{"scheme.describeConcept", "get", requestRoutePrefix + "scheme/describe-concept", func(ctx context.Context, _ *ezclassify.Client, cx *ezclassify.EzClassifyContext) error {
-		_, err := cx.Scheme.DescribeConcept(ctx, "HIGH", "level", ptr("short"))
+		_, err := cx.Schemes.Get("acme").DescribeConcept(ctx, "HIGH", "level", ptr("short"))
 		return err
 	}},
 	{"access.rules", "get", requestRoutePrefix + "access/rules", func(ctx context.Context, _ *ezclassify.Client, cx *ezclassify.EzClassifyContext) error {
 		_, err := cx.Access.Rules(ctx)
+		return err
+	}},
+	{"crosswalk.describe", "get", requestRoutePrefix + "crosswalk/describe", func(ctx context.Context, _ *ezclassify.Client, cx *ezclassify.EzClassifyContext) error {
+		_, err := cx.Crosswalk.Describe(ctx)
 		return err
 	}},
 }
@@ -262,7 +258,9 @@ func TestEveryContractReadOperationHasACase(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	covered := map[operationKey]bool{}
+	// Readiness is for an orchestrator's routing; no public method sends it
+	// (see specOperationsNotSent).
+	covered := map[operationKey]bool{{"get", "/v1/ready"}: true}
 	for _, c := range readCases {
 		covered[operationKey{c.method, c.template}] = true
 	}

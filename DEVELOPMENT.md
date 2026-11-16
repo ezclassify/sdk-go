@@ -67,8 +67,9 @@ change committed alongside it.
 - **Recorded replay and live acceptance cover different boundaries.** The
   replayer matches the normalized path and request body against a recording;
   an unrecorded path or body fails. The live-server smoke test additionally
-  verifies a running deployment: point `EZC_SMOKE_URL` at a rest-api and it
-  drives `Ping` (which hits `/v1/health`) plus a real `process()` over the wire.
+  verifies a running deployment: point `EZC_SMOKE_URL` at a running REST runtime (the
+  `ghcr.io/ezclassify/rest-api` image with its license and bundles mounted, or the
+  `ezclassify-rest-api` binary) and it drives `Ping` (which hits `/v1/health`) plus a real `process()` over the wire.
   It is built only with the `live` tag and fails when the variable is unset.
 
   ```sh
@@ -98,5 +99,5 @@ their command contracts in this guide and their source headers. Output is ignore
 by Git.
 
 For interactive terminal lookup, use `go doc Client`, `go doc EzClassifyContext`
-or `go doc -all .`. The module's Go doc comments also provide the reference on [pkg.go.dev](https://pkg.go.dev/github.com/ezclassify/client-go).
+or `go doc -all .`. The module's Go doc comments also provide the reference on [pkg.go.dev](https://pkg.go.dev/github.com/ezclassify/sdk-go).
 Generated wire declarations remain owned by `make regen`.
