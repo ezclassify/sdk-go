@@ -1,4 +1,4 @@
-// Code generated from openapi.yaml@5b10dd61da6005025820a3e39c406756e2a7c280db6e16f1325c289fa6217353 by oapi-codegen@v2.8.0@h1:s4hxMxuqtR8jPzXkBTtFwY/SBuj3gEAYikmbBSdtLMM=. DO NOT EDIT.
+// Code generated from openapi.yaml@563e44e7d33425d2d8063c5da1efa3159269916775f7af2cc9ce7cf4cb8cccec by oapi-codegen@v2.8.0@h1:s4hxMxuqtR8jPzXkBTtFwY/SBuj3gEAYikmbBSdtLMM=. DO NOT EDIT.
 // Package api provides primitives to interact with the openapi HTTP API.
 package api
 
@@ -4587,6 +4587,9 @@ type Suggestion struct {
 	// ConceptID The id of the suggested concept.
 	ConceptID string `json:"conceptId"`
 
+	// Depth Zero-based indentation level in the returned browse order. Omitted when the result supplies no hierarchy for the suggestion.
+	Depth *int `json:"depth,omitempty"`
+
 	// Description Secondary label (longer name or alternate view).
 	Description string `json:"description"`
 
@@ -4602,7 +4605,7 @@ type Suggestion struct {
 	// Name Human-readable concept name.
 	Name string `json:"name"`
 
-	// Order Sort order.
+	// Order The concept's authored position.
 	Order int `json:"order"`
 
 	// Requires When `gated` is true, the unmet prerequisite concept ids that would unlock this concept. Empty array when the concept is gated by a constraint with no specific prerequisite (e.g. mutual exclusion).
