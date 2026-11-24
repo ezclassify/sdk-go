@@ -22,11 +22,11 @@
         },
         {
           "path": "tools/codegen/go.mod",
-          "sha256": "1312806f9aab01307aa30b202da0ae067dc30670e0381ab905f7a243d5628f80"
+          "sha256": "3ed8715f4833d1a43e9074084dbe6a87192b50e947fdfd43231649bba37cc1cf"
         },
         {
           "path": "tools/codegen/go.sum",
-          "sha256": "64d50f471cdbfc1fdd2ae0d8f8762628a9fdee8704a94150e50a26e47795382c"
+          "sha256": "f533367c5c97ed91cf8561617bdabec0cc526ac96bcde77bb67a2b6069cfa17b"
         }
       ],
       "note": "sha256 is the go.sum h1: module hash - platform-independent and verifiable via `go mod verify`"
