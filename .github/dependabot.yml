@@ -21,6 +21,9 @@ updates:
         patterns: ["*"]
         update-types: [minor, patch]
     labels: [dependencies]
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
     allow:
       - dependency-name: "*"
         update-types:
@@ -41,6 +44,9 @@ updates:
         patterns: ["*"]
         update-types: [minor, patch]
     labels: [dependencies, ci]
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
     allow:
       - dependency-name: "*"
         update-types:
