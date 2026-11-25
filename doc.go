@@ -1,27 +1,32 @@
-// Package ezclassify provides a Go SDK for the EzClassify REST API.
+// Package ezclassify is a client library for the EzClassify REST API, a marking
+// parser, validator and combiner with need-to-know access checks. It validates
+// security markings and sensitivity labels, combines them into an overall
+// marking, and checks who may access the result. It works with IC Classification and Control
+// Markings (CAPCO), Controlled Unclassified Information (CUI), Traffic Light
+// Protocol (TLP) 2.0, Common Vulnerability Scoring System (CVSS), or marking
+// rules you write yourself.
 //
-// The SDK is HTTP-only. It contains no classification engine, content, license,
-// or deployment configuration; operations are delegated to a running
-// EzClassify REST API instance.
+// The SDK is HTTP-only and needs a running EzClassify runtime. It contains no
+// classification engine, content, license, or deployment configuration. The
+// free developer runtime includes TLP 2.0, CVSS and demo subsets of CAPCO and
+// CUI; the full CAPCO and CUI schemes are licensed content.
 //
 // # Quick start
 //
-// Start the Cedar Valley replay server (it needs Node.js 22 or newer, and the
-// client itself does not):
+// Start the free developer runtime:
 //
-//	npx @ezclassify/conformance-server --scenario cedar-valley --port 4010
+//	docker run --rm -p 3000:8080 ghcr.io/ezclassify/developer-runtime
 //
-// Then connect the client to it and process a recorded marking:
+// Then connect the client to the capco-demo Context and validate a marking:
 //
-//	cx := ezclassify.Connect("http://127.0.0.1:4010", "cedar-valley", "1.0.0")
-//	resp, err := cx.Scheme.Process(ctx,
-//	    ezclassify.CtxSchemeProcessRequest{Input: "INTERNAL"})
+//	cx := ezclassify.Connect("http://localhost:3000", "capco-demo", "1.0.0")
+//	input := "SECRET//NOFORN"
+//	resp, err := cx.Scheme.Validate(ctx,
+//	    ezclassify.CtxSchemeValidateRequest{Input: &input})
 //	if err != nil { log.Fatal(err) }
-//	fmt.Println(resp.Result.Rendered) // => "INTERNAL"
+//	fmt.Println(resp.Result.Rendered, resp.Result.Valid) // => SECRET//NOFORN true
 //
-// The server replays recorded answers for a finite set of requests; anything
-// else gets a 501 diagnostic. To use a runtime, change the base URL and supply
-// credentials:
+// To use your own runtime, change the base URL and supply credentials:
 //
 //	client := ezclassify.New("https://runtime.example.com",
 //	    ezclassify.WithCredentials(ezclassify.RestClientCredentials{
