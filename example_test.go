@@ -8,7 +8,8 @@ import (
 	"github.com/ezclassify/sdk-go"
 )
 
-// These examples have no Output comment: they compile with the package but do
+// These examples have no Output comment (each ends with a Prints line that
+// states the result against the developer runtime): they compile with the package but do
 // not run under go test, because they need a running EzClassify runtime. Start
 // the free developer runtime first:
 //
@@ -24,6 +25,7 @@ func ExampleCtxScheme_Validate() {
 		log.Fatal(err)
 	}
 	fmt.Println(read.Result.Rendered, read.Result.Valid)
+	// Prints: SECRET//NOFORN true
 }
 
 func ExampleCtxScheme_Aggregate() {
@@ -40,6 +42,7 @@ func ExampleCtxScheme_Aggregate() {
 		log.Fatal(err)
 	}
 	fmt.Println(overall.Result.Rendered)
+	// Prints: SECRET//REL TO USA, GBR
 }
 
 func ExampleCtxAccess_Check() {
@@ -55,4 +58,6 @@ func ExampleCtxAccess_Check() {
 		log.Fatal(err)
 	}
 	fmt.Println("granted:", dec.Result.Granted)
+	// Prints: granted: false
+	// The demo NOFORN rule requires a USA nationality claim.
 }
