@@ -110,7 +110,7 @@ The empty version lets the server choose: your Context token's default version, 
 
 ### Validate, roll up, check access
 
-The `capco-demo` Context is a demo subset of CAPCO. This validates a marking, rolls portion marks up to an overall marking and checks access:
+The `capco-demo` Context is a demo subset of CAPCO. This validates a marking, rolls several markings up into one overall marking and checks access:
 
 ```go
 cx := ezclassify.Connect("http://localhost:3000", "capco-demo", "1.0.0")
