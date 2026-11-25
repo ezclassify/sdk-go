@@ -1,10 +1,6 @@
-// Package ezclassify is a client library for the EzClassify REST API, a marking
-// parser, validator and combiner with need-to-know access checks. It validates
-// security markings and sensitivity labels, combines them into an overall
-// marking, and checks who may access the result. It works with IC Classification and Control
-// Markings (CAPCO), Controlled Unclassified Information (CUI), Traffic Light
-// Protocol (TLP) 2.0, Common Vulnerability Scoring System (CVSS), or marking
-// rules you write yourself.
+// Package ezclassify is a client library for the EzClassify REST API: a
+// classification marking parser, validator and rollup with need-to-know access
+// checks.
 //
 // The SDK is HTTP-only and needs a running EzClassify runtime. It contains no
 // classification engine, content, license, or deployment configuration. The
